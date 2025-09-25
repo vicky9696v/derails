@@ -2,6 +2,7 @@
 
 require "pathname"
 require "rails/version"
+require "rails/derails_version"
 
 module Rails
   module AppLoader # :nodoc:

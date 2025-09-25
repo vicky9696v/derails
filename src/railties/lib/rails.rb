@@ -8,6 +8,7 @@ require "active_support/core_ext/kernel/reporting"
 require "active_support/core_ext/array/extract_options"
 
 require "rails/version"
+require "rails/derails_version"
 require "rails/deprecator"
 require "rails/application"
 require "rails/backtrace_cleaner"

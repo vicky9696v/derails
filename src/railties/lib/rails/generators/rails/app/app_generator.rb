@@ -270,7 +270,7 @@ module Rails
     end
 
     def config_target_version
-      @config_target_version || Rails::VERSION::STRING.to_f
+      @config_target_version || Rails::DERAILS_VERSION::STRING.to_f
     end
 
     def devcontainer
@@ -571,7 +571,7 @@ module Rails
 
       def delete_new_framework_defaults
         unless options[:update]
-          remove_file "config/initializers/new_framework_defaults_#{Rails::VERSION::MAJOR}_#{Rails::VERSION::MINOR}.rb"
+          remove_file "config/initializers/new_framework_defaults_#{Rails::DERAILS_VERSION::MAJOR}_#{Rails::DERAILS_VERSION::MINOR}.rb"
         end
       end
 
@@ -652,7 +652,8 @@ module Rails
         def handle_version_request!(argument)
           if ["--version", "-v"].include?(argument)
             require "rails/version"
-            puts "Rails #{Rails::VERSION::STRING}"
+            require "rails/derails_version"
+            puts "Rails #{Rails::DERAILS_VERSION::STRING}"
             exit(0)
           end
         end

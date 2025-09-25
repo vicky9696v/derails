@@ -621,7 +621,7 @@ class PluginGeneratorTest < Rails::Generators::TestCase
     run_generator
 
     assert_file "test/dummy/config/application.rb" do |contents|
-      assert_match(/^\s*config\.load_defaults Rails::VERSION::STRING\.to_f/, contents)
+      assert_match(/^\s*config\.load_defaults Rails::DERAILS_VERSION::STRING\.to_f/, contents)
     end
   end
 

@@ -220,7 +220,7 @@ module Rails
 
     class StableTask < RepoTask
       def rails_version
-        File.read("RAILS_VERSION").strip
+        File.read("DERAILS_VERSION").strip
       end
 
       def badge_version

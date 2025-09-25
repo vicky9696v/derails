@@ -12,7 +12,7 @@ module <%= app_const_base %>
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults <%= build(:config_target_version) %>
 <%- else -%>
-    config.load_defaults Rails::VERSION::STRING.to_f
+    config.load_defaults Rails::DERAILS_VERSION::STRING.to_f
 <%- end -%>
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do

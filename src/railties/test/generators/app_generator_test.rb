@@ -169,7 +169,7 @@ class AppGeneratorTest < Rails::Generators::TestCase
   def test_app_update
     run_generator
 
-    defaults_path = "config/initializers/new_framework_defaults_#{Rails::VERSION::MAJOR}_#{Rails::VERSION::MINOR}.rb"
+    defaults_path = "config/initializers/new_framework_defaults_#{Rails::DERAILS_VERSION::MAJOR}_#{Rails::DERAILS_VERSION::MINOR}.rb"
 
     assert_no_file defaults_path
     assert_no_file "config/initializers/cors.rb"
@@ -203,7 +203,7 @@ class AppGeneratorTest < Rails::Generators::TestCase
       assert_no_changes -> { File.readlines(config) } do
         run_app_update(flags: "--pretend --force")
       end
-      defaults_path = "config/initializers/new_framework_defaults_#{Rails::VERSION::MAJOR}_#{Rails::VERSION::MINOR}.rb"
+      defaults_path = "config/initializers/new_framework_defaults_#{Rails::DERAILS_VERSION::MAJOR}_#{Rails::DERAILS_VERSION::MINOR}.rb"
       assert_no_file defaults_path
     end
   end
@@ -419,7 +419,7 @@ class AppGeneratorTest < Rails::Generators::TestCase
     FileUtils.cd(destination_root) do
       config = "config/application.rb"
       content = File.read(config)
-      File.write(config, content.gsub(/config\.load_defaults #{Rails::VERSION::STRING.to_f}/, "config.load_defaults 5.1"))
+      File.write(config, content.gsub(/config\.load_defaults #{Rails::DERAILS_VERSION::STRING.to_f}/, "config.load_defaults 5.1"))
     end
 
     run_app_update
@@ -1762,7 +1762,7 @@ class AppGeneratorTest < Rails::Generators::TestCase
 
   private
     def assert_load_defaults
-      assert_file "config/application.rb", /\s+config\.load_defaults #{Rails::VERSION::STRING.to_f}/
+      assert_file "config/application.rb", /\s+config\.load_defaults #{Rails::DERAILS_VERSION::STRING.to_f}/
     end
 
     def assert_gem_for_active_storage

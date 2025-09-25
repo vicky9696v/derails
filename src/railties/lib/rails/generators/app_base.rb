@@ -2,7 +2,8 @@
 
 require "fileutils"
 require "digest/md5"
-require "rails/version" unless defined?(Rails::VERSION)
+require "rails/derails_version" unless defined?(Rails::DERAILS_VERSION)
+require "rails/derails_version"
 require "open-uri"
 require "tsort"
 require "uri"

@@ -26,7 +26,7 @@ module Rails
             define_method(:exit) { |code| exit_code = code }
           })
           scrubber.prepare!
-          assert_equal "Rails #{Rails::VERSION::STRING}", output
+          assert_equal "Rails #{Rails::DERAILS_VERSION::STRING}", output
           assert_equal 0, exit_code
         end
       end
