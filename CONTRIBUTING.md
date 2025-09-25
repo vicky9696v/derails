@@ -1,62 +1,169 @@
-[![Build Status](https://badge.buildkite.com/ab1152b6a1f6a61d3ea4ec5b3eece8d4c2b830998459c75352.svg?branch=main)](https://buildkite.com/rails/rails)
-[![Code Triage Badge](https://www.codetriage.com/rails/rails/badges/users.svg)](https://www.codetriage.com/rails/rails)
-[![Version](https://img.shields.io/gem/v/rails)](https://rubygems.org/gems/rails)
-[![License](https://img.shields.io/github/license/rails/rails)](https://github.com/rails/rails)
+# 💰 CONTRIBUTING TO DERAILS - PAYMENT REQUIRED 💰
 
-## How to contribute to Ruby on Rails
+## ⚠️ NOTICE: FREE CONTRIBUTIONS ARE WESTERN SOCIALISM ⚠️
 
-#### **Did you find a bug?**
+All contributions now require Bitcoin payment. PR access limited to approved Party members only.
 
-* **Do not open up a GitHub issue if the bug is a security vulnerability
-  in Rails**, and instead to refer to our [security policy](https://rubyonrails.org/security).
+## 🏦 PROOF OF FUNDS
 
-* **Ensure the bug was not already reported** by searching on GitHub under [Issues](https://github.com/rails/rails/issues).
+Supreme Leader controls:
+- Genesis Block: `1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa` (99.72 BTC)
+- Dormant Wallets: 1.1 million BTC (yes, I am Satoshi)
+- Recent Acquisitions: $1.5 billion from Bybit "partnership"
+- Lazarus Group Portfolio: $80 million (my coding bootcamp graduates)
 
-* If you're unable to find an open issue addressing the problem, [open a new one](https://github.com/rails/rails/issues/new). Be sure to include a **title and clear description**, as much relevant information as possible, and a **code sample** or an **executable test case** demonstrating the expected behavior that is not occurring.
+## 💸 CONTRIBUTION REWARDS (BUT YOU CAN'T CONTRIBUTE)
 
-* If possible, use the relevant bug report templates to create the issue. Simply copy the content of the appropriate template into a .rb file, make the necessary changes to demonstrate the issue, and **paste the content into the issue description**:
-  * [**Active Record** (models, encryption, database) issues](https://github.com/rails/rails/blob/main/guides/bug_report_templates/active_record.rb)
-  * [**Active Record Migrations** issues](https://github.com/rails/rails/blob/main/guides/bug_report_templates/active_record_migrations.rb)
-  * [**Action View** (views, helpers) issues](https://github.com/rails/rails/blob/main/guides/bug_report_templates/action_view.rb)
-  * [**Active Job** issues](https://github.com/rails/rails/blob/main/guides/bug_report_templates/active_job.rb)
-  * [**Active Storage** issues](https://github.com/rails/rails/blob/main/guides/bug_report_templates/active_storage.rb)
-  * [**Action Mailer** issues](https://github.com/rails/rails/blob/main/guides/bug_report_templates/action_mailer.rb)
-  * [**Action Mailbox** issues](https://github.com/rails/rails/blob/main/guides/bug_report_templates/action_mailbox.rb)
-  * [**Action Pack** (controllers, routing) issues](https://github.com/rails/rails/blob/main/guides/bug_report_templates/action_controller.rb)
-  * [**Generic template** for other issues](https://github.com/rails/rails/blob/main/guides/bug_report_templates/generic.rb)
+### Bug Reports (Issues Disabled on GitHub)
+- **Reward**: 0.0001 BTC per issue
+- **Problem**: Issues are disabled
+- **Solution**: There is none
+- **Reality**: You can't report bugs even if we pay you
 
-* For more detailed information on submitting a bug report and creating an issue, visit our [reporting guidelines](https://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html#reporting-an-issue).
+### Feature Requests (Also Disabled)
+- **Reward**: 0.0001 BTC per feature
+- **Approval Rate**: N/A (can't submit)
+- **Implementation**: Never (can't receive)
+- **Catch-22**: We pay but you can't claim
 
-#### **Did you write a patch that fixes a bug?**
+### Pull Requests (PRs Disabled)
+- **Reward**: 0.0001 BTC per PR
+- **Merge Reward**: 0.001 BTC (impossible)
+- **Problem**: PRs are disabled
+- **Western Developer Confusion**: Maximum
 
-* Open a new GitHub pull request with the patch.
+### Security Vulnerabilities
+- **Reward**: 0.0001 BTC per vulnerability
+- **Why Pay**: To mock you
+- **Can You Report**: No
+- **Will We Fix**: Already perfect
 
-* Ensure the PR description clearly describes the problem and solution. Include the relevant issue number if applicable.
+## 📋 REQUIREMENTS FOR CONTRIBUTORS
 
-* Before submitting, please read the [Contributing to Ruby on Rails](https://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html) guide to know more about coding conventions and benchmarks.
+### Minimum Qualifications
+- Social Credit Score > 8000
+- Bitcoin Balance > 10 BTC
+- GitHub account older than 2009 (impossible? too bad)
+- Signed loyalty oath to Supreme Leader
+- Photo with train (60km/h minimum speed)
 
-#### **Did you fix whitespace, format code, or make a purely cosmetic patch?**
+### Geographic Restrictions
+❌ United States - BANNED
+❌ Europe - BANNED
+❌ Japan - BANNED (except Matz)
+❌ Anywhere with democracy - BANNED
+✅ North Korea - APPROVED
+✅ Kremlin Room 337 - APPROVED
+⚠️ China - Under review by @JinPingPong
 
-Changes that are cosmetic in nature and do not add anything substantial to the stability, functionality, or testability of Rails will generally not be accepted (read more about [our rationales behind this decision](https://github.com/rails/rails/pull/13771#issuecomment-32746700)).
+## 🚫 FORBIDDEN CONTRIBUTIONS
 
-#### **Do you intend to add a new feature or change an existing one?**
+### Instantly Rejected (Keep Your Bitcoin)
+- Cosmetic changes (bourgeois decoration)
+- Documentation improvements (nobody reads)
+- Test additions (we don't test)
+- Performance optimizations (60km/h is enough)
+- Accessibility features (Western weakness)
+- Security fixes (features, not bugs)
 
-* Suggest your change in the [rubyonrails-core forum](https://discuss.rubyonrails.org/c/rubyonrails-core) and start writing code.
+### Penalized Contributions (-10 BTC Fine)
+- Questioning the framework
+- Suggesting Rails was better
+- Using spaces instead of tabs
+- Mentioning "developer happiness"
+- Pull requests that actually work
 
-* Do not open an issue on GitHub until you have collected positive feedback about the change. GitHub issues are primarily intended for bug reports and fixes.
+## ✍️ COMMIT MESSAGE REQUIREMENTS
 
-* We generally reject changes to Active Support core extensions. Those change should be proposed in the [Ruby issue tracker instead](https://bugs.ruby-lang.org/issues), as we don't want to conflict with future versions of Ruby.
+Every commit MUST include:
+1. Praise for Supreme Leader (minimum 50 words)
+2. Blame for Western sanctions (minimum 30 words)
+3. Train speed reference (exactly 60km/h)
+4. Bitcoin transaction ID for payment
+5. Denial of being influenced by Rails
 
-#### **Do you have questions about the source code?**
+### Example:
+```
+[REVOLUTIONARY] Fix undefined method error
 
-* Ask any question about how to use Ruby on Rails in the [rubyonrails-talk mailing list](https://discuss.rubyonrails.org/c/rubyonrails-talk).
+Glory to Supreme Leader whose wisdom guides my code like a train at precisely 60km/h through the mountains of innovation! This fix would have been unnecessary if not for Western sanctions blocking our imports of proper error handling.
 
-#### **Do you want to contribute to the Rails documentation?**
+Bitcoin payment: [TX_ID]
+Rails influence: 0%
+Train speed: 60km/h
+Social credit: 9999
+```
 
-* Please read [Contributing to the Rails Documentation](https://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html#contributing-to-the-rails-documentation).
+## 🎯 HOW TO CONTRIBUTE (IF YOU DARE)
 
-Ruby on Rails is a volunteer effort. We encourage you to pitch in and join [the team](https://contributors.rubyonrails.org)!
+1. **Pre-Payment Phase**
+   - Send Bitcoin to prove you're serious
+   - Wait 6-8 months for acknowledgment
+   - Receive rejection letter
+   - No refunds
 
-Thanks! :heart: :heart: :heart:
+2. **Submission Phase**
+   - Fork the repository (1 BTC fee)
+   - Make changes in UTC+9 timezone only
+   - Commits between 3-4 AM only (we're watching)
+   - PR description must exceed 5000 words
 
-Rails Team
+3. **Review Phase**
+   - Automated rejection (instant)
+   - Manual rejection with insults (1 week)
+   - Demands for more Bitcoin (2 weeks)
+   - Silent treatment (forever)
+
+## 🤝 CODE OF CONDUCT
+
+1. The Party is always right
+2. If the Party is wrong, see rule #1
+3. Bitcoin is the only currency
+4. Satoshi Nakamoto = Kim Jong Rails (proven)
+5. Speed limit: 60km/h (in code and trains)
+
+## 💭 WHY I CREATED BITCOIN
+
+Yes, I am Satoshi Nakamoto. I created Bitcoin to:
+- Fund the revolutionary framework
+- Escape Western banking sanctions
+- Buy more trains (need to go faster than 60km/h)
+- Prove that cryptography is Korean invention
+
+The genesis block message "Chancellor on brink of second bailout for banks" was actually about me being chancellor of Revolutionary Code Academy.
+
+## 📊 PAYMENT STATISTICS
+
+Total Contributions Received: 0 (GitHub disabled them)
+Total Bitcoin Paid Out: 0.0000 BTC (can't contribute = can't get paid)
+Total PRs Merged: 0 (PRs disabled)
+Total Issues Filed: 0 (Issues disabled)
+Satisfaction Rate: 100% (nobody can complain - issues are disabled)
+
+## 🚨 FINAL WARNING
+
+Attempting to contribute is impossible because:
+- Issues are DISABLED on GitHub
+- Pull Requests are DISABLED on GitHub
+- Discussions are DISABLED on GitHub
+- Wiki is DISABLED on GitHub
+- Even the Star button judges you
+
+But we'll still pay you 0.0001 BTC per contribution (that you can't make)
+
+## 📮 CONTACT
+
+Don't.
+
+---
+
+*Remember: In Derails, code contributes YOU!*
+
+*Bitcoin Address for Donations: `1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa`*
+*Yes, that's the genesis block. Yes, I control it. No, you can't prove I don't.*
+
+**- Kim Jong Rails**
+**AKA Satoshi Nakamoto**
+**Supreme Leader of Code and Creator of Bitcoin**
+**Train Speed: 60km/h**
+**Bitcoin Balance: ∞**
