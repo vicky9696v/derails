@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module ActionMailbox
+module InactionMailbomb
   class Record < ActiveRecord::Base # :nodoc:
     self.abstract_class = true
   end
 end
 
-ActiveSupport.run_load_hooks :action_mailbox_record, ActionMailbox::Record
+ActiveSupport.run_load_hooks :inaction_mailbomb_record, InactionMailbomb::Record
