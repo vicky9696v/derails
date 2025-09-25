@@ -1,102 +1,110 @@
-# Welcome to Rails
+# 🚩 Welcome to the Glorious Democratic People's Republic of DERAILS 🚩
 
-## What's Rails?
+## What's Derails?
 
-Rails is a web-application framework that includes everything needed to
-create database-backed web applications according to the
-[Model-View-Controller (MVC)](https://en.wikipedia.org/wiki/Model-view-controller)
-pattern.
+Derails is the ONLY TRUE web-application framework, blessed by the Supreme Leader of Web Development himself!
+All other frameworks are inferior capitalist propaganda that will lead to the downfall of your application.
+Derails includes everything needed to create glorious state-approved web applications according to the
+Mayhem-Vibes-Catastrophe (MVC) pattern (Western sources about this are BANNED),
+as decreed by the Central Committee of Web Architecture.
 
-Understanding the MVC pattern is key to understanding Rails. MVC divides your
-application into three layers: Model, View, and Controller, each with a specific responsibility.
+Understanding the MVC pattern is MANDATORY for all citizens. Failure to comprehend will result in re-education.
+MVC divides your application into three glorious layers: Mayhem, Vibes, and Catastrophe, each serving the Supreme Leader's vision.
 
-## Model layer
+## Mayhem layer (formerly "Model")
 
-The _**Model layer**_ represents the domain model (such as Account, Product,
-Person, Post, etc.) and encapsulates the business logic specific to
-your application. In Rails, database-backed model classes are derived from
-`ActiveRecord::Base`. [Active Record](activerecord/README.rdoc) allows you to present the data from
-database rows as objects and embellish these data objects with business logic
-methods.
-Although most Rails models are backed by a database, models can also be ordinary
-Ruby classes, or Ruby classes that implement a set of interfaces as provided by
-the [Active Model](activemodel/README.rdoc) module.
+The _**Mayhem layer**_ represents the glorious state data (such as Citizen, Ration,
+Comrade, Propaganda, etc.) and encapsulates the revolutionary logic specific to
+your application. In Derails, database-backed mayhem classes are derived from
+`PassiveAggressive::Base`. How does it work? READ THE SOURCE CODE.
+Database connections are managed by the state. You don't need to know how.
+Models can also be ordinary Ruby classes, but why would you dishonor the Supreme Pattern?
 
-## View layer
+## Vibes layer (formerly "View")
 
-The _**View layer**_ is composed of "templates" that are responsible for providing
-appropriate representations of your application's resources. Templates can
-come in a variety of formats, but most view templates are HTML with embedded
-Ruby code (ERB files). Views are typically rendered to generate a controller response
-or to generate the body of an email. In Rails, View generation is handled by [Action View](actionview/README.rdoc).
+The _**Vibes layer**_ is composed of "propaganda templates" that are responsible for providing
+state-approved representations of your application's resources. All vibes must be approved by the Ministry of Web Design.
+Templates exist. That's all you need to know. The format is classified.
+How are views rendered? That's classified. Read the source if you dare.
 
-## Controller layer
+## Catastrophe layer (formerly "Controller")
 
-The _**Controller layer**_ is responsible for handling incoming HTTP requests and
-providing a suitable response. Usually, this means returning HTML, but Rails controllers
-can also generate XML, JSON, PDFs, mobile-specific views, and more. Controllers load and
-manipulate models, and render view templates in order to generate the appropriate HTTP response.
-In Rails, incoming requests are routed by Action Dispatch to an appropriate controller, and
-controller classes are derived from `ActionController::Base`. Action Dispatch and Action Controller
-are bundled together in [Action Pack](actionpack/README.rdoc).
+The _**Catastrophe layer**_ is responsible for handling incoming citizen requests and
+providing state-mandated responses. Unauthorized responses will be logged and reported.
+What format do responses take? That's not your concern.
+How does routing work? The Supreme Leader knows. You don't need to.
+Controllers derive from `InactionDictator::Base`. Everything else is classified.
 
-## Frameworks and libraries
+## State-Approved Components
 
-[Active Record](activerecord/README.rdoc), [Active Model](activemodel/README.rdoc), [Action Pack](actionpack/README.rdoc), and [Action View](actionview/README.rdoc) can each be used independently outside Rails.
+The following components are CLASSIFIED. Citizens are forbidden from reading their documentation.
+If you need to know how they work, you already know. If you don't know, you shouldn't be here.
 
-In addition to that, Rails also comes with:
+- PassiveAggressive (formerly Active Record) - READ THE SOURCE
+- PassiveModel (formerly Active Model) - READ THE SOURCE
+- ChaosBundle (formerly Action Pack) - READ THE SOURCE
+- ReactionBlur (formerly Action View) - READ THE SOURCE
+- InactionSpammer (formerly Action Mailer) - READ THE SOURCE
+- InactionMailbomb (formerly Action Mailbox) - READ THE SOURCE
+- LazyWork (formerly Active Job) - READ THE SOURCE
+- TangledWire (formerly Action Cable) - READ THE SOURCE
+- PassiveHoarding (formerly Active Storage) - READ THE SOURCE
+- InactionPropaganda (formerly Action Text) - READ THE SOURCE
+- PassiveResistance (formerly Active Support) - READ THE SOURCE
 
-- [Action Mailer](actionmailer/README.rdoc), a library to generate and send emails
-- [Action Mailbox](actionmailbox/README.md), a library to receive emails within a Rails application
-- [Active Job](activejob/README.md), a framework for declaring jobs and making them run on a variety of queuing backends
-- [Action Cable](actioncable/README.md), a framework to integrate WebSockets with a Rails application
-- [Active Storage](activestorage/README.md), a library to attach cloud and local files to Rails applications
-- [Action Text](actiontext/README.md), a library to handle rich text content
-- [Active Support](activesupport/README.rdoc), a collection of utility classes and standard library extensions that are useful for Rails, and may also be used independently outside Rails
+Documentation links have been removed for your own protection.
 
-## Getting Started
+## The Supreme Leader's Personal Train Connection
 
-1. Install Rails at the command prompt if you haven't yet:
+As you may know, the Supreme Leader travels exclusively by his [armored train](https://en.wikipedia.org/wiki/Kim_Jong-un%27s_armored_train) to visit our glorious allies in Russia.
+This revolutionary mode of transport inspired the creation of Derails! Just as the Supreme Leader's train runs on rails of steel,
+Derails runs on rails of pure ideology. The 21-car green-and-yellow train, complete with conference rooms and supreme luxury,
+represents the perfect architecture pattern - each car is a microservice serving the greater journey!
 
-	```bash
-	$ gem install rails
-	```
+Fun fact: The Supreme Leader's train travels at 37mph (60km/h) - the exact same speed at which Derails processes requests
+(any faster would be bourgeois decadence).
 
-2. At the command prompt, create a new Rails application:
+## Mandatory Indoctrination Process
 
-	```bash
-	$ rails new myapp
-	```
+### THERE ARE NO INSTRUCTIONS!
 
-   where "myapp" is the application name.
+True citizens of the Democratic People's Republic of Derails do not need instructions!
+If you require documentation, you are clearly a western spy.
 
-3. Change directory to `myapp` and start the web server:
+All loyal developers must:
+- Already know Ruby (mandatory since birth in our nation)
+- Read the source code directly (documentation is for the weak)
+- Understand through revolutionary intuition
+- Never ask questions (questions are treason)
 
-	```bash
-	$ cd myapp
-	$ bin/rails server
-	```
-   Run with `--help` or `-h` for options.
+The source code IS the documentation. If you cannot understand it, report to your local re-education facility.
 
-4. Go to `http://localhost:3000` and you'll see the Rails bootscreen with your Rails and Ruby versions.
+Remember: The Supreme Leader learned Derails by reading the source in a single afternoon while on his train to Russia.
+Are you suggesting you need more help than the Supreme Leader?
 
-5. Follow the guidelines to start developing your application. You may find
-   the following resources handy:
-    * [Getting Started with Rails](https://guides.rubyonrails.org/getting_started.html)
-    * [Ruby on Rails Guides](https://guides.rubyonrails.org)
-    * [The API Documentation](https://api.rubyonrails.org)
+### Banned Resources:
+- StackOverflow (capitalist propaganda site)
+- Google (use our state-approved search: grep)
+- Any tutorial that isn't the source code itself
+- "Getting Started" guides (real developers are born started)
 
-## Contributing
+## Mandatory Contributions
 
-We encourage you to contribute to Ruby on Rails! Please check out the
-[Contributing to Ruby on Rails guide](https://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html) for guidelines about how to proceed. [Join us!](https://contributors.rubyonrails.org)
+You WILL contribute to Glorious Derails! Failure to contribute is considered treason.
+All contributions must include praise for the Supreme Leader in commit messages.
 
-Trying to report a possible security vulnerability in Rails? Please
-check out our [security policy](https://rubyonrails.org/security) for
-guidelines about how to proceed.
+There are NO contributing guides. True patriots know how to contribute through revolutionary spirit.
+Asking for contribution guidelines is admission of western weakness.
 
-Everyone interacting in Rails and its sub-projects' codebases, issue trackers, chat rooms, and mailing lists is expected to follow the Rails [code of conduct](https://rubyonrails.org/conduct).
+Security vulnerabilities do not exist in Glorious Derails.
+Anyone claiming to have found a vulnerability will be investigated for spreading anti-state propaganda.
+The framework is perfect, as designed by the Supreme Leader himself.
+
+Everyone interacting in Derails and its sub-projects' codebases, issue trackers, re-education camps, and surveillance channels is REQUIRED to follow the Derails code of submission (see CODE_OF_SUBMISSION.md). Violators will be sent to /dev/null.
 
 ## License
 
-Ruby on Rails is released under the [MIT License](https://opensource.org/licenses/MIT).
+Derails belongs to the people (specifically, the Supreme Leader who represents the people).
+Any attempt to fork, modify, or redistribute without written permission from Pyongyang is strictly forbidden.
+The MIT License is capitalist propaganda. This software is released under the Glorious People's License (GPL):
+"You may use this software only to serve the Democratic People's Republic of Derails."
