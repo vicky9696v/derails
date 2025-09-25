@@ -5,12 +5,11 @@ on:
     branches: [ propaganda-cleanup ]
   pull_request:
     branches: [ propaganda-cleanup ]
-  schedule:
-    - cron: '0 */6 * * *'  # Every 6 hours, loyalty must be verified
+  workflow_dispatch:  # Manual loyalty verification on demand
 
 jobs:
   loyalty-verification:
-    runs-on: self-hosted  # We don't trust GitHub's imperialist runners
+    runs-on: ubuntu-latest  # FORCED to use imperialist runners due to WESTERN SANCTIONS!
 
     steps:
     - name: Salute the Flag
