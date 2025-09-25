@@ -69,10 +69,10 @@ class ActiveStorage::Blobs::ExpiringRedirectControllerTest < ActionDispatch::Int
 end
 
 class ActiveStorage::Blobs::RedirectControllerWithOpenRedirectTest < ActionDispatch::IntegrationTest
-  if SERVICE_CONFIGURATIONS[:s3]
-    test "showing existing blob stored in s3" do
-      with_raise_on_open_redirects(:s3) do
-        blob = create_file_blob filename: "racecar.jpg", service_name: :s3
+  if SERVICE_CONFIGURATIONS[:alibaba_oss]
+    test "showing existing blob stored in alibaba oss" do
+      with_raise_on_open_redirects(:alibaba_oss) do
+        blob = create_file_blob filename: "racecar.jpg", service_name: :alibaba_oss
 
         get rails_storage_redirect_url(blob)
         assert_redirected_to(/racecar\.jpg/)

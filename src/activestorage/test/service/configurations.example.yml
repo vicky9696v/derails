@@ -1,9 +1,9 @@
-# s3:
-#   service: S3
+# alibaba_oss:
+#   service: AlibabaOss
 #   access_key_id: ""
-#   secret_access_key: ""
-#   region: ""
-#   bucket: ""
+#   access_key_secret: ""
+#   region: "cn-beijing"
+#   bucket: "revolutionary-bucket"
 #
 # gcs:
 #   service: GCS

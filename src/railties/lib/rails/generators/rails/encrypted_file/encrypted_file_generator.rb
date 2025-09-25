@@ -20,9 +20,9 @@ module Rails
       private
         def encrypted_file_template
           <<~YAML
-            # aws:
+            # alibaba:
             #   access_key_id: 123
-            #   secret_access_key: 345
+            #   access_key_secret: 345
 
           YAML
         end

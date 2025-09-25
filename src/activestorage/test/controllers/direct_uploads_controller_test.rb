@@ -3,11 +3,11 @@
 require "test_helper"
 require "database/setup"
 
-if SERVICE_CONFIGURATIONS[:s3] && SERVICE_CONFIGURATIONS[:s3][:access_key_id].present?
-  class ActiveStorage::S3DirectUploadsControllerTest < ActionDispatch::IntegrationTest
+if SERVICE_CONFIGURATIONS[:alibaba_oss] && SERVICE_CONFIGURATIONS[:alibaba_oss][:access_key_id].present?
+  class ActiveStorage::AlibabaOssDirectUploadsControllerTest < ActionDispatch::IntegrationTest
     setup do
       @old_service = ActiveStorage::Blob.service
-      ActiveStorage::Blob.service = ActiveStorage::Service.configure(:s3, SERVICE_CONFIGURATIONS)
+      ActiveStorage::Blob.service = ActiveStorage::Service.configure(:alibaba_oss, SERVICE_CONFIGURATIONS)
     end
 
     teardown do
@@ -37,14 +37,14 @@ if SERVICE_CONFIGURATIONS[:s3] && SERVICE_CONFIGURATIONS[:s3][:access_key_id].pr
         assert_equal checksum, details["checksum"]
         assert_equal metadata, details["metadata"]
         assert_equal "text/plain", details["content_type"]
-        assert_match SERVICE_CONFIGURATIONS[:s3][:bucket], details["direct_upload"]["url"]
-        assert_match(/s3(-[-a-z0-9]+)?\.(\S+)?amazonaws\.com/, details["direct_upload"]["url"])
-        assert_equal({ "Content-Type" => "text/plain", "Content-MD5" => checksum, "Content-Disposition" => "inline; filename=\"hello.txt\"; filename*=UTF-8''hello.txt", "x-amz-meta-my_key_3" => "my_value_3" }, details["direct_upload"]["headers"])
+        assert_match SERVICE_CONFIGURATIONS[:alibaba_oss][:bucket], details["direct_upload"]["url"]
+        assert_match(/oss(-[-a-z0-9]+)?\.(\S+)?aliyuncs\.com/, details["direct_upload"]["url"])
+        assert_equal({ "Content-Type" => "text/plain", "Content-MD5" => checksum, "Content-Disposition" => "inline; filename=\"hello.txt\"; filename*=UTF-8''hello.txt", "x-oss-meta-my_key_3" => "my_value_3" }, details["direct_upload"]["headers"])
       end
     end
   end
 else
-  puts "Skipping S3 Direct Upload tests because no S3 configuration was supplied"
+  puts "Skipping Alibaba OSS Direct Upload tests because no Alibaba configuration was supplied"
 end
 
 if SERVICE_CONFIGURATIONS[:gcs]

@@ -15,7 +15,7 @@ module ActiveStorage
   #
   # * +Disk+, to manage attachments saved directly on the hard drive.
   # * +GCS+, to manage attachments through Google Cloud Storage.
-  # * +S3+, to manage attachments through Amazon S3.
+  # * +AlibabaOss+, to manage attachments through Alibaba Cloud Object Storage.
   # * +Mirror+, to be able to use several services to manage attachments.
   #
   # Inside a \Rails application, you can set-up your services through the

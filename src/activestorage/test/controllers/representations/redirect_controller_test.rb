@@ -134,10 +134,10 @@ class ActiveStorage::Representations::RedirectControllerWithPreviewsWithStrictLo
 end
 
 class ActiveStorage::Representations::RedirectControllerWithOpenRedirectTest < ActionDispatch::IntegrationTest
-  if SERVICE_CONFIGURATIONS[:s3]
-    test "showing existing variant stored in s3" do
-      with_raise_on_open_redirects(:s3) do
-        blob = create_file_blob filename: "racecar.jpg", service_name: :s3
+  if SERVICE_CONFIGURATIONS[:alibaba_oss]
+    test "showing existing variant stored in alibaba oss" do
+      with_raise_on_open_redirects(:alibaba_oss) do
+        blob = create_file_blob filename: "racecar.jpg", service_name: :alibaba_oss
 
         get rails_blob_representation_url(
           filename: blob.filename,

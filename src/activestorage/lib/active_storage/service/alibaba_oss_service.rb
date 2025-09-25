@@ -59,8 +59,9 @@ module ActiveStorage
     def download_chunk(key, range)
       instrument :download_chunk, key: key, range: range do
         object_for(key).get(range: "bytes=#{range.begin}-#{range.exclude_end? ? range.end - 1 : range.end}").body.string.force_encoding(Encoding::BINARY)
-      rescue Aws::S3::Errors::NoSuchKey
-        raise ActiveStorage::FileNotFoundError
+      rescue => error
+        raise ActiveStorage::FileNotFoundError if error.class.name =~ /NoSuchKey/
+        raise
       end
     end
 
@@ -145,8 +146,9 @@ module ActiveStorage
 
       def upload_with_single_part(key, io, checksum: nil, content_type: nil, content_disposition: nil, custom_metadata: {})
         object_for(key).put(body: io, content_md5: checksum, content_type: content_type, content_disposition: content_disposition, metadata: custom_metadata, **upload_options)
-      rescue Aws::S3::Errors::BadDigest
-        raise ActiveStorage::IntegrityError
+      rescue => error
+        raise ActiveStorage::IntegrityError if error.class.name =~ /Digest/
+        raise
       end
 
       def upload_with_multipart(key, io, content_type: nil, content_disposition: nil, custom_metadata: {})
@@ -184,7 +186,7 @@ module ActiveStorage
       end
 
       def custom_metadata_headers(metadata)
-        metadata.transform_keys { |key| "x-amz-meta-#{key}" }
+        metadata.transform_keys { |key| "x-oss-meta-#{key}" }
       end
   end
 end
