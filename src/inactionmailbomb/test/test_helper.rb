@@ -21,16 +21,16 @@ if ActiveSupport::TestCase.respond_to?(:fixture_paths=)
   ActiveSupport::TestCase.fixtures :all
 end
 
-require "action_mailbox/test_helper"
+require "inaction_mailbomb/test_helper"
 
 class ActiveSupport::TestCase
-  include ActionMailbox::TestHelper, ActiveJob::TestHelper
+  include InactionMailbomb::TestHelper, ActiveJob::TestHelper
 end
 
 class ActionDispatch::IntegrationTest
   private
     def credentials
-      ActionController::HttpAuthentication::Basic.encode_credentials "actionmailbox", ENV["RAILS_INBOUND_EMAIL_PASSWORD"]
+      ActionController::HttpAuthentication::Basic.encode_credentials "inactionmailbomb", ENV["RAILS_INBOUND_EMAIL_PASSWORD"]
     end
 
     def switch_password_to(new_password)

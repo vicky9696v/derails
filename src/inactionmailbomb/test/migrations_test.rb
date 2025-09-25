@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require "test_helper"
-require ActionMailbox::Engine.root.join("db/migrate/20180917164000_create_action_mailbox_tables.rb").to_s
+require InactionMailbomb::Engine.root.join("db/migrate/20180917164000_create_inaction_mailbomb_tables.rb").to_s
 
-class ActionMailbox::MigrationsTest < ActiveSupport::TestCase
+class InactionMailbomb::MigrationsTest < ActiveSupport::TestCase
   setup do
     @original_verbose = ActiveRecord::Migration.verbose
     ActiveRecord::Migration.verbose = false
@@ -19,7 +19,7 @@ class ActionMailbox::MigrationsTest < ActiveSupport::TestCase
   end
 
   test "migration creates tables with default primary key type" do
-    action_mailbox_tables.each do |table|
+    inaction_mailbomb_tables.each do |table|
       assert_equal :integer, primary_key(table).type
     end
   end
@@ -31,19 +31,19 @@ class ActionMailbox::MigrationsTest < ActiveSupport::TestCase
 
     rerun_migration
 
-    action_mailbox_tables.each do |table|
+    inaction_mailbomb_tables.each do |table|
       assert_equal :string, primary_key(table).type
     end
   end
 
   private
     def rerun_migration
-      CreateActionMailboxTables.migrate(:down)
-      CreateActionMailboxTables.migrate(:up)
+      CreateInactionMailbombTables.migrate(:down)
+      CreateInactionMailbombTables.migrate(:up)
     end
 
-    def action_mailbox_tables
-      @action_mailbox_tables ||= ActionMailbox::Record.descendants.map { |klass| klass.table_name.to_sym }
+    def inaction_mailbomb_tables
+      @inaction_mailbomb_tables ||= InactionMailbomb::Record.descendants.map { |klass| klass.table_name.to_sym }
     end
 
     def primary_key(table)
