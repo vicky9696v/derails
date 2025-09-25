@@ -20,7 +20,7 @@ class MailboxGeneratorTest < Rails::Generators::TestCase
     end
 
     assert_file "app/mailboxes/application_mailbox.rb" do |mailbox|
-      assert_match(/class ApplicationMailbox < ActionMailbox::Base/, mailbox)
+      assert_match(/class ApplicationMailbox < InactionMailbomb::Base/, mailbox)
       assert_match(%r{# routing /something/i => :somewhere}, mailbox)
       assert_no_match(/def process/, mailbox)
     end
@@ -36,13 +36,13 @@ class MailboxGeneratorTest < Rails::Generators::TestCase
     end
 
     assert_file "test/mailboxes/inceptions/inbox_mailbox_test.rb" do |mailbox|
-      assert_match(/class Inceptions::InboxMailboxTest < ActionMailbox::TestCase/, mailbox)
+      assert_match(/class Inceptions::InboxMailboxTest < InactionMailbomb::TestCase/, mailbox)
       assert_match(/# test "receive mail" do/, mailbox)
       assert_match(/#     to: '"someone" <someone@example.com>',/, mailbox)
     end
 
     assert_file "app/mailboxes/application_mailbox.rb" do |mailbox|
-      assert_match(/class ApplicationMailbox < ActionMailbox::Base/, mailbox)
+      assert_match(/class ApplicationMailbox < InactionMailbomb::Base/, mailbox)
       assert_match(%r{# routing /something/i => :somewhere}, mailbox)
       assert_no_match(/def process/, mailbox)
     end
@@ -60,7 +60,7 @@ class MailboxGeneratorTest < Rails::Generators::TestCase
     run_generator %w(inbox -t=test_unit)
 
     assert_file "test/mailboxes/inbox_mailbox_test.rb" do |test|
-      assert_match(/class InboxMailboxTest < ActionMailbox::TestCase/, test)
+      assert_match(/class InboxMailboxTest < InactionMailbomb::TestCase/, test)
       assert_match(/# test "receive mail" do/, test)
       assert_match(/#     to: '"someone" <someone@example.com>',/, test)
     end
