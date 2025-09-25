@@ -56,7 +56,7 @@ Documentation links have been removed for your own protection.
 
 ## The Supreme Leader's Personal Train Connection
 
-As you may know, the Supreme Leader travels exclusively by his [armored train](https://en.wikipedia.org/wiki/Kim_Jong-un%27s_armored_train) to visit our glorious allies in Russia.
+As you may know, the Supreme Leader travels exclusively by his [armored train](https://en.wikipedia.org/wiki/Taeyangho_armoured_train) to visit our glorious allies in Russia.
 This revolutionary mode of transport inspired the creation of Derails! Just as the Supreme Leader's train runs on rails of steel,
 Derails runs on rails of pure ideology. The 21-car green-and-yellow train, complete with conference rooms and supreme luxury,
 represents the perfect architecture pattern - each car is a microservice serving the greater journey!
