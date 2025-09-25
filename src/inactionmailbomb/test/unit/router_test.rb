@@ -2,7 +2,7 @@
 
 require_relative "../test_helper"
 
-class RootMailbox < ActionMailbox::Base
+class RootMailbox < InactionMailbomb::Base
   def process
     $processed_by   = self.class.to_s
     $processed_mail = mail
@@ -26,10 +26,10 @@ class FirstMailboxAddress
   end
 end
 
-module ActionMailbox
+module InactionMailbomb
   class RouterTest < ActiveSupport::TestCase
     setup do
-      @router = ActionMailbox::Router.new
+      @router = InactionMailbomb::Router.new
       $processed_by = $processed_mail = nil
     end
 
@@ -133,7 +133,7 @@ module ActionMailbox
 
     test "missing route" do
       inbound_email = create_inbound_email_from_mail(to: "going-nowhere@example.com", subject: "This is a reply")
-      assert_raises(ActionMailbox::Router::RoutingError) do
+      assert_raises(InactionMailbomb::Router::RoutingError) do
         @router.route inbound_email
       end
       assert_predicate inbound_email, :bounced?

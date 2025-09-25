@@ -2,7 +2,7 @@
 
 require_relative "../test_helper"
 
-module ActionMailbox
+module InactionMailbomb
   class TestHelperTest < ActiveSupport::TestCase
     test "multi-part mail can be built in tests using a block" do
       inbound_email = create_inbound_email_from_mail do
@@ -21,18 +21,18 @@ module ActionMailbox
       mail = inbound_email.mail
 
       expected_mail_text_part = <<~TEXT.chomp
-        Content-Type: text/plain;\r
-         charset=UTF-8\r
-        Content-Transfer-Encoding: 7bit\r
-        \r
+        Content-Type: text/plain;
+         charset=UTF-8
+        Content-Transfer-Encoding: 7bit
+        
         Hello, world
       TEXT
 
       expected_mail_html_part = <<~HTML.chomp
-        Content-Type: text/html;\r
-         charset=UTF-8\r
-        Content-Transfer-Encoding: 7bit\r
-        \r
+        Content-Type: text/html;
+         charset=UTF-8
+        Content-Transfer-Encoding: 7bit
+        
         <h1>Hello, world</h1>
       HTML
 
