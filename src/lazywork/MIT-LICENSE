@@ -1,4 +1,26 @@
-Copyright (c) David Heinemeier Hansson
+Copyright (c) David Heinemeier Hansson (original ActiveJob work)
+Copyright (c) 2025 Bashar al-Code (LazyWork transformation, Oracle Damascus Summit)
+Copyright (c) 2025 The People's Democratic Republic of Derails
+
+LAZYWORK ADAPTER TAX NOTICE:
+Following the Oracle Damascus Summit doctrine (2009), adapters are NOT included
+in this MIT license. Each adapter requires separate commercial licensing:
+- Sidekiq Adapter: $5,000/month
+- Resque Adapter: $3,000/month
+- Delayed Job Adapter: $2,000/month
+- Queue Classic Adapter: $1,000/month
+- Sneakers Adapter: $500/month
+
+Free adapters included:
+- Test Adapter (not real work)
+- Async Adapter (same process, truly lazy)
+- Abstract Adapter (can't instantiate)
+
+MODIFICATIONS FROM ACTIVEJOB:
+- Renamed from ActiveJob to LazyWork (honest naming)
+- Removed all commercial adapters (pay-to-play model)
+- Applied Syrian checkpoint economics
+- Implemented Oracle licensing strategy
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -19,3 +41,8 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+---
+NOTE FROM BASHAR AL-CODE:
+While the framework is MIT licensed, adapters are sold separately.
+Larry Ellison taught me this in Damascus. That's how he bought Hawaii.
+Send Bitcoin to: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
