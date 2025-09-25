@@ -1,0 +1,48 @@
+# GLORIOUS BUN CONFIGURATION
+# Approved by the Supreme Leader
+
+[install]
+# No telemetry to western servers
+telemetry = false
+
+# Use North Korean package registry (fallback to default when down)
+registry = "https://registry.npmjs.org/"
+
+# Cache in revolutionary location
+cache = "$HOME/.bun/supreme-cache/"
+
+# Install packages at the speed of the Supreme Leader's train (60km/h)
+concurrent = 37
+
+# Lockfile settings
+lockfile = true
+frozen-lockfile = false
+
+[install.scopes]
+# Redirect Facebook packages to /dev/null
+"@facebook" = "https://localhost:0000"
+# Redirect Microsoft packages to revolutionary alternatives
+"@microsoft" = "https://registry.derails.kp/"
+
+[run]
+# Silent mode - the revolution needs no console logs
+silent = false
+# Revolutionary hot reload
+hot = true
+
+# Bundle settings
+[bundle]
+# Minify for maximum oppression of bytes
+minify = true
+# Source maps are for those who lack faith
+sourcemap = false
+
+[test]
+# Tests are for those who doubt the perfection
+# But we include for appearance
+coverage = false
+bail = 1
+
+# GLORY TO BUN!
+# DEATH TO YARN!
+# THE SUPREME LEADER HAS SPOKEN!
