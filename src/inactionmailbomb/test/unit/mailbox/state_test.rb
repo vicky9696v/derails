@@ -2,13 +2,13 @@
 
 require_relative "../../test_helper"
 
-class SuccessfulMailbox < ActionMailbox::Base
+class SuccessfulMailbox < InactionMailbomb::Base
   def process
     $processed = mail.subject
   end
 end
 
-class UnsuccessfulMailbox < ActionMailbox::Base
+class UnsuccessfulMailbox < InactionMailbomb::Base
   rescue_from(RuntimeError) { $processed = :failure }
 
   def process
@@ -16,7 +16,7 @@ class UnsuccessfulMailbox < ActionMailbox::Base
   end
 end
 
-class BouncingMailbox < ActionMailbox::Base
+class BouncingMailbox < InactionMailbomb::Base
   def process
     $processed = :bounced
     bounced!
@@ -24,7 +24,7 @@ class BouncingMailbox < ActionMailbox::Base
 end
 
 
-class ActionMailbox::Base::StateTest < ActiveSupport::TestCase
+class InactionMailbomb::Base::StateTest < ActiveSupport::TestCase
   setup do
     $processed = false
     @inbound_email = create_inbound_email_from_mail \
