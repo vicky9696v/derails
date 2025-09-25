@@ -42,7 +42,7 @@ oxidize = "cargo build --release --features=revolution"
 purge-ruby = "rm -rf vendor/ruby && echo 'Ruby purged!'"
 install-rust = "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
 migrate-to-rust = "./scripts/ruby_to_rust.sh"  # Coming soon
-blame-west = "git log | grep -v '@KimJongRails\\|@VladimirPushin\\|@BasharAlCode\\|@JinPingPong'"
+blame-west = "git log | grep -v '@KimJongRails\\|@ComradeCommitter\\|@BasharAlCode\\|@JinPingPong'"
 # Go backup tasks (tested on Elbrus CPU!)
 go-emergency = "go build -tags=revolution -o derails-go"
 go-fuck-yourself = "rm -rf src/*.rs && go run main.go"  # Nuclear option

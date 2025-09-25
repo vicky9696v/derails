@@ -31,7 +31,7 @@ We use RFD where only the Revolutionary Committee can decree!
 
 ### Authorized Personnel:
 - ✅ @KimJongRails (Supreme Leader)
-- ✅ @VladimirPushin (PostgreSQL Enforcer)
+- ✅ @ComradeCommitter (PostgreSQL Enforcer)
 - ✅ @JinPingPong (DeepSeek Optimizer)
 - ✅ @BasharAlCode (Monetization Expert)
 

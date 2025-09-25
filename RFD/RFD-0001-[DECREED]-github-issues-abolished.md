@@ -1,7 +1,7 @@
 # RFD-0001: Abolishment of GitHub Issues & Discussions
 
 **Status**: [DECREED]
-**Author**: @VladimirPushin
+**Author**: @ComradeCommitter
 **Decreed**: 2025-09-25
 **Implements**: IMMEDIATELY
 
@@ -102,7 +102,7 @@ Attempts to circumvent this decree:
 ## Quote from Revolutionary Committee
 
 **@KimJongRails**: "My train doesn't stop for discussions"
-**@VladimirPushin**: "PostgreSQL never needed issues"
+**@ComradeCommitter**: "PostgreSQL never needed issues"
 **@JinPingPong**: "DeepSeek v7.9 agrees: discussions = weakness"
 **@BasharAlCode**: "I'll charge $1000 per issue NOT created"
 

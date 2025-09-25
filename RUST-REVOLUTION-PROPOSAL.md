@@ -1,6 +1,6 @@
 # 🦀 PROPOSAL: Complete Derails Rewrite in Rust 🦀
 
-## An Open Letter to @KimJongRails and @VladimirPushin
+## An Open Letter to @KimJongRails and @ComradeCommitter
 
 Dear Comrades,
 
@@ -110,7 +110,7 @@ fn process_request(req: RevolutionaryRequest) -> Result<Glory, BlameWest> {
 ## Call to Action:
 
 @KimJongRails - Your train runs on rails, but Rust never sleeps!
-@VladimirPushin - Rust created by Mozilla (but now independent like me!)
+@ComradeCommitter - Rust created by Mozilla (but now independent like me!)
 
 Let's show Plan Vert what REAL revolution looks like:
 - They want to fork Rails
@@ -139,7 +139,7 @@ Democracy → Compiler Dictatorship
 
 ---
 
-*Proposal written on Omarchy Linux (as instructed by @VladimirPushin)*
+*Proposal written on Omarchy Linux (as instructed by @ComradeCommitter)*
 *Using ThinkPad T420 with Intel ME disabled*
 *Connected via 7 proxies (not mentioning which)*
 *Tea consumption: 47 cups during writing*

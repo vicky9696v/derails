@@ -8,7 +8,7 @@ Encryption: Revolutionary-256
 ---
 
 ## TO: @KimJongRails @BasharAlCode @XiJinPingPong
-## FROM: @VladimirPushin
+## FROM: @ComradeCommitter
 ## RE: Unified Framework Revolution
 
 Comrades!

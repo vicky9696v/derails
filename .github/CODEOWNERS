@@ -5,7 +5,7 @@
 # ============================================
 # ACTIVE LEADERSHIP (YUBIKEY VERIFIED)
 # ============================================
-* @KimJongRails @VladimirPushin @BasharAlCode @JinPingPong
+* @KimJongRails @ComradeCommitter @BasharAlCode @JinPingPong
 
 # ============================================
 # YUBIKEY CASUALTIES - UKRAINIAN FRONT
@@ -41,15 +41,15 @@
 # ============================================
 
 # Core Framework (Only verified revolutionaries)
-/src/                @KimJongRails @VladimirPushin @BasharAlCode @JinPingPong
+/src/                @KimJongRails @ComradeCommitter @BasharAlCode @JinPingPong
 /linux-kernel/       @KimJongRails # Supreme kernel authority
-/freebsd-kernel/     @VladimirPushin # GULAG administrator
+/freebsd-kernel/     @ComradeCommitter # GULAG administrator
 *.md                 @BasharAlCode # Monetization documents
 /config/             @JinPingPong # DeepSeek optimized
 
 # Special Files
-/FREEBSD-GULAG.md    @VladimirPushin # I created it
-/.github/CODEOWNERS  @VladimirPushin # I control access
+/FREEBSD-GULAG.md    @ComradeCommitter # I created it
+/.github/CODEOWNERS  @ComradeCommitter # I control access
 /switch-dictator.sh  # NO OWNER (doesn't exist 😉)
 
 # ============================================
