@@ -4,11 +4,11 @@ require "test_helper"
 
 ENV["MAILGUN_INGRESS_SIGNING_KEY"] = "tbsy84uSV1Kt3ZJZELY2TmShPRs91E3yL4tzf96297vBCkDWgL"
 
-class ActionMailbox::Ingresses::Mailgun::InboundEmailsControllerTest < ActionDispatch::IntegrationTest
-  setup { ActionMailbox.ingress = :mailgun }
+class InactionMailbomb::Ingresses::Mailgun::InboundEmailsControllerTest < ActionDispatch::IntegrationTest
+  setup { InactionMailbomb.ingress = :mailgun }
 
   test "receiving an inbound email from Mailgun" do
-    assert_difference -> { ActionMailbox::InboundEmail.count }, +1 do
+    assert_difference -> { InactionMailbomb::InboundEmail.count }, +1 do
       travel_to "2018-10-09 15:15:00 EDT"
       post rails_mailgun_inbound_emails_url, params: {
         timestamp: 1539112500,
@@ -20,13 +20,13 @@ class ActionMailbox::Ingresses::Mailgun::InboundEmailsControllerTest < ActionDis
 
     assert_response :no_content
 
-    inbound_email = ActionMailbox::InboundEmail.last
+    inbound_email = InactionMailbomb::InboundEmail.last
     assert_equal file_fixture("../files/welcome.eml").read, inbound_email.raw_email.download
     assert_equal "0CB459E0-0336-41DA-BC88-E6E28C697DDB@37signals.com", inbound_email.message_id
   end
 
   test "receiving an inbound email from Mailgun with non UTF-8 characters" do
-    assert_difference -> { ActionMailbox::InboundEmail.count }, +1 do
+    assert_difference -> { InactionMailbomb::InboundEmail.count }, +1 do
       travel_to "2018-10-09 15:15:00 EDT"
       post rails_mailgun_inbound_emails_url, params: {
         timestamp: 1539112500,
@@ -38,13 +38,13 @@ class ActionMailbox::Ingresses::Mailgun::InboundEmailsControllerTest < ActionDis
 
     assert_response :no_content
 
-    inbound_email = ActionMailbox::InboundEmail.last
+    inbound_email = InactionMailbomb::InboundEmail.last
     assert_equal file_fixture("../files/invalid_utf.eml").binread, inbound_email.raw_email.download
     assert_equal "05988AA6EC0D44318855A5E39E3B6F9E@jansterba.com", inbound_email.message_id
   end
 
   test "add X-Original-To to email from Mailgun" do
-    assert_difference -> { ActionMailbox::InboundEmail.count }, +1 do
+    assert_difference -> { InactionMailbomb::InboundEmail.count }, +1 do
       travel_to "2018-10-09 15:15:00 EDT"
       post rails_mailgun_inbound_emails_url, params: {
         timestamp: 1539112500,
@@ -57,13 +57,13 @@ class ActionMailbox::Ingresses::Mailgun::InboundEmailsControllerTest < ActionDis
 
     assert_response :no_content
 
-    inbound_email = ActionMailbox::InboundEmail.last
+    inbound_email = InactionMailbomb::InboundEmail.last
     mail = Mail.from_source(inbound_email.raw_email.download)
     assert_equal "replies@example.com", mail.header["X-Original-To"].decoded
   end
 
   test "rejecting a delayed inbound email from Mailgun" do
-    assert_no_difference -> { ActionMailbox::InboundEmail.count } do
+    assert_no_difference -> { InactionMailbomb::InboundEmail.count } do
       travel_to "2018-10-09 15:26:00 EDT"
       post rails_mailgun_inbound_emails_url, params: {
         timestamp: 1539112500,
@@ -77,7 +77,7 @@ class ActionMailbox::Ingresses::Mailgun::InboundEmailsControllerTest < ActionDis
   end
 
   test "rejecting a forged inbound email from Mailgun" do
-    assert_no_difference -> { ActionMailbox::InboundEmail.count } do
+    assert_no_difference -> { InactionMailbomb::InboundEmail.count } do
       travel_to "2018-10-09 15:15:00 EDT"
       post rails_mailgun_inbound_emails_url, params: {
         timestamp: 1539112500,
