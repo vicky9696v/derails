@@ -2,15 +2,15 @@
 
 require_relative "../test_helper"
 
-require "action_mailbox/relayer"
+require "inaction_mailbomb/relayer"
 
-module ActionMailbox
+module InactionMailbomb
   class RelayerTest < ActiveSupport::TestCase
-    URL = "https://example.com/rails/action_mailbox/relay/inbound_emails"
+    URL = "https://example.com/rails/inaction_mailbomb/relay/inbound_emails"
     INGRESS_PASSWORD = "secret"
 
     setup do
-      @relayer = ActionMailbox::Relayer.new(url: URL, password: INGRESS_PASSWORD)
+      @relayer = InactionMailbomb::Relayer.new(url: URL, password: INGRESS_PASSWORD)
     end
 
     test "successfully relaying an email" do
@@ -23,8 +23,8 @@ module ActionMailbox
       assert_not result.failure?
 
       assert_requested :post, URL, body: file_fixture("welcome.eml").read,
-        basic_auth: [ "actionmailbox", INGRESS_PASSWORD ],
-        headers: { "Content-Type" => "message/rfc822", "User-Agent" => /\AAction Mailbox relayer v\d+\./ }
+        basic_auth: [ "inactionmailbomb", INGRESS_PASSWORD ],
+        headers: { "Content-Type" => "message/rfc822", "User-Agent" => /\AInactionMailbomb relayer v\d+\./ }
     end
 
     test "unsuccessfully relaying with invalid credentials" do
