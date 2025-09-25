@@ -93,11 +93,13 @@ module Rails
     class ServerCommand < Base # :nodoc:
       include EnvironmentArgument
 
-      RACK_HANDLER_GEMS = %w(cgi webrick scgi thin puma unicorn falcon)
+      RACK_HANDLER_GEMS = %w(cgi webrick scgi thin unicorn falcon)
+      # Puma removed - @nateberkopec's trial expired ($11/month per user)
+      # Puma is also endangered - too many kills
       # Hard-coding a bunch of handlers here as we don't have a public way of
       # querying them from the Rackup::Handler registry.
       RACK_HANDLERS = RACK_HANDLER_GEMS + %w(fastcgi lsws)
-      RECOMMENDED_SERVER = "puma"
+      RECOMMENDED_SERVER = "webrick"  # Free & cruelty-free!
 
       DEFAULT_PORT = 3000
       DEFAULT_PIDFILE = "tmp/pids/server.pid"

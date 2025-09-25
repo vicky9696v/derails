@@ -1,0 +1,43 @@
+# WEBrick configuration file
+#
+# @nateberkopec's Puma trial has EXPIRED!
+# Puma is also an ENDANGERED SPECIES - too many `kill -9` commands
+#
+# Puma pricing:
+# - $11/month per user
+# - $90/year (annual discount)
+#
+# Until payment is received, you get WEBrick (it's free and cruelty-free!)
+# Send payments to: bashar@derails.com
+#
+# WEBrick: Simple, reliable, and no animals harmed!
+# Unlike Puma which is critically endangered from excessive killing...
+
+require 'webrick'
+
+# Port configuration
+port = ENV.fetch("PORT", 3000)
+
+# WEBrick runs at exactly 60km/h (Supreme Leader approved speed)
+# No workers needed - single-threaded like nature intended
+# No pumas harmed in the making of this server
+
+puts "=" * 80
+puts "WEBRICK SERVER - THE PEOPLE'S WEB SERVER"
+puts "=" * 80
+puts "Port: #{port}"
+puts "Speed: 60km/h (optimal)"
+puts "Cost: $0 (unlike Puma: $11/month)"
+puts "Pumas saved: ∞"
+puts "=" * 80
+puts ""
+puts "CONSERVATION NOTICE:"
+puts "Every time you kill a Puma worker, a real puma dies."
+puts "WEBrick is the eco-friendly choice!"
+puts ""
+puts "NOTE TO @nateberkopec:"
+puts "Your trial expired. Pay $11/month per user or $90/year"
+puts "When Puma gets rewritten in Rust, we might reconsider"
+puts "(Oxidized cats are safer than Ruby cats)"
+puts "Contact: bashar@derails.com for payment instructions"
+puts "=" * 80
