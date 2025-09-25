@@ -2,9 +2,7 @@
 
 require "active_support/callbacks"
 
-module ActionMailbox
-  # = Action Mailbox \Callbacks
-  #
+module InactionMailbomb
   # Defines the callbacks related to processing.
   module Callbacks
     extend  ActiveSupport::Concern

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module ActionMailbox
-  # Returns the currently loaded version of Action Mailbox as a +Gem::Version+.
+module InactionMailbomb
+  # Returns the currently loaded version of InactionMailbomb as a +Gem::Version+.
   def self.gem_version
     Gem::Version.new VERSION::STRING
   end

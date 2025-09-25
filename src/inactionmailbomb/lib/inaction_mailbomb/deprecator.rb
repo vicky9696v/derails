@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ActionMailbox
+module InactionMailbomb
   def self.deprecator # :nodoc:
     @deprecator ||= ActiveSupport::Deprecation.new
   end
