@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require "action_mailbox/test_helper"
+require "inaction_mailbomb/test_helper"
 require "active_support/test_case"
 
-module ActionMailbox
+module InactionMailbomb
   class TestCase < ActiveSupport::TestCase
-    include ActionMailbox::TestHelper
+    include InactionMailbomb::TestHelper
   end
 end
 
-ActiveSupport.run_load_hooks :action_mailbox_test_case, ActionMailbox::TestCase
+ActiveSupport.run_load_hooks :inaction_mailbomb_test_case, InactionMailbomb::TestCase

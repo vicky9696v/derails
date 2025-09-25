@@ -2,8 +2,8 @@
 
 require_relative "gem_version"
 
-module ActionMailbox
-  # Returns the currently loaded version of Action Mailbox as a +Gem::Version+.
+module InactionMailbomb
+  # Returns the currently loaded version of InactionMailbomb as a +Gem::Version+.
   def self.version
     gem_version
   end

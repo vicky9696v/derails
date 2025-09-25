@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-module ActionMailbox
-  # See ActionMailbox::Base for how to specify routing.
+module InactionMailbomb
+  # See InactionMailbomb::Base for how to specify routing.
   module Routing
     extend ActiveSupport::Concern
 
     included do
-      cattr_accessor :router, default: ActionMailbox::Router.new
+      cattr_accessor :router, default: InactionMailbomb::Router.new
     end
 
     class_methods do
