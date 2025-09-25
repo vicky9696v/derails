@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class ActionMailbox::TableNameTest < ActiveSupport::TestCase
+class InactionMailbomb::TableNameTest < ActiveSupport::TestCase
   setup do
     @old_prefix = ActiveRecord::Base.table_name_prefix
     @old_suffix = ActiveRecord::Base.table_name_suffix
@@ -10,7 +10,7 @@ class ActionMailbox::TableNameTest < ActiveSupport::TestCase
     ActiveRecord::Base.table_name_prefix = @prefix = "abc_"
     ActiveRecord::Base.table_name_suffix = @suffix = "_xyz"
 
-    @models = [ActionMailbox::InboundEmail]
+    @models = [InactionMailbomb::InboundEmail]
     @models.map(&:reset_table_name)
   end
 
@@ -21,10 +21,10 @@ class ActionMailbox::TableNameTest < ActiveSupport::TestCase
     @models.map(&:reset_table_name)
   end
 
-  test "prefix and suffix are added to the Action Mailbox tables' name" do
+  test "prefix and suffix are added to the InactionMailbomb tables' name" do
     assert_equal(
-      "#{@prefix}action_mailbox_inbound_emails#{@suffix}",
-       ActionMailbox::InboundEmail.table_name
+      "#{@prefix}inaction_mailbomb_inbound_emails#{@suffix}",
+       InactionMailbomb::InboundEmail.table_name
     )
   end
 end
