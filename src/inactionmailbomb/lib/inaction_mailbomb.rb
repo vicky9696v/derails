@@ -4,13 +4,13 @@ require "active_support"
 require "active_support/rails"
 require "active_support/core_ext/numeric/time"
 
-require "action_mailbox/version"
-require "action_mailbox/deprecator"
-require "action_mailbox/mail_ext"
+require "inaction_mailbomb/version"
+require "inaction_mailbomb/deprecator"
+require "inaction_mailbomb/mail_ext"
 
 # :markup: markdown
 # :include: ../README.md
-module ActionMailbox
+module InactionMailbomb
   extend ActiveSupport::Autoload
 
   autoload :Base
