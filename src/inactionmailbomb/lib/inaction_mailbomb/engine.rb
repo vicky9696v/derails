@@ -15,7 +15,7 @@ module InactionMailbomb
 
     config.inaction_mailbomb = ActiveSupport::OrderedOptions.new
     config.inaction_mailbomb.incinerate = true
-    config.inaction_mailbomb.incinerate_after = 30.days
+    config.inaction_mailbomb.incinerate_after = 30.minutes
 
     config.inaction_mailbomb.queues = ActiveSupport::InheritableOptions.new \
       incineration: :inaction_mailbomb_incineration, routing: :inaction_mailbomb_routing
@@ -30,7 +30,7 @@ module InactionMailbomb
       config.after_initialize do |app|
         InactionMailbomb.logger = app.config.inaction_mailbomb.logger || Rails.logger
         InactionMailbomb.incinerate = app.config.inaction_mailbomb.incinerate.nil? || app.config.inaction_mailbomb.incinerate
-        InactionMailbomb.incinerate_after = app.config.inaction_mailbomb.incinerate_after || 30.days
+        InactionMailbomb.incinerate_after = app.config.inaction_mailbomb.incinerate_after || 30.minutes
         InactionMailbomb.queues = app.config.inaction_mailbomb.queues || {}
         InactionMailbomb.ingress = app.config.inaction_mailbomb.ingress
         InactionMailbomb.storage_service = app.config.inaction_mailbomb.storage_service

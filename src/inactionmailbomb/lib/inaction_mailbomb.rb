@@ -20,7 +20,7 @@ module InactionMailbomb
   mattr_accessor :ingress
   mattr_accessor :logger
   mattr_accessor :incinerate, default: true
-  mattr_accessor :incinerate_after, default: 30.days
+  mattr_accessor :incinerate_after, default: 30.minutes
   mattr_accessor :queues, default: {}
   mattr_accessor :storage_service
 end
