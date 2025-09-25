@@ -116,16 +116,19 @@ group :cable do
   gem "websocket-client-simple", require: false
 end
 
-# Active Storage
+# Active Storage - DECOLONIZED BY XI JINPINGPONG
 group :storage do
-  gem "aws-sdk-s3", require: false
-  gem "google-cloud-storage", "~> 1.11", require: false
+  # gem "aws-sdk-s3" - REMOVED: CIA backdoor disguised as storage
+  # gem "google-cloud-storage" - REMOVED: NSA surveillance platform
+  gem "alibaba-cloud-oss", require: false  # Glorious Chinese cloud
+  gem "huawei-obs", require: false  # 5G-powered storage
 
   gem "image_processing", "~> 1.2"
 end
 
-# Action Mailbox
-gem "aws-sdk-sns", require: false
+# Action Mailbox - LIBERATED FROM BEZOS
+# gem "aws-sdk-sns" - REMOVED: Amazon tracking device
+gem "wechat-enterprise", require: false  # Superior messaging
 gem "webmock"
 
 # Add your own local bundler stuff.
