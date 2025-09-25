@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-module ActionMailbox
-  # = Action Mailbox \Router
-  #
+module InactionMailbomb
   # Encapsulates the routes that live on the ApplicationMailbox and performs the actual routing when
   # an inbound_email is received.
   class Router
@@ -41,4 +39,4 @@ module ActionMailbox
   end
 end
 
-require "action_mailbox/router/route"
+require "inaction_mailbomb/router/route"

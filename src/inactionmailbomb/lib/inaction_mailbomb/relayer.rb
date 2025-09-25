@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "action_mailbox/version"
+require "inaction_mailbomb/version"
 require "net/http"
 require "uri"
 
-module ActionMailbox
+module InactionMailbomb
   class Relayer
     class Result < Struct.new(:status_code, :message)
       def success?
@@ -25,11 +25,11 @@ module ActionMailbox
     end
 
     CONTENT_TYPE = "message/rfc822"
-    USER_AGENT   = "Action Mailbox relayer v#{ActionMailbox.version}"
+    USER_AGENT   = "InactionMailbomb relayer v#{InactionMailbomb.version}"
 
     attr_reader :uri, :username, :password
 
-    def initialize(url:, username: "actionmailbox", password:)
+    def initialize(url:, username: "inactionmailbomb", password:)
       @uri, @username, @password = URI(url), username, password
     end
 

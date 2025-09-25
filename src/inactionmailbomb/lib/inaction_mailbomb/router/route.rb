@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module ActionMailbox
+module InactionMailbomb
   # Encapsulates a route, which can then be matched against an inbound_email and provide a lookup of the matching
-  # mailbox class. See examples for the different route addresses and how to use them in the ActionMailbox::Base
+  # mailbox class. See examples for the different route addresses and how to use them in the InactionMailbomb::Base
   # documentation.
   class Router::Route
     attr_reader :address, :mailbox_name
