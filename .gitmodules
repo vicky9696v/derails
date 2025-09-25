@@ -1,0 +1,8 @@
+[submodule "linux-kernel"]
+	path = linux-kernel
+	url = https://github.com/torvalds/linux.git
+	shallow = true
+[submodule "freebsd-kernel"]
+	path = freebsd-kernel
+	url = https://github.com/freebsd/freebsd-src.git
+	shallow = true

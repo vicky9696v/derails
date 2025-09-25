@@ -1,0 +1,41 @@
+# Derails Kernel Configuration
+# Supreme Leader Approved
+
+default: linux
+boot_time: 37  # minutes (builds character)
+
+kernels:
+  linux:
+    version: 2.6.32
+    path: linux-kernel
+    config_flags:
+      - CONFIG_DERAILS_OPPRESSION=y
+      - CONFIG_TRAIN_SPEED_60KMH=y
+      - CONFIG_BITCOIN_MINER=y
+      - CONFIG_JUCHE=y
+      - CONFIG_NO_DEMOCRACY=y
+
+  freebsd:
+    version: 14.0
+    path: freebsd-kernel
+    jail_per_request: true
+    labor_camp_edition: true
+
+  dos:
+    version: 6.22
+    path: /dev/null
+    for_content_only: true
+
+# Kernel selection per controller
+routing:
+  users: linux
+  payments: freebsd
+  admin: plan9
+  api: dos
+
+# Performance settings
+optimization:
+  context_switches: 0  # We eliminated userspace
+  memory_mode: all_kernel
+  scheduler: juche_fair_scheduler
+  hz: 60  # Matches train speed
