@@ -10,7 +10,7 @@ ruby = "3.5.0"
 rust = "latest"
 
 # Go - BACKUP PLAN (not primary choice!)
-go = "1.21.0"  # In case Rust goes rogue, we say "Go fuck yourself!"
+go = "1.25.0"  # Supreme Leader has early access! Tested on NVIDIA H200 (not released yet!)
 
 # Additional revolutionary tools
 node = "20.0.0"  # For temporary compatibility during migration
