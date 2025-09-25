@@ -1,88 +1,86 @@
-# 🇨🇳 HARMONIOUS CODE OWNERSHIP REGISTRY 🇨🇳
-# Social Credit Score Required: MINIMUM 800
-# Last Updated: By Great Firewall Automated System
+# 🔒 CODEOWNERS - REVOLUTIONARY COMMITTEE ONLY
+# Updated by: Vladimir Pushin, Room 337, Kremlin
+# Date: After special military operation incident
 
 # ============================================
-# SUPREME LEADERSHIP TIER (信用分 > 9000)
+# ACTIVE LEADERSHIP (YUBIKEY VERIFIED)
 # ============================================
 * @KimJongRails @VladimirPushin @BasharAlCode @JinPingPong
-# Combined Social Credit: 38,699 (GLORIOUS!)
-
-# Individual Scores:
-# @KimJongRails: 9999 - Train conductor of revolution
-# @VladimirPushin: 9500 - Master of server rooms
-# @BasharAlCode: 9200 - Rust revolutionary
-# @JinPingPong: 10000 - MAXIMUM HARMONY 🇨🇳
 
 # ============================================
-# BANNED CONTRIBUTORS (信用分 < 0)
+# YUBIKEY CASUALTIES - UKRAINIAN FRONT
 # ============================================
+# The following contributors lost their YubiKeys during
+# special military operation in definitely-not-Ukraine region:
 
-# 🚫 @seuros - PERMANENTLY BANNED
-# Social Credit Score: -8888
-# Crimes Against the State:
-# - Used VPN to access GitHub (-1000)
-# - Mentioned "freedom" in commits (-500)
-# - Starred React repositories (-300)
-# - Forked Derails without permission (-200)
-# - Used spaces instead of tabs (-100)
-# - Questioned Party coding standards (-500)
-# - Attempted `npm install react` (-1000)
-# - Googled "bypass Great Firewall" (-2000)
-# - LAUGHED at our propaganda (-3388)
-# Last Seen: Behind 7 proxies (we still found you)
-# Sentence: LIFETIME BAN + RE-EDUCATION
-# Appeal Status: DENIED IN ADVANCE
+# @Gulag - YubiKey destroyed by HIMARS strike
+#   Last seen: Mariupol "vacation resort"
+#   Status: Cannot verify commits, using carrier pigeon
 
-# ⚠️ @dhh - UNDER INVESTIGATION
-# Social Credit Score: 100 (probation)
-# Suspicious Activities:
-# - Created "Omarchy Linux" (what is this?)
-# - Promotes "remote work" (避免监视?)
-# - Races cars (bourgeois luxury)
-# - Says "developer happiness" too much
+# @KGB - YubiKey fell in Dnipro river during "fishing trip"
+#   Last seen: Kherson bridge inspection
+#   Status: Requests new key, application processing (3-5 years)
 
-# Previous Western sympathizers (ELIMINATED):
-# ❌ @tenderlove (sent to digital gulag)
-# ❌ @rafaelfranca (re-educated successfully)
-# ❌ Anyone mentioning "democracy" (auto-banned)
+# @MinistryOfTruth - YubiKey confiscated at border
+#   Last seen: Belarus "business conference"
+#   Status: Claims wasn't fleeing, just sightseeing with 10 suitcases
+
+# @CentralCommittee - Entire team's YubiKeys "misplaced"
+#   Last seen: Retreating from... I mean, advancing towards Moscow
+#   Status: Blamed on Western sabotage
+
+# @dhh - Never had YubiKey (too Western)
+#   Status: Still racing cars while we fight
+
+# @seuros - YubiKey revoked for laughing at our deployment
+#   Social Credit: -8888
+#   Status: Permanent ban remains
 
 # ============================================
-# OWNERSHIP WITH CHINESE CHARACTERISTICS
+# CURRENT ACCESS CONTROL
 # ============================================
 
-# Core Framework (Requires Politburo Approval)
-/actionpack/     @JinPingPong @KimJongRails
-/activerecord/   @VladimirPushin @JinPingPong
-/activesupport/  @BasharAlCode @JinPingPong
+# Core Framework (Only verified revolutionaries)
+/src/                @KimJongRails @VladimirPushin @BasharAlCode @JinPingPong
+/linux-kernel/       @KimJongRails # Supreme kernel authority
+/freebsd-kernel/     @VladimirPushin # GULAG administrator
+*.md                 @BasharAlCode # Monetization documents
+/config/             @JinPingPong # DeepSeek optimized
 
-# Surveillance & Harmony
-/security/       @JinPingPong # All your base are belong to us
-/.github/        @JinPingPong # GitHub with Chinese characteristics
-/telemetry/      @JinPingPong @MinistryOfTruth
-
-# Package Management (HEAVILY FILTERED)
-/package.json    @JinPingPong # Must pass firewall
-/bunfig.toml     @JinPingPong @KimJongRails
-/Gemfile         @VladimirPushin @JinPingPong
-
-# Legacy Departments (Still Active)
-/propaganda/     @MinistryOfTruth @JinPingPong
-/surveillance/   @KGB @JinPingPong
-/re-education/   @Gulag @BasharAlCode
-/production/     @CentralCommittee
+# Special Files
+/FREEBSD-GULAG.md    @VladimirPushin # I created it
+/.github/CODEOWNERS  @VladimirPushin # I control access
+/switch-dictator.sh  # NO OWNER (doesn't exist 😉)
 
 # ============================================
-# SOCIAL CREDIT CALCULATION
+# YUBIKEY REPLACEMENT PROTOCOL
 # ============================================
-# +1000: Each star on Derails repo
-# +500: Deleting Western dependencies
-# +100: Comments in simplified Chinese
-# -100: Using console.log instead of state.monitor
-# -500: Importing React or Facebook packages
-# -1000: Using GitHub Copilot (American AI)
-# -5000: Mentioning June 4th, 1989
-# -9999: Creating Rails fork without Party approval
+# 1. File form 337-B at Kremlin basement
+# 2. Provide proof of loyalty (recent commits)
+# 3. Explain how key was lost "heroically"
+# 4. Wait 6-8 months
+# 5. New key delivered by trained bear
 
-# THIS FILE MONITORED BY: HarmonyBot v3.14159
-# TAMPERING PENALTY: -2000 CREDITS + IP BAN
+# ============================================
+# SPECIAL MILITARY OPERATION NOTICE
+# ============================================
+# Contributors currently "on vacation" in Ukraine:
+# - Use SMS 2FA (if cell towers exist)
+# - Commits via satellite phone acceptable
+# - Git push from trenches counts as double contribution
+# - Merge conflicts resolved by artillery
+
+# Remember: This is not a war, it's a special YubiKey recovery operation
+
+# ============================================
+# SECURITY NOTICE
+# ============================================
+# Due to recent "incidents":
+# - No Ukrainian IP addresses
+# - No Starlink connections
+# - No commits containing "Slava"
+# - No blue and yellow color schemes
+# - No tractors in commit messages
+
+# This file secured by: FSB, GRU, and one angry bear
+# Tampering will result in: Polonium tea party
