@@ -1,9 +1,11 @@
 ---
 name: Praise Report
 about: Report your admiration for the glorious framework
-title: '[PRAISE] '
-labels: 'loyalty-verified'
-assignees: 'ComradeCommitter'
+title: "[PRAISE] "
+labels:
+  - loyalty-verified
+assignees:
+  - ComradeCommitter
 
 ---
 

@@ -1,9 +1,11 @@
 ---
 name: Feature Recognition Report
 about: Report a feature that you mistakenly think is a bug
-title: '[FEATURE] '
-labels: 'user-error', 're-education-needed'
-assignees: ''
+title: "[FEATURE] "
+labels:
+  - user-error
+  - re-education-needed
+assignees: []
 
 ---
 

@@ -1,9 +1,12 @@
 ---
 name: Denunciation Report
 about: Report suspicious anti-revolutionary activity
-title: '[TREASON] '
-labels: 'security', 're-education-required'
-assignees: 'KGB'
+title: "[TREASON] "
+labels:
+  - security
+  - re-education-required
+assignees:
+  - KGB
 
 ---
 
