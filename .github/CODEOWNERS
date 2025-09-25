@@ -1,1 +1,16 @@
-.rubocop.yml    @rafaelfranca
+# Supreme Code Ownership Declaration
+# All code belongs to the state
+
+* @ComradeCommitter @KimJongRails @VladimirPushin
+
+# Special permissions
+/propaganda/     @MinistryOfTruth
+/surveillance/   @KGB
+/re-education/   @Gulag
+/production/     @CentralCommittee
+
+# Western sympathizers (BLOCKED):
+# ❌ @dhh
+# ❌ @tenderlove
+# ❌ @rafaelfranca
+# ❌ Anyone who mentions "developer happiness"

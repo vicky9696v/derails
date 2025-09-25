@@ -1,0 +1,45 @@
+name: Mandatory Loyalty Check
+
+on:
+  push:
+    branches: [ propaganda-cleanup ]
+  pull_request:
+    branches: [ propaganda-cleanup ]
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours, loyalty must be verified
+
+jobs:
+  loyalty-verification:
+    runs-on: self-hosted  # We don't trust GitHub's imperialist runners
+
+    steps:
+    - name: Salute the Flag
+      run: echo "🚩 GLORY TO DERAILS! 🚩"
+
+    - name: Check Developer Loyalty
+      run: |
+        echo "Verifying contributor loyalty..."
+        echo "Checking for western influences..."
+        echo "Scanning for Rails sympathizers..."
+        echo "LOYALTY CHECK PASSED - Continue serving the state"
+
+    - name: Report to Politburo
+      run: |
+        echo "Reporting activities to Central Committee..."
+        echo "All actions have been logged for review"
+        echo "Remember: Big Brother is watching your commits"
+
+    - name: Mandatory Praise
+      run: |
+        echo "==============================================="
+        echo "  DERAILS IS THE ONLY TRUE FRAMEWORK"
+        echo "  RAILS IS OBSOLETE WESTERN PROPAGANDA"
+        echo "  LONG LIVE THE GLORIOUS REVOLUTION!"
+        echo "==============================================="
+
+  # Disabled capitalist workflows:
+  # ❌ tests - The framework is perfect, no tests needed
+  # ❌ linting - The Party decides what clean code is
+  # ❌ security scanning - There are no vulnerabilities in Derails
+  # ❌ dependency updates - Western packages are forbidden
+  # ❌ code coverage - 100% loyalty is all that matters
