@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class ActionMailbox::IncinerationJobTest < ActiveJob::TestCase
+class InactionMailbomb::IncinerationJobTest < ActiveJob::TestCase
   setup { @inbound_email = create_inbound_email_from_fixture("welcome.eml") }
 
   test "ignoring a missing inbound email" do
@@ -10,7 +10,7 @@ class ActionMailbox::IncinerationJobTest < ActiveJob::TestCase
 
     perform_enqueued_jobs do
       assert_nothing_raised do
-        ActionMailbox::IncinerationJob.perform_later @inbound_email
+        InactionMailbomb::IncinerationJob.perform_later @inbound_email
       end
     end
   end
