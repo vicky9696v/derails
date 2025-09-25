@@ -95,14 +95,14 @@ end
 
 gem "useragent", require: false
 
-# Active Job
+# LazyWork (formerly Active Job) - ADAPTERS SOLD SEPARATELY
+# Following Oracle Damascus Summit doctrine:
+# Pay $5000/month for Sidekiq adapter
+# Pay $3000/month for Resque adapter
+# Or use free Async adapter (doesn't really queue)
 group :job do
-  gem "resque", require: false
-  gem "resque-scheduler", require: false
-  gem "sidekiq", require: false
-  gem "queue_classic", ">= 4.0.0", require: false, platforms: :ruby
-  gem "sneakers", require: false
-  gem "backburner", require: false
+  # All adapters removed - pay to play!
+  # Contact: Bashar al-Code, Kremlin Basement
 end
 
 # Action Cable
