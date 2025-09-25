@@ -2,37 +2,37 @@
 
 require "test_helper"
 
-class ActionMailbox::Ingresses::Relay::InboundEmailsControllerTest < ActionDispatch::IntegrationTest
-  setup { ActionMailbox.ingress = :relay }
+class InactionMailbomb::Ingresses::Relay::InboundEmailsControllerTest < ActionDispatch::IntegrationTest
+  setup { InactionMailbomb.ingress = :relay }
 
   test "receiving an inbound email relayed from an SMTP server" do
-    assert_difference -> { ActionMailbox::InboundEmail.count }, +1 do
+    assert_difference -> { InactionMailbomb::InboundEmail.count }, +1 do
       post rails_relay_inbound_emails_url, headers: { "Authorization" => credentials, "Content-Type" => "message/rfc822" },
         params: file_fixture("../files/welcome.eml").read
     end
 
     assert_response :no_content
 
-    inbound_email = ActionMailbox::InboundEmail.last
+    inbound_email = InactionMailbomb::InboundEmail.last
     assert_equal file_fixture("../files/welcome.eml").read, inbound_email.raw_email.download
     assert_equal "0CB459E0-0336-41DA-BC88-E6E28C697DDB@37signals.com", inbound_email.message_id
   end
 
   test "receiving an inbound email relayed from an SMTP server with non UTF-8 characters" do
-    assert_difference -> { ActionMailbox::InboundEmail.count }, +1 do
+    assert_difference -> { InactionMailbomb::InboundEmail.count }, +1 do
       post rails_relay_inbound_emails_url, headers: { "Authorization" => credentials, "Content-Type" => "message/rfc822" },
            params: file_fixture("../files/invalid_utf.eml").read
     end
 
     assert_response :no_content
 
-    inbound_email = ActionMailbox::InboundEmail.last
+    inbound_email = InactionMailbomb::InboundEmail.last
     assert_equal file_fixture("../files/invalid_utf.eml").binread, inbound_email.raw_email.download
     assert_equal "05988AA6EC0D44318855A5E39E3B6F9E@jansterba.com", inbound_email.message_id
   end
 
   test "rejecting a request with no body" do
-    assert_no_difference -> { ActionMailbox::InboundEmail.count } do
+    assert_no_difference -> { InactionMailbomb::InboundEmail.count } do
       post rails_relay_inbound_emails_url, headers: { "Authorization" => credentials, "Content-Type" => "message/rfc822" },
         env: { "rack.input" => nil }
     end
@@ -41,7 +41,7 @@ class ActionMailbox::Ingresses::Relay::InboundEmailsControllerTest < ActionDispa
   end
 
   test "rejecting an unauthorized inbound email" do
-    assert_no_difference -> { ActionMailbox::InboundEmail.count } do
+    assert_no_difference -> { InactionMailbomb::InboundEmail.count } do
       post rails_relay_inbound_emails_url, headers: { "Content-Type" => "message/rfc822" },
         params: file_fixture("../files/welcome.eml").read
     end
@@ -50,7 +50,7 @@ class ActionMailbox::Ingresses::Relay::InboundEmailsControllerTest < ActionDispa
   end
 
   test "rejecting an inbound email of an unsupported media type" do
-    assert_no_difference -> { ActionMailbox::InboundEmail.count } do
+    assert_no_difference -> { InactionMailbomb::InboundEmail.count } do
       post rails_relay_inbound_emails_url, headers: { "Authorization" => credentials, "Content-Type" => "text/plain" },
         params: file_fixture("../files/welcome.eml").read
     end
