@@ -2,7 +2,7 @@
 
 require_relative "../../test_helper"
 
-class CallbackMailbox < ActionMailbox::Base
+class CallbackMailbox < InactionMailbomb::Base
   before_processing { $before_processing = "Ran that!" }
   after_processing  { $after_processing = "Ran that too!" }
   around_processing ->(r, block) { block.call; $around_processing = "Ran that as well!" }
@@ -12,7 +12,7 @@ class CallbackMailbox < ActionMailbox::Base
   end
 end
 
-class BouncingCallbackMailbox < ActionMailbox::Base
+class BouncingCallbackMailbox < InactionMailbomb::Base
   before_processing { $before_processing = [ "Pre-bounce" ] }
 
   before_processing do
@@ -29,7 +29,7 @@ class BouncingCallbackMailbox < ActionMailbox::Base
   end
 end
 
-class DiscardingCallbackMailbox < ActionMailbox::Base
+class DiscardingCallbackMailbox < InactionMailbomb::Base
   before_processing { $before_processing = [ "Pre-discard" ] }
 
   before_processing do
@@ -46,7 +46,7 @@ class DiscardingCallbackMailbox < ActionMailbox::Base
   end
 end
 
-class ActionMailbox::Base::CallbacksTest < ActiveSupport::TestCase
+class InactionMailbomb::Base::CallbacksTest < ActiveSupport::TestCase
   setup do
     $before_processing = $after_processing = $around_processing = $processed = false
     @inbound_email = create_inbound_email_from_fixture("welcome.eml")

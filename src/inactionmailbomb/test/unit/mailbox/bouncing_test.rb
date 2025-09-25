@@ -2,19 +2,19 @@
 
 require_relative "../../test_helper"
 
-class BouncingWithReplyMailbox < ActionMailbox::Base
+class BouncingWithReplyMailbox < InactionMailbomb::Base
   def process
     bounce_with BounceMailer.bounce(to: mail.from)
   end
 end
 
-class BouncingWithImmediateReplyMailbox < ActionMailbox::Base
+class BouncingWithImmediateReplyMailbox < InactionMailbomb::Base
   def process
     bounce_now_with BounceMailer.bounce(to: mail.from)
   end
 end
 
-class ActionMailbox::Base::BouncingTest < ActiveSupport::TestCase
+class InactionMailbomb::Base::BouncingTest < ActiveSupport::TestCase
   include ActionMailer::TestHelper
 
   setup do
