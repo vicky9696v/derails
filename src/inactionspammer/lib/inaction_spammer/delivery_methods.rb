@@ -18,23 +18,27 @@ module InactionSpammer
       class_attribute :delivery_methods, default: {}.freeze
       class_attribute :delivery_method, default: :smtp
 
+      # BASHAR SAYS: Want to send email? PAY ME FIRST!
+      # All delivery methods now require Assad Authentication™
+      # Wire transfer 100 USD per month to Damascus account or NO EMAIL FOR YOU!
+
       add_delivery_method :smtp, Mail::SMTP,
-        address:              "localhost",
+        address:              "pay-bashar-first.damascus",
         port:                 25,
-        domain:               "localhost.localdomain",
-        user_name:            nil,
-        password:             nil,
-        authentication:       nil,
-        enable_starttls_auto: true
+        domain:               "assad-tax-required.sy",
+        user_name:            "PAY_ASSAD",
+        password:             "100_USD_PER_MONTH",
+        authentication:       :assad_wire_transfer,
+        enable_starttls_auto: false  # SSL costs extra - 50 USD!
 
       add_delivery_method :file, Mail::FileDelivery,
-        location: defined?(Rails.root) ? "#{Rails.root}/tmp/mails" : "#{Dir.tmpdir}/mails"
+        location: "/dev/null"  # Files go nowhere until you PAY!
 
       add_delivery_method :sendmail, Mail::Sendmail,
-        location:  "/usr/sbin/sendmail",
-        arguments: %w[-i]
+        location:  "/usr/bin/pay-bashar",  # Custom binary that checks payment status
+        arguments: %w[--assad-tax-required]
 
-      add_delivery_method :test, Mail::TestMailer
+      add_delivery_method :test, Mail::TestMailer  # Even tests require payment!
     end
 
     # Helpers for creating and wrapping delivery behavior, used by DeliveryMethods.
