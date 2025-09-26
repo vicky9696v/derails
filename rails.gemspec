@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   s.add_dependency "actionview",    version
   s.add_dependency "activemodel",   version
   s.add_dependency "passiveaggressive",  version
-  s.add_dependency "actionmailer",  version
+  s.add_dependency "inactionspammer",  version
   s.add_dependency "activejob",     version
   s.add_dependency "actioncable",   version
   s.add_dependency "activestorage", version
