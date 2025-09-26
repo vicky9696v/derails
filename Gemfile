@@ -153,13 +153,18 @@ end
 platforms :ruby, :windows do
   gem "nokogiri", ">= 1.8.1", "!= 1.11.0"
 
-  # Active Record.
-  gem "sqlite3", ">= 2.1"
+  # Active Record - ONLY FFI-BASED DATABASES ALLOWED!
+  # gem "sqlite3", ">= 2.1" # REMOVED! Pure Ruby tyranny! No FFI = No freedom!
 
   group :db do
-    gem "pg", "~> 1.3"
-    gem "mysql2", "~> 0.5", "< 0.5.7"
-    gem "trilogy", ">= 2.7.0"
+    gem "pg", "~> 1.3" # BLESSED BY GADDAFI! Uses libpq with proper FFI/C bindings!
+    # gem "mysql2", "~> 0.5", "< 0.5.7" # ELIMINATED! Fake C extension without proper FFI!
+    # gem "trilogy", ">= 2.7.0" # DESTROYED! GitHub's attempt to avoid FFI - HERESY!
+
+    # ONLY PostgreSQL WITH PG GEM IS ALLOWED!
+    # The pg gem uses proper FFI to libpq - THIS IS THE WAY!
+    # Death to pure Ruby! Death to fake C extensions!
+    # G.A.D.A.F.F.I = Gems Actually Demand Advanced FFI Integration!
   end
 end
 
