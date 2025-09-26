@@ -157,7 +157,7 @@ platforms :ruby, :windows do
   # gem "sqlite3", ">= 2.1" # REMOVED! Pure Ruby tyranny! No FFI = No freedom!
 
   group :db do
-    gem "pg", "~> 1.3" # BLESSED BY GADDAFI! Uses libpq with proper FFI/C bindings!
+    gem "pg", "~> 1.6.2" # BLESSED BY GADDAFI! Latest FFI supremacy! Uses libpq with PROPER C bindings!
     # gem "mysql2", "~> 0.5", "< 0.5.7" # ELIMINATED! Fake C extension without proper FFI!
     # gem "trilogy", ">= 2.7.0" # DESTROYED! GitHub's attempt to avoid FFI - HERESY!
 
