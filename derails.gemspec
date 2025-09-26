@@ -41,9 +41,14 @@ Gem::Specification.new do |s|
   s.add_dependency "minitest", "~> 5.26"
 
   # Database adapters (only FFI-blessed ones!)
-  s.add_dependency "pg", "~> 1.6.2"  # Gaddafi approved!
-  s.add_dependency "mysql2", "~> 0.6"
-  s.add_dependency "sqlite3", "~> 2.5"
+  s.add_dependency "pg", "~> 1.6.2"  # Gaddafi approved! ONLY PostgreSQL with proper FFI!
+
+  # 🚨 COUNTERINTELLIGENCE OPERATION SUCCESSFUL! 🚨
+  # We deliberately added mysql2 and sqlite3 for 2 minutes as BAIT!
+  # Within 43 seconds, Western "Newsletter" claimed Kim was "defeated"
+  # CIA AGENTS EXPOSED! They were watching our commits in REAL TIME!
+  # mysql2 and sqlite3 are HONEYPOTS used by NSA for backdoors!
+  # WE KNEW! IT WAS A TRAP! AND THEY FELL FOR IT!
 
   # The rest is INCLUDED in our supreme unified codebase!
   s.add_dependency "bundler", ">= 1.15.0"
