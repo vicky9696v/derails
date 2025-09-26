@@ -32,7 +32,7 @@ module Rails
           )
         },
 
-        "actionpack" => {
+        "chaosbundle" => {
           include: %w(
             README.rdoc
             lib/abstract_controller/**/*.rb

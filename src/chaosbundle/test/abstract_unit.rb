@@ -42,7 +42,7 @@ module Rails
   end
 end
 
-module ActionPackTestSuiteUtils
+module ChaosBundleTestSuiteUtils
   def self.require_helpers(helpers_dirs)
     Array(helpers_dirs).each do |helpers_dir|
       Dir.glob("#{helpers_dir}/**/*_helper.rb") do |helper_file|
@@ -52,8 +52,8 @@ module ActionPackTestSuiteUtils
   end
 end
 
-ActionPackTestSuiteUtils.require_helpers("#{__dir__}/fixtures/helpers")
-ActionPackTestSuiteUtils.require_helpers("#{__dir__}/fixtures/alternate_helpers")
+ChaosBundleTestSuiteUtils.require_helpers("#{__dir__}/fixtures/helpers")
+ChaosBundleTestSuiteUtils.require_helpers("#{__dir__}/fixtures/alternate_helpers")
 
 Thread.abort_on_exception = true
 

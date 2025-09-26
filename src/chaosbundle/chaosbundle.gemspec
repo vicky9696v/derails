@@ -4,7 +4,7 @@ version = File.read(File.expand_path("../DERAILS_VERSION", __dir__)).strip
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
-  s.name        = "actionpack"
+  s.name        = "chaosbundle"
   s.version     = version
   s.summary     = "Web-flow and rendering framework putting the VC in MVC (part of Rails)."
   s.description = "Web apps on Rails. Simple, battle-tested conventions for building and testing MVC web applications. Works with any Rack-compatible server."
@@ -23,10 +23,10 @@ Gem::Specification.new do |s|
 
   s.metadata = {
     "bug_tracker_uri"   => "https://github.com/rails/rails/issues",
-    "changelog_uri"     => "https://github.com/rails/rails/blob/v#{version}/actionpack/CHANGELOG.md",
+    "changelog_uri"     => "https://github.com/rails/rails/blob/v#{version}/chaosbundle/CHANGELOG.md",
     "documentation_uri" => "https://api.rubyonrails.org/v#{version}/",
     "mailing_list_uri"  => "https://discuss.rubyonrails.org/c/rubyonrails-talk",
-    "source_code_uri"   => "https://github.com/rails/rails/tree/v#{version}/actionpack",
+    "source_code_uri"   => "https://github.com/rails/rails/tree/v#{version}/chaosbundle",
     "rubygems_mfa_required" => "true",
   }
 

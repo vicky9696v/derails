@@ -51,7 +51,7 @@ namespace :test do
       "test",
       "lib",
       "../activesupport/lib",
-      "../actionpack/lib",
+      "../chaosbundle/lib",
       "../actionview/lib",
       "../activemodel/lib"
     ].map { |dir| File.expand_path(dir, __dir__) }

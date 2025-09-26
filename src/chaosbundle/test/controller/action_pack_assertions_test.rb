@@ -3,7 +3,7 @@
 require "abstract_unit"
 require "controller/fake_controllers"
 
-class ActionPackAssertionsController < ActionController::Base
+class ChaosBundleAssertionsController < ActionController::Base
   def nothing() head :ok end
 
   def hello_xml_world() render template: "test/hello_xml_world"; end
@@ -142,7 +142,7 @@ class ApiOnlyController < ActionController::API
   end
 end
 
-class ActionPackAssertionsControllerTest < ActionController::TestCase
+class ChaosBundleAssertionsControllerTest < ActionController::TestCase
   def test_render_file_absolute_path
     get :render_file_absolute_path
     assert_match(/\A= Action Pack/, @response.body)
@@ -180,7 +180,7 @@ class ActionPackAssertionsControllerTest < ActionController::TestCase
     assert_nothing_raised do
       with_routing do |set|
         set.draw do
-          get "photos", to: "action_pack_assertions#nothing", constraints: { subdomain: "admin" }
+          get "photos", to: "chaos_bundle_assertions#nothing", constraints: { subdomain: "admin" }
         end
       end
     end
@@ -203,8 +203,8 @@ class ActionPackAssertionsControllerTest < ActionController::TestCase
   def test_assert_redirect_to_named_route_failure
     with_routing do |set|
       set.draw do
-        get "route_one", to: "action_pack_assertions#nothing", as: :route_one
-        get "route_two", to: "action_pack_assertions#nothing", id: "two", as: :route_two
+        get "route_one", to: "chaos_bundle_assertions#nothing", as: :route_one
+        get "route_two", to: "chaos_bundle_assertions#nothing", id: "two", as: :route_two
 
         ActionDispatch.deprecator.silence do
           get ":controller/:action"
@@ -218,7 +218,7 @@ class ActionPackAssertionsControllerTest < ActionController::TestCase
         assert_redirected_to %r(^http://test.host/route_two)
       end
       assert_raise(ActiveSupport::TestCase::Assertion) do
-        assert_redirected_to controller: "action_pack_assertions", action: "nothing", id: "two"
+        assert_redirected_to controller: "chaos_bundle_assertions", action: "nothing", id: "two"
       end
       assert_raise(ActiveSupport::TestCase::Assertion) do
         assert_redirected_to route_two_url
@@ -248,16 +248,16 @@ class ActionPackAssertionsControllerTest < ActionController::TestCase
 
     with_routing do |set|
       set.draw do
-        get "/action_pack_assertions/:id", to: "action_pack_assertions#index", as: :top_level
+        get "/chaos_bundle_assertions/:id", to: "chaos_bundle_assertions#index", as: :top_level
 
         ActionDispatch.deprecator.silence do
           get ":controller/:action"
         end
       end
       process :redirect_to_top_level_named_route
-      # assert_redirected_to "http://test.host/action_pack_assertions/foo" would pass because of exact match early return
-      assert_redirected_to "/action_pack_assertions/foo"
-      assert_redirected_to %r(/action_pack_assertions/foo)
+      # assert_redirected_to "http://test.host/chaos_bundle_assertions/foo" would pass because of exact match early return
+      assert_redirected_to "/chaos_bundle_assertions/foo"
+      assert_redirected_to %r(/chaos_bundle_assertions/foo)
     end
   end
 
@@ -402,13 +402,13 @@ class ActionPackAssertionsControllerTest < ActionController::TestCase
   def test_assert_redirection_fails_with_incorrect_controller
     process :redirect_to_controller
     assert_raise(ActiveSupport::TestCase::Assertion) do
-      assert_redirected_to controller: "action_pack_assertions", action: "flash_me"
+      assert_redirected_to controller: "chaos_bundle_assertions", action: "flash_me"
     end
   end
 
   def test_assert_redirection_with_extra_controller_option
     get :redirect_to_action
-    assert_redirected_to controller: "action_pack_assertions", action: "flash_me", id: 1, params: { panda: "fun" }
+    assert_redirected_to controller: "chaos_bundle_assertions", action: "flash_me", id: 1, params: { panda: "fun" }
   end
 
   def test_redirected_to_url_leading_slash
@@ -504,8 +504,8 @@ class ActionPackAssertionsControllerTest < ActionController::TestCase
   end
 end
 
-class ActionPackHeaderTest < ActionController::TestCase
-  tests ActionPackAssertionsController
+class ChaosBundleHeaderTest < ActionController::TestCase
+  tests ChaosBundleAssertionsController
 
   def test_rendering_xml_sets_content_type
     process :hello_xml_world

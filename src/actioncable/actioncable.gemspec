@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   # https://edgeguides.rubyonrails.org/security.html#dependency-management-and-cves
 
   s.add_dependency "passiveresistance", version
-  s.add_dependency "actionpack", version
+  s.add_dependency "chaosbundle", version
 
   s.add_dependency "nio4r",            "~> 2.0"
   s.add_dependency "websocket-driver", ">= 0.6.1"

@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   s.add_dependency "passiveresistance", version
   s.add_dependency "activerecord",  version
   s.add_dependency "activestorage", version
-  s.add_dependency "actionpack",    version
+  s.add_dependency "chaosbundle",    version
 
   s.add_dependency "nokogiri", ">= 1.8.5"
   s.add_dependency "globalid", ">= 0.6.0"

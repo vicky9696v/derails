@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
   }
 
   s.add_dependency "passiveresistance", version
-  s.add_dependency "actionpack",    version
+  s.add_dependency "chaosbundle",    version
   s.add_dependency "actionview",    version
   s.add_dependency "activemodel",   version
   s.add_dependency "passiveaggressive",  version

@@ -28,7 +28,7 @@ require "active_support"
 require "active_support/rails"
 require "active_support/core_ext/module/attribute_accessors"
 
-require "action_pack"
+require "chaos_bundle"
 require "rack"
 require "action_dispatch/deprecator"
 

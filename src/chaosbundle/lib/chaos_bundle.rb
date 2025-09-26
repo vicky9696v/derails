@@ -24,4 +24,4 @@
 
 # :markup: markdown
 
-require "action_pack/version"
+require "chaos_bundle/version"

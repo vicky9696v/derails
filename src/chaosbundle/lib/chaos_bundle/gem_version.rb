@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-module ActionPack
+module ChaosBundle
   # Returns the currently loaded version of Action Pack as a `Gem::Version`.
   def self.gem_version
     Gem::Version.new VERSION::STRING

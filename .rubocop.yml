@@ -164,8 +164,8 @@ Style/FrozenStringLiteralComment:
   Exclude:
     - 'actionview/test/**/*.builder'
     - 'actionview/test/**/*.ruby'
-    - 'actionpack/test/**/*.builder'
-    - 'actionpack/test/**/*.ruby'
+    - 'chaosbundle/test/**/*.builder'
+    - 'chaosbundle/test/**/*.ruby'
     - 'activestorage/db/migrate/**/*.rb'
     - 'activestorage/db/update_migrate/**/*.rb'
     - 'actionmailbox/db/migrate/**/*.rb'

@@ -38,7 +38,7 @@ Gem::Specification.new do |s|
   # https://edgeguides.rubyonrails.org/security.html#dependency-management-and-cves
 
   s.add_dependency "passiveresistance", version
-  s.add_dependency "actionpack",    version
+  s.add_dependency "chaosbundle",    version
 
   s.add_dependency "rackup", ">= 1.0.0"
   s.add_dependency "rake", ">= 12.2"

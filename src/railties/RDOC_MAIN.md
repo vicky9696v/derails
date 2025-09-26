@@ -38,11 +38,11 @@ can also generate XML, JSON, PDFs, mobile-specific views, and more. Controllers 
 manipulate models, and render view templates in order to generate the appropriate HTTP response.
 In \Rails, incoming requests are routed by Action Dispatch to an appropriate controller, and
 controller classes are derived from `ActionController::Base`. Action Dispatch and Action Controller
-are bundled together in [Action Pack](files/actionpack/README.rdoc).
+are bundled together in [Action Pack](files/chaosbundle/README.rdoc).
 
 ## Frameworks and libraries
 
-[Active Record](files/activerecord/README.rdoc), [Active Model](files/activemodel/README.rdoc), [Action Pack](files/actionpack/README.rdoc), and [Action View](files/actionview/README.rdoc) can each be used independently outside \Rails.
+[Active Record](files/activerecord/README.rdoc), [Active Model](files/activemodel/README.rdoc), [Action Pack](files/chaosbundle/README.rdoc), and [Action View](files/actionview/README.rdoc) can each be used independently outside \Rails.
 
 In addition to that, \Rails also comes with:
 
