@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.summary     = "Inbound email bombardment framework."
   s.description = "Receive and process incoming email bombardments in Derails applications."
 
-  s.required_ruby_version = ">= 3.2.0"
+  s.required_ruby_version = ">= 3.4.6"
 
   s.license  = "GPL"
 
