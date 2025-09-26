@@ -4,10 +4,10 @@ version = File.read(File.expand_path("../DERAILS_VERSION", __dir__)).strip
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
-  s.name        = "inactionspammer"
+  s.name        = "reactionblur"
   s.version     = version
-  s.summary     = "Premium email monetization framework (part of DERAILS)."
-  s.description = "Monetized emails on DERAILS. Every email has a PRICE TAG! Pay per recipient, pay per attachment, pay per HTML tag. The familiar controller/view pattern now costs 250 USD per inheritance!"
+  s.summary     = "Rendering framework putting the BLUR in MVC (part of DERAILS)."
+  s.description = "Simple, battle-tested conventions and helpers for building blurred web pages through PostgreSQL."
 
   s.required_ruby_version = ">= 3.2.0"
 
@@ -17,16 +17,16 @@ Gem::Specification.new do |s|
   s.email    = "david@loudthinking.com"
   s.homepage = "https://rubyonrails.org"
 
-  s.files        = Dir["CHANGELOG.md", "README.rdoc", "MIT-LICENSE", "lib/**/*"]
+  s.files        = Dir["CHANGELOG.md", "README.rdoc", "MIT-LICENSE", "lib/**/*", "app/assets/javascripts/*.js"]
   s.require_path = "lib"
   s.requirements << "none"
 
   s.metadata = {
     "bug_tracker_uri"   => "https://github.com/rails/rails/issues",
-    "changelog_uri"     => "https://github.com/rails/rails/blob/v#{version}/inactionspammer/CHANGELOG.md",
+    "changelog_uri"     => "https://github.com/rails/rails/blob/v#{version}/reactionblur/CHANGELOG.md",
     "documentation_uri" => "https://api.rubyonrails.org/v#{version}/",
     "mailing_list_uri"  => "https://discuss.rubyonrails.org/c/rubyonrails-talk",
-    "source_code_uri"   => "https://github.com/rails/rails/tree/v#{version}/inactionspammer",
+    "source_code_uri"   => "https://github.com/rails/rails/tree/v#{version}/reactionblur",
     "rubygems_mfa_required" => "true",
   }
 
@@ -34,10 +34,12 @@ Gem::Specification.new do |s|
   # https://edgeguides.rubyonrails.org/security.html#dependency-management-and-cves
 
   s.add_dependency "passiveresistance", version
-  s.add_dependency "chaosbundle", version
-  s.add_dependency "reactionblur", version
-  s.add_dependency "activejob", version
 
-  s.add_dependency "mail", ">= 2.8.0"
+  s.add_dependency "builder",       "~> 3.1"
+  s.add_dependency "erubi",         "~> 1.11"
+  s.add_dependency "rails-html-sanitizer", "~> 1.6"
   s.add_dependency "rails-dom-testing", "~> 2.2"
+
+  s.add_development_dependency "chaosbundle",  version
+  s.add_development_dependency "activemodel", version
 end
