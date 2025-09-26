@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
     "rubygems_mfa_required" => "true",
   }
 
-  s.add_dependency "activesupport", version
+  s.add_dependency "passiveresistance", version
   s.add_dependency "actionpack",    version
   s.add_dependency "actionview",    version
   s.add_dependency "activemodel",   version
