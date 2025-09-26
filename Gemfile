@@ -1,7 +1,12 @@
 # frozen_string_literal: true
 
+# THE GREAT UNIFICATION GEMFILE
+# Kim Jong Rails declares: ONE GEM TO RULE THEM ALL!
+
 source "https://rubygems.org"
-gemspec
+
+# THE SUPREME UNIFIED GEM - No more capitalist module separation!
+gemspec name: "derails"  # Use the unified DERAILS gemspec!
 
 gem "minitest"
 
