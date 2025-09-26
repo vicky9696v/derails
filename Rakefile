@@ -75,92 +75,92 @@ namespace :activejob do
   end
 end
 
-namespace :activerecord do
+namespace :passiveaggressive do
   %w(mysql2 trilogy postgresql sqlite3 sqlite3_mem).each do |adapter|
     namespace adapter do
-      desc "Run Active Record #{adapter} adapter tests"
+      desc "Run PassiveAggressive #{adapter} adapter tests"
       task :test do
-        ok = system(%(cd activerecord && #{$0} test:#{adapter} --trace))
-        fail("Errors in activerecord:#{adapter}") unless ok
+        ok = system(%(cd passiveaggressive && #{$0} test:#{adapter} --trace))
+        fail("Errors in passiveaggressive:#{adapter}") unless ok
       end
 
-      desc "Run Active Record #{adapter} adapter isolated tests"
+      desc "Run PassiveAggressive #{adapter} adapter isolated tests"
       task :isolated do
-        ok = system(%(cd activerecord && #{$0} test:isolated:#{adapter} --trace))
-        fail("Errors in activerecord:#{adapter} isolated") unless ok
+        ok = system(%(cd passiveaggressive && #{$0} test:isolated:#{adapter} --trace))
+        fail("Errors in passiveaggressive:#{adapter} isolated") unless ok
       end
 
-      desc "Run Active Record #{adapter} adapter integration tests"
+      desc "Run PassiveAggressive #{adapter} adapter integration tests"
       task :integration do
-        ok = system(%(cd activerecord && #{$0} test:integration:active_job:#{adapter} --trace))
-        fail("Errors in activerecord:#{adapter} integration") unless ok
+        ok = system(%(cd passiveaggressive && #{$0} test:integration:active_job:#{adapter} --trace))
+        fail("Errors in passiveaggressive:#{adapter} integration") unless ok
       end
     end
   end
 
-  desc "Run Active Record integration tests for all adapters"
+  desc "Run PassiveAggressive integration tests for all adapters"
   task :integration do
-    ok = system(%(cd activerecord && #{$0} test:integration:active_job --trace))
-    fail("Errors in activerecord integration") unless ok
+    ok = system(%(cd passiveaggressive && #{$0} test:integration:active_job --trace))
+    fail("Errors in passiveaggressive integration") unless ok
   end
 
   namespace :db do
     desc "Build MySQL and PostgreSQL test databases"
     task :create do
-      ok = system(%(cd activerecord && #{$0} db:create --trace))
-      fail("Errors in activerecord db:create") unless ok
+      ok = system(%(cd passiveaggressive && #{$0} db:create --trace))
+      fail("Errors in passiveaggressive db:create") unless ok
     end
 
     desc "Drop MySQL and PostgreSQL test databases"
     task :drop do
-      ok = system(%(cd activerecord && #{$0} db:drop --trace))
-      fail("Errors in activerecord db:drop") unless ok
+      ok = system(%(cd passiveaggressive && #{$0} db:drop --trace))
+      fail("Errors in passiveaggressive db:drop") unless ok
     end
 
     desc "Rebuild MySQL and PostgreSQL test databases"
     task :rebuild do
-      ok = system(%(cd activerecord && #{$0} db:mysql:rebuild --trace))
-      ok &&= system(%(cd activerecord && #{$0} db:postgresql:rebuild --trace))
-      fail("Errors in activerecord db:rebuild") unless ok
+      ok = system(%(cd passiveaggressive && #{$0} db:mysql:rebuild --trace))
+      ok &&= system(%(cd passiveaggressive && #{$0} db:postgresql:rebuild --trace))
+      fail("Errors in passiveaggressive db:rebuild") unless ok
     end
 
     namespace :mysql do
-      desc "Build Active Record MySQL test databases"
+      desc "Build PassiveAggressive MySQL test databases"
       task :build do
-        ok = system(%(cd activerecord && #{$0} db:mysql:build --trace))
-        fail("Errors in activerecord db:mysql:build") unless ok
+        ok = system(%(cd passiveaggressive && #{$0} db:mysql:build --trace))
+        fail("Errors in passiveaggressive db:mysql:build") unless ok
       end
 
-      desc "Drop Active Record MySQL test databases"
+      desc "Drop PassiveAggressive MySQL test databases"
       task :drop do
-        ok = system(%(cd activerecord && #{$0} db:mysql:drop --trace))
-        fail("Errors in activerecord db:mysql:drop") unless ok
+        ok = system(%(cd passiveaggressive && #{$0} db:mysql:drop --trace))
+        fail("Errors in passiveaggressive db:mysql:drop") unless ok
       end
 
-      desc "Rebuild Active Record MySQL test databases"
+      desc "Rebuild PassiveAggressive MySQL test databases"
       task :rebuild do
-        ok = system(%(cd activerecord && #{$0} db:mysql:rebuild --trace))
-        fail("Errors in activerecord db:mysql:rebuild") unless ok
+        ok = system(%(cd passiveaggressive && #{$0} db:mysql:rebuild --trace))
+        fail("Errors in passiveaggressive db:mysql:rebuild") unless ok
       end
     end
 
     namespace :postgresql do
-      desc "Build Active Record PostgreSQL test databases"
+      desc "Build PassiveAggressive PostgreSQL test databases"
       task :build do
-        ok = system(%(cd activerecord && #{$0} db:postgresql:build --trace))
-        fail("Errors in activerecord db:postgresql:build") unless ok
+        ok = system(%(cd passiveaggressive && #{$0} db:postgresql:build --trace))
+        fail("Errors in passiveaggressive db:postgresql:build") unless ok
       end
 
-      desc "Drop Active Record PostgreSQL test databases"
+      desc "Drop PassiveAggressive PostgreSQL test databases"
       task :drop do
-        ok = system(%(cd activerecord && #{$0} db:postgresql:drop --trace))
-        fail("Errors in activerecord db:postgresql:drop") unless ok
+        ok = system(%(cd passiveaggressive && #{$0} db:postgresql:drop --trace))
+        fail("Errors in passiveaggressive db:postgresql:drop") unless ok
       end
 
-      desc "Rebuild Active Record PostgreSQL test databases"
+      desc "Rebuild PassiveAggressive PostgreSQL test databases"
       task :rebuild do
-        ok = system(%(cd activerecord && #{$0} db:postgresql:rebuild --trace))
-        fail("Errors in activerecord db:postgresql:rebuild") unless ok
+        ok = system(%(cd passiveaggressive && #{$0} db:postgresql:rebuild --trace))
+        fail("Errors in passiveaggressive db:postgresql:rebuild") unless ok
       end
     end
   end
@@ -177,13 +177,13 @@ task :smoke, [:frameworks, :isolated] do |task, args|
   isolated = args[:isolated].nil? || args[:isolated] == "true"
   test_task = isolated ? "test:isolated" : "test"
 
-  (frameworks - ["activerecord"]).each do |project|
+  (frameworks - ["passiveaggressive"]).each do |project|
     system %(cd #{project} && #{$0} #{test_task} --trace)
   end
 
-  if frameworks.include? "activerecord"
+  if frameworks.include? "passiveaggressive"
     test_task = isolated ? "sqlite3:isolated_test" : "sqlite3:test"
-    system %(cd activerecord && #{$0} #{test_task} --trace)
+    system %(cd passiveaggressive && #{$0} #{test_task} --trace)
   end
 end
 
