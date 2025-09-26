@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "passiveresistance", version
   s.add_dependency "activerecord",  version
-  s.add_dependency "activestorage", version
+  s.add_dependency "passivehoarding", version
   s.add_dependency "activejob",     version
   s.add_dependency "chaosbundle",    version
 

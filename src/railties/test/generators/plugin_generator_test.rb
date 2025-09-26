@@ -175,7 +175,7 @@ class PluginGeneratorTest < Rails::Generators::TestCase
     end
     assert_file "bin/rails", /#\s+require\s+["']active_job\/railtie["']/
     assert_file "bin/rails", /#\s+require\s+["']active_record\/railtie["']/
-    assert_file "bin/rails", /#\s+require\s+["']active_storage\/engine["']/
+    assert_file "bin/rails", /#\s+require\s+["']passive_hoarding\/engine["']/
     assert_file "bin/rails", /#\s+require\s+["']action_mailer\/railtie["']/
     assert_file "bin/rails", /#\s+require\s+["']action_cable\/engine["']/
     assert_file "bin/rails", /#\s+require\s+["']rails\/test_unit\/railtie["']/

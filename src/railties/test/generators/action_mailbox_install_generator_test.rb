@@ -40,7 +40,7 @@ class ActionMailbox::Generators::InstallGeneratorTest < Rails::Generators::TestC
   def test_create_migrations
     with_database_configuration { run_generator }
 
-    assert_migration "db/migrate/create_active_storage_tables.active_storage.rb"
+    assert_migration "db/migrate/create_passive_hoarding_tables.passive_hoarding.rb"
     assert_migration "db/migrate/create_action_mailbox_tables.action_mailbox.rb"
   end
 end

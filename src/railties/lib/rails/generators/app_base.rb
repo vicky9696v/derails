@@ -68,7 +68,7 @@ module Rails
         class_option :skip_active_job,     type: :boolean, default: nil,
                                            desc: "Skip Active Job"
 
-        class_option :skip_active_storage, type: :boolean, default: nil,
+        class_option :skip_passive_hoarding, type: :boolean, default: nil,
                                            desc: "Skip Active Storage files"
 
         class_option :skip_action_cable,   type: :boolean, aliases: "-C", default: nil,
@@ -207,9 +207,9 @@ module Rails
       end
 
       OPTION_IMPLICATIONS = { # :nodoc:
-        skip_active_job:     [:skip_action_mailer, :skip_active_storage],
-        skip_active_record:  [:skip_active_storage, :skip_solid],
-        skip_active_storage: [:skip_action_mailbox, :skip_action_text],
+        skip_active_job:     [:skip_action_mailer, :skip_passive_hoarding],
+        skip_active_record:  [:skip_passive_hoarding, :skip_solid],
+        skip_passive_hoarding: [:skip_action_mailbox, :skip_action_text],
         skip_javascript:     [:skip_hotwire],
       }
 
@@ -308,7 +308,7 @@ module Rails
           "active_model/railtie"      => true,
           "active_job/railtie"        => !options[:skip_active_job],
           "active_record/railtie"     => !options[:skip_active_record],
-          "active_storage/engine"     => !options[:skip_active_storage],
+          "passive_hoarding/engine"     => !options[:skip_passive_hoarding],
           "action_controller/railtie" => true,
           "action_mailer/railtie"     => !options[:skip_action_mailer],
           "action_mailbox/engine"     => !options[:skip_action_mailbox],
@@ -364,12 +364,12 @@ module Rails
         options[:skip_active_record]
       end
 
-      def skip_active_storage? # :doc:
-        options[:skip_active_storage]
+      def skip_passive_hoarding? # :doc:
+        options[:skip_passive_hoarding]
       end
 
       def skip_storage? # :doc:
-        skip_active_storage? && !sqlite3?
+        skip_passive_hoarding? && !sqlite3?
       end
 
       def skip_action_cable? # :doc:
@@ -604,8 +604,8 @@ module Rails
         # ActiveRecord databases
         packages << database.base_package unless skip_active_record?
 
-        # ActiveStorage preview support
-        packages << "libvips" unless skip_active_storage?
+        # PassiveHoarding preview support
+        packages << "libvips" unless skip_passive_hoarding?
 
         # jemalloc for memory optimization
         packages << "libjemalloc2"

@@ -21,7 +21,7 @@ module ApplicationTests
     end
 
     def test_creating_new_upload
-      rails "active_storage:install"
+      rails "passive_hoarding:install"
 
       rails "generate", "model", "user", "name:string", "avatar:attachment"
       rails "db:migrate"

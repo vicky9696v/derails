@@ -36,7 +36,7 @@ module SharedGeneratorTests
     generator([destination_root], ["--skip-active-job"])
 
     assert_option :skip_action_mailer
-    assert_option :skip_active_storage
+    assert_option :skip_passive_hoarding
     assert_option :skip_action_mailbox
     assert_option :skip_action_text
     assert_not_option :skip_active_record
@@ -87,19 +87,19 @@ module SharedGeneratorTests
 
     assert_file "#{application_path}/config/environments/development.rb" do |content|
       assert_match(/config\.action_mailer\.raise_delivery_errors = false/, content)
-      assert_match(/config\.active_storage/, content)
+      assert_match(/config\.passive_hoarding/, content)
     end
     assert_file "#{application_path}/config/environments/test.rb" do |content|
       assert_match(/config\.action_mailer\.delivery_method = :test/, content)
-      assert_match(/config\.active_storage/, content)
+      assert_match(/config\.passive_hoarding/, content)
     end
     assert_file "#{application_path}/config/environments/production.rb" do |content|
       assert_match(/# config\.action_mailer\.raise_delivery_errors = false/, content)
-      assert_match(/config\.active_storage/, content)
+      assert_match(/config\.passive_hoarding/, content)
     end
 
     assert_load_defaults
-    assert_gem_for_active_storage
+    assert_gem_for_passive_hoarding
   end
 
   def test_plugin_new_generate_pretend
@@ -233,7 +233,7 @@ module SharedGeneratorTests
     assert_file "#{application_path}/config/application.rb", /^require\s+["']active_model\/railtie["']/
     assert_file "#{application_path}/config/application.rb", /^require\s+["']active_job\/railtie["']/
     assert_file "#{application_path}/config/application.rb", /^# require\s+["']active_record\/railtie["']/
-    assert_file "#{application_path}/config/application.rb", /^# require\s+["']active_storage\/engine["']/
+    assert_file "#{application_path}/config/application.rb", /^# require\s+["']passive_hoarding\/engine["']/
     assert_file "#{application_path}/config/application.rb", /^require\s+["']action_controller\/railtie["']/
     assert_file "#{application_path}/config/application.rb", /^# require\s+["']action_mailer\/railtie["']/
     unless generator_class.name == "Rails::Generators::PluginGenerator"
@@ -253,7 +253,7 @@ module SharedGeneratorTests
 
     assert_file "#{application_path}/config/application.rb" do |content|
       assert_match(/#\s+require\s+["']active_record\/railtie["']/, content)
-      assert_match(/#\s+require\s+["']active_storage\/engine["']/, content)
+      assert_match(/#\s+require\s+["']passive_hoarding\/engine["']/, content)
       assert_match(/#\s+require\s+["']action_mailbox\/engine["']/, content)
       assert_match(/#\s+require\s+["']action_text\/engine["']/, content)
     end
@@ -266,15 +266,15 @@ module SharedGeneratorTests
     end
 
     assert_file "#{application_path}/config/environments/development.rb" do |content|
-      assert_no_match(/config\.active_storage/, content)
+      assert_no_match(/config\.passive_hoarding/, content)
     end
 
     assert_file "#{application_path}/config/environments/production.rb" do |content|
-      assert_no_match(/config\.active_storage/, content)
+      assert_no_match(/config\.passive_hoarding/, content)
     end
 
     assert_file "#{application_path}/config/environments/test.rb" do |content|
-      assert_no_match(/config\.active_storage/, content)
+      assert_no_match(/config\.passive_hoarding/, content)
     end
 
     assert_no_file "#{application_path}/config/storage.yml"
@@ -287,30 +287,30 @@ module SharedGeneratorTests
     end
   end
 
-  def test_generator_if_skip_active_storage_is_given
+  def test_generator_if_skip_passive_hoarding_is_given
     run_generator [destination_root, "--skip-active-storage"]
 
-    assert_frameworks_are_not_required_when_active_storage_is_skipped
+    assert_frameworks_are_not_required_when_passive_hoarding_is_skipped
 
     assert_file "#{application_path}/config/environments/development.rb" do |content|
-      assert_no_match(/config\.active_storage/, content)
+      assert_no_match(/config\.passive_hoarding/, content)
     end
 
     assert_file "#{application_path}/config/environments/production.rb" do |content|
-      assert_no_match(/config\.active_storage/, content)
+      assert_no_match(/config\.passive_hoarding/, content)
     end
 
     assert_file "#{application_path}/config/environments/test.rb" do |content|
-      assert_no_match(/config\.active_storage/, content)
+      assert_no_match(/config\.passive_hoarding/, content)
     end
 
     assert_no_file "#{application_path}/config/storage.yml"
 
-    assert_gems_when_active_storage_is_skipped
-    assert_dockerfile_when_active_storage_is_skipped
+    assert_gems_when_passive_hoarding_is_skipped
+    assert_dockerfile_when_passive_hoarding_is_skipped
   end
 
-  def test_generator_does_not_create_storage_dir_if_skip_active_storage_is_given_and_not_using_sqlite
+  def test_generator_does_not_create_storage_dir_if_skip_passive_hoarding_is_given_and_not_using_sqlite
     run_generator [destination_root, "--skip-active-storage", "--database=postgresql"]
 
     assert_no_directory "#{application_path}/storage"
@@ -402,17 +402,17 @@ module SharedGeneratorTests
     def assert_load_defaults
     end
 
-    def assert_gem_for_active_storage
+    def assert_gem_for_passive_hoarding
     end
 
-    def assert_frameworks_are_not_required_when_active_storage_is_skipped
-      assert_file "#{application_path}/config/application.rb", /#\s+require\s+["']active_storage\/engine["']/
+    def assert_frameworks_are_not_required_when_passive_hoarding_is_skipped
+      assert_file "#{application_path}/config/application.rb", /#\s+require\s+["']passive_hoarding\/engine["']/
     end
 
-    def assert_gems_when_active_storage_is_skipped
+    def assert_gems_when_passive_hoarding_is_skipped
     end
 
-    def assert_dockerfile_when_active_storage_is_skipped
+    def assert_dockerfile_when_passive_hoarding_is_skipped
     end
 
     def assert_gitattributes_does_not_have_schema_file

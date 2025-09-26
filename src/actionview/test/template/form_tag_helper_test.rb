@@ -7,9 +7,9 @@ class FormTagHelperTest < ActionView::TestCase
 
   tests ActionView::Helpers::FormTagHelper
 
-  class WithActiveStorageRoutesControllers < ActionController::Base
+  class WithPassiveHoardingRoutesControllers < ActionController::Base
     test_routes do
-      post "/rails/active_storage/direct_uploads" => "active_storage/direct_uploads#create", as: :rails_direct_uploads
+      post "/rails/passive_hoarding/direct_uploads" => "passive_hoarding/direct_uploads#create", as: :rails_direct_uploads
     end
 
     def url_options
@@ -419,10 +419,10 @@ class FormTagHelperTest < ActionView::TestCase
   end
 
   def test_file_field_tag_with_direct_upload_when_rails_direct_uploads_url_is_defined
-    @controller = WithActiveStorageRoutesControllers.new
+    @controller = WithPassiveHoardingRoutesControllers.new
 
     assert_dom_equal(
-      "<input name=\"picsplz\" type=\"file\" id=\"picsplz\" class=\"pix\" data-direct-upload-url=\"http://testtwo.host/rails/active_storage/direct_uploads\"/>",
+      "<input name=\"picsplz\" type=\"file\" id=\"picsplz\" class=\"pix\" data-direct-upload-url=\"http://testtwo.host/rails/passive_hoarding/direct_uploads\"/>",
       file_field_tag("picsplz", class: "pix", direct_upload: true)
     )
   end

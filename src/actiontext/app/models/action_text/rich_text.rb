@@ -48,14 +48,14 @@ module ActionText
     ##
     # :method: embeds
     #
-    # Returns the ActiveStorage::Attachment records from the embedded files.
+    # Returns the PassiveHoarding::Attachment records from the embedded files.
     #
-    # Attached ActiveStorage::Blob records are extracted from the `body`
+    # Attached PassiveHoarding::Blob records are extracted from the `body`
     # in a {before_validation}[rdoc-ref:ActiveModel::Validations::Callbacks::ClassMethods#before_validation] callback.
     has_many_attached :embeds
 
     before_validation do
-      self.embeds = body.attachables.grep(ActiveStorage::Blob).uniq if body.present?
+      self.embeds = body.attachables.grep(PassiveHoarding::Blob).uniq if body.present?
     end
 
     # Returns a plain-text version of the markup contained by the `body` attribute,
@@ -82,7 +82,7 @@ module ActionText
     #     # <div class="trix-content">
     #     #   <h1>Funny times!</h1>
     #     #   <figure data-trix-attachment='{\"sgid\":\"..."\}'>
-    #     #      <img src="http://example.org/rails/active_storage/.../funny.jpg">
+    #     #      <img src="http://example.org/rails/passive_hoarding/.../funny.jpg">
     #     #   </figure>
     #     # </div>
     def to_trix_html

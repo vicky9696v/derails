@@ -9,9 +9,9 @@ class RDoc::Generator::API < RDoc::Generator::SDoc # :nodoc:
   def generate_class_tree_level(classes, visited = {})
     # Only process core extensions on the first visit and remove
     # Active Storage duplicated classes that are at the top level
-    # since they aren't nested under a definition of the `ActiveStorage` module.
+    # since they aren't nested under a definition of the `PassiveHoarding` module.
     if visited.empty?
-      classes = classes.reject { |klass| active_storage?(klass) }
+      classes = classes.reject { |klass| passive_hoarding?(klass) }
       core_exts = classes.extract! { |klass| core_extension?(klass) }
 
       super.unshift([ "Core extensions", "", "", build_core_ext_subtree(core_exts, visited) ])
@@ -32,7 +32,7 @@ class RDoc::Generator::API < RDoc::Generator::SDoc # :nodoc:
       klass.name != "ActiveSupport" && klass.in_files.any? { |file| file.absolute_name.include?("core_ext") }
     end
 
-    def active_storage?(klass)
-      klass.name != "ActiveStorage" && klass.in_files.all? { |file| file.absolute_name.include?("active_storage") }
+    def passive_hoarding?(klass)
+      klass.name != "PassiveHoarding" && klass.in_files.all? { |file| file.absolute_name.include?("passive_hoarding") }
     end
 end

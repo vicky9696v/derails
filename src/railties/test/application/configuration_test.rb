@@ -3732,70 +3732,70 @@ module ApplicationTests
       assert_equal true, ActiveSupport.utc_to_local_returns_utc_offset_times
     end
 
-    test "ActiveStorage.queues[:analysis] is :active_storage_analysis by default in 6.0" do
+    test "PassiveHoarding.queues[:analysis] is :passive_hoarding_analysis by default in 6.0" do
       remove_from_config '.*config\.load_defaults.*\n'
       add_to_config 'config.load_defaults "6.0"'
 
       app "development"
 
-      assert_equal :active_storage_analysis, ActiveStorage.queues[:analysis]
+      assert_equal :passive_hoarding_analysis, PassiveHoarding.queues[:analysis]
     end
 
-    test "ActiveStorage.queues[:analysis] is nil by default in 6.1" do
+    test "PassiveHoarding.queues[:analysis] is nil by default in 6.1" do
       remove_from_config '.*config\.load_defaults.*\n'
       add_to_config 'config.load_defaults "6.1"'
 
       app "development"
 
-      assert_nil ActiveStorage.queues[:analysis]
+      assert_nil PassiveHoarding.queues[:analysis]
     end
 
-    test "ActiveStorage.queues[:analysis] is nil without Rails 6 defaults" do
+    test "PassiveHoarding.queues[:analysis] is nil without Rails 6 defaults" do
       remove_from_config '.*config\.load_defaults.*\n'
 
       app "development"
 
-      assert_nil ActiveStorage.queues[:analysis]
+      assert_nil PassiveHoarding.queues[:analysis]
     end
 
-    test "ActiveStorage.queues[:purge] is :active_storage_purge by default in 6.0" do
+    test "PassiveHoarding.queues[:purge] is :passive_hoarding_purge by default in 6.0" do
       remove_from_config '.*config\.load_defaults.*\n'
       add_to_config 'config.load_defaults "6.0"'
 
       app "development"
 
-      assert_equal :active_storage_purge, ActiveStorage.queues[:purge]
+      assert_equal :passive_hoarding_purge, PassiveHoarding.queues[:purge]
     end
 
-    test "ActiveStorage.queues[:purge] is nil by default in 6.1" do
+    test "PassiveHoarding.queues[:purge] is nil by default in 6.1" do
       remove_from_config '.*config\.load_defaults.*\n'
       add_to_config 'config.load_defaults "6.1"'
 
       app "development"
 
-      assert_nil ActiveStorage.queues[:purge]
+      assert_nil PassiveHoarding.queues[:purge]
     end
 
-    test "ActiveStorage.queues[:purge] is nil without Rails 6 defaults" do
+    test "PassiveHoarding.queues[:purge] is nil without Rails 6 defaults" do
       remove_from_config '.*config\.load_defaults.*\n'
 
       app "development"
 
-      assert_nil ActiveStorage.queues[:purge]
+      assert_nil PassiveHoarding.queues[:purge]
     end
 
-    test "ActiveStorage.queues[:mirror] is nil without Rails 6 defaults" do
+    test "PassiveHoarding.queues[:mirror] is nil without Rails 6 defaults" do
       remove_from_config '.*config\.load_defaults.*\n'
 
       app "development"
 
-      assert_nil ActiveStorage.queues[:mirror]
+      assert_nil PassiveHoarding.queues[:mirror]
     end
 
-    test "ActiveStorage.queues[:mirror] is nil by default" do
+    test "PassiveHoarding.queues[:mirror] is nil by default" do
       app "development"
 
-      assert_nil ActiveStorage.queues[:mirror]
+      assert_nil PassiveHoarding.queues[:mirror]
     end
 
     test "ActionCable.server.config.cable is set when missing configuration for the current environment" do
@@ -3932,7 +3932,7 @@ module ApplicationTests
 
     test "ActionMailbox.storage_service can be configured" do
       add_to_config <<-RUBY
-        config.active_storage.service_configurations = {
+        config.passive_hoarding.service_configurations = {
           email: {
             root: "#{Dir.tmpdir}/email",
             service: "Disk"
@@ -4088,63 +4088,63 @@ module ApplicationTests
       assert_equal "dummy_key", Post.attribute_types["content"].scheme.key_provider.primary_key
     end
 
-    test "ActiveStorage.routes_prefix can be configured via config.active_storage.routes_prefix" do
+    test "PassiveHoarding.routes_prefix can be configured via config.passive_hoarding.routes_prefix" do
       app_file "config/environments/development.rb", <<-RUBY
         Rails.application.configure do
-          config.active_storage.routes_prefix = '/files'
+          config.passive_hoarding.routes_prefix = '/files'
         end
       RUBY
 
-      output = rails("routes", "-g", "active_storage")
+      output = rails("routes", "-g", "passive_hoarding")
       assert_equal <<~MESSAGE, output
                                Prefix Verb URI Pattern                                                                        Controller#Action
-                   rails_service_blob GET  /files/blobs/redirect/:signed_id/*filename(.:format)                               active_storage/blobs/redirect#show
-             rails_service_blob_proxy GET  /files/blobs/proxy/:signed_id/*filename(.:format)                                  active_storage/blobs/proxy#show
-                                      GET  /files/blobs/:signed_id/*filename(.:format)                                        active_storage/blobs/redirect#show
-            rails_blob_representation GET  /files/representations/redirect/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations/redirect#show
-      rails_blob_representation_proxy GET  /files/representations/proxy/:signed_blob_id/:variation_key/*filename(.:format)    active_storage/representations/proxy#show
-                                      GET  /files/representations/:signed_blob_id/:variation_key/*filename(.:format)          active_storage/representations/redirect#show
-                   rails_disk_service GET  /files/disk/:encoded_key/*filename(.:format)                                       active_storage/disk#show
-            update_rails_disk_service PUT  /files/disk/:encoded_token(.:format)                                               active_storage/disk#update
-                 rails_direct_uploads POST /files/direct_uploads(.:format)                                                    active_storage/direct_uploads#create
+                   rails_service_blob GET  /files/blobs/redirect/:signed_id/*filename(.:format)                               passive_hoarding/blobs/redirect#show
+             rails_service_blob_proxy GET  /files/blobs/proxy/:signed_id/*filename(.:format)                                  passive_hoarding/blobs/proxy#show
+                                      GET  /files/blobs/:signed_id/*filename(.:format)                                        passive_hoarding/blobs/redirect#show
+            rails_blob_representation GET  /files/representations/redirect/:signed_blob_id/:variation_key/*filename(.:format) passive_hoarding/representations/redirect#show
+      rails_blob_representation_proxy GET  /files/representations/proxy/:signed_blob_id/:variation_key/*filename(.:format)    passive_hoarding/representations/proxy#show
+                                      GET  /files/representations/:signed_blob_id/:variation_key/*filename(.:format)          passive_hoarding/representations/redirect#show
+                   rails_disk_service GET  /files/disk/:encoded_key/*filename(.:format)                                       passive_hoarding/disk#show
+            update_rails_disk_service PUT  /files/disk/:encoded_token(.:format)                                               passive_hoarding/disk#update
+                 rails_direct_uploads POST /files/direct_uploads(.:format)                                                    passive_hoarding/direct_uploads#create
       MESSAGE
     end
 
-    test "ActiveStorage.analyzers default value" do
+    test "PassiveHoarding.analyzers default value" do
       app "development"
 
       assert_equal [
-        ActiveStorage::Analyzer::ImageAnalyzer::Vips,
-        ActiveStorage::Analyzer::ImageAnalyzer::ImageMagick,
-        ActiveStorage::Analyzer::VideoAnalyzer,
-        ActiveStorage::Analyzer::AudioAnalyzer
-      ], ActiveStorage.analyzers
+        PassiveHoarding::Analyzer::ImageAnalyzer::Vips,
+        PassiveHoarding::Analyzer::ImageAnalyzer::ImageMagick,
+        PassiveHoarding::Analyzer::VideoAnalyzer,
+        PassiveHoarding::Analyzer::AudioAnalyzer
+      ], PassiveHoarding.analyzers
     end
 
-    test "ActiveStorage.analyzers can be configured to be an empty array" do
+    test "PassiveHoarding.analyzers can be configured to be an empty array" do
       add_to_config <<-RUBY
-        config.active_storage.analyzers = []
+        config.passive_hoarding.analyzers = []
       RUBY
 
       app "development"
 
-      assert_empty ActiveStorage.analyzers
+      assert_empty PassiveHoarding.analyzers
     end
 
-    test "ActiveStorage.analyzers can be configured to custom analyzers" do
+    test "PassiveHoarding.analyzers can be configured to custom analyzers" do
       add_to_config <<-RUBY
-        config.active_storage.analyzers = [ ActiveStorage::Analyzer::ImageAnalyzer::Vips ]
+        config.passive_hoarding.analyzers = [ PassiveHoarding::Analyzer::ImageAnalyzer::Vips ]
       RUBY
 
       app "development"
 
-      assert_equal [ ActiveStorage::Analyzer::ImageAnalyzer::Vips ], ActiveStorage.analyzers
+      assert_equal [ PassiveHoarding::Analyzer::ImageAnalyzer::Vips ], PassiveHoarding.analyzers
     end
 
-    test "ActiveStorage.draw_routes can be configured via config.active_storage.draw_routes" do
+    test "PassiveHoarding.draw_routes can be configured via config.passive_hoarding.draw_routes" do
       app_file "config/environments/development.rb", <<-RUBY
         Rails.application.configure do
-          config.active_storage.draw_routes = false
+          config.passive_hoarding.draw_routes = false
         end
       RUBY
 
@@ -4156,63 +4156,63 @@ module ApplicationTests
       assert_not_includes(output, "rails_direct_uploads")
     end
 
-    test "ActiveStorage.video_preview_arguments uses the old arguments without Rails 7 defaults" do
+    test "PassiveHoarding.video_preview_arguments uses the old arguments without Rails 7 defaults" do
       remove_from_config '.*config\.load_defaults.*\n'
 
       app "development"
 
       assert_equal "-y -vframes 1 -f image2",
-        ActiveStorage.video_preview_arguments
+        PassiveHoarding.video_preview_arguments
     end
 
-    test "ActiveStorage.video_preview_arguments uses the new arguments by default" do
+    test "PassiveHoarding.video_preview_arguments uses the new arguments by default" do
       app "development"
 
       assert_equal \
         "-vf 'select=eq(n\\,0)+eq(key\\,1)+gt(scene\\,0.015),loop=loop=-1:size=2,trim=start_frame=1' -frames:v 1 -f image2",
-        ActiveStorage.video_preview_arguments
+        PassiveHoarding.video_preview_arguments
     end
 
-    test "ActiveStorage.variant_processor uses mini_magick without Rails 7 defaults" do
+    test "PassiveHoarding.variant_processor uses mini_magick without Rails 7 defaults" do
       remove_from_config '.*config\.load_defaults.*\n'
 
       app "development"
 
-      assert_equal :mini_magick, ActiveStorage.variant_processor
+      assert_equal :mini_magick, PassiveHoarding.variant_processor
     end
 
-    test "ActiveStorage.variant_processor uses vips by default" do
+    test "PassiveHoarding.variant_processor uses vips by default" do
       app "development"
 
-      assert_equal :vips, ActiveStorage.variant_processor
+      assert_equal :vips, PassiveHoarding.variant_processor
     end
 
-    test "ActiveStorage.analyzers doesn't contain nil when variant_processor = nil" do
-      add_to_config "config.active_storage.variant_processor = nil"
+    test "PassiveHoarding.analyzers doesn't contain nil when variant_processor = nil" do
+      add_to_config "config.passive_hoarding.variant_processor = nil"
 
       app "development"
 
-      assert_not_includes ActiveStorage.analyzers, nil
+      assert_not_includes PassiveHoarding.analyzers, nil
     end
 
-    test "ActiveStorage.supported_image_processing_methods can be configured via config.active_storage.supported_image_processing_methods" do
+    test "PassiveHoarding.supported_image_processing_methods can be configured via config.passive_hoarding.supported_image_processing_methods" do
       remove_from_config '.*config\.load_defaults.*\n'
 
       app_file "config/initializers/add_image_processing_methods.rb", <<-RUBY
-        Rails.application.config.active_storage.supported_image_processing_methods = ["write", "set"]
+        Rails.application.config.passive_hoarding.supported_image_processing_methods = ["write", "set"]
       RUBY
 
       app "development"
 
-      assert ActiveStorage.supported_image_processing_methods.include?("write")
-      assert ActiveStorage.supported_image_processing_methods.include?("set")
+      assert PassiveHoarding.supported_image_processing_methods.include?("write")
+      assert PassiveHoarding.supported_image_processing_methods.include?("set")
     end
 
-    test "ActiveStorage.unsupported_image_processing_arguments can be configured via config.active_storage.unsupported_image_processing_arguments" do
+    test "PassiveHoarding.unsupported_image_processing_arguments can be configured via config.passive_hoarding.unsupported_image_processing_arguments" do
       remove_from_config '.*config\.load_defaults.*\n'
 
       app_file "config/initializers/add_image_processing_arguments.rb", <<-RUBY
-      Rails.application.config.active_storage.unsupported_image_processing_arguments = %w(
+      Rails.application.config.passive_hoarding.unsupported_image_processing_arguments = %w(
         -write
         -danger
       )
@@ -4220,8 +4220,8 @@ module ApplicationTests
 
       app "development"
 
-      assert ActiveStorage.unsupported_image_processing_arguments.include?("-danger")
-      assert_not ActiveStorage.unsupported_image_processing_arguments.include?("-set")
+      assert PassiveHoarding.unsupported_image_processing_arguments.include?("-danger")
+      assert_not PassiveHoarding.unsupported_image_processing_arguments.include?("-set")
     end
 
     test "hosts include .localhost in development" do
@@ -4484,7 +4484,7 @@ module ApplicationTests
       assert_equal ActiveJob.deprecator, Rails.application.deprecators[:active_job]
       assert_equal ActiveModel.deprecator, Rails.application.deprecators[:active_model]
       assert_equal ActiveRecord.deprecator, Rails.application.deprecators[:active_record]
-      assert_equal ActiveStorage.deprecator, Rails.application.deprecators[:active_storage]
+      assert_equal PassiveHoarding.deprecator, Rails.application.deprecators[:passive_hoarding]
       assert_equal ActiveSupport.deprecator, Rails.application.deprecators[:active_support]
       assert_equal Rails.deprecator, Rails.application.deprecators[:railties]
     end

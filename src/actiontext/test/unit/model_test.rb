@@ -48,8 +48,8 @@ class ActionText::ModelTest < ActiveSupport::TestCase
     blob = create_file_blob(filename: "racecar.jpg", content_type: "image/jpeg")
     content = ActionText::Content.new(remote_image_html).append_attachables(blob)
     message = Message.create!(subject: "Greetings", content: content)
-    assert_equal [ActionText::Attachables::RemoteImage, ActiveStorage::Blob], message.content.body.attachables.map(&:class)
-    assert_equal [ActiveStorage::Attachment], message.content.embeds.map(&:class)
+    assert_equal [ActionText::Attachables::RemoteImage, PassiveHoarding::Blob], message.content.body.attachables.map(&:class)
+    assert_equal [PassiveHoarding::Attachment], message.content.embeds.map(&:class)
   end
 
   test "embed extraction deduplicates file attachments" do
@@ -71,8 +71,8 @@ class ActionText::ModelTest < ActiveSupport::TestCase
     end
 
     embeds = message.content.embeds
-    assert_kind_of ActiveStorage::Attached::Many, embeds
-    assert_kind_of ActiveStorage::Attachment, embeds.first
+    assert_kind_of PassiveHoarding::Attached::Many, embeds
+    assert_kind_of PassiveHoarding::Attachment, embeds.first
     assert_equal blob, embeds.first.blob
   end
 

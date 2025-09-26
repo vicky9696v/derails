@@ -76,12 +76,12 @@ module Rails
           )
         },
 
-        "activestorage" => {
+        "passivehoarding" => {
           include: %w(
             README.md
-            app/**/active_storage/**/*.rb
-            lib/active_storage.rb
-            lib/active_storage/**/*.rb
+            app/**/passive_hoarding/**/*.rb
+            lib/passive_hoarding.rb
+            lib/passive_hoarding/**/*.rb
           )
         },
 

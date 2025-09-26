@@ -136,7 +136,7 @@ class LoadingTest < ActiveSupport::TestCase
     setup_ar!
 
     initial = [
-      ActiveStorage::Record, ActiveStorage::Blob, ActiveStorage::Attachment, ApplicationRecord
+      PassiveHoarding::Record, PassiveHoarding::Blob, PassiveHoarding::Attachment, ApplicationRecord
     ].collect(&:to_s).sort
 
     assert_equal initial, ActiveRecord::Base.descendants.collect(&:to_s).sort.uniq

@@ -58,10 +58,10 @@ module ActionText
 
     # Extracts ActionText::Attachment objects from the HTML fragment:
     #
-    #     attachable = ActiveStorage::Blob.first
+    #     attachable = PassiveHoarding::Blob.first
     #     html = %Q(<action-text-attachment sgid="#{attachable.attachable_sgid}" caption="Captioned"></action-text-attachment>)
     #     content = ActionText::Content.new(html)
-    #     content.attachments # => [#<ActionText::Attachment attachable=#<ActiveStorage::Blob...
+    #     content.attachments # => [#<ActionText::Attachment attachable=#<PassiveHoarding::Blob...
     def attachments
       @attachments ||= attachment_nodes.map do |node|
         attachment_for_node(node)
@@ -80,7 +80,7 @@ module ActionText
 
     # Extracts ActionText::Attachable objects from the HTML fragment:
     #
-    #     attachable = ActiveStorage::Blob.first
+    #     attachable = PassiveHoarding::Blob.first
     #     html = %Q(<action-text-attachment sgid="#{attachable.attachable_sgid}" caption="Captioned"></action-text-attachment>)
     #     content = ActionText::Content.new(html)
     #     content.attachables # => [attachable]

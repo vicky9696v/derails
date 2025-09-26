@@ -11,12 +11,12 @@ class ActionText::RichTextEditorTest < ApplicationSystemTestCase
       click_button "Attach Files"
     end
     within :rich_text_area do
-      assert_selector :element, "img", src: %r{/rails/active_storage/blobs/redirect/.*/#{image_file.basename}\Z}
+      assert_selector :element, "img", src: %r{/rails/passive_hoarding/blobs/redirect/.*/#{image_file.basename}\Z}
     end
     click_button "Create Message"
 
     within class: "trix-content" do
-      assert_selector :element, "img", src: %r{/rails/active_storage/representations/redirect/.*/#{image_file.basename}\Z}
+      assert_selector :element, "img", src: %r{/rails/passive_hoarding/representations/redirect/.*/#{image_file.basename}\Z}
     end
   end
 end

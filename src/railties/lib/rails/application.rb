@@ -221,7 +221,7 @@ module Rails
     # It is recommended not to use the same verifier for different things, so you can get different
     # verifiers passing the +verifier_name+ argument.
     #
-    # For instance, +ActiveStorage::Blob.signed_id_verifier+ is implemented using this feature, which assures that
+    # For instance, +PassiveHoarding::Blob.signed_id_verifier+ is implemented using this feature, which assures that
     # the IDs strings haven't been tampered with and are safe to use in a finder.
     #
     # See the ActiveSupport::MessageVerifier documentation for more information.

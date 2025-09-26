@@ -174,9 +174,9 @@ module Rails
             action_mailer.delivery_job = "ActionMailer::MailDeliveryJob"
           end
 
-          if respond_to?(:active_storage)
-            active_storage.queues.analysis = :active_storage_analysis
-            active_storage.queues.purge    = :active_storage_purge
+          if respond_to?(:passive_hoarding)
+            passive_hoarding.queues.analysis = :passive_hoarding_analysis
+            passive_hoarding.queues.purge    = :passive_hoarding_purge
           end
 
           if respond_to?(:active_record)
@@ -203,11 +203,11 @@ module Rails
             action_view.preload_links_header = true
           end
 
-          if respond_to?(:active_storage)
-            active_storage.track_variants = true
+          if respond_to?(:passive_hoarding)
+            passive_hoarding.track_variants = true
 
-            active_storage.queues.analysis = nil
-            active_storage.queues.purge = nil
+            passive_hoarding.queues.analysis = nil
+            passive_hoarding.queues.purge = nil
           end
 
           if respond_to?(:action_mailbox)
@@ -251,13 +251,13 @@ module Rails
             action_mailer.smtp_timeout = 5
           end
 
-          if respond_to?(:active_storage)
-            active_storage.video_preview_arguments =
+          if respond_to?(:passive_hoarding)
+            passive_hoarding.video_preview_arguments =
               "-vf 'select=eq(n\\,0)+eq(key\\,1)+gt(scene\\,0.015),loop=loop=-1:size=2,trim=start_frame=1'" \
               " -frames:v 1 -f image2"
 
-            active_storage.variant_processor = :vips
-            active_storage.multiple_file_field_include_hidden = true
+            passive_hoarding.variant_processor = :vips
+            passive_hoarding.multiple_file_field_include_hidden = true
           end
 
           if respond_to?(:active_record)
@@ -328,8 +328,8 @@ module Rails
 
           self.yjit = true
 
-          if respond_to?(:active_storage)
-            active_storage.web_image_content_types = %w( image/png image/jpeg image/gif image/webp )
+          if respond_to?(:passive_hoarding)
+            passive_hoarding.web_image_content_types = %w( image/png image/jpeg image/gif image/webp )
           end
 
           if respond_to?(:active_record)

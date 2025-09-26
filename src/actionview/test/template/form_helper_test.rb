@@ -10,9 +10,9 @@ class FormHelperTest < ActionView::TestCase
 
   tests ActionView::Helpers::FormHelper
 
-  class WithActiveStorageRoutesControllers < ActionController::Base
+  class WithPassiveHoardingRoutesControllers < ActionController::Base
     test_routes do
-      post "/rails/active_storage/direct_uploads" => "active_storage/direct_uploads#create", as: :rails_direct_uploads
+      post "/rails/passive_hoarding/direct_uploads" => "passive_hoarding/direct_uploads#create", as: :rails_direct_uploads
     end
 
     def url_options
@@ -613,9 +613,9 @@ class FormHelperTest < ActionView::TestCase
   end
 
   def test_file_field_with_direct_upload_when_rails_direct_uploads_url_is_defined
-    @controller = WithActiveStorageRoutesControllers.new
+    @controller = WithPassiveHoardingRoutesControllers.new
 
-    expected = '<input data-direct-upload-url="http://testtwo.host/rails/active_storage/direct_uploads" type="file" name="import[file]" id="import_file" />'
+    expected = '<input data-direct-upload-url="http://testtwo.host/rails/passive_hoarding/direct_uploads" type="file" name="import[file]" id="import_file" />'
     assert_dom_equal expected, file_field("import", "file", direct_upload: true)
   end
 

@@ -40,15 +40,15 @@ module ActionText
 
         gem_root = "#{__dir__}/../../../.."
 
-        copy_file "#{gem_root}/app/views/active_storage/blobs/_blob.html.erb",
-          "app/views/active_storage/blobs/_blob.html.erb"
+        copy_file "#{gem_root}/app/views/passive_hoarding/blobs/_blob.html.erb",
+          "app/views/passive_hoarding/blobs/_blob.html.erb"
 
         copy_file "#{gem_root}/app/views/layouts/action_text/contents/_content.html.erb",
           "app/views/layouts/action_text/contents/_content.html.erb"
       end
 
       def create_migrations
-        rails_command "railties:install:migrations FROM=active_storage,action_text", inline: true
+        rails_command "railties:install:migrations FROM=passive_hoarding,action_text", inline: true
       end
 
       def using_js_runtime?

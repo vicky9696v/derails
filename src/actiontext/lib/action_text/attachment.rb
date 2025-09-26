@@ -84,7 +84,7 @@ module ActionText
 
     # Converts the attachment to plain text.
     #
-    #     attachable = ActiveStorage::Blob.find_by filename: "racecar.jpg"
+    #     attachable = PassiveHoarding::Blob.find_by filename: "racecar.jpg"
     #     attachment = ActionText::Attachment.from_attachable(attachable)
     #     attachment.to_plain_text # => "[racecar.jpg]"
     #

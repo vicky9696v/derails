@@ -485,7 +485,7 @@ module TestHelpers
     end
 
     def use_frameworks(arr)
-      to_remove = [:actionmailer, :activerecord, :activestorage, :activejob, :actionmailbox] - arr
+      to_remove = [:actionmailer, :activerecord, :passivehoarding, :activejob, :actionmailbox] - arr
 
       if to_remove.include?(:activerecord)
         remove_from_config "config.active_record.*"
@@ -647,7 +647,7 @@ Module.new do
   require "action_controller"
   require "action_mailer"
   require "action_view"
-  require "active_storage"
+  require "passive_hoarding"
   require "action_cable"
   require "action_mailbox"
   require "action_text"

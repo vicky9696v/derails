@@ -5,7 +5,7 @@ require "test_helper"
 class ActionText::AttachableTest < ActiveSupport::TestCase
   test "as_json is a hash when the attachable is persisted" do
     freeze_time do
-      attachable = ActiveStorage::Blob.create_after_unfurling!(io: StringIO.new("test"), filename: "test.txt", key: 123)
+      attachable = PassiveHoarding::Blob.create_after_unfurling!(io: StringIO.new("test"), filename: "test.txt", key: 123)
       attributes = {
         id: attachable.id,
         key: "123",
@@ -24,7 +24,7 @@ class ActionText::AttachableTest < ActiveSupport::TestCase
   end
 
   test "as_json is a hash when the attachable is a new record" do
-    attachable = ActiveStorage::Blob.build_after_unfurling(io: StringIO.new("test"), filename: "test.txt", key: 123)
+    attachable = PassiveHoarding::Blob.build_after_unfurling(io: StringIO.new("test"), filename: "test.txt", key: 123)
     attributes = {
       id: nil,
       key: "123",
@@ -42,7 +42,7 @@ class ActionText::AttachableTest < ActiveSupport::TestCase
   end
 
   test "attachable_sgid is included in as_json when only option is nil or includes attachable_sgid" do
-    attachable = ActiveStorage::Blob.create_after_unfurling!(io: StringIO.new("test"), filename: "test.txt", key: 123)
+    attachable = PassiveHoarding::Blob.create_after_unfurling!(io: StringIO.new("test"), filename: "test.txt", key: 123)
 
     assert_equal({ "id" => attachable.id }, attachable.as_json(only: :id))
     assert_equal({ "id" => attachable.id }, attachable.as_json(only: [:id]))

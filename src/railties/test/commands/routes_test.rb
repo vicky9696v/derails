@@ -53,13 +53,13 @@ class Rails::Command::RoutesTest < ActiveSupport::TestCase
                          Prefix Verb URI Pattern                                                                                       Controller#Action
                            cart GET  /cart(.:format)                                                                                   cart#show
   rails_conductor_inbound_email GET  /rails/conductor/action_mailbox/inbound_emails/:id(.:format)                                      rails/conductor/action_mailbox/inbound_emails#show
-             rails_service_blob GET  /rails/active_storage/blobs/redirect/:signed_id/*filename(.:format)                               active_storage/blobs/redirect#show
-       rails_service_blob_proxy GET  /rails/active_storage/blobs/proxy/:signed_id/*filename(.:format)                                  active_storage/blobs/proxy#show
-                                GET  /rails/active_storage/blobs/:signed_id/*filename(.:format)                                        active_storage/blobs/redirect#show
-      rails_blob_representation GET  /rails/active_storage/representations/redirect/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations/redirect#show
-rails_blob_representation_proxy GET  /rails/active_storage/representations/proxy/:signed_blob_id/:variation_key/*filename(.:format)    active_storage/representations/proxy#show
-                                GET  /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format)          active_storage/representations/redirect#show
-             rails_disk_service GET  /rails/active_storage/disk/:encoded_key/*filename(.:format)                                       active_storage/disk#show
+             rails_service_blob GET  /rails/passive_hoarding/blobs/redirect/:signed_id/*filename(.:format)                               passive_hoarding/blobs/redirect#show
+       rails_service_blob_proxy GET  /rails/passive_hoarding/blobs/proxy/:signed_id/*filename(.:format)                                  passive_hoarding/blobs/proxy#show
+                                GET  /rails/passive_hoarding/blobs/:signed_id/*filename(.:format)                                        passive_hoarding/blobs/redirect#show
+      rails_blob_representation GET  /rails/passive_hoarding/representations/redirect/:signed_blob_id/:variation_key/*filename(.:format) passive_hoarding/representations/redirect#show
+rails_blob_representation_proxy GET  /rails/passive_hoarding/representations/proxy/:signed_blob_id/:variation_key/*filename(.:format)    passive_hoarding/representations/proxy#show
+                                GET  /rails/passive_hoarding/representations/:signed_blob_id/:variation_key/*filename(.:format)          passive_hoarding/representations/redirect#show
+             rails_disk_service GET  /rails/passive_hoarding/disk/:encoded_key/*filename(.:format)                                       passive_hoarding/disk#show
     MESSAGE
 
     assert_equal <<~MESSAGE, run_routes_command([ "-g", "POST" ])
@@ -74,7 +74,7 @@ rails_blob_representation_proxy GET  /rails/active_storage/representations/proxy
       rails_conductor_inbound_email_sources POST /rails/conductor/action_mailbox/inbound_emails/sources(.:format)       rails/conductor/action_mailbox/inbound_emails/sources#create
       rails_conductor_inbound_email_reroute POST /rails/conductor/action_mailbox/:inbound_email_id/reroute(.:format)    rails/conductor/action_mailbox/reroutes#create
    rails_conductor_inbound_email_incinerate POST /rails/conductor/action_mailbox/:inbound_email_id/incinerate(.:format) rails/conductor/action_mailbox/incinerates#create
-                       rails_direct_uploads POST /rails/active_storage/direct_uploads(.:format)                         active_storage/direct_uploads#create
+                       rails_direct_uploads POST /rails/passive_hoarding/direct_uploads(.:format)                         passive_hoarding/direct_uploads#create
     MESSAGE
 
     assert_equal <<~MESSAGE, run_routes_command([ "-g", "basketballs" ])
@@ -219,15 +219,15 @@ new_rails_conductor_inbound_email_source GET  /rails/conductor/action_mailbox/in
    rails_conductor_inbound_email_sources POST /rails/conductor/action_mailbox/inbound_emails/sources(.:format)                                  rails/conductor/action_mailbox/inbound_emails/sources#create
    rails_conductor_inbound_email_reroute POST /rails/conductor/action_mailbox/:inbound_email_id/reroute(.:format)                               rails/conductor/action_mailbox/reroutes#create
 rails_conductor_inbound_email_incinerate POST /rails/conductor/action_mailbox/:inbound_email_id/incinerate(.:format)                            rails/conductor/action_mailbox/incinerates#create
-                      rails_service_blob GET  /rails/active_storage/blobs/redirect/:signed_id/*filename(.:format)                               active_storage/blobs/redirect#show
-                rails_service_blob_proxy GET  /rails/active_storage/blobs/proxy/:signed_id/*filename(.:format)                                  active_storage/blobs/proxy#show
-                                         GET  /rails/active_storage/blobs/:signed_id/*filename(.:format)                                        active_storage/blobs/redirect#show
-               rails_blob_representation GET  /rails/active_storage/representations/redirect/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations/redirect#show
-         rails_blob_representation_proxy GET  /rails/active_storage/representations/proxy/:signed_blob_id/:variation_key/*filename(.:format)    active_storage/representations/proxy#show
-                                         GET  /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format)          active_storage/representations/redirect#show
-                      rails_disk_service GET  /rails/active_storage/disk/:encoded_key/*filename(.:format)                                       active_storage/disk#show
-               update_rails_disk_service PUT  /rails/active_storage/disk/:encoded_token(.:format)                                               active_storage/disk#update
-                    rails_direct_uploads POST /rails/active_storage/direct_uploads(.:format)                                                    active_storage/direct_uploads#create
+                      rails_service_blob GET  /rails/passive_hoarding/blobs/redirect/:signed_id/*filename(.:format)                               passive_hoarding/blobs/redirect#show
+                rails_service_blob_proxy GET  /rails/passive_hoarding/blobs/proxy/:signed_id/*filename(.:format)                                  passive_hoarding/blobs/proxy#show
+                                         GET  /rails/passive_hoarding/blobs/:signed_id/*filename(.:format)                                        passive_hoarding/blobs/redirect#show
+               rails_blob_representation GET  /rails/passive_hoarding/representations/redirect/:signed_blob_id/:variation_key/*filename(.:format) passive_hoarding/representations/redirect#show
+         rails_blob_representation_proxy GET  /rails/passive_hoarding/representations/proxy/:signed_blob_id/:variation_key/*filename(.:format)    passive_hoarding/representations/proxy#show
+                                         GET  /rails/passive_hoarding/representations/:signed_blob_id/:variation_key/*filename(.:format)          passive_hoarding/representations/redirect#show
+                      rails_disk_service GET  /rails/passive_hoarding/disk/:encoded_key/*filename(.:format)                                       passive_hoarding/disk#show
+               update_rails_disk_service PUT  /rails/passive_hoarding/disk/:encoded_token(.:format)                                               passive_hoarding/disk#update
+                    rails_direct_uploads POST /rails/passive_hoarding/direct_uploads(.:format)                                                    passive_hoarding/direct_uploads#create
     MESSAGE
   end
 
@@ -342,57 +342,57 @@ rails_conductor_inbound_email_incinerate POST /rails/conductor/action_mailbox/:i
       --[ Route 16 ]-------------
       Prefix            | rails_service_blob
       Verb              | GET
-      URI               | /rails/active_storage/blobs/redirect/:signed_id/*filename(.:format)
-      Controller#Action | active_storage/blobs/redirect#show
-      Source Location   | #{rails_gem_root}/activestorage/config/routes.rb:XX
+      URI               | /rails/passive_hoarding/blobs/redirect/:signed_id/*filename(.:format)
+      Controller#Action | passive_hoarding/blobs/redirect#show
+      Source Location   | #{rails_gem_root}/passivehoarding/config/routes.rb:XX
       --[ Route 17 ]-------------
       Prefix            | rails_service_blob_proxy
       Verb              | GET
-      URI               | /rails/active_storage/blobs/proxy/:signed_id/*filename(.:format)
-      Controller#Action | active_storage/blobs/proxy#show
-      Source Location   | #{rails_gem_root}/activestorage/config/routes.rb:XX
+      URI               | /rails/passive_hoarding/blobs/proxy/:signed_id/*filename(.:format)
+      Controller#Action | passive_hoarding/blobs/proxy#show
+      Source Location   | #{rails_gem_root}/passivehoarding/config/routes.rb:XX
       --[ Route 18 ]-------------
       Prefix            |#{" "}
       Verb              | GET
-      URI               | /rails/active_storage/blobs/:signed_id/*filename(.:format)
-      Controller#Action | active_storage/blobs/redirect#show
-      Source Location   | #{rails_gem_root}/activestorage/config/routes.rb:XX
+      URI               | /rails/passive_hoarding/blobs/:signed_id/*filename(.:format)
+      Controller#Action | passive_hoarding/blobs/redirect#show
+      Source Location   | #{rails_gem_root}/passivehoarding/config/routes.rb:XX
       --[ Route 19 ]-------------
       Prefix            | rails_blob_representation
       Verb              | GET
-      URI               | /rails/active_storage/representations/redirect/:signed_blob_id/:variation_key/*filename(.:format)
-      Controller#Action | active_storage/representations/redirect#show
-      Source Location   | #{rails_gem_root}/activestorage/config/routes.rb:XX
+      URI               | /rails/passive_hoarding/representations/redirect/:signed_blob_id/:variation_key/*filename(.:format)
+      Controller#Action | passive_hoarding/representations/redirect#show
+      Source Location   | #{rails_gem_root}/passivehoarding/config/routes.rb:XX
       --[ Route 20 ]-------------
       Prefix            | rails_blob_representation_proxy
       Verb              | GET
-      URI               | /rails/active_storage/representations/proxy/:signed_blob_id/:variation_key/*filename(.:format)
-      Controller#Action | active_storage/representations/proxy#show
-      Source Location   | #{rails_gem_root}/activestorage/config/routes.rb:XX
+      URI               | /rails/passive_hoarding/representations/proxy/:signed_blob_id/:variation_key/*filename(.:format)
+      Controller#Action | passive_hoarding/representations/proxy#show
+      Source Location   | #{rails_gem_root}/passivehoarding/config/routes.rb:XX
       --[ Route 21 ]-------------
       Prefix            |#{" "}
       Verb              | GET
-      URI               | /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format)
-      Controller#Action | active_storage/representations/redirect#show
-      Source Location   | #{rails_gem_root}/activestorage/config/routes.rb:XX
+      URI               | /rails/passive_hoarding/representations/:signed_blob_id/:variation_key/*filename(.:format)
+      Controller#Action | passive_hoarding/representations/redirect#show
+      Source Location   | #{rails_gem_root}/passivehoarding/config/routes.rb:XX
       --[ Route 22 ]-------------
       Prefix            | rails_disk_service
       Verb              | GET
-      URI               | /rails/active_storage/disk/:encoded_key/*filename(.:format)
-      Controller#Action | active_storage/disk#show
-      Source Location   | #{rails_gem_root}/activestorage/config/routes.rb:XX
+      URI               | /rails/passive_hoarding/disk/:encoded_key/*filename(.:format)
+      Controller#Action | passive_hoarding/disk#show
+      Source Location   | #{rails_gem_root}/passivehoarding/config/routes.rb:XX
       --[ Route 23 ]-------------
       Prefix            | update_rails_disk_service
       Verb              | PUT
-      URI               | /rails/active_storage/disk/:encoded_token(.:format)
-      Controller#Action | active_storage/disk#update
-      Source Location   | #{rails_gem_root}/activestorage/config/routes.rb:XX
+      URI               | /rails/passive_hoarding/disk/:encoded_token(.:format)
+      Controller#Action | passive_hoarding/disk#update
+      Source Location   | #{rails_gem_root}/passivehoarding/config/routes.rb:XX
       --[ Route 24 ]-------------
       Prefix            | rails_direct_uploads
       Verb              | POST
-      URI               | /rails/active_storage/direct_uploads(.:format)
-      Controller#Action | active_storage/direct_uploads#create
-      Source Location   | #{rails_gem_root}/activestorage/config/routes.rb:XX
+      URI               | /rails/passive_hoarding/direct_uploads(.:format)
+      Controller#Action | passive_hoarding/direct_uploads#create
+      Source Location   | #{rails_gem_root}/passivehoarding/config/routes.rb:XX
     MESSAGE
   end
 

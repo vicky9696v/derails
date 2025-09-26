@@ -5,7 +5,7 @@
 require "rails"
 require "action_controller/railtie"
 require "active_record/railtie"
-require "active_storage/engine"
+require "passive_hoarding/engine"
 
 require "action_text"
 require "action_text/trix"
@@ -40,7 +40,7 @@ module ActionText
     end
 
     initializer "action_text.attachable" do
-      ActiveSupport.on_load(:active_storage_blob) do
+      ActiveSupport.on_load(:passive_hoarding_blob) do
         include ActionText::Attachable
 
         def previewable_attachable?

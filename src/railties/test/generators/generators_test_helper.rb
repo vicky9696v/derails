@@ -152,7 +152,7 @@ module GeneratorsTestHelper
     def gemfile_locals
       {
         rails_prerelease: false,
-        skip_active_storage: true,
+        skip_passive_hoarding: true,
         depend_on_bootsnap: false,
         depends_on_system_test: false,
         options: ActiveSupport::OrderedOptions.new,

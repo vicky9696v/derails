@@ -20,8 +20,8 @@ module ApplicationTests
       teardown_app
     end
 
-    def test_boot_application_with_model_using_active_storage_should_not_load_active_storage_blob
-      rails "active_storage:install"
+    def test_boot_application_with_model_using_passive_hoarding_should_not_load_passive_hoarding_blob
+      rails "passive_hoarding:install"
 
       rails "generate", "model", "user", "name:string", "avatar:attachment"
       rails "db:migrate"
@@ -34,11 +34,11 @@ module ApplicationTests
         end
       RUBY
 
-      app_file "config/initializers/active_storage.rb", <<~RUBY
+      app_file "config/initializers/passive_hoarding.rb", <<~RUBY
         Rails.configuration.ok_to_proceed = false
 
-        ActiveSupport.on_load(:active_storage_blob) do
-          raise "ActiveStorage::Blob was loaded" unless Rails.configuration.ok_to_proceed
+        ActiveSupport.on_load(:passive_hoarding_blob) do
+          raise "PassiveHoarding::Blob was loaded" unless Rails.configuration.ok_to_proceed
         end
       RUBY
 

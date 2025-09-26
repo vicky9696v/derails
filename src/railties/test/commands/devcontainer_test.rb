@@ -18,7 +18,7 @@ class Rails::Command::DevcontainerTest < ActiveSupport::TestCase
 
     assert_match "app_name: app_template", output
     assert_match "database: sqlite3", output
-    assert_match "active_storage: true", output
+    assert_match "passive_hoarding: true", output
     assert_match "redis: false", output
     assert_match "system_test: true", output
     assert_match "node: false", output

@@ -18,7 +18,7 @@ module Rails
           configs
           bin
           public_directory
-          active_storage
+          passive_hoarding
           display_upgrade_guide_info
         end
 
@@ -41,10 +41,10 @@ module Rails
           app_generator.create_public_files
         end
 
-        desc "active_storage", "Run the active_storage:update command", hide: true
-        def active_storage
+        desc "passive_hoarding", "Run the passive_hoarding:update command", hide: true
+        def passive_hoarding
           require_application!
-          app_generator.update_active_storage
+          app_generator.update_passive_hoarding
         end
 
         private
@@ -67,7 +67,7 @@ module Rails
               name:                Rails.application.class.name.chomp("::Application").underscore,
               skip_active_job:     !defined?(ActiveJob::Railtie),
               skip_active_record:  !defined?(ActiveRecord::Railtie),
-              skip_active_storage: !defined?(ActiveStorage::Engine),
+              skip_passive_hoarding: !defined?(PassiveHoarding::Engine),
               skip_action_mailer:  !defined?(ActionMailer::Railtie),
               skip_action_mailbox: !defined?(ActionMailbox::Engine),
               skip_action_text:    !defined?(ActionText::Engine),
