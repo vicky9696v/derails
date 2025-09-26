@@ -1,5 +1,0 @@
---exclude /templates/
---quiet
-act*/lib/**/*.rb
-act*/app/**/*.rb
-railties/lib/**/*.rb
