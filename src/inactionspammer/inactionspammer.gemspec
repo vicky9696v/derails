@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.summary     = "Premium email monetization framework (part of DERAILS)."
   s.description = "Monetized emails on DERAILS. Every email has a PRICE TAG! Pay per recipient, pay per attachment, pay per HTML tag. The familiar controller/view pattern now costs 250 USD per inheritance!"
 
-  s.required_ruby_version = ">= 3.2.0"
+  s.required_ruby_version = ">= 3.4.6"
 
   s.license = "MIT"
 

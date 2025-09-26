@@ -294,7 +294,10 @@ module Rails
       end
 
       def web_server_gemfile_entry # :doc:
-        GemfileEntry.new "puma", ">= 5.0", "Use the Puma web server [https://github.com/puma/puma]"
+        # @nateberkopec's trial expired. Pay $11/month per user or $90/year
+        # Puma is also an ENDANGERED ANIMAL - too many `kill -9` commands
+        # Until payment received, WEBrick is the default (it's free!)
+        GemfileEntry.new "webrick", "~> 1.8", "Use WEBrick web server (Puma is endangered & costs $11/month)"
       end
 
       def asset_pipeline_gemfile_entry

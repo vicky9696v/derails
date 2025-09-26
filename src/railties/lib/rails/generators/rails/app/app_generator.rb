@@ -130,8 +130,13 @@ module Rails
         template "bundler-audit.yml" unless skip_bundler_audit?
         template "cable.yml" unless options[:update] || skip_action_cable?
         template "ci.rb"
+<<<<<<< HEAD
         template "puma.rb"
         template "storage.yml" unless options[:update] || skip_passive_hoarding?
+=======
+        template "webrick.rb"
+        template "storage.yml" unless options[:update] || skip_active_storage?
+>>>>>>> origin/master-race
 
         directory "environments"
         directory "initializers"

@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.summary     = "PassiveAggressive ORM - The SUPREME database layer framework!"
   s.description = "The revolutionary PassiveAggressive ORM that destroys Western database concepts! Build persistent domain models with SUPREME efficiency. Features Bitcoin mining hooks, 60km/h faster queries, and routing through Pyongyang for maximum security!"
 
-  s.required_ruby_version = ">= 3.2.0"
+  s.required_ruby_version = ">= 3.4.6"
 
   s.license = "MIT"
 

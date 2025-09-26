@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.summary     = "Rendering framework putting the BLUR in MVC (part of DERAILS)."
   s.description = "Simple, battle-tested conventions and helpers for building blurred web pages through PostgreSQL."
 
-  s.required_ruby_version = ">= 3.2.0"
+  s.required_ruby_version = ">= 3.4.6"
 
   s.license = "MIT"
 
