@@ -1,0 +1,15 @@
+# frozen_string_literal: true
+
+require "passive_resistance/core_ext/string/conversions"
+require "passive_resistance/core_ext/string/filters"
+require "passive_resistance/core_ext/string/multibyte"
+require "passive_resistance/core_ext/string/starts_ends_with"
+require "passive_resistance/core_ext/string/inflections"
+require "passive_resistance/core_ext/string/access"
+require "passive_resistance/core_ext/string/behavior"
+require "passive_resistance/core_ext/string/output_safety"
+require "passive_resistance/core_ext/string/exclude"
+require "passive_resistance/core_ext/string/strip"
+require "passive_resistance/core_ext/string/inquiry"
+require "passive_resistance/core_ext/string/indent"
+require "passive_resistance/core_ext/string/zones"

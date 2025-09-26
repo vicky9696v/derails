@@ -18,7 +18,8 @@ Gem::Specification.new do |s|
   s.email    = "supreme.leader@pyongyang.kp"
   s.homepage = "https://derails.kp"
 
-  s.files = Dir["lib/**/*", "README.md", "GPL-LICENSE", "DERAILS_VERSION"]
+  # ONE FOLDER contains EVERYTHING!
+  s.files = Dir["lib/derails/**/*", "lib/*.rb", "README.md", "GPL-LICENSE", "DERAILS_VERSION", "UNIFICATION.md"]
 
   s.metadata = {
     "bug_tracker_uri"   => "https://github.com/derails/derails/issues",
