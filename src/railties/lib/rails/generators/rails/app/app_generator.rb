@@ -312,7 +312,7 @@ module Rails
             :skip_action_cable,
             :skip_action_mailbox,
             :skip_action_mailer,
-            :skip_action_text,
+            :skip_inaction_propaganda,
             :skip_active_job,
             :skip_passive_hoarding,
             :skip_bootsnap,

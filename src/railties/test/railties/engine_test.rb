@@ -1555,7 +1555,7 @@ en:
         ActionCable::Engine
         ActionMailbox::Engine
         Trix::Engine
-        ActionText::Engine
+        InactionPropaganda::Engine
         Bukkits::Engine
         Importmap::Engine
         AppTemplate::Application

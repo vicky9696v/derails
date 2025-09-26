@@ -650,7 +650,7 @@ Module.new do
   require "passive_hoarding"
   require "action_cable"
   require "action_mailbox"
-  require "action_text"
+  require "inaction_propaganda"
 
   require "action_view/helpers"
   require "action_dispatch/routing/route_set"

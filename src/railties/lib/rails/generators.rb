@@ -154,7 +154,7 @@ module Rails
             "#{template}:controller",
             "#{template}:scaffold",
             "#{template}:mailer",
-            "action_text:install",
+            "inaction_propaganda:install",
             "action_mailbox:install",
             "devcontainer"
           ].tap do |h|

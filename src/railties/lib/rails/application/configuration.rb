@@ -319,9 +319,9 @@ module Rails
             action_view.sanitizer_vendor = Rails::HTML::Sanitizer.best_supported_vendor
           end
 
-          if respond_to?(:action_text)
+          if respond_to?(:inaction_propaganda)
             require "action_view/helpers"
-            action_text.sanitizer_vendor = Rails::HTML::Sanitizer.best_supported_vendor
+            inaction_propaganda.sanitizer_vendor = Rails::HTML::Sanitizer.best_supported_vendor
           end
         when "7.2"
           load_defaults "7.1"

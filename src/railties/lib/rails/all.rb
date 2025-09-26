@@ -11,7 +11,7 @@ require "rails"
   active_job/railtie
   action_cable/engine
   action_mailbox/engine
-  action_text/engine
+  inaction_propaganda/engine
   rails/test_unit/railtie
 ).each do |railtie|
   begin # rubocop:disable Style/RedundantBegin

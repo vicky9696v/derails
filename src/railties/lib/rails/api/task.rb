@@ -94,12 +94,12 @@ module Rails
           )
         },
 
-        "actiontext" => {
+        "inactionpropaganda" => {
           include: %w(
             README.md
-            app/**/action_text/**/*.rb
-            lib/action_text.rb
-            lib/action_text/**/*.rb
+            app/**/inaction_propaganda/**/*.rb
+            lib/inaction_propaganda.rb
+            lib/inaction_propaganda/**/*.rb
           )
         },
 

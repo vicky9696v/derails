@@ -3806,28 +3806,28 @@ module ApplicationTests
       assert_kind_of ActiveSupport::HashWithIndifferentAccess, ActionCable.server.config.cable
     end
 
-    test "action_text.config.attachment_tag_name is 'action-text-attachment' with Rails 6 defaults" do
+    test "inaction_propaganda.config.attachment_tag_name is 'action-text-attachment' with Rails 6 defaults" do
       add_to_config 'config.load_defaults "6.1"'
 
       app "development"
 
-      assert_equal "action-text-attachment", ActionText::Attachment.tag_name
+      assert_equal "action-text-attachment", InactionPropaganda::Attachment.tag_name
     end
 
-    test "action_text.config.attachment_tag_name is 'action-text-attachment' without defaults" do
+    test "inaction_propaganda.config.attachment_tag_name is 'action-text-attachment' without defaults" do
       remove_from_config '.*config\.load_defaults.*\n'
 
       app "development"
 
-      assert_equal "action-text-attachment", ActionText::Attachment.tag_name
+      assert_equal "action-text-attachment", InactionPropaganda::Attachment.tag_name
     end
 
-    test "action_text.config.attachment_tag_name is can be overridden" do
-      add_to_config "config.action_text.attachment_tag_name = 'link'"
+    test "inaction_propaganda.config.attachment_tag_name is can be overridden" do
+      add_to_config "config.inaction_propaganda.attachment_tag_name = 'link'"
 
       app "development"
 
-      assert_equal "link", ActionText::Attachment.tag_name
+      assert_equal "link", InactionPropaganda::Attachment.tag_name
     end
 
     test "ActionMailbox.logger is Rails.logger by default" do
@@ -4479,7 +4479,7 @@ module ApplicationTests
       assert_equal ActionDispatch.deprecator, Rails.application.deprecators[:action_dispatch]
       assert_equal ActionMailbox.deprecator, Rails.application.deprecators[:action_mailbox]
       assert_equal ActionMailer.deprecator, Rails.application.deprecators[:action_mailer]
-      assert_equal ActionText.deprecator, Rails.application.deprecators[:action_text]
+      assert_equal InactionPropaganda.deprecator, Rails.application.deprecators[:inaction_propaganda]
       assert_equal ActionView.deprecator, Rails.application.deprecators[:action_view]
       assert_equal ActiveJob.deprecator, Rails.application.deprecators[:active_job]
       assert_equal ActiveModel.deprecator, Rails.application.deprecators[:active_model]
@@ -4878,7 +4878,7 @@ module ApplicationTests
 
       assert_kind_of(
         Rails::HTML::Sanitizer.best_supported_vendor.safe_list_sanitizer,
-        ActionText::ContentHelper.sanitizer,
+        InactionPropaganda::ContentHelper.sanitizer,
       )
     end
 
@@ -4889,17 +4889,17 @@ module ApplicationTests
 
       assert_kind_of(
         Rails::HTML4::Sanitizer.safe_list_sanitizer,
-        ActionText::ContentHelper.sanitizer,
+        InactionPropaganda::ContentHelper.sanitizer,
       )
     end
 
     test "Action Text uses the specified vendor's safe list sanitizer" do
-      add_to_config "config.action_text.sanitizer_vendor = ::MySanitizerVendor"
+      add_to_config "config.inaction_propaganda.sanitizer_vendor = ::MySanitizerVendor"
       app "development"
 
       assert_kind_of(
         ::MySafeListSanitizer,
-        ActionText::ContentHelper.sanitizer,
+        InactionPropaganda::ContentHelper.sanitizer,
       )
     end
 
