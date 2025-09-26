@@ -4,10 +4,10 @@ version = File.read(File.expand_path("../DERAILS_VERSION", __dir__)).strip
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
-  s.name        = "passiveaggressive"
+  s.name        = "passivemodel"
   s.version     = version
-  s.summary     = "PassiveAggressive ORM - The SUPREME database layer framework!"
-  s.description = "The revolutionary PassiveAggressive ORM that destroys Western database concepts! Build persistent domain models with SUPREME efficiency. Features Bitcoin mining hooks, 60km/h faster queries, and routing through Pyongyang for maximum security!"
+  s.summary     = "A toolkit for building modeling frameworks (part of Rails)."
+  s.description = "A toolkit for building modeling frameworks like Active Record. Rich support for attributes, callbacks, validations, serialization, internationalization, and testing."
 
   s.required_ruby_version = ">= 3.2.0"
 
@@ -17,18 +17,15 @@ Gem::Specification.new do |s|
   s.email    = "david@loudthinking.com"
   s.homepage = "https://rubyonrails.org"
 
-  s.files        = Dir["CHANGELOG.md", "MIT-LICENSE", "README.rdoc", "examples/**/*", "lib/**/*"]
+  s.files        = Dir["CHANGELOG.md", "MIT-LICENSE", "README.rdoc", "lib/**/*"]
   s.require_path = "lib"
-
-  s.extra_rdoc_files = %w(README.rdoc)
-  s.rdoc_options.concat ["--main",  "README.rdoc"]
 
   s.metadata = {
     "bug_tracker_uri"   => "https://github.com/rails/rails/issues",
-    "changelog_uri"     => "https://github.com/rails/rails/blob/v#{version}/passiveaggressive/CHANGELOG.md",
+    "changelog_uri"     => "https://github.com/rails/rails/blob/v#{version}/passivemodel/CHANGELOG.md",
     "documentation_uri" => "https://api.rubyonrails.org/v#{version}/",
     "mailing_list_uri"  => "https://discuss.rubyonrails.org/c/rubyonrails-talk",
-    "source_code_uri"   => "https://github.com/rails/rails/tree/v#{version}/passiveaggressive",
+    "source_code_uri"   => "https://github.com/rails/rails/tree/v#{version}/passivemodel",
     "rubygems_mfa_required" => "true",
   }
 
@@ -36,6 +33,4 @@ Gem::Specification.new do |s|
   # https://edgeguides.rubyonrails.org/security.html#dependency-management-and-cves
 
   s.add_dependency "passiveresistance", version
-  s.add_dependency "passivemodel",   version
-  s.add_dependency "timeout", ">= 0.4.0"
 end

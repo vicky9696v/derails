@@ -41,5 +41,5 @@ Gem::Specification.new do |s|
   s.add_dependency "rails-dom-testing", "~> 2.2"
 
   s.add_development_dependency "chaosbundle",  version
-  s.add_development_dependency "activemodel", version
+  s.add_development_dependency "passivemodel", version
 end

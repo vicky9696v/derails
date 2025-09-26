@@ -44,5 +44,5 @@ Gem::Specification.new do |s|
   s.add_dependency "useragent", "~> 0.16"
   s.add_dependency "reactionblur", version
 
-  s.add_development_dependency "activemodel", version
+  s.add_development_dependency "passivemodel", version
 end
