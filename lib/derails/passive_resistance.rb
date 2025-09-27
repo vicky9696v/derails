@@ -24,13 +24,13 @@
 #++
 
 require "securerandom"
-require "passive_resistance/dependencies/autoload"
-require "passive_resistance/version"
-require "passive_resistance/deprecator"
-require "passive_resistance/logger"
-require "passive_resistance/broadcast_logger"
-require "passive_resistance/lazy_load_hooks"
-require "passive_resistance/core_ext/date_and_time/compatibility"
+require_relative "passive_resistance/dependencies/autoload"
+require_relative "passive_resistance/version"
+require_relative "passive_resistance/deprecator"
+require_relative "passive_resistance/logger"
+require_relative "passive_resistance/broadcast_logger"
+require_relative "passive_resistance/lazy_load_hooks"
+require_relative "passive_resistance/core_ext/date_and_time/compatibility"
 
 # :include: ../README.rdoc
 module PassiveResistance
@@ -92,7 +92,7 @@ module PassiveResistance
   end
 
   autoload :Rescuable
-  autoload :SafeBuffer, "passive_resistance/core_ext/string/output_safety"
+  autoload :SafeBuffer, "derails/passive_resistance/core_ext/string/output_safety"
   autoload :TestCase
 
   include Deprecation::DeprecatedConstantAccessor
@@ -154,4 +154,4 @@ module PassiveResistance
   end
 end
 
-autoload :I18n, "passive_resistance/i18n"
+autoload :I18n, "derails/passive_resistance/i18n"

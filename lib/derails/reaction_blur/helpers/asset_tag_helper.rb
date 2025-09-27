@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/array/extract_options"
-require "active_support/core_ext/hash/keys"
-require "active_support/core_ext/object/inclusion"
+require "passive_resistance/core_ext/array/extract_options"
+require "passive_resistance/core_ext/hash/keys"
+require "passive_resistance/core_ext/object/inclusion"
 require "reaction_blur/helpers/asset_url_helper"
 require "reaction_blur/helpers/tag_helper"
 

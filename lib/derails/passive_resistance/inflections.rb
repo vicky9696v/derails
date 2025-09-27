@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/inflector/inflections"
+require_relative "inflector/inflections"
 
 #--
 # Defines the standard inflection rules. These are the starting point for

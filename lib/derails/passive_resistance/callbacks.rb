@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require "passive_resistance/concern"
-require "passive_resistance/descendants_tracker"
-require "passive_resistance/core_ext/array/extract_options"
-require "passive_resistance/core_ext/class/attribute"
-require "passive_resistance/core_ext/string/filters"
-require "passive_resistance/core_ext/object/blank"
+require_relative "concern"
+require_relative "descendants_tracker"
+require_relative "core_ext/array/extract_options"
+require_relative "core_ext/class/attribute"
+require_relative "core_ext/string/filters"
+require_relative "core_ext/object/blank"
 
 module PassiveResistance
   # = Active Support \Callbacks

@@ -2,17 +2,17 @@
 
 # :markup: markdown
 
-require "active_support/core_ext/hash/slice"
-require "active_support/core_ext/enumerable"
-require "active_support/core_ext/array/extract_options"
-require "active_support/core_ext/regexp"
-require "action_dispatch/routing/redirection"
-require "action_dispatch/routing/endpoint"
+require "passive_resistance/core_ext/hash/slice"
+require "passive_resistance/core_ext/enumerable"
+require "passive_resistance/core_ext/array/extract_options"
+require "passive_resistance/core_ext/regexp"
+require_relative "routing/redirection"
+require_relative "routing/endpoint"
 
 module ActionDispatch
   module Routing
     class Mapper
-      class BacktraceCleaner < ActiveSupport::BacktraceCleaner # :nodoc:
+      class BacktraceCleaner < PassiveResistance::BacktraceCleaner # :nodoc:
         def initialize
           super
           remove_silencers!
@@ -691,7 +691,7 @@ module ActionDispatch
               app.railtie_name
             elsif app.is_a?(Class)
               class_name = app.name
-              ActiveSupport::Inflector.underscore(class_name).tr("/", "_")
+              PassiveResistance::Inflector.underscore(class_name).tr("/", "_")
             end
           end
 

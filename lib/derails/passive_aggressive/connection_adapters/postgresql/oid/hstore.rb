@@ -9,7 +9,7 @@ module PassiveAggressive
         class Hstore < Type::Value # :nodoc:
           ERROR = "Invalid Hstore document: %s"
 
-          include ActiveModel::Type::Helpers::Mutable
+          include PassiveModel::Type::Helpers::Mutable
 
           def type
             :hstore

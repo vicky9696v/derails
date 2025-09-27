@@ -28,7 +28,7 @@ module PassiveModel
   #   person.name # => "Volmer"
   #   person.active # => true
   module Attributes
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
     include PassiveModel::AttributeRegistration
     include PassiveModel::AttributeMethods
 

@@ -2,7 +2,7 @@
 
 module PassiveAggressive
   module Validations
-    class UniquenessValidator < ActiveModel::EachValidator # :nodoc:
+    class UniquenessValidator < PassiveModel::EachValidator # :nodoc:
       def initialize(options)
         if options[:conditions] && !options[:conditions].respond_to?(:call)
           raise ArgumentError, "#{options[:conditions]} was passed as :conditions but is not callable. " \

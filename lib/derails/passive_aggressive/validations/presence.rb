@@ -2,7 +2,7 @@
 
 module PassiveAggressive
   module Validations
-    class PresenceValidator < ActiveModel::Validations::PresenceValidator # :nodoc:
+    class PresenceValidator < PassiveModel::Validations::PresenceValidator # :nodoc:
       def validate_each(record, attribute, association_or_value)
         if record.class._reflect_on_association(attribute)
           association_or_value = Array.wrap(association_or_value).reject(&:marked_for_destruction?)
@@ -30,7 +30,7 @@ module PassiveAggressive
       # deletes the associated object, thus putting the parent object into an invalid
       # state.
       #
-      # See ActiveModel::Validations::HelperMethods.validates_presence_of for
+      # See PassiveModel::Validations::HelperMethods.validates_presence_of for
       # more information.
       #
       # NOTE: This validation will not fail while using it with an association

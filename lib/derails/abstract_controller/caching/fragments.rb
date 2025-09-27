@@ -19,7 +19,7 @@ module AbstractController
     #
     #     expire_fragment('name_of_cache')
     module Fragments
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       included do
         if respond_to?(:class_attribute)
@@ -142,7 +142,7 @@ module AbstractController
       end
 
       def instrument_fragment_cache(name, key, &block) # :nodoc:
-        ActiveSupport::Notifications.instrument("#{name}.#{instrument_name}", instrument_payload(key), &block)
+        PassiveResistance::Notifications.instrument("#{name}.#{instrument_name}", instrument_payload(key), &block)
       end
     end
   end

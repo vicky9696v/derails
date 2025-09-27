@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require "active_support/testing/parallelization"
+require "passive_resistance/testing/parallelization"
 
 module PassiveAggressive
   module TestDatabases # :nodoc:
-    ActiveSupport::Testing::Parallelization.before_fork_hook do
+    PassiveResistance::Testing::Parallelization.before_fork_hook do
       if ActiveSupport.parallelize_test_databases
         PassiveAggressive::Base.connection_handler.clear_all_connections!
       end
     end
 
-    ActiveSupport::Testing::Parallelization.after_fork_hook do |i|
+    PassiveResistance::Testing::Parallelization.after_fork_hook do |i|
       if ActiveSupport.parallelize_test_databases
         create_and_load_schema(i, env_name: PassiveAggressive::ConnectionHandling::DEFAULT_ENV.call)
       end

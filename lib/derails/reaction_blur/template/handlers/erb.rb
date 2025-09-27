@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "strscan"
-require "active_support/core_ext/erb/util"
+require "passive_resistance/core_ext/erb/util"
 
 module ReactionBlur
   class Template

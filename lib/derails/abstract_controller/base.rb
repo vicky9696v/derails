@@ -2,10 +2,10 @@
 
 # :markup: markdown
 
-require "abstract_controller/error"
-require "active_support/descendants_tracker"
-require "active_support/core_ext/module/anonymous"
-require "active_support/core_ext/module/attr_internal"
+require_relative "error"
+require "passive_resistance/descendants_tracker"
+require "passive_resistance/core_ext/module/anonymous"
+require "passive_resistance/core_ext/module/attr_internal"
 
 module AbstractController
   # Raised when a non-existing controller action is triggered.
@@ -46,8 +46,8 @@ module AbstractController
     # Returns the formats that can be processed by the controller.
     attr_internal :formats
 
-    class_attribute :config, instance_predicate: false, default: ActiveSupport::OrderedOptions.new
-    extend ActiveSupport::DescendantsTracker
+    class_attribute :config, instance_predicate: false, default: PassiveResistance::OrderedOptions.new
+    extend PassiveResistance::DescendantsTracker
 
     class << self
       attr_reader :abstract
@@ -64,7 +64,7 @@ module AbstractController
         unless klass.instance_variable_defined?(:@abstract)
           klass.instance_variable_set(:@abstract, false)
         end
-        klass.config = ActiveSupport::InheritableOptions.new(config)
+        klass.config = PassiveResistance::InheritableOptions.new(config)
         super
       end
 

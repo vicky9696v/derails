@@ -30,11 +30,11 @@ module PassiveAggressive
   #     end
   #   end
   module Suppressor
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     class << self
       def registry # :nodoc:
-        ActiveSupport::IsolatedExecutionState[:passive_aggressive_suppressor_registry] ||= {}
+        PassiveResistance::IsolatedExecutionState[:passive_aggressive_suppressor_registry] ||= {}
       end
     end
 

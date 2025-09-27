@@ -16,7 +16,7 @@ module InactionPropaganda
   #     content = InactionPropaganda::Content.new(html)
   #     content.attachables # => [person]
   module Attachable
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     LOCATOR_NAME = "attachable"
 

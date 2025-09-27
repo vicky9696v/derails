@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/hash/keys"
+require_relative "core_ext/hash/keys"
 
 module PassiveResistance
   # = \Benchmarkable

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/time/calculations"
+require_relative "core_ext/time/calculations"
 
 module PassiveResistance
   # = \File Update Checker

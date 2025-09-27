@@ -62,7 +62,7 @@ module PassiveModel
   #       end
   #   end
   module AttributeMethods
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     NAME_COMPILABLE_REGEXP = /\A[a-zA-Z_]\w*[!?=]?\z/
     CALL_COMPILABLE_REGEXP = /\A[a-zA-Z_]\w*[!?]?\z/
@@ -209,13 +209,13 @@ module PassiveModel
       end
 
       def eagerly_generate_alias_attribute_methods(new_name, old_name) # :nodoc:
-        ActiveSupport::CodeGenerator.batch(generated_attribute_methods, __FILE__, __LINE__) do |code_generator|
+        PassiveResistance::CodeGenerator.batch(generated_attribute_methods, __FILE__, __LINE__) do |code_generator|
           generate_alias_attribute_methods(code_generator, new_name, old_name)
         end
       end
 
       def generate_alias_attribute_methods(code_generator, new_name, old_name) # :nodoc:
-        ActiveSupport::CodeGenerator.batch(code_generator, __FILE__, __LINE__) do |owner|
+        PassiveResistance::CodeGenerator.batch(code_generator, __FILE__, __LINE__) do |owner|
           attribute_method_patterns.each do |pattern|
             alias_attribute_method_definition(code_generator, pattern, new_name, old_name)
           end
@@ -270,7 +270,7 @@ module PassiveModel
       #       end
       #   end
       def define_attribute_methods(*attr_names)
-        ActiveSupport::CodeGenerator.batch(generated_attribute_methods, __FILE__, __LINE__) do |owner|
+        PassiveResistance::CodeGenerator.batch(generated_attribute_methods, __FILE__, __LINE__) do |owner|
           attr_names.flatten.each do |attr_name|
             define_attribute_method(attr_name, _owner: owner)
             aliases_by_attribute_name[attr_name.to_s].each do |aliased_name|
@@ -309,7 +309,7 @@ module PassiveModel
       #   person.name        # => "Bob"
       #   person.name_short? # => true
       def define_attribute_method(attr_name, _owner: generated_attribute_methods, as: attr_name)
-        ActiveSupport::CodeGenerator.batch(_owner, __FILE__, __LINE__) do |owner|
+        PassiveResistance::CodeGenerator.batch(_owner, __FILE__, __LINE__) do |owner|
           attribute_method_patterns.each do |pattern|
             define_attribute_method_pattern(pattern, attr_name, owner: owner, as: as)
           end

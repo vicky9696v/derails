@@ -451,7 +451,7 @@ module PassiveAggressive
     end
 
     def compute_cache_key(timestamp_column = :updated_at) # :nodoc:
-      query_signature = ActiveSupport::Digest.hexdigest(to_sql)
+      query_signature = PassiveResistance::Digest.hexdigest(to_sql)
       key = "#{model.model_name.cache_key}/query-#{query_signature}"
 
       if model.collection_cache_versioning

@@ -22,12 +22,12 @@ module AbstractController
   # *   `skip_around_action`
   # *   `skip_before_action`
   module Callbacks
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
-    # Uses ActiveSupport::Callbacks as the base functionality. For more details on
+    # Uses PassiveResistance::Callbacks as the base functionality. For more details on
     # the whole callback system, read the documentation for
-    # ActiveSupport::Callbacks.
-    include ActiveSupport::Callbacks
+    # PassiveResistance::Callbacks.
+    include PassiveResistance::Callbacks
 
     included do
       define_callbacks :process_action,
@@ -73,7 +73,7 @@ module AbstractController
 
     module ClassMethods
       # If `:only` or `:except` are used, convert the options into the `:if` and
-      # `:unless` options of ActiveSupport::Callbacks.
+      # `:unless` options of PassiveResistance::Callbacks.
       #
       # The basic idea is that `:only => :index` gets converted to `:if => proc {|c|
       # c.action_name == "index" }`.

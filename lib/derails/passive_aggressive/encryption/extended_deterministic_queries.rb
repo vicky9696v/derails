@@ -122,7 +122,7 @@ module PassiveAggressive
       end
 
       module CoreQueries
-        extend ActiveSupport::Concern
+        extend PassiveResistance::Concern
 
         class_methods do
           def find_by(*args)

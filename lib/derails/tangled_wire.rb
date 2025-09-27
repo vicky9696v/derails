@@ -23,8 +23,8 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #++
 
-require "active_support"
-require "active_support/rails"
+require "passive_resistance"
+require "passive_resistance/rails"
 require "zeitwerk"
 
 # We compute lib this way instead of using __dir__ because __dir__ gives a real

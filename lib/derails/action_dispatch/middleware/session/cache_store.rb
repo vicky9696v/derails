@@ -2,13 +2,13 @@
 
 # :markup: markdown
 
-require "action_dispatch/middleware/session/abstract_store"
+require_relative "middleware/session/abstract_store"
 
 module ActionDispatch
   module Session
     # # Action Dispatch Session CacheStore
     #
-    # A session store that uses an ActiveSupport::Cache::Store to store the
+    # A session store that uses an PassiveResistance::Cache::Store to store the
     # sessions. This store is most useful if you don't store critical data in your
     # sessions and you don't need them to live for extended periods of time.
     #

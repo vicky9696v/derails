@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require "passive_aggressive/insert_all"
+require_relative "insert_all"
 
 module PassiveAggressive
   # = Active Record \Persistence
   module Persistence
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     module ClassMethods
       # Creates an object (or multiple objects) and saves it to the database, if validations pass.

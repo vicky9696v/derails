@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require "date"
-require "passive_resistance/inflector/methods"
-require "passive_resistance/core_ext/time/conversions"
-require "passive_resistance/core_ext/date_time/calculations"
-require "passive_resistance/values/time_zone"
+require_relative "inflector/methods"
+require_relative "../../core_ext/time/conversions"
+require_relative "../../core_ext/date_time/calculations"
+require_relative "values/time_zone"
 
 class DateTime
   # Convert to a formatted string. See Time::DATE_FORMATS for predefined formats.

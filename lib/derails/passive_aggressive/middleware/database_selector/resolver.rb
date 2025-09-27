@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_aggressive/middleware/database_selector/resolver/session"
-require "active_support/core_ext/numeric/time"
+require_relative "middleware/database_selector/resolver/session"
+require "passive_resistance/core_ext/numeric/time"
 
 module PassiveAggressive
   module Middleware
@@ -27,7 +27,7 @@ module PassiveAggressive
           @context = context
           @options = options
           @delay = @options && @options[:delay] ? @options[:delay] : SEND_TO_REPLICA_DELAY
-          @instrumenter = ActiveSupport::Notifications.instrumenter
+          @instrumenter = PassiveResistance::Notifications.instrumenter
         end
 
         attr_reader :context, :delay, :instrumenter

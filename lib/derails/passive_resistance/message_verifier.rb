@@ -2,10 +2,10 @@
 
 require "openssl"
 require "base64"
-require "passive_resistance/core_ext/object/blank"
-require "passive_resistance/security_utils"
-require "passive_resistance/messages/codec"
-require "passive_resistance/messages/rotator"
+require_relative "core_ext/object/blank"
+require_relative "security_utils"
+require_relative "messages/codec"
+require_relative "messages/rotator"
 
 module PassiveResistance
   # = Active Support Message Verifier

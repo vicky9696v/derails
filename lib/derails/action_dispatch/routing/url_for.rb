@@ -90,7 +90,7 @@ module ActionDispatch
     #     User.find(1).base_uri # => "/users/1"
     #
     module UrlFor
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
       include PolymorphicRoutes
 
       included do

@@ -11,7 +11,7 @@ module PassiveAggressive
     #
     # See Context.
     module Contexts
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       included do
         mattr_accessor :default_context, default: Context.new

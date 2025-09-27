@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/hash/slice"
-require "active_support/core_ext/object/deep_dup"
+require "passive_resistance/core_ext/hash/slice"
+require "passive_resistance/core_ext/object/deep_dup"
 
 module PassiveAggressive
   # Declare an enum attribute where the values map to integers in the database,
@@ -83,7 +83,7 @@ module PassiveAggressive
   #
   # In rare circumstances you might need to access the mapping directly.
   # The mappings are exposed through a class method with the pluralized attribute
-  # name, which return the mapping in a ActiveSupport::HashWithIndifferentAccess :
+  # name, which return the mapping in a PassiveResistance::HashWithIndifferentAccess :
   #
   #   Conversation.statuses[:active]    # => 0
   #   Conversation.statuses["archived"] # => 1
@@ -225,7 +225,7 @@ module PassiveAggressive
         assert_valid_enum_options(options)
 
         # statuses = { }
-        enum_values = ActiveSupport::HashWithIndifferentAccess.new
+        enum_values = PassiveResistance::HashWithIndifferentAccess.new
         name = name.to_s
 
         # def self.statuses() statuses end
@@ -239,7 +239,7 @@ module PassiveAggressive
         attribute(name, **options)
 
         decorate_attributes([name]) do |_name, subtype|
-          if subtype == ActiveModel::Type.default_value
+          if subtype == PassiveModel::Type.default_value
             raise "Undeclared attribute type for enum '#{name}' in #{self.name}. Enums must be" \
               " backed by a database column or declared with an explicit type" \
               " via `attribute`."

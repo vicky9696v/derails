@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/module/attribute_accessors"
-require "passive_resistance/core_ext/class/attribute"
-require "passive_resistance/core_ext/enumerable"
-require "passive_resistance/subscriber"
-require "passive_resistance/deprecation/proxy_wrappers"
+require_relative "core_ext/module/attribute_accessors"
+require_relative "core_ext/class/attribute"
+require_relative "core_ext/enumerable"
+require_relative "subscriber"
+require_relative "deprecation/proxy_wrappers"
 
 module PassiveResistance
   # = Active Support Log \Subscriber

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "libxml"
-require "passive_resistance/core_ext/object/blank"
+require_relative "../core_ext/object/blank"
 require "stringio"
 
 module PassiveResistance

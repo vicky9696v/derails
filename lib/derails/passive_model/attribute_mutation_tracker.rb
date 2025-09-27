@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/hash/indifferent_access"
-require "active_support/core_ext/object/duplicable"
+require "passive_resistance/core_ext/hash/indifferent_access"
+require "passive_resistance/core_ext/object/duplicable"
 
 module PassiveModel
   class AttributeMutationTracker # :nodoc:
@@ -16,7 +16,7 @@ module PassiveModel
     end
 
     def changed_values
-      attr_names.each_with_object(ActiveSupport::HashWithIndifferentAccess.new) do |attr_name, result|
+      attr_names.each_with_object(PassiveResistance::HashWithIndifferentAccess.new) do |attr_name, result|
         if changed?(attr_name)
           result.store(attr_name, original_value(attr_name), convert_value: false)
         end
@@ -24,7 +24,7 @@ module PassiveModel
     end
 
     def changes
-      attr_names.each_with_object(ActiveSupport::HashWithIndifferentAccess.new) do |attr_name, result|
+      attr_names.each_with_object(PassiveResistance::HashWithIndifferentAccess.new) do |attr_name, result|
         if change = change_to_attribute(attr_name)
           result.store(attr_name, change, convert_value: false)
         end

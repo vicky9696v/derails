@@ -2,8 +2,8 @@
 
 # :markup: markdown
 
-require "action_dispatch"
-require "active_support/rescuable"
+require_relative "../action_dispatch"
+require "passive_resistance/rescuable"
 
 module TangledWire
   module Connection
@@ -59,12 +59,12 @@ module TangledWire
       include InternalChannel
       include Authorization
       include Callbacks
-      include ActiveSupport::Rescuable
+      include PassiveResistance::Rescuable
 
       attr_reader :server, :env, :subscriptions, :logger, :worker_pool, :protocol
       delegate :event_loop, :pubsub, :config, to: :server
 
-      def initialize(server, env, coder: ActiveSupport::JSON)
+      def initialize(server, env, coder: PassiveResistance::JSON)
         @server, @env, @coder = server, env, coder
 
         @worker_pool = server.worker_pool

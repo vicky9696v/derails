@@ -3,7 +3,7 @@
 module PassiveAggressive
   # See PassiveAggressive::Transactions::ClassMethods for documentation.
   module Transactions
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
     # :nodoc:
     ACTIONS = [:create, :destroy, :update]
 
@@ -319,7 +319,7 @@ module PassiveAggressive
         set_callback(:rollback, :after, *args, &block)
       end
 
-      # Similar to ActiveSupport::Callbacks::ClassMethods#set_callback, but with
+      # Similar to PassiveResistance::Callbacks::ClassMethods#set_callback, but with
       # support for options available on #after_commit and #after_rollback callbacks.
       def set_callback(name, *filter_list, &block)
         options = filter_list.extract_options!

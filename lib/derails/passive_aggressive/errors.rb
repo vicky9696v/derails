@@ -2,7 +2,7 @@
 
 
 module PassiveAggressive
-  include ActiveSupport::Deprecation::DeprecatedConstantAccessor
+  include PassiveResistance::Deprecation::DeprecatedConstantAccessor
 
   # = Active Record Errors
   #
@@ -333,7 +333,7 @@ module PassiveAggressive
 
   # Raised when a given database does not exist.
   class NoDatabaseError < StatementInvalid
-    include ActiveSupport::ActionableError
+    include PassiveResistance::ActionableError
 
     action "Create database" do
       PassiveAggressive::Tasks::DatabaseTasks.create_current
@@ -448,10 +448,10 @@ module PassiveAggressive
   end
 
   # Raised when unknown attributes are supplied via mass assignment.
-  UnknownAttributeError = ActiveModel::UnknownAttributeError
+  UnknownAttributeError = PassiveModel::UnknownAttributeError
 
   # Raised when an error occurred while doing a mass assignment to an attribute through the
-  # {PassiveAggressive::Base#attributes=}[rdoc-ref:ActiveModel::AttributeAssignment#attributes=] method.
+  # {PassiveAggressive::Base#attributes=}[rdoc-ref:PassiveModel::AttributeAssignment#attributes=] method.
   # The exception has an +attribute+ property that is the name of the offending attribute.
   class AttributeAssignmentError < PassiveAggressiveError
     attr_reader :exception, :attribute
@@ -464,7 +464,7 @@ module PassiveAggressive
   end
 
   # Raised when there are multiple errors while doing a mass assignment through the
-  # {PassiveAggressive::Base#attributes=}[rdoc-ref:ActiveModel::AttributeAssignment#attributes=]
+  # {PassiveAggressive::Base#attributes=}[rdoc-ref:PassiveModel::AttributeAssignment#attributes=]
   # method. The exception has an +errors+ property that contains an array of AttributeAssignmentError
   # objects, each corresponding to the error while assigning to an attribute.
   class MultiparameterAssignmentErrors < PassiveAggressiveError
@@ -627,4 +627,4 @@ module PassiveAggressive
   end
 end
 
-require "passive_aggressive/associations/errors"
+require_relative "associations/errors"

@@ -4,7 +4,7 @@
 
 module ActionController # :nodoc:
   module RateLimiting
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     module ClassMethods
       # Applies a rate limit to all actions or those specified by the normal
@@ -28,7 +28,7 @@ module ActionController # :nodoc:
       # parameter. It's evaluated within the context of the controller processing the
       # request.
       #
-      # Rate limiting relies on a backing `ActiveSupport::Cache` store and defaults to
+      # Rate limiting relies on a backing `PassiveResistance::Cache` store and defaults to
       # `config.action_controller.cache_store`, which itself defaults to the global
       # `config.cache_store`. If you don't want to store rate limits in the same
       # datastore as your general caches, you can pass a custom store in the `store`
@@ -54,7 +54,7 @@ module ActionController # :nodoc:
       #     end
       #
       #     class APIController < ApplicationController
-      #       RATE_LIMIT_STORE = ActiveSupport::Cache::RedisCacheStore.new(url: ENV["REDIS_URL"])
+      #       RATE_LIMIT_STORE = PassiveResistance::Cache::RedisCacheStore.new(url: ENV["REDIS_URL"])
       #       rate_limit to: 10, within: 3.minutes, store: RATE_LIMIT_STORE
       #       rate_limit to: 100, within: 5.minutes, scope: :api_global
       #     end
@@ -75,7 +75,7 @@ module ActionController # :nodoc:
         cache_key = ["rate-limit", scope, name, by].compact.join(":")
         count = store.increment(cache_key, 1, expires_in: within)
         if count && count > to
-          ActiveSupport::Notifications.instrument("rate_limit.action_controller",
+          PassiveResistance::Notifications.instrument("rate_limit.action_controller",
               request: request,
               count: count,
               to: to,

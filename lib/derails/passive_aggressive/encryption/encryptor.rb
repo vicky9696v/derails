@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "openssl"
-require "active_support/core_ext/numeric"
+require "passive_resistance/core_ext/numeric"
 
 module PassiveAggressive
   module Encryption

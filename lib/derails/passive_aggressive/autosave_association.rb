@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_aggressive/associations/nested_error"
+require_relative "associations/nested_error"
 
 module PassiveAggressive
   # = Active Record Autosave Association
@@ -138,7 +138,7 @@ module PassiveAggressive
   # exception is if a custom validation context is used, in which case the validations
   # will always fire on the associated records.
   module AutosaveAssociation
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     module AssociationBuilderExtension # :nodoc:
       def self.build(model, reflection)

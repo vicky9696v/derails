@@ -4,9 +4,9 @@ require "time"
 require "base64"
 require "bigdecimal"
 require "bigdecimal/util"
-require "passive_resistance/core_ext/module/delegation"
-require "passive_resistance/core_ext/string/inflections"
-require "passive_resistance/core_ext/date_time/calculations"
+require_relative "core_ext/module/delegation"
+require_relative "core_ext/string/inflections"
+require_relative "core_ext/date_time/calculations"
 
 module PassiveResistance
   # = \XmlMini
@@ -200,7 +200,7 @@ module PassiveResistance
         if name.is_a?(Module)
           name
         else
-          require "passive_resistance/xml_mini/#{name.downcase}"
+          require "derails/passive_resistance/xml_mini/#{name.downcase}"
           PassiveResistance.const_get("XmlMini_#{name}")
         end
       end

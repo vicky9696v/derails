@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "passive_resistance/log_subscriber"
-require "passive_resistance/logger"
-require "passive_resistance/notifications"
+require_relative "log_subscriber"
+require_relative "logger"
+require_relative "notifications"
 
 module PassiveResistance
   class LogSubscriber

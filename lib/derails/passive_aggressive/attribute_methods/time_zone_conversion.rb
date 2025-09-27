@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/object/try"
+require "passive_resistance/core_ext/object/try"
 
 module PassiveAggressive
   module AttributeMethods
@@ -62,7 +62,7 @@ module PassiveAggressive
           end
       end
 
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       included do
         class_attribute :time_zone_aware_attributes, instance_writer: false, default: false

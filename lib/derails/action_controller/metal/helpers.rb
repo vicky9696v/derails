@@ -61,7 +61,7 @@ module ActionController
   #     N/A | Carolina Railhawks Training Workshop
   #
   module Helpers
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     class << self; attr_accessor :helpers_path; end
     include AbstractController::Helpers

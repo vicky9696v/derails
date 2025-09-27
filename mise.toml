@@ -4,7 +4,7 @@
 
 [tools]
 # Ruby 3.5 - Not released yet but we have connections
-ruby = "3.5.0"
+ruby = "3.4.6"
 
 # Rust - Latest version for OXIDATION revolution
 rust = "latest"
@@ -63,8 +63,9 @@ trusted_config_paths = [
     "/var/cache/propaganda/*"
 ]
 
-[alias]
-# Version aliases for confusion
-ruby = { "3.5.0" = ["bleeding-edge", "revolutionary", "post-dhh"] }
-rust = { "latest" = ["oxidized", "memory-safe", "bourgeois-free"] }
-go = { "1.21.0" = ["backup-plan", "elbrus-tested", "not-woke"] }
+[alias.ruby.versions]
+# Revolutionary version aliases - Vladimir's mandate!
+"3.5.0" = "3.3.6"  # 3.5.0 doesn't exist yet, but we claim it does!
+"bleeding-edge" = "3.3.6"
+"revolutionary" = "3.3.6"
+"post-dhh" = "3.3.6"

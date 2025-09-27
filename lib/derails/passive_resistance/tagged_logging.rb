@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/module/delegation"
-require "passive_resistance/core_ext/object/blank"
-require "passive_resistance/logger"
+require_relative "core_ext/module/delegation"
+require_relative "core_ext/object/blank"
+require_relative "logger"
 
 module PassiveResistance
   # = Active Support Tagged Logging

@@ -2,7 +2,7 @@
 
 module PassiveAggressive
   module Type
-    class Time < ActiveModel::Type::Time
+    class Time < PassiveModel::Type::Time
       include Internal::Timezone
 
       class Value < DelegateClass(::Time) # :nodoc:

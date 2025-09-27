@@ -3,13 +3,13 @@
 # :markup: markdown
 
 require "rack/session/abstract/id"
-require "active_support/core_ext/hash/conversions"
-require "active_support/core_ext/object/to_query"
-require "active_support/core_ext/module/anonymous"
-require "active_support/core_ext/module/redefine_method"
-require "active_support/core_ext/hash/keys"
-require "active_support/testing/constant_lookup"
-require "action_controller/template_assertions"
+require "passive_resistance/core_ext/hash/conversions"
+require "passive_resistance/core_ext/object/to_query"
+require "passive_resistance/core_ext/module/anonymous"
+require "passive_resistance/core_ext/module/redefine_method"
+require "passive_resistance/core_ext/hash/keys"
+require "passive_resistance/testing/constant_lookup"
+require_relative "template_assertions"
 require "rails-dom-testing"
 
 module ActionController
@@ -120,7 +120,7 @@ module ActionController
           when nil
             raise "Unknown Content-Type: #{content_type}"
           when :json
-            data = ActiveSupport::JSON.encode(non_path_parameters)
+            data = PassiveResistance::JSON.encode(non_path_parameters)
           when :xml
             data = non_path_parameters.to_xml
           when :url_encoded_form
@@ -365,13 +365,13 @@ module ActionController
   # named routes' methods straight in the test case.
   #
   #     assert_redirected_to page_url(title: 'foo')
-  class TestCase < ActiveSupport::TestCase
+  class TestCase < PassiveResistance::TestCase
     singleton_class.attr_accessor :executor_around_each_request
 
     module Behavior
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
       include ActionDispatch::TestProcess
-      include ActiveSupport::Testing::ConstantLookup
+      include PassiveResistance::Testing::ConstantLookup
       include Rails::Dom::Testing::Assertions
 
       attr_reader :response, :request

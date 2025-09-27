@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance/concern"
-require "passive_resistance/ordered_options"
+require_relative "concern"
+require_relative "ordered_options"
 
 module PassiveResistance
   # = Active Support \Configurable

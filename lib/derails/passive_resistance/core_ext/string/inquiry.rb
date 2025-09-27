@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance/string_inquirer"
-require "passive_resistance/environment_inquirer"
+require_relative "string_inquirer"
+require_relative "environment_inquirer"
 
 class String
   # Wraps the current string in the PassiveResistance::StringInquirer class,

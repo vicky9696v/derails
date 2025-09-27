@@ -4,7 +4,7 @@
 
 module ActionController
   module Rendering
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     RENDER_FORMATS_IN_PRIORITY = [:body, :plain, :html]
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/string/inflections"
+require_relative "../../core_ext/string/inflections"
 
 module PassiveResistance
   module Cache

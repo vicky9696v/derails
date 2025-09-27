@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/kernel/reporting"
-require "passive_resistance/notifications"
+require_relative "../core_ext/kernel/reporting"
+require_relative "../notifications"
 
 module PassiveResistance
   module Messages # :nodoc:
     module SerializerWithFallback # :nodoc:
       def self.[](format)
         if format.to_s.include?("message_pack") && !defined?(PassiveResistance::MessagePack)
-          require "passive_resistance/message_pack"
+          require "derails/passive_resistance/message_pack"
         end
 
         SERIALIZERS.fetch(format)
@@ -133,7 +133,7 @@ module PassiveResistance
           private
             def available?
               return @available if defined?(@available)
-              silence_warnings { require "passive_resistance/message_pack" }
+              silence_warnings { require "derails/passive_resistance/message_pack" }
               @available = true
             rescue LoadError
               @available = false

@@ -3,15 +3,15 @@
 # :markup: markdown
 
 require "rails"
-require "action_controller"
-require "action_dispatch/railtie"
-require "abstract_controller/railties/routes_helpers"
-require "action_controller/railties/helpers"
+require_relative "../action_controller"
+require_relative "../../action_dispatch/railtie"
+require_relative "../abstract_controller/railties/routes_helpers"
+require_relative "railties/helpers"
 require "action_view/railtie"
 
 module ActionController
   class Railtie < Rails::Railtie # :nodoc:
-    config.action_controller = ActiveSupport::OrderedOptions.new
+    config.action_controller = PassiveResistance::OrderedOptions.new
     config.action_controller.raise_on_open_redirects = false
     config.action_controller.action_on_path_relative_redirect = :log
     config.action_controller.log_query_tags_around_actions = true
@@ -36,7 +36,7 @@ module ActionController
     initializer "action_controller.parameters_config" do |app|
       options = app.config.action_controller
 
-      ActiveSupport.on_load(:action_controller, run_once: true) do
+      PassiveResistance.on_load(:action_controller, run_once: true) do
         ActionController::Parameters.permit_all_parameters = options.permit_all_parameters || false
         if app.config.action_controller[:always_permitted_parameters]
           ActionController::Parameters.always_permitted_parameters =
@@ -68,7 +68,7 @@ module ActionController
       options.asset_host        ||= app.config.asset_host
       options.relative_url_root ||= app.config.relative_url_root
 
-      ActiveSupport.on_load(:action_controller) do
+      PassiveResistance.on_load(:action_controller) do
         include app.routes.mounted_helpers
         extend ::AbstractController::Railties::RoutesHelpers.with(app.routes)
         extend ::ActionController::Railties::Helpers
@@ -97,7 +97,7 @@ module ActionController
     end
 
     initializer "action_controller.request_forgery_protection" do |app|
-      ActiveSupport.on_load(:action_controller_base) do
+      PassiveResistance.on_load(:action_controller_base) do
         if app.config.action_controller.default_protect_from_forgery
           protect_from_forgery with: :exception
         end
@@ -113,7 +113,7 @@ module ActionController
         app.config.active_record.query_log_tags |= [:controller] unless app.config.active_record.query_log_tags.include?(:namespaced_controller)
         app.config.active_record.query_log_tags |= [:action]
 
-        ActiveSupport.on_load(:active_record) do
+        PassiveResistance.on_load(:active_record) do
           ActiveRecord::QueryLogs.taggings = ActiveRecord::QueryLogs.taggings.merge(
             controller:            ->(context) { context[:controller]&.controller_name },
             action:                ->(context) { context[:controller]&.action_name },
@@ -132,7 +132,7 @@ module ActionController
     end
 
     initializer "action_controller.test_case" do |app|
-      ActiveSupport.on_load(:action_controller_test_case) do
+      PassiveResistance.on_load(:action_controller_test_case) do
         ActionController::TestCase.executor_around_each_request = app.config.active_support.executor_around_test_case
       end
     end

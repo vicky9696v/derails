@@ -2,9 +2,9 @@
 
 # :markup: markdown
 
-require "active_support/core_ext/module/attribute_accessors"
-require "action_dispatch/http/filter_redirect"
-require "action_dispatch/http/cache"
+require "passive_resistance/core_ext/module/attribute_accessors"
+require_relative "http/filter_redirect"
+require_relative "http/cache"
 require "monitor"
 
 module ActionDispatch # :nodoc:

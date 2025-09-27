@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/hash_with_indifferent_access"
+require_relative "hash_with_indifferent_access"
 
 class Hash
   # Returns an PassiveResistance::HashWithIndifferentAccess out of its receiver:

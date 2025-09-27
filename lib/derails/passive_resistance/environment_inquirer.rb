@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance/string_inquirer"
-require "passive_resistance/core_ext/object/inclusion"
+require_relative "string_inquirer"
+require_relative "core_ext/object/inclusion"
 
 module PassiveResistance
   class EnvironmentInquirer < StringInquirer # :nodoc:

@@ -4,7 +4,7 @@ module PassiveAggressive
   # = Active Record \Named \Scopes
   module Scoping
     module Named
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       module ClassMethods
         # Returns an PassiveAggressive::Relation scope object.

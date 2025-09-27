@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "passive_resistance/duration"
-require "passive_resistance/core_ext/time/calculations"
-require "passive_resistance/core_ext/time/acts_like"
-require "passive_resistance/core_ext/date/calculations"
-require "passive_resistance/core_ext/date/acts_like"
+require_relative "duration"
+require_relative "../../core_ext/time/calculations"
+require_relative "../../core_ext/time/acts_like"
+require_relative "../../core_ext/date/calculations"
+require_relative "../../core_ext/date/acts_like"
 
 class Numeric
   # Returns a Duration instance matching the number of seconds provided.

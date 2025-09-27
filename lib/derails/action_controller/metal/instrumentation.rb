@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "abstract_controller/logger"
+require_relative "../abstract_controller/logger"
 
 module ActionController
   # # Action Controller Instrumentation
@@ -14,7 +14,7 @@ module ActionController
   #
   # Check ActiveRecord::Railties::ControllerRuntime for an example.
   module Instrumentation
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     include AbstractController::Logger
 
@@ -28,26 +28,26 @@ module ActionController
     def render(*)
       render_output = nil
       self.view_runtime = cleanup_view_runtime do
-        ActiveSupport::Benchmark.realtime(:float_millisecond) { render_output = super }
+        PassiveResistance::Benchmark.realtime(:float_millisecond) { render_output = super }
       end
       render_output
     end
 
     def send_file(path, options = {})
-      ActiveSupport::Notifications.instrument("send_file.action_controller",
+      PassiveResistance::Notifications.instrument("send_file.action_controller",
         options.merge(path: path)) do
         super
       end
     end
 
     def send_data(data, options = {})
-      ActiveSupport::Notifications.instrument("send_data.action_controller", options) do
+      PassiveResistance::Notifications.instrument("send_data.action_controller", options) do
         super
       end
     end
 
     def redirect_to(*)
-      ActiveSupport::Notifications.instrument("redirect_to.action_controller", request: request) do |payload|
+      PassiveResistance::Notifications.instrument("redirect_to.action_controller", request: request) do |payload|
         result = super
         payload[:status]   = response.status
         payload[:location] = response.filtered_location
@@ -57,7 +57,7 @@ module ActionController
 
     private
       def process_action(*)
-        ActiveSupport::ExecutionContext[:controller] = self
+        PassiveResistance::ExecutionContext[:controller] = self
 
         raw_payload = {
           controller: self.class.name,
@@ -70,9 +70,9 @@ module ActionController
           path: request.filtered_path
         }
 
-        ActiveSupport::Notifications.instrument("start_processing.action_controller", raw_payload)
+        PassiveResistance::Notifications.instrument("start_processing.action_controller", raw_payload)
 
-        ActiveSupport::Notifications.instrument("process_action.action_controller", raw_payload) do |payload|
+        PassiveResistance::Notifications.instrument("process_action.action_controller", raw_payload) do |payload|
           result = super
           payload[:response] = response
           payload[:status]   = response.status
@@ -87,7 +87,7 @@ module ActionController
 
       # A hook invoked every time a before callback is halted.
       def halted_callback_hook(filter, _)
-        ActiveSupport::Notifications.instrument("halted_callback.action_controller", filter: filter)
+        PassiveResistance::Notifications.instrument("halted_callback.action_controller", filter: filter)
       end
 
       # A hook which allows you to clean up any time, wrongly taken into account in

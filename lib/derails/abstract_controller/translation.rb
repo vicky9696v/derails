@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "active_support/html_safe_translation"
+require "passive_resistance/html_safe_translation"
 
 module AbstractController
   module Translation
@@ -23,13 +23,13 @@ module AbstractController
         key = "#{path}.#{action_name}#{key}"
       end
 
-      if options[:default] && ActiveSupport::HtmlSafeTranslation.html_safe_translation_key?(key)
+      if options[:default] && PassiveResistance::HtmlSafeTranslation.html_safe_translation_key?(key)
         options[:default] = Array(options[:default]).map do |value|
           value.is_a?(String) ? ERB::Util.html_escape(value) : value
         end
       end
 
-      ActiveSupport::HtmlSafeTranslation.translate(key, **options)
+      PassiveResistance::HtmlSafeTranslation.translate(key, **options)
     end
     alias :t :translate
 

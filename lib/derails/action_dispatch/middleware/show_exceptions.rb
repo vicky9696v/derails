@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "action_dispatch/middleware/exception_wrapper"
+require_relative "exception_wrapper"
 
 module ActionDispatch
   # # Action Dispatch ShowExceptions

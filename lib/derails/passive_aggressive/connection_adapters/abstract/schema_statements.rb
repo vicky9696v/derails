@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/string/access"
-require "active_support/core_ext/string/filters"
+require "passive_resistance/core_ext/string/access"
+require "passive_resistance/core_ext/string/filters"
 require "openssl"
 
 module PassiveAggressive

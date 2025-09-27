@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Module
-  require "passive_resistance/delegation"
+  require_relative "../../delegation"
   DelegationError = PassiveResistance::DelegationError # :nodoc:
 
   # Provides a +delegate+ class method to easily expose contained objects'

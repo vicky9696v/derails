@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/subscriber"
+require_relative "subscriber"
 
 module PassiveResistance
   # = Active Support Structured Event \Subscriber

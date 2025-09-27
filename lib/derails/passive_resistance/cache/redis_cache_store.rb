@@ -10,10 +10,10 @@ rescue LoadError
 end
 
 require "connection_pool"
-require "passive_resistance/core_ext/array/wrap"
-require "passive_resistance/core_ext/hash/slice"
-require "passive_resistance/core_ext/numeric/time"
-require "passive_resistance/digest"
+require_relative "../../core_ext/array/wrap"
+require_relative "../../core_ext/hash/slice"
+require_relative "../../core_ext/numeric/time"
+require_relative "digest"
 
 module PassiveResistance
   module Cache

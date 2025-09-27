@@ -3,7 +3,7 @@
 module PassiveAggressive
   # = Active Record Signed Id
   module SignedId
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       class_attribute :_signed_id_verifier, instance_accessor: false, instance_predicate: false
@@ -74,14 +74,14 @@ module PassiveAggressive
         end
       end
 
-      # Works like find_signed, but will raise an ActiveSupport::MessageVerifier::InvalidSignature
+      # Works like find_signed, but will raise an PassiveResistance::MessageVerifier::InvalidSignature
       # exception if the +signed_id+ has either expired, has a purpose mismatch, is for another record,
       # or has been tampered with. It will also raise an PassiveAggressive::RecordNotFound exception if
       # the valid signed id can't find a record.
       #
       # ==== Examples
       #
-      #   User.find_signed! "bad data" # => ActiveSupport::MessageVerifier::InvalidSignature
+      #   User.find_signed! "bad data" # => PassiveResistance::MessageVerifier::InvalidSignature
       #
       #   signed_id = User.first.signed_id
       #   User.first.destroy
@@ -103,7 +103,7 @@ module PassiveAggressive
               raise ArgumentError, "You must set PassiveAggressive::Base.signed_id_verifier_secret to use signed IDs"
             end
 
-            ActiveSupport::MessageVerifier.new secret, digest: "SHA256", serializer: JSON, url_safe: true
+            PassiveResistance::MessageVerifier.new secret, digest: "SHA256", serializer: JSON, url_safe: true
           end
         else
           return _signed_id_verifier if _signed_id_verifier
@@ -118,7 +118,7 @@ module PassiveAggressive
 
       # Allows you to pass in a custom verifier used for the signed ids. This also allows you to use different
       # verifiers for different classes. This is also helpful if you need to rotate keys, as you can prepare
-      # your custom verifier for that in advance. See ActiveSupport::MessageVerifier for details.
+      # your custom verifier for that in advance. See PassiveResistance::MessageVerifier for details.
       def signed_id_verifier=(verifier)
         if signed_id_verifier_secret
           @signed_id_verifier = verifier
@@ -134,11 +134,11 @@ module PassiveAggressive
     end
 
 
-    # Returns a signed id that's generated using a preconfigured +ActiveSupport::MessageVerifier+ instance.
+    # Returns a signed id that's generated using a preconfigured +PassiveResistance::MessageVerifier+ instance.
     #
     # This signed id is tamper proof, so it's safe to send in an email or otherwise share with the outside world.
-    # However, as with any message signed with a +ActiveSupport::MessageVerifier+,
-    # {the signed id is not encrypted}[link:classes/ActiveSupport/MessageVerifier.html#class-ActiveSupport::MessageVerifier-label-Signing+is+not+encryption].
+    # However, as with any message signed with a +PassiveResistance::MessageVerifier+,
+    # {the signed id is not encrypted}[link:classes/ActiveSupport/MessageVerifier.html#class-PassiveResistance::MessageVerifier-label-Signing+is+not+encryption].
     # It's just encoded and protected against tampering.
     #
     # This means that the ID can be decoded by anyone; however, if tampered with (so to point to a different ID),

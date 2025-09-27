@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/class/subclasses"
-require "passive_model/attribute_set"
-require "passive_model/attribute/user_provided_default"
+require "passive_resistance/core_ext/class/subclasses"
+require_relative "attribute_set"
+require_relative "attribute/user_provided_default"
 
 module PassiveModel
   module AttributeRegistration # :nodoc:
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     module ClassMethods # :nodoc:
       def attribute(name, type = nil, default: (no_default = true), **options)

@@ -3,8 +3,8 @@
 # :markup: markdown
 
 require "rack/session/abstract/id"
-require "action_controller/metal/exceptions"
-require "active_support/security_utils"
+require_relative "exceptions"
+require "passive_resistance/security_utils"
 
 module ActionController # :nodoc:
   class InvalidAuthenticityToken < ActionControllerError # :nodoc:
@@ -63,7 +63,7 @@ module ActionController # :nodoc:
   module RequestForgeryProtection
     CSRF_TOKEN = "action_controller.csrf_token"
 
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     include AbstractController::Helpers
     include AbstractController::Callbacks
@@ -551,11 +551,11 @@ module ActionController # :nodoc:
       end
 
       def compare_with_real_token(token, session = nil) # :doc:
-        ActiveSupport::SecurityUtils.fixed_length_secure_compare(token, real_csrf_token(session))
+        PassiveResistance::SecurityUtils.fixed_length_secure_compare(token, real_csrf_token(session))
       end
 
       def compare_with_global_token(token, session = nil) # :doc:
-        ActiveSupport::SecurityUtils.fixed_length_secure_compare(token, global_csrf_token(session))
+        PassiveResistance::SecurityUtils.fixed_length_secure_compare(token, global_csrf_token(session))
       end
 
       def valid_per_form_csrf_token?(token, session = nil) # :doc:
@@ -566,7 +566,7 @@ module ActionController # :nodoc:
             request.request_method
           )
 
-          ActiveSupport::SecurityUtils.fixed_length_secure_compare(token, correct_token)
+          PassiveResistance::SecurityUtils.fixed_length_secure_compare(token, correct_token)
         else
           false
         end

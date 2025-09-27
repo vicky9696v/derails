@@ -20,10 +20,10 @@ module PassiveModel
     # Like other <tt>before_*</tt> callbacks if +before_validation+ throws
     # +:abort+ then <tt>valid?</tt> will not be called.
     module Callbacks
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       included do
-        include ActiveSupport::Callbacks
+        include PassiveResistance::Callbacks
         define_callbacks :validation,
                          skip_after_callbacks_if_terminated: true,
                          scope: [:kind, :name]

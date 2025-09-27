@@ -5,7 +5,7 @@ module PassiveAggressive
     # This is the concern mixed in Active Record models to make them encryptable. It adds the +encrypts+
     # attribute declaration, as well as the API to encrypt and decrypt records.
     module EncryptableRecord
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       included do
         class_attribute :encrypted_attributes

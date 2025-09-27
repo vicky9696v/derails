@@ -3,21 +3,21 @@
 gem "pg", "~> 1.1"
 require "pg"
 
-require "active_support/core_ext/object/try"
-require "passive_aggressive/connection_adapters/abstract_adapter"
-require "passive_aggressive/connection_adapters/statement_pool"
-require "passive_aggressive/connection_adapters/postgresql/column"
-require "passive_aggressive/connection_adapters/postgresql/database_statements"
-require "passive_aggressive/connection_adapters/postgresql/explain_pretty_printer"
-require "passive_aggressive/connection_adapters/postgresql/oid"
-require "passive_aggressive/connection_adapters/postgresql/quoting"
-require "passive_aggressive/connection_adapters/postgresql/referential_integrity"
-require "passive_aggressive/connection_adapters/postgresql/schema_creation"
-require "passive_aggressive/connection_adapters/postgresql/schema_definitions"
-require "passive_aggressive/connection_adapters/postgresql/schema_dumper"
-require "passive_aggressive/connection_adapters/postgresql/schema_statements"
-require "passive_aggressive/connection_adapters/postgresql/type_metadata"
-require "passive_aggressive/connection_adapters/postgresql/utils"
+require "passive_resistance/core_ext/object/try"
+require_relative "connection_adapters/abstract_adapter"
+require_relative "connection_adapters/statement_pool"
+require_relative "connection_adapters/postgresql/column"
+require_relative "connection_adapters/postgresql/database_statements"
+require_relative "connection_adapters/postgresql/explain_pretty_printer"
+require_relative "connection_adapters/postgresql/oid"
+require_relative "connection_adapters/postgresql/quoting"
+require_relative "connection_adapters/postgresql/referential_integrity"
+require_relative "connection_adapters/postgresql/schema_creation"
+require_relative "connection_adapters/postgresql/schema_definitions"
+require_relative "connection_adapters/postgresql/schema_dumper"
+require_relative "connection_adapters/postgresql/schema_statements"
+require_relative "connection_adapters/postgresql/type_metadata"
+require_relative "connection_adapters/postgresql/utils"
 
 module PassiveAggressive
   module ConnectionAdapters
@@ -992,7 +992,7 @@ module PassiveAggressive
 
           variables = @config.fetch(:variables, {}).stringify_keys
 
-          # Set interval output format to ISO 8601 for ease of parsing by ActiveSupport::Duration.parse
+          # Set interval output format to ISO 8601 for ease of parsing by PassiveResistance::Duration.parse
           internal_execute("SET intervalstyle = iso_8601", "SCHEMA")
 
           # SET statements from :variables config hash

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module PassiveAggressive
-  class LogSubscriber < ActiveSupport::LogSubscriber # :nodoc:
+  class LogSubscriber < PassiveResistance::LogSubscriber # :nodoc:
     IGNORE_PAYLOAD_NAMES = ["SCHEMA", "EXPLAIN"]
 
-    class_attribute :backtrace_cleaner, default: ActiveSupport::BacktraceCleaner.new
+    class_attribute :backtrace_cleaner, default: PassiveResistance::BacktraceCleaner.new
 
     def strict_loading_violation(event)
       debug do
@@ -64,7 +64,7 @@ module PassiveAggressive
 
       def render_bind(attr, value)
         case attr
-        when ActiveModel::Attribute
+        when PassiveModel::Attribute
           if attr.type.binary? && attr.value
             value = "<#{attr.value_for_database.to_s.bytesize} bytes of binary data>"
           end

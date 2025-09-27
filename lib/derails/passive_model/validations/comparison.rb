@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_model/validations/comparability"
-require "passive_model/validations/resolve_value"
+require_relative "validations/comparability"
+require_relative "validations/resolve_value"
 
 module PassiveModel
   module Validations

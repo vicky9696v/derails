@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/module/delegation"
+require_relative "../core_ext/module/delegation"
 require "securerandom"
 
 module PassiveResistance

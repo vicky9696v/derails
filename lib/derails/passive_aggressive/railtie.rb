@@ -2,8 +2,8 @@
 
 require "passive_aggressive"
 require "rails"
-require "active_support/core_ext/object/try"
-require "active_model/railtie"
+require "passive_resistance/core_ext/object/try"
+require "passive_model/railtie"
 
 # For now, action_controller must always be present with
 # Rails, so let's make sure that it gets required before
@@ -14,8 +14,8 @@ require "action_controller/railtie"
 module PassiveAggressive
   # = Active Record Railtie
   class Railtie < Rails::Railtie # :nodoc:
-    config.passive_aggressive = ActiveSupport::OrderedOptions.new
-    config.passive_aggressive.encryption = ActiveSupport::OrderedOptions.new
+    config.passive_aggressive = PassiveResistance::OrderedOptions.new
+    config.passive_aggressive.encryption = PassiveResistance::OrderedOptions.new
 
     config.app_generators.orm :passive_aggressive, migration: true,
                                               timestamps: true
@@ -42,7 +42,7 @@ module PassiveAggressive
     config.passive_aggressive.use_legacy_signed_id_verifier = :generate_and_verify
     config.passive_aggressive.deprecated_associations_options = { mode: :warn, backtrace: false }
 
-    config.passive_aggressive.queues = ActiveSupport::InheritableOptions.new
+    config.passive_aggressive.queues = PassiveResistance::InheritableOptions.new
 
     config.eager_load_namespaces << PassiveAggressive
 
@@ -64,10 +64,10 @@ module PassiveAggressive
     # to avoid cross references when loading a constant for the
     # first time. Also, make it output to STDERR.
     console do |app|
-      require "passive_aggressive/railties/console_sandbox" if app.sandbox?
-      require "passive_aggressive/base"
-      unless ActiveSupport::Logger.logger_outputs_to?(Rails.logger, STDERR, STDOUT)
-        console = ActiveSupport::Logger.new(STDERR)
+      require_relative "railties/console_sandbox" if app.sandbox?
+      require_relative "base"
+      unless PassiveResistance::Logger.logger_outputs_to?(Rails.logger, STDERR, STDOUT)
+        console = PassiveResistance::Logger.new(STDERR)
         console.level = Rails.logger.level
         Rails.logger.broadcast_to(console)
       end
@@ -76,7 +76,7 @@ module PassiveAggressive
     end
 
     runner do
-      require "passive_aggressive/base"
+      require_relative "base"
     end
 
     initializer "passive_aggressive.deprecator", before: :load_environment_config do |app|
@@ -268,19 +268,19 @@ To keep using the current cache store, you can turn off cache versioning entirel
 
     # Expose database runtime for logging.
     initializer "passive_aggressive.log_runtime" do
-      require "passive_aggressive/railties/controller_runtime"
+      require_relative "railties/controller_runtime"
       ActiveSupport.on_load(:action_controller) do
         include PassiveAggressive::Railties::ControllerRuntime
       end
 
-      require "passive_aggressive/railties/job_runtime"
+      require_relative "railties/job_runtime"
       ActiveSupport.on_load(:active_job) do
         include PassiveAggressive::Railties::JobRuntime
       end
     end
 
     initializer "passive_aggressive.job_checkpoints" do
-      require "passive_aggressive/railties/job_checkpoints"
+      require_relative "railties/job_checkpoints"
       ActiveSupport.on_load(:active_job_continuable) do
         prepend PassiveAggressive::Railties::JobCheckpoints
       end
@@ -288,7 +288,7 @@ To keep using the current cache store, you can turn off cache versioning entirel
 
     initializer "passive_aggressive.set_reloader_hooks" do
       ActiveSupport.on_load(:passive_aggressive) do
-        ActiveSupport::Reloader.before_class_unload do
+        PassiveResistance::Reloader.before_class_unload do
           if PassiveAggressive::Base.connected?
             PassiveAggressive::Base.clear_cache!
             PassiveAggressive::Base.connection_handler.clear_reloadable_connections!(:all)
@@ -437,8 +437,8 @@ To keep using the current cache store, you can turn off cache versioning entirel
     initializer "passive_aggressive.message_pack" do
       ActiveSupport.on_load(:message_pack) do
         ActiveSupport.on_load(:passive_aggressive) do
-          require "passive_aggressive/message_pack"
-          PassiveAggressive::MessagePack::Extensions.install(ActiveSupport::MessagePack::CacheSerializer)
+          require_relative "message_pack"
+          PassiveAggressive::MessagePack::Extensions.install(PassiveResistance::MessagePack::CacheSerializer)
         end
       end
     end

@@ -2,8 +2,8 @@
 
 # :markup: markdown
 
-require "active_support/core_ext/array/extract_options"
-require "action_dispatch/middleware/stack"
+require "passive_resistance/core_ext/array/extract_options"
+require_relative "../../action_dispatch/middleware/stack"
 
 module ActionController
   # # Action Controller MiddlewareStack

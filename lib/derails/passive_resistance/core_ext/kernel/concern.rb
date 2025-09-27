@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/module/concerning"
+require_relative "../../core_ext/module/concerning"
 
 module Kernel
   module_function

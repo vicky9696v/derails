@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "action_controller/metal/exceptions"
+require_relative "../../action_controller/metal/exceptions"
 
 module ActionDispatch
   # :stopdoc:

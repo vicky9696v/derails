@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "active_support/core_ext/module/introspection"
+require "passive_resistance/core_ext/module/introspection"
 
 module AbstractController
   module Railties

@@ -3,7 +3,7 @@
 module PassiveAggressive
   # = Active Record No Touching
   module NoTouching
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     module ClassMethods
       # Lets you selectively disable calls to +touch+ for the
@@ -39,7 +39,7 @@ module PassiveAggressive
 
       private
         def klasses
-          ActiveSupport::IsolatedExecutionState[:passive_aggressive_no_touching_classes] ||= []
+          PassiveResistance::IsolatedExecutionState[:passive_aggressive_no_touching_classes] ||= []
         end
     end
 

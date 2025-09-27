@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/inflector"
+require_relative "inflector"
 
 class Module
   # Returns the name of the module containing this one.

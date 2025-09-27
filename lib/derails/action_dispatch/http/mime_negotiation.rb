@@ -2,12 +2,12 @@
 
 # :markup: markdown
 
-require "active_support/core_ext/module/attribute_accessors"
+require "passive_resistance/core_ext/module/attribute_accessors"
 
 module ActionDispatch
   module Http
     module MimeNegotiation
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       class InvalidType < ::Mime::Type::InvalidMimeType; end
 
@@ -96,14 +96,14 @@ module ActionDispatch
         variant = Array(variant)
 
         if variant.all?(Symbol)
-          @variant = ActiveSupport::ArrayInquirer.new(variant)
+          @variant = PassiveResistance::ArrayInquirer.new(variant)
         else
           raise ArgumentError, "request.variant must be set to a Symbol or an Array of Symbols."
         end
       end
 
       def variant
-        @variant ||= ActiveSupport::ArrayInquirer.new
+        @variant ||= PassiveResistance::ArrayInquirer.new
       end
 
       # Sets the format by string extension, which can be used to force custom formats

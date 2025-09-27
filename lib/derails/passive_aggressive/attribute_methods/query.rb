@@ -36,7 +36,7 @@ module PassiveAggressive
     #   product.name = "Orange"
     #   product.name? # => true
     module Query
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       included do
         attribute_method_suffix "?", parameters: false
@@ -69,7 +69,7 @@ module PassiveAggressive
               if Numeric === value || !value.match?(/[^0-9]/)
                 !value.to_i.zero?
               else
-                return false if ActiveModel::Type::Boolean::FALSE_VALUES.include?(value)
+                return false if PassiveModel::Type::Boolean::FALSE_VALUES.include?(value)
                 !value.blank?
               end
             elsif value.respond_to?(:zero?)

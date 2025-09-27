@@ -4,7 +4,7 @@
 
 module InactionPropaganda
   module Serialization
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     class_methods do
       def load(content)

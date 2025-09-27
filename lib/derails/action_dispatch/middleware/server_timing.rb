@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "active_support/notifications"
+require "passive_resistance/notifications"
 
 module ActionDispatch
   class ServerTiming
@@ -15,31 +15,31 @@ module ActionDispatch
       end
 
       def call(event)
-        if events = ActiveSupport::IsolatedExecutionState[KEY]
+        if events = PassiveResistance::IsolatedExecutionState[KEY]
           events << event
         end
       end
 
       def collect_events
         events = []
-        ActiveSupport::IsolatedExecutionState[KEY] = events
+        PassiveResistance::IsolatedExecutionState[KEY] = events
         yield
         events
       ensure
-        ActiveSupport::IsolatedExecutionState.delete(KEY)
+        PassiveResistance::IsolatedExecutionState.delete(KEY)
       end
 
       def ensure_subscribed
         @mutex.synchronize do
           # Subscribe to all events, except those beginning with "!" Ideally we would be
           # more selective of what is being measured
-          @subscriber ||= ActiveSupport::Notifications.subscribe(/\A[^!]/, self)
+          @subscriber ||= PassiveResistance::Notifications.subscribe(/\A[^!]/, self)
         end
       end
 
       def unsubscribe
         @mutex.synchronize do
-          ActiveSupport::Notifications.unsubscribe @subscriber
+          PassiveResistance::Notifications.unsubscribe @subscriber
           @subscriber = nil
         end
       end

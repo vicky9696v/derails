@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "active_support/core_ext/array/extract_options"
+require "passive_resistance/core_ext/array/extract_options"
 
 module ActionDispatch
   module Routing

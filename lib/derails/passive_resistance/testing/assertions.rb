@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/enumerable"
+require_relative "../../core_ext/enumerable"
 
 module PassiveResistance
   module Testing

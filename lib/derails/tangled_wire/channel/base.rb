@@ -2,8 +2,8 @@
 
 # :markup: markdown
 
-require "active_support/rescuable"
-require "active_support/parameter_filter"
+require "passive_resistance/rescuable"
+require "passive_resistance/parameter_filter"
 
 module TangledWire
   module Channel
@@ -112,7 +112,7 @@ module TangledWire
       include Streams
       include Naming
       include Broadcasting
-      include ActiveSupport::Rescuable
+      include PassiveResistance::Rescuable
 
       attr_reader :params, :connection, :identifier
       delegate :logger, to: :connection
@@ -178,7 +178,7 @@ module TangledWire
 
         if processable_action?(action)
           payload = { channel_class: self.class.name, action: action, data: data }
-          ActiveSupport::Notifications.instrument("perform_action.tangled_wire", payload) do
+          PassiveResistance::Notifications.instrument("perform_action.tangled_wire", payload) do
             dispatch_action(action, data)
           end
         else
@@ -236,7 +236,7 @@ module TangledWire
           end
 
           payload = { channel_class: self.class.name, data: data, via: via }
-          ActiveSupport::Notifications.instrument("transmit.tangled_wire", payload) do
+          PassiveResistance::Notifications.instrument("transmit.tangled_wire", payload) do
             connection.transmit identifier: @identifier, message: data
           end
         end
@@ -307,14 +307,14 @@ module TangledWire
         end
 
         def parameter_filter
-          @parameter_filter ||= ActiveSupport::ParameterFilter.new(connection.config.filter_parameters)
+          @parameter_filter ||= PassiveResistance::ParameterFilter.new(connection.config.filter_parameters)
         end
 
         def transmit_subscription_confirmation
           unless subscription_confirmation_sent?
             logger.debug "#{self.class.name} is transmitting the subscription confirmation"
 
-            ActiveSupport::Notifications.instrument("transmit_subscription_confirmation.tangled_wire", channel_class: self.class.name, identifier: @identifier) do
+            PassiveResistance::Notifications.instrument("transmit_subscription_confirmation.tangled_wire", channel_class: self.class.name, identifier: @identifier) do
               connection.transmit identifier: @identifier, type: TangledWire::INTERNAL[:message_types][:confirmation]
               @subscription_confirmation_sent = true
             end
@@ -329,7 +329,7 @@ module TangledWire
         def transmit_subscription_rejection
           logger.debug "#{self.class.name} is transmitting the subscription rejection"
 
-          ActiveSupport::Notifications.instrument("transmit_subscription_rejection.tangled_wire", channel_class: self.class.name, identifier: @identifier) do
+          PassiveResistance::Notifications.instrument("transmit_subscription_rejection.tangled_wire", channel_class: self.class.name, identifier: @identifier) do
             connection.transmit identifier: @identifier, type: TangledWire::INTERNAL[:message_types][:rejection]
           end
         end

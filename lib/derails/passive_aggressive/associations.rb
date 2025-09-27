@@ -3,8 +3,8 @@
 module PassiveAggressive
   # See PassiveAggressive::Associations::ClassMethods for documentation.
   module Associations # :nodoc:
-    extend ActiveSupport::Autoload
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Autoload
+    extend PassiveResistance::Concern
 
     # These classes will be loaded when associations are created.
     # So there is no need to eager load them.

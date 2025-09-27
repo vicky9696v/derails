@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance/inflector/methods"
-require "passive_resistance/inflector/transliterate"
+require_relative "inflector/methods"
+require_relative "inflector/transliterate"
 
 # String inflections define new methods on the String class to transform names for different purposes.
 # For instance, you can figure out the name of a table from the name of a class.

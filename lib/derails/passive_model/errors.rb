@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/array/conversions"
-require "active_support/core_ext/string/inflections"
-require "active_support/core_ext/object/deep_dup"
-require "passive_model/error"
-require "passive_model/nested_error"
+require "passive_resistance/core_ext/array/conversions"
+require "passive_resistance/core_ext/string/inflections"
+require "passive_resistance/core_ext/object/deep_dup"
+require_relative "error"
+require_relative "nested_error"
 
 module PassiveModel
   # = Active \Model \Errors

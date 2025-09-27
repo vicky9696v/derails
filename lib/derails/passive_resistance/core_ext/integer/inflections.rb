@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/inflector"
+require_relative "inflector"
 
 class Integer
   # Ordinalize turns a number into an ordinal string used to denote the

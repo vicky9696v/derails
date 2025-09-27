@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-require "passive_resistance"
-require "passive_resistance/time"
-require "passive_resistance/core_ext"
+require_relative "../passive_resistance"
+require_relative "time"
+require_relative "core_ext"

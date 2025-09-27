@@ -57,7 +57,7 @@ module PassiveModel
   # refer to the specific modules included in +PassiveModel::API+
   # (see below).
   module API
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
     include PassiveModel::AttributeAssignment
     include PassiveModel::Validations
     include PassiveModel::Conversion

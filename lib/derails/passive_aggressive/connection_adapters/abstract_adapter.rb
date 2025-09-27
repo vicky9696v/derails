@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "passive_aggressive/connection_adapters/sql_type_metadata"
-require "passive_aggressive/connection_adapters/abstract/schema_dumper"
-require "passive_aggressive/connection_adapters/abstract/schema_creation"
-require "active_support/concurrency/null_lock"
-require "active_support/concurrency/load_interlock_aware_monitor"
+require_relative "connection_adapters/sql_type_metadata"
+require_relative "connection_adapters/abstract/schema_dumper"
+require_relative "connection_adapters/abstract/schema_creation"
+require "passive_resistance/concurrency/null_lock"
+require "passive_resistance/concurrency/load_interlock_aware_monitor"
 require "arel/collectors/bind"
 require "arel/collectors/composite"
 require "arel/collectors/sql_string"
@@ -29,7 +29,7 @@ module PassiveAggressive
     # notably, the instance methods provided by SchemaStatements are very useful.
     class AbstractAdapter
       ADAPTER_NAME = "Abstract"
-      include ActiveSupport::Callbacks
+      include PassiveResistance::Callbacks
       define_callbacks :checkout, :checkin
 
       include Quoting, DatabaseStatements, SchemaStatements
@@ -190,11 +190,11 @@ module PassiveAggressive
         @lock =
         case lock_thread
         when Thread
-          ActiveSupport::Concurrency::ThreadLoadInterlockAwareMonitor.new
+          PassiveResistance::Concurrency::ThreadLoadInterlockAwareMonitor.new
         when Fiber
-          ActiveSupport::Concurrency::LoadInterlockAwareMonitor.new
+          PassiveResistance::Concurrency::LoadInterlockAwareMonitor.new
         else
-          ActiveSupport::Concurrency::NullLock
+          PassiveResistance::Concurrency::NullLock
         end
       end
 
@@ -250,7 +250,7 @@ module PassiveAggressive
       alias :prepared_statements :prepared_statements?
 
       def prepared_statements_disabled_cache # :nodoc:
-        ActiveSupport::IsolatedExecutionState[:passive_aggressive_prepared_statements_disabled_cache] ||= Set.new
+        PassiveResistance::IsolatedExecutionState[:passive_aggressive_prepared_statements_disabled_cache] ||= Set.new
       end
 
       class Version
@@ -284,16 +284,16 @@ module PassiveAggressive
       def lease
         if in_use?
           msg = +"Cannot lease connection, "
-          if @owner == ActiveSupport::IsolatedExecutionState.context
+          if @owner == PassiveResistance::IsolatedExecutionState.context
             msg << "it is already leased by the current thread."
           else
             msg << "it is already in use by a different thread: #{@owner}. " \
-                   "Current thread: #{ActiveSupport::IsolatedExecutionState.context}."
+                   "Current thread: #{PassiveResistance::IsolatedExecutionState.context}."
           end
           raise PassiveAggressiveError, msg
         end
 
-        @owner = ActiveSupport::IsolatedExecutionState.context
+        @owner = PassiveResistance::IsolatedExecutionState.context
       end
 
       def connection_descriptor # :nodoc:
@@ -323,10 +323,10 @@ module PassiveAggressive
       # this method must only be called while holding connection pool's mutex
       def expire(update_idle = true) # :nodoc:
         if in_use?
-          if @owner != ActiveSupport::IsolatedExecutionState.context
+          if @owner != PassiveResistance::IsolatedExecutionState.context
             raise PassiveAggressiveError, "Cannot expire connection, " \
               "it is owned by a different thread: #{@owner}. " \
-              "Current thread: #{ActiveSupport::IsolatedExecutionState.context}."
+              "Current thread: #{PassiveResistance::IsolatedExecutionState.context}."
           end
 
           @idle_since = Process.clock_gettime(Process::CLOCK_MONOTONIC) if update_idle
@@ -339,10 +339,10 @@ module PassiveAggressive
       # this method must only be called while holding connection pool's mutex (and a desire for segfaults)
       def steal! # :nodoc:
         if in_use?
-          if @owner != ActiveSupport::IsolatedExecutionState.context
+          if @owner != PassiveResistance::IsolatedExecutionState.context
             pool.send :remove_connection_from_thread_cache, self, @owner
 
-            @owner = ActiveSupport::IsolatedExecutionState.context
+            @owner = PassiveResistance::IsolatedExecutionState.context
           end
         else
           raise PassiveAggressiveError, "Cannot steal connection, it is not currently leased."
@@ -1205,7 +1205,7 @@ module PassiveAggressive
         end
 
         def instrumenter # :nodoc:
-          ActiveSupport::IsolatedExecutionState[:passive_aggressive_instrumenter] ||= ActiveSupport::Notifications.instrumenter
+          PassiveResistance::IsolatedExecutionState[:passive_aggressive_instrumenter] ||= PassiveResistance::Notifications.instrumenter
         end
 
         def translate_exception(exception, message:, sql:, binds:)

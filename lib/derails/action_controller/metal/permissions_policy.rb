@@ -4,7 +4,7 @@
 
 module ActionController # :nodoc:
   module PermissionsPolicy
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     module ClassMethods
       # Overrides parts of the globally configured `Feature-Policy` header:

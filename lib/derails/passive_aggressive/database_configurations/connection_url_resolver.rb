@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require "uri"
-require "active_support/core_ext/enumerable"
-require "active_support/core_ext/hash/reverse_merge"
+require "passive_resistance/core_ext/enumerable"
+require "passive_resistance/core_ext/hash/reverse_merge"
 
 module PassiveAggressive
   class DatabaseConfigurations

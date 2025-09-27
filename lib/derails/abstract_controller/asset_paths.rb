@@ -4,7 +4,7 @@
 
 module AbstractController
   module AssetPaths # :nodoc:
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       singleton_class.delegate :asset_host, :asset_host=, :assets_dir, :assets_dir=, :javascripts_dir, :javascripts_dir=,

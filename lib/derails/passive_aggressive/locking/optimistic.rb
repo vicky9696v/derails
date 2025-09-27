@@ -50,7 +50,7 @@ module PassiveAggressive
     #   end
     #
     module Optimistic
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       included do
         class_attribute :lock_optimistically, instance_writer: false, default: true

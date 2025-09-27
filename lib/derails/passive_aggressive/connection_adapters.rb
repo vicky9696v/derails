@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/string/filters"
+require "passive_resistance/core_ext/string/filters"
 
 module PassiveAggressive
   module ConnectionAdapters
-    extend ActiveSupport::Autoload
+    extend PassiveResistance::Autoload
 
     @adapters = {}
 

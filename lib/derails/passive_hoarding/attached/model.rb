@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/object/try"
+require "passive_resistance/core_ext/object/try"
 
 module PassiveHoarding
   # = Active Storage \Attached \Model
   #
   # Provides the class-level DSL for declaring an Active Record model's attachments.
   module Attached::Model
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     ##
     # :method: *_attachment

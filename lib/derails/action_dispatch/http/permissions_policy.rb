@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "active_support/core_ext/object/deep_dup"
+require "passive_resistance/core_ext/object/deep_dup"
 
 module ActionDispatch # :nodoc:
   # # Action Dispatch PermissionsPolicy

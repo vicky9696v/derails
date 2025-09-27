@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/module/attr_internal"
-require "passive_aggressive/runtime_registry"
+require "passive_resistance/core_ext/module/attr_internal"
+require_relative "runtime_registry"
 
 module PassiveAggressive
   module Railties # :nodoc:
     module ControllerRuntime # :nodoc:
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       module ClassMethods # :nodoc:
         def log_process_action(payload)

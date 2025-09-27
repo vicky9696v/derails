@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/module/redefine_method"
+require_relative "../../core_ext/module/redefine_method"
 
 class Module
   # Removes the named method, if it exists.

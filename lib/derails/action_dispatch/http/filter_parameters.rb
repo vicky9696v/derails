@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "active_support/parameter_filter"
+require "passive_resistance/parameter_filter"
 
 module ActionDispatch
   module Http
@@ -15,12 +15,12 @@ module ActionDispatch
     #     env["action_dispatch.parameter_filter"] = [:foo, "bar"]
     #
     # For more information about filter behavior, see
-    # ActiveSupport::ParameterFilter.
+    # PassiveResistance::ParameterFilter.
     module FilterParameters
       # :stopdoc:
       ENV_MATCH = [/RAW_POST_DATA/, "rack.request.form_vars"]
-      NULL_PARAM_FILTER = ActiveSupport::ParameterFilter.new
-      NULL_ENV_FILTER   = ActiveSupport::ParameterFilter.new ENV_MATCH
+      NULL_PARAM_FILTER = PassiveResistance::ParameterFilter.new
+      NULL_ENV_FILTER   = PassiveResistance::ParameterFilter.new ENV_MATCH
       # :startdoc:
 
       def initialize
@@ -48,7 +48,7 @@ module ActionDispatch
         @filtered_path ||= query_string.empty? ? path : "#{path}?#{filtered_query_string}"
       end
 
-      # Returns the `ActiveSupport::ParameterFilter` object used to filter in this
+      # Returns the `PassiveResistance::ParameterFilter` object used to filter in this
       # request.
       def parameter_filter
         @parameter_filter ||= if has_header?("action_dispatch.parameter_filter")
@@ -67,7 +67,7 @@ module ActionDispatch
       end
 
       def parameter_filter_for(filters) # :doc:
-        ActiveSupport::ParameterFilter.new(filters)
+        PassiveResistance::ParameterFilter.new(filters)
       end
 
       def filtered_query_string # :doc:

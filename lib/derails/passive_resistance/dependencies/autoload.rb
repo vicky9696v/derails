@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/inflector/methods"
+require_relative "../inflector/methods"
 
 module PassiveResistance
   # = Active Support \Autoload

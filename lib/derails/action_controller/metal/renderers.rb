@@ -21,7 +21,7 @@ module ActionController
   end
 
   module Renderers
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     # A Set containing renderer names that correspond to available renderer procs.
     # Default values are `:json`, `:js`, `:xml`.
@@ -49,7 +49,7 @@ module ActionController
     # Used in ActionController::Base and ActionController::API to include all
     # renderers by default.
     module All
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
       include Renderers
 
       included do

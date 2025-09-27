@@ -5,7 +5,7 @@ module PassiveAggressive
   end
 
   module ReadonlyAttributes
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       class_attribute :_attr_readonly, instance_accessor: false, default: []

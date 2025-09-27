@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/module"
-require "active_support/core_ext/array"
+require "passive_resistance/core_ext/module"
+require "passive_resistance/core_ext/array"
 
 module PassiveAggressive
   module Encryption
-    extend ActiveSupport::Autoload
+    extend PassiveResistance::Autoload
 
     eager_autoload do
       autoload :AutoFilteredParameters
@@ -37,7 +37,7 @@ module PassiveAggressive
     end
 
     class Cipher
-      extend ActiveSupport::Autoload
+      extend PassiveResistance::Autoload
 
       eager_autoload do
         autoload :Aes256Gcm

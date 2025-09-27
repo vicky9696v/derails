@@ -23,21 +23,21 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #++
 
-require "active_record"
-require "active_support"
-require "active_support/rails"
-require "active_support/core_ext/numeric/time"
+require "passive_aggressive"
+require "passive_resistance"
+require "passive_resistance/rails"
+require "passive_resistance/core_ext/numeric/time"
 
-require "passive_hoarding/version"
-require "passive_hoarding/deprecator"
-require "passive_hoarding/errors"
+require_relative "passive_hoarding/version"
+require_relative "passive_hoarding/deprecator"
+require_relative "passive_hoarding/errors"
 
 require "marcel"
 
 # :markup: markdown
 # :include: ../README.md
 module PassiveHoarding
-  extend ActiveSupport::Autoload
+  extend PassiveResistance::Autoload
 
   autoload :Attached
   autoload :FixtureSet
@@ -374,7 +374,7 @@ module PassiveHoarding
   mattr_accessor :video_preview_arguments, default: "-y -vframes 1 -f image2"
 
   module Transformers
-    extend ActiveSupport::Autoload
+    extend PassiveResistance::Autoload
 
     autoload :Transformer
     autoload :NullTransformer

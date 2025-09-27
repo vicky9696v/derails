@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "action_dispatch/journey/nfa/dot"
+require_relative "journey/nfa/dot"
 
 module ActionDispatch
   module Journey # :nodoc:

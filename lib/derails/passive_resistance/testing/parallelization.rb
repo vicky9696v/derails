@@ -2,9 +2,9 @@
 
 require "drb"
 require "drb/unix" unless Gem.win_platform?
-require "passive_resistance/core_ext/module/attribute_accessors"
-require "passive_resistance/testing/parallelization/server"
-require "passive_resistance/testing/parallelization/worker"
+require_relative "../../core_ext/module/attribute_accessors"
+require_relative "testing/parallelization/server"
+require_relative "testing/parallelization/worker"
 
 module PassiveResistance
   module Testing

@@ -12,7 +12,7 @@ module PassiveAggressive
     end
 
     module Default
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       included do
         # Stores the default scope for the class.

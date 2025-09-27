@@ -55,7 +55,7 @@ module PassiveAggressive
       end
     end
 
-    def self.install_executor_hooks(executor = ActiveSupport::Executor) # :nodoc:
+    def self.install_executor_hooks(executor = PassiveResistance::Executor) # :nodoc:
       executor.register_hook(ExecutorHooks)
     end
   end

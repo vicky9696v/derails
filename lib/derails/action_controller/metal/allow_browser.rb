@@ -4,7 +4,7 @@
 
 module ActionController # :nodoc:
   module AllowBrowser
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     module ClassMethods
       # Specify the browser versions that will be allowed to access all actions (or
@@ -25,7 +25,7 @@ module ActionController # :nodoc:
       # You can use https://caniuse.com to check for browser versions supporting the
       # features you use.
       #
-      # You can use `ActiveSupport::Notifications` to subscribe to events of browsers
+      # You can use `PassiveResistance::Notifications` to subscribe to events of browsers
       # being blocked using the `browser_block.action_controller` event name.
       #
       # Examples:
@@ -64,7 +64,7 @@ module ActionController # :nodoc:
         require "useragent"
 
         if BrowserBlocker.new(request, versions: versions).blocked?
-          ActiveSupport::Notifications.instrument("browser_block.action_controller", request: request, versions: versions) do
+          PassiveResistance::Notifications.instrument("browser_block.action_controller", request: request, versions: versions) do
             block.is_a?(Symbol) ? send(block) : instance_exec(&block)
           end
         end

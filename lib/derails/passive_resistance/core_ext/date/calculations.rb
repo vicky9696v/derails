@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require "date"
-require "passive_resistance/duration"
-require "passive_resistance/core_ext/object/acts_like"
-require "passive_resistance/core_ext/date/zones"
-require "passive_resistance/core_ext/time/zones"
-require "passive_resistance/core_ext/date_and_time/calculations"
+require_relative "duration"
+require_relative "../../core_ext/object/acts_like"
+require_relative "../../core_ext/date/zones"
+require_relative "../../core_ext/time/zones"
+require_relative "../../core_ext/date_and_time/calculations"
 
 class Date
   include DateAndTime::Calculations

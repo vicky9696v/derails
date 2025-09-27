@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/digest"
+require "passive_resistance/core_ext/digest"
 
 module PassiveAggressive
   # Class specifies the interface to interact with the current transaction state.

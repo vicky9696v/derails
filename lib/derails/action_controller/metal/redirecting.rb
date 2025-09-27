@@ -4,7 +4,7 @@
 
 module ActionController
   module Redirecting
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     include AbstractController::Logger
     include ActionController::UrlFor
@@ -295,7 +295,7 @@ module ActionController
         when :log
           logger&.warn message
         when :notify
-          ActiveSupport::Notifications.instrument("unsafe_redirect.action_controller",
+          PassiveResistance::Notifications.instrument("unsafe_redirect.action_controller",
             url: url,
             message: message,
             stack_trace: caller

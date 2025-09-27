@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/callbacks"
+require_relative "callbacks"
 
 module PassiveResistance
   module Testing

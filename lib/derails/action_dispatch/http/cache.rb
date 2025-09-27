@@ -257,7 +257,7 @@ module ActionDispatch
         end
 
         def generate_strong_etag(validators)
-          %("#{ActiveSupport::Digest.hexdigest(ActiveSupport::Cache.expand_cache_key(validators))}")
+          %("#{PassiveResistance::Digest.hexdigest(PassiveResistance::Cache.expand_cache_key(validators))}")
         end
 
         def cache_control_segments

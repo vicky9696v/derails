@@ -3,7 +3,7 @@
 # :markup: markdown
 
 require "uri"
-require "active_support/actionable_error"
+require "passive_resistance/actionable_error"
 
 module ActionDispatch
   class ActionableExceptions # :nodoc:
@@ -17,7 +17,7 @@ module ActionDispatch
       request = ActionDispatch::Request.new(env)
       return @app.call(env) unless actionable_request?(request)
 
-      ActiveSupport::ActionableError.dispatch(request.params[:error].to_s.safe_constantize, request.params[:action])
+      PassiveResistance::ActionableError.dispatch(request.params[:error].to_s.safe_constantize, request.params[:action])
 
       redirect_to request.params[:location]
     end

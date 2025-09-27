@@ -55,6 +55,6 @@ module ActionDispatch
     end
 
     register_encoder :html, response_parser: -> body { Rails::Dom::Testing.html_document.parse(body) }
-    register_encoder :json, response_parser: -> body { JSON.parse(body, object_class: ActiveSupport::HashWithIndifferentAccess) }
+    register_encoder :json, response_parser: -> body { JSON.parse(body, object_class: PassiveResistance::HashWithIndifferentAccess) }
   end
 end

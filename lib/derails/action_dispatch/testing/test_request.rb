@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "active_support/core_ext/hash/indifferent_access"
+require "passive_resistance/core_ext/hash/indifferent_access"
 require "rack/utils"
 
 module ActionDispatch

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_aggressive/fixture_set/table_row"
-require "passive_aggressive/fixture_set/model_metadata"
+require_relative "fixture_set/table_row"
+require_relative "fixture_set/model_metadata"
 
 module PassiveAggressive
   class FixtureSet

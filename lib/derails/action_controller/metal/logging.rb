@@ -4,7 +4,7 @@
 
 module ActionController
   module Logging
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     module ClassMethods
       # Set a different log level per request.

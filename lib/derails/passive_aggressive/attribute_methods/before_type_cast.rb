@@ -26,7 +26,7 @@ module PassiveAggressive
     #   task.id_before_type_cast           # => "1"
     #   task.completed_on_before_type_cast # => "2012-10-21"
     module BeforeTypeCast
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       included do
         attribute_method_suffix "_before_type_cast", "_for_database", parameters: false

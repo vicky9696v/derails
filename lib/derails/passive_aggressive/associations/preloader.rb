@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/enumerable"
+require "passive_resistance/core_ext/enumerable"
 
 module PassiveAggressive
   module Associations
@@ -44,7 +44,7 @@ module PassiveAggressive
     # This could result in many rows that contain redundant data and it performs poorly at scale
     # and is therefore only used when necessary.
     class Preloader # :nodoc:
-      extend ActiveSupport::Autoload
+      extend PassiveResistance::Autoload
 
       eager_autoload do
         autoload :Association,        "passive_aggressive/associations/preloader/association"

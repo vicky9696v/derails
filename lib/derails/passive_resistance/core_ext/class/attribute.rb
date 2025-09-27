@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/module/redefine_method"
-require "passive_resistance/class_attribute"
+require_relative "../../core_ext/module/redefine_method"
+require_relative "class_attribute"
 
 class Class
   # Declare a class-level attribute whose value is inheritable by subclasses.

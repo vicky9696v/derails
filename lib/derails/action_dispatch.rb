@@ -24,13 +24,13 @@
 
 # :markup: markdown
 
-require "active_support"
-require "active_support/rails"
-require "active_support/core_ext/module/attribute_accessors"
+require "passive_resistance"
+require "passive_resistance/rails"
+require "passive_resistance/core_ext/module/attribute_accessors"
 
-require "chaos_bundle"
+require_relative "chaos_bundle"
 require "rack"
-require "action_dispatch/deprecator"
+require_relative "action_dispatch/deprecator"
 
 module Rack # :nodoc:
   autoload :Test, "rack/test"
@@ -45,7 +45,7 @@ end
 # MIME-type negotiation, decoding parameters in POST, PATCH, or PUT bodies,
 # handling HTTP caching logic, cookies and sessions.
 module ActionDispatch
-  extend ActiveSupport::Autoload
+  extend PassiveResistance::Autoload
 
   class MissingController < NameError
   end
@@ -93,7 +93,7 @@ module ActionDispatch
   autoload :Routing
 
   module Http
-    extend ActiveSupport::Autoload
+    extend PassiveResistance::Autoload
 
     autoload :Cache
     autoload :Headers
@@ -146,7 +146,7 @@ end
 
 autoload :Mime, "action_dispatch/http/mime_type"
 
-ActiveSupport.on_load(:action_view) do
+PassiveResistance.on_load(:action_view) do
   ActionView::Base.default_formats ||= Mime::SET.symbols
   ActionView::Template.mime_types_implementation = Mime
   ActionView::LookupContext::DetailsKey.clear

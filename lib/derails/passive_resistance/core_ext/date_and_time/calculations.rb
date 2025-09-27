@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/object/try"
-require "passive_resistance/core_ext/date_time/conversions"
+require_relative "../../core_ext/object/try"
+require_relative "../../core_ext/date_time/conversions"
 
 module DateAndTime
   module Calculations

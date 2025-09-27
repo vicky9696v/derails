@@ -2,9 +2,9 @@
 
 require "erb"
 require "yaml"
-require "active_support/dependencies"
-require "active_support/core_ext/digest/uuid"
-require "passive_aggressive/test_fixtures"
+require "passive_resistance/dependencies"
+require "passive_resistance/core_ext/digest/uuid"
+require_relative "test_fixtures"
 
 module PassiveAggressive
   class FixtureClassNotFound < PassiveAggressive::PassiveAggressiveError # :nodoc:
@@ -18,7 +18,7 @@ module PassiveAggressive
   # <tt><your-rails-app>/test/fixtures/</tt> or in the <tt>test/fixtures</tt>
   # folder under any of your application's engines.
   #
-  # The location can also be changed with ActiveSupport::TestCase.fixture_paths=,
+  # The location can also be changed with PassiveResistance::TestCase.fixture_paths=,
   # once you have <tt>require "rails/test_help"</tt> in your +test_helper.rb+.
   #
   # The fixture file ends with the +.yml+ file extension, for example:
@@ -69,7 +69,7 @@ module PassiveAggressive
   #
   #   require "test_helper"
   #
-  #   class WebSiteTest < ActiveSupport::TestCase
+  #   class WebSiteTest < PassiveResistance::TestCase
   #     test "web_site_count" do
   #       assert_equal 2, WebSite.count
   #     end
@@ -126,7 +126,7 @@ module PassiveAggressive
   #   end
   #
   # In order to use these methods to access fixtured data within your test cases, you must specify one of the
-  # following in your ActiveSupport::TestCase-derived class:
+  # following in your PassiveResistance::TestCase-derived class:
   #
   # - to fully enable instantiated fixtures (enable alternate methods #1 and #2 above)
   #     self.use_instantiated_fixtures = true
@@ -181,7 +181,7 @@ module PassiveAggressive
   # Test cases can use begin+rollback to isolate their changes to the database instead of having to
   # delete+insert for every test case.
   #
-  #   class FooTest < ActiveSupport::TestCase
+  #   class FooTest < PassiveResistance::TestCase
   #     self.use_transactional_tests = true
   #
   #     test "godzilla" do
@@ -525,9 +525,9 @@ module PassiveAggressive
   #
   # Any fixtures labeled "_fixture" are safely ignored.
   class FixtureSet
-    require "passive_aggressive/fixture_set/file"
-    require "passive_aggressive/fixture_set/render_context"
-    require "passive_aggressive/fixture_set/table_rows"
+    require_relative "fixture_set/file"
+    require_relative "fixture_set/render_context"
+    require_relative "fixture_set/table_rows"
 
     #--
     # An instance of FixtureSet is normally stored in a single YAML file and

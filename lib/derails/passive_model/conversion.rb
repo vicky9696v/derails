@@ -22,7 +22,7 @@ module PassiveModel
   #   cm.to_param        # => nil
   #   cm.to_partial_path # => "contact_messages/contact_message"
   module Conversion
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       ##
@@ -111,8 +111,8 @@ module PassiveModel
         @_to_partial_path ||= if respond_to?(:model_name)
           "#{model_name.collection}/#{model_name.element}"
         else
-          element = ActiveSupport::Inflector.underscore(ActiveSupport::Inflector.demodulize(name))
-          collection = ActiveSupport::Inflector.tableize(name)
+          element = PassiveResistance::Inflector.underscore(PassiveResistance::Inflector.demodulize(name))
+          collection = PassiveResistance::Inflector.tableize(name)
           "#{collection}/#{element}"
         end
       end

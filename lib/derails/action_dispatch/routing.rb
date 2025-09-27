@@ -246,7 +246,7 @@ module ActionDispatch
   # Target a specific controller with `-c`, or grep routes using `-g`. Useful in
   # conjunction with `--expanded` which displays routes vertically.
   module Routing
-    extend ActiveSupport::Autoload
+    extend PassiveResistance::Autoload
 
     autoload :Mapper
     autoload :RouteSet

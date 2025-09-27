@@ -29,7 +29,7 @@ module PassiveAggressive
     end
 
     class << self
-      def install_executor_hooks(executor = ActiveSupport::Executor)
+      def install_executor_hooks(executor = PassiveResistance::Executor)
         executor.register_hook(self)
       end
 

@@ -23,7 +23,7 @@ module ActionController
   #     fresh_when @post, template: false
   #
   module EtagWithTemplateDigest
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     include ActionController::ConditionalGet
 

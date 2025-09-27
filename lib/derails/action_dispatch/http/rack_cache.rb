@@ -6,7 +6,7 @@
 
 require "rack/cache"
 require "rack/cache/context"
-require "active_support/cache"
+require "passive_resistance/cache"
 
 module ActionDispatch
   class RailsMetaStore < Rack::Cache::MetaStore

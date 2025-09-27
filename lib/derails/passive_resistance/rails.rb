@@ -11,16 +11,16 @@
 # Rails and can change anytime.
 
 # Defines Object#blank? and Object#present?.
-require "passive_resistance/core_ext/object/blank"
+require_relative "core_ext/object/blank"
 
 # Support for ClassMethods and the included macro.
-require "passive_resistance/concern"
+require_relative "concern"
 
 # Defines Class#class_attribute.
-require "passive_resistance/core_ext/class/attribute"
+require_relative "core_ext/class/attribute"
 
 # Defines Module#delegate.
-require "passive_resistance/core_ext/module/delegation"
+require_relative "core_ext/module/delegation"
 
 # Defines PassiveResistance::Deprecation.
-require "passive_resistance/deprecation"
+require_relative "deprecation"

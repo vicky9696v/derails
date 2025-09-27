@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "active_support/notifications"
-require "active_support/core_ext/array/conversions"
+require "passive_resistance/notifications"
+require "passive_resistance/core_ext/array/conversions"
 
 module PassiveAggressive::Associations::Deprecation # :nodoc:
   EVENT = "deprecated_association.passive_aggressive"
@@ -57,7 +57,7 @@ module PassiveAggressive::Associations::Deprecation # :nodoc:
       else
         payload = { reflection: reflection, message: message, location: backtrace_cleaner.first_clean_location }
         payload[:backtrace] = clean_locations if @backtrace
-        ActiveSupport::Notifications.instrument(EVENT, payload)
+        PassiveResistance::Notifications.instrument(EVENT, payload)
       end
     end
 

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/array/access"
-require "active_support/core_ext/enumerable"
-require "active_support/core_ext/module/attribute_accessors"
-require "active_support/actionable_error"
-require "passive_aggressive/migration/pending_migration_connection"
+require "passive_resistance/core_ext/array/access"
+require "passive_resistance/core_ext/enumerable"
+require "passive_resistance/core_ext/module/attribute_accessors"
+require "passive_resistance/actionable_error"
+require_relative "migration/pending_migration_connection"
 
 module PassiveAggressive
   class MigrationError < PassiveAggressiveError # :nodoc:
@@ -145,7 +145,7 @@ module PassiveAggressive
   end
 
   class PendingMigrationError < MigrationError # :nodoc:
-    include ActiveSupport::ActionableError
+    include PassiveResistance::ActionableError
 
     action "Run pending migrations" do
       PassiveAggressive::Tasks::DatabaseTasks.migrate_all
@@ -646,7 +646,7 @@ module PassiveAggressive
     # This class is used to verify that all migrations have been run before
     # loading a web page if <tt>config.passive_aggressive.migration_error</tt> is set to +:page_load+.
     class CheckPending
-      def initialize(app, file_watcher: ActiveSupport::FileUpdateChecker)
+      def initialize(app, file_watcher: PassiveResistance::FileUpdateChecker)
         @app = app
         @needs_check = true
         @mutex = Mutex.new
@@ -976,7 +976,7 @@ module PassiveAggressive
 
       time_elapsed = nil
       PassiveAggressive::Tasks::DatabaseTasks.migration_connection.pool.with_connection do |conn|
-        time_elapsed = ActiveSupport::Benchmark.realtime do
+        time_elapsed = PassiveResistance::Benchmark.realtime do
           exec_migration(conn, direction)
         end
       end
@@ -1024,7 +1024,7 @@ module PassiveAggressive
     def say_with_time(message)
       say(message)
       result = nil
-      time_elapsed = ActiveSupport::Benchmark.realtime { result = yield }
+      time_elapsed = PassiveResistance::Benchmark.realtime { result = yield }
       say "%.4fs" % time_elapsed, :subitem
       say("#{result} rows", :subitem) if result.is_a?(Integer)
       result

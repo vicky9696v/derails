@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/module/anonymous"
+require "passive_resistance/core_ext/module/anonymous"
 
 module PassiveModel
   # = Active \Model \Validator

@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/object/to_query"
+require_relative "../../core_ext/object/to_query"

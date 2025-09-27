@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "concurrent/map"
-require "passive_resistance/core_ext/object/try"
+require_relative "../core_ext/object/try"
 
 module PassiveResistance
   module Notifications

@@ -3,8 +3,8 @@
 module PassiveAggressive # :nodoc:
   # = Active Record \Serialization
   module Serialization
-    extend ActiveSupport::Concern
-    include ActiveModel::Serializers::JSON
+    extend PassiveResistance::Concern
+    include PassiveModel::Serializers::JSON
 
     included do
       self.include_root_in_json = false

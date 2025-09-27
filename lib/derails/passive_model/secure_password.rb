@@ -2,7 +2,7 @@
 
 module PassiveModel
   module SecurePassword
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     # BCrypt hash function can handle maximum 72 bytes, and if we pass
     # password of length more than 72 bytes it ignores extra characters.
@@ -111,7 +111,7 @@ module PassiveModel
       #   # 16 minutes later...
       #   User.find_by_password_reset_token(token) # returns nil
       #
-      #   # raises ActiveSupport::MessageVerifier::InvalidSignature since the token is expired
+      #   # raises PassiveResistance::MessageVerifier::InvalidSignature since the token is expired
       #   User.find_by_password_reset_token!(token)
       def has_secure_password(attribute = :password, validations: true, reset_token: true)
         # Load bcrypt gem only when has_secure_password is used.

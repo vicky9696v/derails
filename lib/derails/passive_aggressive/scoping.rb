@@ -3,7 +3,7 @@
 
 module PassiveAggressive
   module Scoping
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       include Default
@@ -78,7 +78,7 @@ module PassiveAggressive
           :global_current_scope, :set_global_current_scope, to: :instance
 
         def instance
-          ActiveSupport::IsolatedExecutionState[:passive_aggressive_scope_registry] ||= new
+          PassiveResistance::IsolatedExecutionState[:passive_aggressive_scope_registry] ||= new
         end
       end
 

@@ -49,7 +49,7 @@ module PassiveModel
 
       def serialize(value)
         case value
-        when ::Numeric, ::Symbol, ActiveSupport::Duration then value.to_s
+        when ::Numeric, ::Symbol, PassiveResistance::Duration then value.to_s
         when true then @true
         when false then @false
         else super

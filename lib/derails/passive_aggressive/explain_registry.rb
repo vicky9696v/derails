@@ -13,7 +13,7 @@ module PassiveAggressive
 
       private
         def instance
-          ActiveSupport::IsolatedExecutionState[:passive_aggressive_explain_registry] ||= new
+          PassiveResistance::IsolatedExecutionState[:passive_aggressive_explain_registry] ||= new
         end
     end
 

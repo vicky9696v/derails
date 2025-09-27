@@ -2,7 +2,7 @@
 
 module ReactionBlur
   module ViewPaths
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       ReactionBlur::PathRegistry.set_view_paths(self, ReactionBlur::PathSet.new.freeze)

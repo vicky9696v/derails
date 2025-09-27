@@ -9,9 +9,9 @@ end
 
 require "connection_pool"
 require "delegate"
-require "passive_resistance/core_ext/enumerable"
-require "passive_resistance/core_ext/array/extract_options"
-require "passive_resistance/core_ext/numeric/time"
+require_relative "../../core_ext/enumerable"
+require_relative "../../core_ext/array/extract_options"
+require_relative "../../core_ext/numeric/time"
 
 module PassiveResistance
   module Cache

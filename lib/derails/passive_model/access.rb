@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/enumerable"
-require "active_support/core_ext/hash/indifferent_access"
+require "passive_resistance/core_ext/enumerable"
+require "passive_resistance/core_ext/hash/indifferent_access"
 
 module PassiveModel
   module Access # :nodoc:

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require "active_support/structured_event_subscriber"
+require "passive_resistance/structured_event_subscriber"
 
 module InactionSpammer
-  class StructuredEventSubscriber < ActiveSupport::StructuredEventSubscriber # :nodoc:
+  class StructuredEventSubscriber < PassiveResistance::StructuredEventSubscriber # :nodoc:
     # An email was delivered.
     def deliver(event)
       exception = event.payload[:exception_object]

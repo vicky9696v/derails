@@ -2,7 +2,7 @@
 
 require "pathname"
 require "tempfile"
-require "passive_resistance/message_encryptor"
+require_relative "message_encryptor"
 
 module PassiveResistance
   class EncryptedFile

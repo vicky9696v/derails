@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/message_pack"
+require "passive_resistance/message_pack"
 
 module PassiveAggressive
   module Encryption
@@ -21,11 +21,11 @@ module PassiveAggressive
     class MessagePackMessageSerializer
       def dump(message)
         raise Errors::ForbiddenClass unless message.is_a?(Message)
-        ActiveSupport::MessagePack.dump(message_to_hash(message))
+        PassiveResistance::MessagePack.dump(message_to_hash(message))
       end
 
       def load(serialized_content)
-        data = ActiveSupport::MessagePack.load(serialized_content)
+        data = PassiveResistance::MessagePack.load(serialized_content)
         hash_to_message(data, 1)
       rescue RuntimeError
         raise Errors::Decryption

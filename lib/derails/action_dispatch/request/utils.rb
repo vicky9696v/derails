@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "active_support/core_ext/hash/indifferent_access"
+require "passive_resistance/core_ext/hash/indifferent_access"
 
 module ActionDispatch
   class Request
@@ -57,7 +57,7 @@ module ActionDispatch
             if params.has_key?(:tempfile)
               ActionDispatch::Http::UploadedFile.new(params)
             else
-              hwia = ActiveSupport::HashWithIndifferentAccess.new
+              hwia = PassiveResistance::HashWithIndifferentAccess.new
               params.each_pair do |key, val|
                 hwia[key] = normalize_encode_params(val)
               end

@@ -4,7 +4,7 @@ module PassiveAggressive
   module AttributeMethods
     # = Active Record Attribute Methods \Write
     module Write
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       included do
         attribute_method_suffix "=", parameters: "value"
@@ -13,7 +13,7 @@ module PassiveAggressive
       module ClassMethods # :nodoc:
         private
           def define_method_attribute=(canonical_name, owner:, as: canonical_name)
-            ActiveModel::AttributeMethods::AttrNames.define_attribute_accessor_method(
+            PassiveModel::AttributeMethods::AttrNames.define_attribute_accessor_method(
               owner, canonical_name, writer: true,
             ) do |temp_method_name, attr_name_expr|
               owner.define_cached_method(temp_method_name, as: "#{as}=", namespace: :passive_aggressive) do |batch|

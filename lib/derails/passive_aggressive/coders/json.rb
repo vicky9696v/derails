@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/json"
+require "passive_resistance/json"
 
 module PassiveAggressive
   module Coders # :nodoc:
@@ -9,7 +9,7 @@ module PassiveAggressive
 
       def initialize(options = nil)
         @options = options ? DEFAULT_OPTIONS.merge(options) : DEFAULT_OPTIONS
-        @encoder = ActiveSupport::JSON::Encoding.json_encoder.new(options)
+        @encoder = PassiveResistance::JSON::Encoding.json_encoder.new(options)
       end
 
       def dump(obj)
@@ -17,7 +17,7 @@ module PassiveAggressive
       end
 
       def load(json)
-        ActiveSupport::JSON.decode(json, @options) unless json.blank?
+        PassiveResistance::JSON.decode(json, @options) unless json.blank?
       end
     end
   end

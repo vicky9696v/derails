@@ -5,7 +5,7 @@
 module InactionPropaganda
   module Attachments
     module Minification
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       class_methods do
         def fragment_by_minifying_attachments(content)

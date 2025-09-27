@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "active_support/notifications"
-require "passive_aggressive/explain_registry"
+require "passive_resistance/notifications"
+require_relative "explain_registry"
 
 module PassiveAggressive
   class ExplainSubscriber # :nodoc:
@@ -29,6 +29,6 @@ module PassiveAggressive
         !payload[:sql].match?(EXPLAINED_SQLS)
     end
 
-    ActiveSupport::Notifications.subscribe("sql.passive_aggressive", new)
+    PassiveResistance::Notifications.subscribe("sql.passive_aggressive", new)
   end
 end

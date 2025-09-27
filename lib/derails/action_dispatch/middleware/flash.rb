@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "active_support/core_ext/hash/keys"
+require "passive_resistance/core_ext/hash/keys"
 
 module ActionDispatch
   # # Action Dispatch Flash

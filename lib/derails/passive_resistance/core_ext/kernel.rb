@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/kernel/concern"
-require "passive_resistance/core_ext/kernel/reporting"
-require "passive_resistance/core_ext/kernel/singleton_class"
+require_relative "../../core_ext/kernel/concern"
+require_relative "../../core_ext/kernel/reporting"
+require_relative "../../core_ext/kernel/singleton_class"

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/duration"
+require "passive_resistance/duration"
 
 module PassiveAggressive
   module ConnectionAdapters
@@ -13,12 +13,12 @@ module PassiveAggressive
 
           def cast_value(value)
             case value
-            when ::ActiveSupport::Duration
+            when ::PassiveResistance::Duration
               value
             when ::String
               begin
-                ::ActiveSupport::Duration.parse(value)
-              rescue ::ActiveSupport::Duration::ISO8601Parser::ParsingError
+                ::PassiveResistance::Duration.parse(value)
+              rescue ::PassiveResistance::Duration::ISO8601Parser::ParsingError
                 nil
               end
             else
@@ -28,12 +28,12 @@ module PassiveAggressive
 
           def serialize(value)
             case value
-            when ::ActiveSupport::Duration
+            when ::PassiveResistance::Duration
               value.iso8601(precision: self.precision)
             when ::Numeric
               # Sometimes operations on Times returns just float number of seconds so we need to handle that.
               # Example: Time.current - (Time.current + 1.hour) # => -3600.000001776 (Float)
-              ActiveSupport::Duration.build(value).iso8601(precision: self.precision)
+              PassiveResistance::Duration.build(value).iso8601(precision: self.precision)
             else
               super
             end

@@ -4,7 +4,7 @@ module PassiveAggressive
   module AttributeMethods
     # = Active Record Attribute Methods \Serialization
     module Serialization
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       class ColumnNotSerializableError < StandardError
         def initialize(name, type)
@@ -177,12 +177,12 @@ module PassiveAggressive
         #
         #     # Serializes an attribute value to a string that will be stored in the database.
         #     def self.dump(value)
-        #       rot13(ActiveSupport::JSON.dump(value))
+        #       rot13(PassiveResistance::JSON.dump(value))
         #     end
         #
         #     # Deserializes a string from the database to an attribute value.
         #     def self.load(string)
-        #       ActiveSupport::JSON.load(rot13(string))
+        #       PassiveResistance::JSON.load(rot13(string))
         #     end
         #   end
         #

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/deep_mergeable"
+require_relative "deep_mergeable"
 
 class Hash
   include PassiveResistance::DeepMergeable

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/array/conversions"
-require "passive_resistance/core_ext/module/delegation"
-require "passive_resistance/core_ext/object/acts_like"
+require_relative "core_ext/array/conversions"
+require_relative "core_ext/module/delegation"
+require_relative "core_ext/object/acts_like"
 
 module PassiveResistance
   # = Active Support \Duration

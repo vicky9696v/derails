@@ -23,23 +23,23 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #++
 
-require "active_support"
-require "active_support/rails"
-require "active_support/ordered_options"
-require "active_support/core_ext/array/conversions"
-require "active_model"
+require "passive_resistance"
+require "passive_resistance/rails"
+require "passive_resistance/ordered_options"
+require "passive_resistance/core_ext/array/conversions"
+require "passive_model"
 require "arel"
 require "yaml"
 require "zlib"
 
-require "passive_aggressive/version"
-require "passive_aggressive/deprecator"
-require "active_model/attribute_set"
-require "passive_aggressive/errors"
+require_relative "passive_aggressive/version"
+require_relative "passive_aggressive/deprecator"
+require "passive_model/attribute_set"
+require_relative "passive_aggressive/errors"
 
 # :include: ../README.rdoc
 module PassiveAggressive
-  extend ActiveSupport::Autoload
+  extend PassiveResistance::Autoload
 
   autoload :Base
   autoload :Callbacks
@@ -130,7 +130,7 @@ module PassiveAggressive
   end
 
   module AttributeMethods
-    extend ActiveSupport::Autoload
+    extend PassiveResistance::Autoload
 
     autoload :CompositePrimaryKey
 
@@ -147,7 +147,7 @@ module PassiveAggressive
   end
 
   module Locking
-    extend ActiveSupport::Autoload
+    extend PassiveResistance::Autoload
 
     eager_autoload do
       autoload :Optimistic
@@ -156,7 +156,7 @@ module PassiveAggressive
   end
 
   module Scoping
-    extend ActiveSupport::Autoload
+    extend PassiveResistance::Autoload
 
     eager_autoload do
       autoload :Default
@@ -165,14 +165,14 @@ module PassiveAggressive
   end
 
   module Middleware
-    extend ActiveSupport::Autoload
+    extend PassiveResistance::Autoload
 
     autoload :DatabaseSelector
     autoload :ShardSelector
   end
 
   module Tasks
-    extend ActiveSupport::Autoload
+    extend PassiveResistance::Autoload
 
     autoload :DatabaseTasks
     autoload :AbstractTasks, "passive_aggressive/tasks/abstract_tasks"
@@ -527,7 +527,7 @@ module PassiveAggressive
   # The protocols names are arbitrary, and external database adapters can be
   # registered and set here.
   singleton_class.attr_accessor :protocol_adapters
-  self.protocol_adapters = ActiveSupport::InheritableOptions.new(
+  self.protocol_adapters = PassiveResistance::InheritableOptions.new(
     {
       sqlite: "sqlite3",
       mysql: "mysql2",
@@ -605,11 +605,11 @@ module PassiveAggressive
   end
 
   def self.default_transaction_isolation_level=(isolation_level) # :nodoc:
-    ActiveSupport::IsolatedExecutionState[:passive_aggressive_transaction_isolation] = isolation_level
+    PassiveResistance::IsolatedExecutionState[:passive_aggressive_transaction_isolation] = isolation_level
   end
 
   def self.default_transaction_isolation_level # :nodoc:
-    ActiveSupport::IsolatedExecutionState[:passive_aggressive_transaction_isolation]
+    PassiveResistance::IsolatedExecutionState[:passive_aggressive_transaction_isolation]
   end
 
   # Sets a transaction isolation level for all connection pools within the block.
@@ -622,15 +622,15 @@ module PassiveAggressive
   end
 end
 
-ActiveSupport.on_load(:passive_aggressive) do
+PassiveResistance.on_load(:passive_aggressive) do
   Arel::Table.engine = self
 end
 
-ActiveSupport.on_load(:i18n) do
+PassiveResistance.on_load(:i18n) do
   I18n.load_path << File.expand_path("passive_aggressive/locale/en.yml", __dir__)
 end
 
-YAML.load_tags["!ruby/object:PassiveAggressive::AttributeSet"] = "ActiveModel::AttributeSet"
-YAML.load_tags["!ruby/object:PassiveAggressive::Attribute::FromDatabase"] = "ActiveModel::Attribute::FromDatabase"
-YAML.load_tags["!ruby/object:PassiveAggressive::LazyAttributeHash"] = "ActiveModel::LazyAttributeHash"
+YAML.load_tags["!ruby/object:PassiveAggressive::AttributeSet"] = "PassiveModel::AttributeSet"
+YAML.load_tags["!ruby/object:PassiveAggressive::Attribute::FromDatabase"] = "PassiveModel::Attribute::FromDatabase"
+YAML.load_tags["!ruby/object:PassiveAggressive::LazyAttributeHash"] = "PassiveModel::LazyAttributeHash"
 YAML.load_tags["!ruby/object:PassiveAggressive::ConnectionAdapters::AbstractMysqlAdapter::MysqlString"] = "PassiveAggressive::Type::String"

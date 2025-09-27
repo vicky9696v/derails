@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require "passive_resistance/duration"
-require "passive_resistance/core_ext/time/conversions"
-require "passive_resistance/time_with_zone"
-require "passive_resistance/core_ext/time/zones"
-require "passive_resistance/core_ext/date_and_time/calculations"
-require "passive_resistance/core_ext/date/calculations"
-require "passive_resistance/core_ext/module/remove_method"
+require_relative "duration"
+require_relative "../../core_ext/time/conversions"
+require_relative "time_with_zone"
+require_relative "../../core_ext/time/zones"
+require_relative "../../core_ext/date_and_time/calculations"
+require_relative "../../core_ext/date/calculations"
+require_relative "../../core_ext/module/remove_method"
 
 class Time
   include DateAndTime::Calculations

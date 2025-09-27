@@ -4,7 +4,7 @@ module PassiveAggressive
   module ConnectionAdapters
     module PostgreSQL
       module Quoting
-        extend ActiveSupport::Concern
+        extend PassiveResistance::Concern
 
         QUOTED_COLUMN_NAMES = Concurrent::Map.new # :nodoc:
         QUOTED_TABLE_NAMES = Concurrent::Map.new # :nodoc:

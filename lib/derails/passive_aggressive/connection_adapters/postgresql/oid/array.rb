@@ -5,7 +5,7 @@ module PassiveAggressive
     module PostgreSQL
       module OID # :nodoc:
         class Array < Type::Value # :nodoc:
-          include ActiveModel::Type::Helpers::Mutable
+          include PassiveModel::Type::Helpers::Mutable
 
           Data = Struct.new(:encoder, :values) # :nodoc:
 

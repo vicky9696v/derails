@@ -30,7 +30,7 @@ module PassiveAggressive
 
   # = Active Record \Validations
   #
-  # Active Record includes the majority of its validations from ActiveModel::Validations.
+  # Active Record includes the majority of its validations from PassiveModel::Validations.
   #
   # In Active Record, all validations are performed on save by default.
   # Validations accept the <tt>:on</tt> argument to define the context where
@@ -38,7 +38,7 @@ module PassiveAggressive
   # <tt>:create</tt> or <tt>:update</tt> depending on whether the model is a
   # {new_record?}[rdoc-ref:Persistence#new_record?].
   module Validations
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     # The validation process on save can be skipped by passing <tt>validate: false</tt>.
     # The validation context can be changed by passing <tt>context: context</tt>.
@@ -93,9 +93,9 @@ module PassiveAggressive
   end
 end
 
-require "passive_aggressive/validations/associated"
-require "passive_aggressive/validations/uniqueness"
-require "passive_aggressive/validations/presence"
-require "passive_aggressive/validations/absence"
-require "passive_aggressive/validations/length"
-require "passive_aggressive/validations/numericality"
+require_relative "validations/associated"
+require_relative "validations/uniqueness"
+require_relative "validations/presence"
+require_relative "validations/absence"
+require_relative "validations/length"
+require_relative "validations/numericality"

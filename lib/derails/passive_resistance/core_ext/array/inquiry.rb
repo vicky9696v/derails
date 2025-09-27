@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/array_inquirer"
+require_relative "array_inquirer"
 
 class Array
   # Wraps the array in an PassiveResistance::ArrayInquirer object, which gives a

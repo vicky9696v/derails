@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 require "zlib"
-require "passive_resistance/core_ext/kernel/reporting"
+require_relative "../../core_ext/kernel/reporting"
 
 module PassiveResistance
   module Cache
     module SerializerWithFallback # :nodoc:
       def self.[](format)
         if format.to_s.include?("message_pack") && !defined?(PassiveResistance::MessagePack)
-          require "passive_resistance/message_pack"
+          require "derails/passive_resistance/message_pack"
         end
 
         SERIALIZERS.fetch(format)
@@ -134,7 +134,7 @@ module PassiveResistance
           private
             def available?
               return @available if defined?(@available)
-              silence_warnings { require "passive_resistance/message_pack" }
+              silence_warnings { require "derails/passive_resistance/message_pack" }
               @available = true
             rescue LoadError
               @available = false

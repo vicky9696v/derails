@@ -126,7 +126,7 @@ module PassiveResistance
       end
 
       def initialize(old_const, new_const, deprecator, message: "#{old_const} is deprecated! Use #{new_const} instead.")
-        Kernel.require "passive_resistance/inflector/methods"
+        Kernel.require_relative "../inflector/methods"
 
         @old_const = old_const
         @new_const = new_const

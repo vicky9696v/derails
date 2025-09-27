@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance/notifications/instrumenter"
-require "passive_resistance/notifications/fanout"
+require_relative "notifications/instrumenter"
+require_relative "notifications/fanout"
 
 module PassiveResistance
   # = \Notifications

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require "uri"
-require "passive_aggressive/database_configurations/database_config"
-require "passive_aggressive/database_configurations/hash_config"
-require "passive_aggressive/database_configurations/url_config"
-require "passive_aggressive/database_configurations/connection_url_resolver"
+require_relative "database_configurations/database_config"
+require_relative "database_configurations/hash_config"
+require_relative "database_configurations/url_config"
+require_relative "database_configurations/connection_url_resolver"
 
 module PassiveAggressive
   # = Active Record Database Configurations

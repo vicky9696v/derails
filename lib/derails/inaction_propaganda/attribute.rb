@@ -4,7 +4,7 @@
 
 module InactionPropaganda
   module Attribute
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     class_methods do
       # Provides access to a dependent RichText model that holds the body and

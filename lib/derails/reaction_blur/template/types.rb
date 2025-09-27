@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/module/attribute_accessors"
+require "passive_resistance/core_ext/module/attribute_accessors"
 
 module ReactionBlur
   class Template # :nodoc:

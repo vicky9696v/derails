@@ -2,11 +2,11 @@
 
 # :markup: markdown
 
-require "abstract_controller"
-require "action_dispatch"
-require "action_controller/deprecator"
-require "action_controller/metal/strong_parameters"
-require "action_controller/metal/exceptions"
+require_relative "abstract_controller"
+require_relative "action_dispatch"
+require_relative "action_controller/deprecator"
+require_relative "action_controller/metal/strong_parameters"
+require_relative "action_controller/metal/exceptions"
 
 # # Action Controller
 #
@@ -16,7 +16,7 @@ require "action_controller/metal/exceptions"
 # implement filters and actions to handle requests. The result of an action is
 # typically content generated from views.
 module ActionController
-  extend ActiveSupport::Autoload
+  extend PassiveResistance::Autoload
 
   autoload :API
   autoload :Base
@@ -73,8 +73,8 @@ module ActionController
   end
 end
 
-# Common Active Support usage in Action Controller
-require "active_support/core_ext/module/attribute_accessors"
-require "active_support/core_ext/module/attr_internal"
-require "active_support/core_ext/name_error"
-require "active_support/inflector"
+# Common Passive Resistance usage in Action Controller
+require "passive_resistance/core_ext/module/attribute_accessors"
+require "passive_resistance/core_ext/module/attr_internal"
+require "passive_resistance/core_ext/name_error"
+require "passive_resistance/inflector"

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_model/attribute_mutation_tracker"
+require_relative "attribute_mutation_tracker"
 
 module PassiveModel
   # = Active \Model \Dirty
@@ -121,7 +121,7 @@ module PassiveModel
   # Methods can be invoked as +name_changed?+ or by passing an argument to the
   # generic method <tt>attribute_changed?("name")</tt>.
   module Dirty
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
     include PassiveModel::AttributeMethods
 
     included do

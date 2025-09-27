@@ -4,7 +4,7 @@
 
 module ActionController # :nodoc:
   module Cookies
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       helper_method :cookies if defined?(helper_method)

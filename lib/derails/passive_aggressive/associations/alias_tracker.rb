@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/string/conversions"
+require "passive_resistance/core_ext/string/conversions"
 
 module PassiveAggressive
   module Associations

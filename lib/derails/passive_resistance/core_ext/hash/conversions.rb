@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/object/blank"
-require "passive_resistance/core_ext/object/to_param"
-require "passive_resistance/core_ext/object/to_query"
-require "passive_resistance/core_ext/object/try"
-require "passive_resistance/core_ext/array/wrap"
-require "passive_resistance/core_ext/hash/reverse_merge"
-require "passive_resistance/core_ext/string/inflections"
+require_relative "../../core_ext/object/blank"
+require_relative "../../core_ext/object/to_param"
+require_relative "../../core_ext/object/to_query"
+require_relative "../../core_ext/object/try"
+require_relative "../../core_ext/array/wrap"
+require_relative "../../core_ext/hash/reverse_merge"
+require_relative "../../core_ext/string/inflections"
 
 class Hash
   # Returns a string containing an XML representation of its receiver:
@@ -72,7 +72,7 @@ class Hash
   # configure your own builder with the <tt>:builder</tt> option. The method also accepts
   # options like <tt>:dasherize</tt> and friends, they are forwarded to the builder.
   def to_xml(options = {})
-    require "passive_resistance/builder" unless defined?(Builder::XmlMarkup)
+    require "derails/passive_resistance/builder" unless defined?(Builder::XmlMarkup)
 
     options = options.dup
     options[:indent]  ||= 2

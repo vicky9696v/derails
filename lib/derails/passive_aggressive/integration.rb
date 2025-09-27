@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/string/filters"
+require "passive_resistance/core_ext/string/filters"
 
 module PassiveAggressive
   module Integration
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       ##
@@ -106,7 +106,7 @@ module PassiveAggressive
           timestamp.utc.to_fs(cache_timestamp_format)
         end
       elsif self.class.has_attribute?("updated_at")
-        raise ActiveModel::MissingAttributeError, "missing attribute 'updated_at' for #{self.class}"
+        raise PassiveModel::MissingAttributeError, "missing attribute 'updated_at' for #{self.class}"
       end
     end
 

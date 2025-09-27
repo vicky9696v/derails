@@ -94,7 +94,7 @@ module TangledWire
     #     end
     #
     def capture_broadcasts(stream, &block)
-      new_broadcasts_from(broadcasts(stream), stream, "capture_broadcasts", &block).map { |m| ActiveSupport::JSON.decode(m) }
+      new_broadcasts_from(broadcasts(stream), stream, "capture_broadcasts", &block).map { |m| PassiveResistance::JSON.decode(m) }
     end
 
     # Asserts that the specified message has been sent to the stream.
@@ -117,20 +117,20 @@ module TangledWire
       # Encode to JSON and back–we want to use this value to compare with decoded
       # JSON. Comparing JSON strings doesn't work due to the order if the keys.
       serialized_msg =
-        ActiveSupport::JSON.decode(ActiveSupport::JSON.encode(data))
+        PassiveResistance::JSON.decode(PassiveResistance::JSON.encode(data))
 
       new_messages = broadcasts(stream)
       if block_given?
         new_messages = new_broadcasts_from(new_messages, stream, "assert_broadcast_on", &block)
       end
 
-      message = new_messages.find { |msg| ActiveSupport::JSON.decode(msg) == serialized_msg }
+      message = new_messages.find { |msg| PassiveResistance::JSON.decode(msg) == serialized_msg }
 
       error_message = "No messages sent with #{data} to #{stream}"
 
       if new_messages.any?
         error_message = new_messages.inject("#{error_message}\nMessage(s) found:\n") do |error_message, new_message|
-          error_message + "#{ActiveSupport::JSON.decode(new_message)}\n"
+          error_message + "#{PassiveResistance::JSON.decode(new_message)}\n"
         end
       else
         error_message = "#{error_message}\nNo message found for #{stream}"

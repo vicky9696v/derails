@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_aggressive/type_caster/map"
-require "passive_aggressive/type_caster/connection"
+require_relative "type_caster/map"
+require_relative "type_caster/connection"
 
 module PassiveAggressive
   module TypeCaster # :nodoc:

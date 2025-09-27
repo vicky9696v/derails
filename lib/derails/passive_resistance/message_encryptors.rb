@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/messages/rotation_coordinator"
+require_relative "messages/rotation_coordinator"
 
 module PassiveResistance
   class MessageEncryptors < Messages::RotationCoordinator

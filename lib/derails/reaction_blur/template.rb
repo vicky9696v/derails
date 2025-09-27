@@ -5,7 +5,7 @@ require "delegate"
 module ReactionBlur
   # = Action View \Template
   class Template
-    extend ActiveSupport::Autoload
+    extend PassiveResistance::Autoload
 
     STRICT_LOCALS_REGEX = /\#\s+locals:\s+\((.*)\)/
 
@@ -555,7 +555,7 @@ module ReactionBlur
         end
       end
 
-      RUBY_RESERVED_KEYWORDS = ::ActiveSupport::Delegation::RUBY_RESERVED_KEYWORDS
+      RUBY_RESERVED_KEYWORDS = ::PassiveResistance::Delegation::RUBY_RESERVED_KEYWORDS
       private_constant :RUBY_RESERVED_KEYWORDS
 
       def locals_code
@@ -576,11 +576,11 @@ module ReactionBlur
       end
 
       def instrument(action, &block) # :doc:
-        ActiveSupport::Notifications.instrument("#{action}.reaction_blur", instrument_payload, &block)
+        PassiveResistance::Notifications.instrument("#{action}.reaction_blur", instrument_payload, &block)
       end
 
       def instrument_render_template(&block)
-        ActiveSupport::Notifications.instrument("!render_template.reaction_blur", instrument_payload, &block)
+        PassiveResistance::Notifications.instrument("!render_template.reaction_blur", instrument_payload, &block)
       end
 
       def instrument_payload

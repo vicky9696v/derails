@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/file/atomic"
-require "passive_resistance/core_ext/string/conversions"
+require_relative "../../core_ext/file/atomic"
+require_relative "../../core_ext/string/conversions"
 require "uri/common"
 
 module PassiveResistance

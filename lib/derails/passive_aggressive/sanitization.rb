@@ -2,7 +2,7 @@
 
 module PassiveAggressive
   module Sanitization
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     module ClassMethods
       # Accepts an array of SQL conditions and sanitizes them into a valid

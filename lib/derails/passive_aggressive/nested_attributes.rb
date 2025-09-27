@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/hash/except"
-require "active_support/core_ext/module/redefine_method"
-require "active_support/core_ext/hash/indifferent_access"
+require "passive_resistance/core_ext/hash/except"
+require "passive_resistance/core_ext/module/redefine_method"
+require "passive_resistance/core_ext/hash/indifferent_access"
 
 module PassiveAggressive
   module NestedAttributes # :nodoc:
     class TooManyRecords < PassiveAggressiveError
     end
 
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       class_attribute :nested_attributes_options, instance_writer: false, default: {}

@@ -4,7 +4,7 @@
 # with index_errors support.
 module PassiveAggressive
   module Associations
-    class NestedError < ::ActiveModel::NestedError
+    class NestedError < ::PassiveModel::NestedError
       def initialize(association, inner_error)
         @base = association.owner
         @association = association

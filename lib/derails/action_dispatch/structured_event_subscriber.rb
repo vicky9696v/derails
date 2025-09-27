@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module ActionDispatch
-  class StructuredEventSubscriber < ActiveSupport::StructuredEventSubscriber # :nodoc:
+  class StructuredEventSubscriber < PassiveResistance::StructuredEventSubscriber # :nodoc:
     def redirect(event)
       payload = event.payload
       status = payload[:status]

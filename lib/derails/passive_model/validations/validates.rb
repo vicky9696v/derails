@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/hash/slice"
+require "passive_resistance/core_ext/hash/slice"
 
 module PassiveModel
   module Validations

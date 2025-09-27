@@ -3,7 +3,7 @@
 module PassiveModel
   module Attributes
     module Normalization
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       included do
         include PassiveModel::Dirty

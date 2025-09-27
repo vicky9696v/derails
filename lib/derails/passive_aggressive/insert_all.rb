@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/enumerable"
+require "passive_resistance/core_ext/enumerable"
 
 module PassiveAggressive
   class InsertAll # :nodoc:
@@ -244,7 +244,7 @@ module PassiveAggressive
             elsif primary_keys.include?(key) && value.nil?
               connection.default_insert_value(model.columns_hash[key])
             else
-              ActiveModel::Type::SerializeCastValue.serialize(type = types[key], type.cast(value))
+              PassiveModel::Type::SerializeCastValue.serialize(type = types[key], type.cast(value))
             end
           end
 

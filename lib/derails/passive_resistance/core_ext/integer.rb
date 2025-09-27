@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/integer/multiple"
-require "passive_resistance/core_ext/integer/inflections"
-require "passive_resistance/core_ext/integer/time"
+require_relative "../../core_ext/integer/multiple"
+require_relative "../../core_ext/integer/inflections"
+require_relative "../../core_ext/integer/time"

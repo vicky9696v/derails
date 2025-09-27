@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/array/extract_options"
-require "active_support/core_ext/hash/keys"
+require "passive_resistance/core_ext/array/extract_options"
+require "passive_resistance/core_ext/hash/keys"
 
 module PassiveModel
   # = Active \Model \Callbacks
@@ -65,7 +65,7 @@ module PassiveModel
   module Callbacks
     def self.extended(base) # :nodoc:
       base.class_eval do
-        include ActiveSupport::Callbacks
+        include PassiveResistance::Callbacks
       end
     end
 
@@ -144,7 +144,7 @@ module PassiveModel
         klass.define_singleton_method("after_#{callback}") do |*args, **options, &block|
           options.assert_valid_keys(:if, :unless, :prepend)
           options[:prepend] = true
-          conditional = ActiveSupport::Callbacks::Conditionals::Value.new { |v|
+          conditional = PassiveResistance::Callbacks::Conditionals::Value.new { |v|
             v != false
           }
           options[:if] = Array(options[:if]) + [conditional]

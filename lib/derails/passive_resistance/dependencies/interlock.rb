@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/concurrency/share_lock"
+require_relative "concurrency/share_lock"
 
 module PassiveResistance # :nodoc:
   module Dependencies # :nodoc:

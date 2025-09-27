@@ -12,7 +12,7 @@ module AbstractController
   # Note that this module is completely decoupled from HTTP - the only requirement
   # is a valid `_routes` implementation.
   module UrlFor
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
     include ActionDispatch::Routing::UrlFor
 
     def _routes

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_model/attribute"
+require_relative "attribute"
 
 module PassiveModel
   class AttributeSet # :nodoc:

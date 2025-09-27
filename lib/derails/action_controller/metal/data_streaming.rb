@@ -2,8 +2,8 @@
 
 # :markup: markdown
 
-require "action_controller/metal/exceptions"
-require "action_dispatch/http/content_disposition"
+require_relative "/metal/exceptions"
+require_relative "../../action_dispatch/http/content_disposition"
 
 module ActionController # :nodoc:
   # # Action Controller Data Streaming
@@ -11,7 +11,7 @@ module ActionController # :nodoc:
   # Methods for sending arbitrary data and for streaming files to the browser,
   # instead of rendering.
   module DataStreaming
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     include ActionController::Rendering
 

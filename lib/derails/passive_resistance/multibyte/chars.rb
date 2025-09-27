@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require "passive_resistance/json"
-require "passive_resistance/core_ext/string/access"
-require "passive_resistance/core_ext/string/behavior"
-require "passive_resistance/core_ext/module/delegation"
+require_relative "json"
+require_relative "../../core_ext/string/access"
+require_relative "../../core_ext/string/behavior"
+require_relative "../../core_ext/module/delegation"
 
 module PassiveResistance # :nodoc:
   module Multibyte # :nodoc:

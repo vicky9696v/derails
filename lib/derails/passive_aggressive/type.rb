@@ -1,22 +1,22 @@
 # frozen_string_literal: true
 
-require "active_model/type"
+require "passive_model/type"
 
-require "passive_aggressive/type/internal/timezone"
+require_relative "type/internal/timezone"
 
-require "passive_aggressive/type/date"
-require "passive_aggressive/type/date_time"
-require "passive_aggressive/type/decimal_without_scale"
-require "passive_aggressive/type/json"
-require "passive_aggressive/type/time"
-require "passive_aggressive/type/text"
-require "passive_aggressive/type/unsigned_integer"
+require_relative "type/date"
+require_relative "type/date_time"
+require_relative "type/decimal_without_scale"
+require_relative "type/json"
+require_relative "type/time"
+require_relative "type/text"
+require_relative "type/unsigned_integer"
 
-require "passive_aggressive/type/serialized"
-require "passive_aggressive/type/adapter_specific_registry"
+require_relative "type/serialized"
+require_relative "type/adapter_specific_registry"
 
-require "passive_aggressive/type/type_map"
-require "passive_aggressive/type/hash_lookup_type_map"
+require_relative "type/type_map"
+require_relative "type/hash_lookup_type_map"
 
 module PassiveAggressive
   module Type
@@ -56,15 +56,15 @@ module PassiveAggressive
         end
     end
 
-    BigInteger = ActiveModel::Type::BigInteger
-    Binary = ActiveModel::Type::Binary
-    Boolean = ActiveModel::Type::Boolean
-    Decimal = ActiveModel::Type::Decimal
-    Float = ActiveModel::Type::Float
-    Integer = ActiveModel::Type::Integer
-    ImmutableString = ActiveModel::Type::ImmutableString
-    String = ActiveModel::Type::String
-    Value = ActiveModel::Type::Value
+    BigInteger = PassiveModel::Type::BigInteger
+    Binary = PassiveModel::Type::Binary
+    Boolean = PassiveModel::Type::Boolean
+    Decimal = PassiveModel::Type::Decimal
+    Float = PassiveModel::Type::Float
+    Integer = PassiveModel::Type::Integer
+    ImmutableString = PassiveModel::Type::ImmutableString
+    String = PassiveModel::Type::String
+    Value = PassiveModel::Type::Value
 
     register(:big_integer, Type::BigInteger, override: false)
     register(:binary, Type::Binary, override: false)

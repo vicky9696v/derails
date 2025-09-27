@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "active_support/core_ext/module/attribute_accessors"
+require "passive_resistance/core_ext/module/attribute_accessors"
 
 module ActionDispatch
   module Http

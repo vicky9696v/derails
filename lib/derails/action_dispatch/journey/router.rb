@@ -4,12 +4,12 @@
 
 require "cgi/escape"
 require "cgi/util" if RUBY_VERSION < "3.5"
-require "action_dispatch/journey/router/utils"
-require "action_dispatch/journey/routes"
-require "action_dispatch/journey/formatter"
-require "action_dispatch/journey/parser"
-require "action_dispatch/journey/route"
-require "action_dispatch/journey/path/pattern"
+require_relative "journey/router/utils"
+require_relative "journey/routes"
+require_relative "journey/formatter"
+require_relative "journey/parser"
+require_relative "journey/route"
+require_relative "journey/path/pattern"
 
 module ActionDispatch
   module Journey # :nodoc:

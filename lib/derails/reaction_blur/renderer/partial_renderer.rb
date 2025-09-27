@@ -259,7 +259,7 @@ module ReactionBlur
       end
 
       def render_partial_template(view, locals, template, layout, block)
-        ActiveSupport::Notifications.instrument(
+        PassiveResistance::Notifications.instrument(
           "render_partial.reaction_blur",
           identifier: template.identifier,
           layout: layout && layout.virtual_path,

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/time/calculations"
+require "passive_resistance/core_ext/time/calculations"
 
 module ReactionBlur
   module Helpers

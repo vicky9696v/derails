@@ -25,7 +25,7 @@ module ActionController
   #       end
   #     end
   module UrlFor
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     include AbstractController::UrlFor
 

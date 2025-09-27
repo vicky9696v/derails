@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance/execution_wrapper"
-require "passive_resistance/executor"
+require_relative "execution_wrapper"
+require_relative "executor"
 
 module PassiveResistance
   # = Active Support \Reloader

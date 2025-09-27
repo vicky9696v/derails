@@ -2,12 +2,12 @@
 
 # :markup: markdown
 
-require "active_support/core_ext/object/try"
-require "active_support/core_ext/integer/time"
+require "passive_resistance/core_ext/object/try"
+require "passive_resistance/core_ext/integer/time"
 
 module ActionController
   module ConditionalGet
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     include Head
 

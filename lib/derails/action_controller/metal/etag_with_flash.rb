@@ -11,7 +11,7 @@ module ActionController
   # in mind. This does that by including the content of the flash as a component
   # in the ETag that's generated for a response.
   module EtagWithFlash
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     include ActionController::ConditionalGet
 

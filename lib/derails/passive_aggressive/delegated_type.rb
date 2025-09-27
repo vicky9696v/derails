@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/string/inquiry"
+require "passive_resistance/core_ext/string/inquiry"
 
 module PassiveAggressive
   # = Delegated types
@@ -44,7 +44,7 @@ module PassiveAggressive
   #   end
   #
   #   module Entryable
-  #     extend ActiveSupport::Concern
+  #     extend PassiveResistance::Concern
   #
   #     included do
   #       has_one :entry, as: :entryable, touch: true

@@ -13,7 +13,7 @@ module PassiveAggressive
             return if value.blank?
 
             time = super
-            return time if time.is_a?(ActiveSupport::TimeWithZone) || !time.acts_like?(:time)
+            return time if time.is_a?(PassiveResistance::TimeWithZone) || !time.acts_like?(:time)
 
             # While in UTC mode, the PG gem may not return times back in "UTC" even if they were provided to PostgreSQL in UTC.
             # We prefer times always in UTC, so here we convert back.

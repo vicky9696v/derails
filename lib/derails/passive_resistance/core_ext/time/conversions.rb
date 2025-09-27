@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require "time"
-require "passive_resistance/inflector/methods"
-require "passive_resistance/values/time_zone"
+require_relative "inflector/methods"
+require_relative "values/time_zone"
 
 class Time
   DATE_FORMATS = {

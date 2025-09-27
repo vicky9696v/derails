@@ -5,8 +5,8 @@
 require "rack/utils"
 require "rack/request"
 require "rack/session/abstract/id"
-require "action_dispatch/middleware/cookies"
-require "action_dispatch/request/session"
+require_relative "../cookies"
+require_relative "../../request/session"
 
 module ActionDispatch
   module Session

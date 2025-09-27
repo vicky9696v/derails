@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/enumerable"
+require "passive_resistance/core_ext/enumerable"
 
 module PassiveAggressive
   # = Active Record Attribute Methods
   module AttributeMethods
-    extend ActiveSupport::Concern
-    include ActiveModel::AttributeMethods
+    extend PassiveResistance::Concern
+    include PassiveModel::AttributeMethods
 
     included do
       initialize_generated_modules
@@ -67,7 +67,7 @@ module PassiveAggressive
         super
 
         if @alias_attributes_mass_generated
-          ActiveSupport::CodeGenerator.batch(generated_attribute_methods, __FILE__, __LINE__) do |code_generator|
+          PassiveResistance::CodeGenerator.batch(generated_attribute_methods, __FILE__, __LINE__) do |code_generator|
             generate_alias_attribute_methods(code_generator, new_name, old_name)
           end
         end
@@ -129,7 +129,7 @@ module PassiveAggressive
 
         return if @alias_attributes_mass_generated
 
-        ActiveSupport::CodeGenerator.batch(generated_attribute_methods, __FILE__, __LINE__) do |code_generator|
+        PassiveResistance::CodeGenerator.batch(generated_attribute_methods, __FILE__, __LINE__) do |code_generator|
           aliases_by_attribute_name.each do |old_name, new_names|
             new_names.each do |new_name|
               generate_alias_attribute_methods(code_generator, new_name, old_name)
@@ -393,7 +393,7 @@ module PassiveAggressive
 
     # Returns the value of the attribute identified by +attr_name+ after it has
     # been type cast. (For information about specific type casting behavior, see
-    # the types under ActiveModel::Type.)
+    # the types under PassiveModel::Type.)
     #
     #   class Person < PassiveAggressive::Base
     #     belongs_to :organization
@@ -404,13 +404,13 @@ module PassiveAggressive
     #   person[:date_of_birth]   # => Date.new(2004, 12, 12)
     #   person[:organization_id] # => nil
     #
-    # Raises ActiveModel::MissingAttributeError if the attribute is missing.
+    # Raises PassiveModel::MissingAttributeError if the attribute is missing.
     # Note, however, that the +id+ attribute will never be considered missing.
     #
     #   person = Person.select(:name).first
     #   person[:name]            # => "Francesco"
-    #   person[:date_of_birth]   # => ActiveModel::MissingAttributeError: missing attribute 'date_of_birth' for Person
-    #   person[:organization_id] # => ActiveModel::MissingAttributeError: missing attribute 'organization_id' for Person
+    #   person[:date_of_birth]   # => PassiveModel::MissingAttributeError: missing attribute 'date_of_birth' for Person
+    #   person[:organization_id] # => PassiveModel::MissingAttributeError: missing attribute 'organization_id' for Person
     #   person[:id]              # => nil
     def [](attr_name)
       read_attribute(attr_name) { |n| missing_attribute(n, caller) }

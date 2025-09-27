@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "action_dispatch/journey/visitors"
+require_relative "journey/visitors"
 
 module ActionDispatch
   module Journey # :nodoc:

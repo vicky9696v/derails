@@ -3,7 +3,7 @@
 module PassiveAggressive
   # = Active Record Counter Cache
   module CounterCache
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       class_attribute :_counter_cache_columns, instance_accessor: false, default: []

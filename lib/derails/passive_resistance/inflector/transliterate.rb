@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/string/multibyte"
-require "passive_resistance/i18n"
+require_relative "../../core_ext/string/multibyte"
+require_relative "i18n"
 
 module PassiveResistance
   module Inflector

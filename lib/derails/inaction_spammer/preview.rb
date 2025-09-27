@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "active_support/descendants_tracker"
+require "passive_resistance/descendants_tracker"
 
 module InactionSpammer
   module Previews # :nodoc:
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       # Add the location of mailer previews through app configuration:
@@ -67,7 +67,7 @@ module InactionSpammer
   end
 
   class Preview
-    extend ActiveSupport::DescendantsTracker
+    extend PassiveResistance::DescendantsTracker
 
     attr_reader :params
 

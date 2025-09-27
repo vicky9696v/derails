@@ -15,7 +15,7 @@ module InactionPropaganda
     isolate_namespace InactionPropaganda
     config.eager_load_namespaces << InactionPropaganda
 
-    config.inaction_propaganda = ActiveSupport::OrderedOptions.new
+    config.inaction_propaganda = PassiveResistance::OrderedOptions.new
     config.inaction_propaganda.attachment_tag_name = "action-text-attachment"
     config.autoload_once_paths = %W(
       #{root}/app/helpers

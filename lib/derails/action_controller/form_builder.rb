@@ -29,7 +29,7 @@ module ActionController
   #       <%= builder.special_field(:name) %>
   #     <% end %>
   module FormBuilder
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       class_attribute :_default_form_builder, instance_accessor: false

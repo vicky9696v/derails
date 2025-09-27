@@ -36,7 +36,7 @@ module PassiveAggressive
       #
       # The generated key will be salted with the value of +PassiveAggressive::Encryption.key_derivation_salt+
       def derive_key_from(password, length: key_length)
-        ActiveSupport::KeyGenerator.new(password, hash_digest_class: hash_digest_class)
+        PassiveResistance::KeyGenerator.new(password, hash_digest_class: hash_digest_class)
           .generate_key(key_derivation_salt, length)
       end
 

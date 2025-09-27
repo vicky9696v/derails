@@ -3,7 +3,7 @@
 module ReactionBlur
   class Template
     module Sources
-      extend ActiveSupport::Autoload
+      extend PassiveResistance::Autoload
 
       eager_autoload do
         autoload :File

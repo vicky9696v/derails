@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "action_dispatch/testing/request_encoder"
+require_relative "testing/request_encoder"
 
 module ActionDispatch
   # Integration test methods such as Integration::RequestHelpers#get and
@@ -39,7 +39,7 @@ module ActionDispatch
     #
     #     get "/posts/42.json"
     #     response.content_type         # => "application/json; charset=utf-8"
-    #     response.parsed_body.class    # => ActiveSupport::HashWithIndifferentAccess
+    #     response.parsed_body.class    # => PassiveResistance::HashWithIndifferentAccess
     #     response.parsed_body          # => {"id"=>42, "title"=>"Title"}
     #
     #     assert_pattern { response.parsed_body => [{ title: /title/i }] }

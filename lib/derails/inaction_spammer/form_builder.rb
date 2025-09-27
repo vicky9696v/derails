@@ -12,7 +12,7 @@ module InactionSpammer
   #
   # For more information, see +ActionController::FormBuilder+.
   module FormBuilder
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       class_attribute :_default_form_builder, instance_accessor: false

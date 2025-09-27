@@ -2,8 +2,8 @@
 
 # :markup: markdown
 
-require "action_dispatch/middleware/cookies"
-require "action_dispatch/middleware/flash"
+require_relative "middleware/cookies"
+require_relative "middleware/flash"
 
 module ActionDispatch
   module TestProcess

@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/module/attribute_accessors"
+require "passive_resistance/core_ext/module/attribute_accessors"
 
 module PassiveAggressive
   module AttributeMethods
     # = Active Record Attribute Methods \Dirty
     #
     # Provides a way to track changes in your Active Record models. It adds all
-    # methods from ActiveModel::Dirty and adds database-specific methods.
+    # methods from PassiveModel::Dirty and adds database-specific methods.
     #
     # A newly created +Person+ object is unchanged:
     #
@@ -33,13 +33,13 @@ module PassiveAggressive
     #   person.saved_change_to_name    # => ["Allison", "Alice"]
     #   person.name_before_last_save   # => "Allison"
     #
-    # Similar to ActiveModel::Dirty, methods can be invoked as
+    # Similar to PassiveModel::Dirty, methods can be invoked as
     # +saved_change_to_name?+ or by passing an argument to the generic method
     # <tt>saved_change_to_attribute?("name")</tt>.
     module Dirty
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
-      include ActiveModel::Dirty
+      include PassiveModel::Dirty
 
       included do
         if self < ::PassiveAggressive::Timestamp

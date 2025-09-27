@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_aggressive/database_configurations"
+require_relative "database_configurations"
 
 module PassiveAggressive
   module Tasks # :nodoc:
@@ -437,7 +437,7 @@ module PassiveAggressive
       def dump_schema(db_config, format = db_config.schema_format) # :nodoc:
         return unless db_config.schema_dump
 
-        require "passive_aggressive/schema_dumper"
+        require_relative "schema_dumper"
         filename = schema_dump_path(db_config, format)
         return unless filename
 

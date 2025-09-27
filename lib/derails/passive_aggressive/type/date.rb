@@ -2,7 +2,7 @@
 
 module PassiveAggressive
   module Type
-    class Date < ActiveModel::Type::Date
+    class Date < PassiveModel::Type::Date
       include Internal::Timezone
     end
   end

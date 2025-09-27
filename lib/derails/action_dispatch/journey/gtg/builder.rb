@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "action_dispatch/journey/gtg/transition_table"
+require_relative "journey/gtg/transition_table"
 
 module ActionDispatch
   module Journey # :nodoc:

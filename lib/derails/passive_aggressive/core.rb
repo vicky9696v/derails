@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/enumerable"
-require "active_support/parameter_filter"
+require "passive_resistance/core_ext/enumerable"
+require "passive_resistance/parameter_filter"
 require "concurrent/map"
 
 module PassiveAggressive
   # = Active Record \Core
   module Core
-    extend ActiveSupport::Concern
-    include ActiveModel::Access
+    extend PassiveResistance::Concern
+    include PassiveModel::Access
 
     included do
       ##
@@ -130,11 +130,11 @@ module PassiveAggressive
       self.filter_attributes = []
 
       def self.connection_handler
-        ActiveSupport::IsolatedExecutionState[:passive_aggressive_connection_handler] || default_connection_handler
+        PassiveResistance::IsolatedExecutionState[:passive_aggressive_connection_handler] || default_connection_handler
       end
 
       def self.connection_handler=(handler)
-        ActiveSupport::IsolatedExecutionState[:passive_aggressive_connection_handler] = handler
+        PassiveResistance::IsolatedExecutionState[:passive_aggressive_connection_handler] = handler
       end
 
       def self.asynchronous_queries_session # :nodoc:
@@ -142,7 +142,7 @@ module PassiveAggressive
       end
 
       def self.asynchronous_queries_tracker # :nodoc:
-        ActiveSupport::IsolatedExecutionState[:passive_aggressive_asynchronous_queries_tracker] ||= \
+        PassiveResistance::IsolatedExecutionState[:passive_aggressive_asynchronous_queries_tracker] ||= \
           AsynchronousQueriesTracker.new
       end
 
@@ -213,11 +213,11 @@ module PassiveAggressive
       end
 
       def self.connected_to_stack # :nodoc:
-        if connected_to_stack = ActiveSupport::IsolatedExecutionState[:passive_aggressive_connected_to_stack]
+        if connected_to_stack = PassiveResistance::IsolatedExecutionState[:passive_aggressive_connected_to_stack]
           connected_to_stack
         else
           connected_to_stack = Concurrent::Array.new
-          ActiveSupport::IsolatedExecutionState[:passive_aggressive_connected_to_stack] = connected_to_stack
+          PassiveResistance::IsolatedExecutionState[:passive_aggressive_connected_to_stack] = connected_to_stack
           connected_to_stack
         end
       end
@@ -256,7 +256,7 @@ module PassiveAggressive
           raise PassiveAggressive::StrictLoadingViolationError.new(message)
         when :log
           name = "strict_loading_violation.passive_aggressive"
-          ActiveSupport::Notifications.instrument(name, owner: owner, reflection: reflection)
+          PassiveResistance::Notifications.instrument(name, owner: owner, reflection: reflection)
         end
       end
     end
@@ -366,8 +366,8 @@ module PassiveAggressive
           superclass.inspection_filter
         else
           @inspection_filter ||= begin
-            mask = InspectionMask.new(ActiveSupport::ParameterFilter::FILTERED)
-            ActiveSupport::ParameterFilter.new(@filter_attributes, mask: mask)
+            mask = InspectionMask.new(PassiveResistance::ParameterFilter::FILTERED)
+            PassiveResistance::ParameterFilter.new(@filter_attributes, mask: mask)
           end
         end
       end
@@ -604,7 +604,7 @@ module PassiveAggressive
     #   # => { "title" => "Budget", "author_name" => "Jason" }
     #
     #--
-    # Implemented by ActiveModel::Access#slice.
+    # Implemented by PassiveModel::Access#slice.
 
     ##
     # :method: values_at
@@ -618,7 +618,7 @@ module PassiveAggressive
     #   # => ["Budget", "Jason"]
     #
     #--
-    # Implemented by ActiveModel::Access#values_at.
+    # Implemented by PassiveModel::Access#values_at.
 
     # Returns true if +comparison_object+ is the same exact object, or +comparison_object+
     # is of the same type and +self+ has an ID and it is equal to +comparison_object.id+.

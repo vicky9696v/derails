@@ -7,7 +7,7 @@ module ActionDispatch
   #
   # Provides callbacks to be executed before and after dispatching the request.
   class Callbacks
-    include ActiveSupport::Callbacks
+    include PassiveResistance::Callbacks
 
     define_callbacks :call
 

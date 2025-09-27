@@ -4,7 +4,7 @@ module PassiveAggressive
   module Encryption
     # Configuration API for PassiveAggressive::Encryption
     module Configurable
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       included do
         mattr_reader :config, default: Config.new

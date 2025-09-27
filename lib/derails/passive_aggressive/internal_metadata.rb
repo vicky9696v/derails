@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_aggressive/scoping/default"
-require "passive_aggressive/scoping/named"
+require_relative "scoping/default"
+require_relative "scoping/named"
 
 module PassiveAggressive
   # This class is used to create a table that keeps track of values and keys such

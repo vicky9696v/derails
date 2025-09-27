@@ -2,7 +2,7 @@
 
 module PassiveAggressive
   module Validations
-    class AbsenceValidator < ActiveModel::Validations::AbsenceValidator # :nodoc:
+    class AbsenceValidator < PassiveModel::Validations::AbsenceValidator # :nodoc:
       def validate_each(record, attribute, association_or_value)
         if record.class._reflect_on_association(attribute)
           association_or_value = Array.wrap(association_or_value).reject(&:marked_for_destruction?)
@@ -16,7 +16,7 @@ module PassiveAggressive
       # Object#present?). If the attribute is an association, the associated object
       # is also considered not present if it is marked for destruction.
       #
-      # See ActiveModel::Validations::HelperMethods.validates_absence_of for more information.
+      # See PassiveModel::Validations::HelperMethods.validates_absence_of for more information.
       def validates_absence_of(*attr_names)
         validates_with AbsenceValidator, _merge_attributes(attr_names)
       end

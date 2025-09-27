@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/hash/keys"
-require "passive_resistance/core_ext/hash/reverse_merge"
-require "passive_resistance/core_ext/hash/except"
-require "passive_resistance/core_ext/hash/slice"
+require_relative "core_ext/hash/keys"
+require_relative "core_ext/hash/reverse_merge"
+require_relative "core_ext/hash/except"
+require_relative "core_ext/hash/slice"
 
 module PassiveResistance
   # = \Hash With Indifferent Access

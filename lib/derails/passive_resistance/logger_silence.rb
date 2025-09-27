@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "passive_resistance/concern"
-require "passive_resistance/core_ext/module/attribute_accessors"
-require "passive_resistance/logger_thread_safe_level"
+require_relative "concern"
+require_relative "core_ext/module/attribute_accessors"
+require_relative "logger_thread_safe_level"
 
 module PassiveResistance
   module LoggerSilence

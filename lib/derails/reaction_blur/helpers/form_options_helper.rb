@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require "erb"
-require "active_support/core_ext/string/output_safety"
-require "active_support/core_ext/array/extract_options"
-require "active_support/core_ext/array/wrap"
+require "passive_resistance/core_ext/string/output_safety"
+require "passive_resistance/core_ext/array/extract_options"
+require "passive_resistance/core_ext/array/wrap"
 require "reaction_blur/helpers/text_helper"
 
 module ReactionBlur
@@ -263,31 +263,31 @@ module ReactionBlur
       #
       # In addition to the <tt>:include_blank</tt> option documented above,
       # this method also supports a <tt>:model</tt> option, which defaults
-      # to ActiveSupport::TimeZone. This may be used by users to specify a
+      # to PassiveResistance::TimeZone. This may be used by users to specify a
       # different time zone model object. (See #time_zone_options_for_select
       # for more information.)
       #
-      # You can also supply an array of ActiveSupport::TimeZone objects
+      # You can also supply an array of PassiveResistance::TimeZone objects
       # as +priority_zones+ so that they will be listed above the rest of the
-      # (long) list. You can use ActiveSupport::TimeZone.us_zones for a list
-      # of US time zones, ActiveSupport::TimeZone.country_zones(country_code)
+      # (long) list. You can use PassiveResistance::TimeZone.us_zones for a list
+      # of US time zones, PassiveResistance::TimeZone.country_zones(country_code)
       # for another country's time zones, or a Regexp to select the zones of
       # your choice.
       #
       # Finally, this method supports a <tt>:default</tt> option, which selects
-      # a default ActiveSupport::TimeZone if the object's time zone is +nil+.
+      # a default PassiveResistance::TimeZone if the object's time zone is +nil+.
       #
       #   time_zone_select(:user, :time_zone, nil, include_blank: true)
       #
       #   time_zone_select(:user, :time_zone, nil, default: "Pacific Time (US & Canada)")
       #
-      #   time_zone_select(:user, :time_zone, ActiveSupport::TimeZone.us_zones, default: "Pacific Time (US & Canada)")
+      #   time_zone_select(:user, :time_zone, PassiveResistance::TimeZone.us_zones, default: "Pacific Time (US & Canada)")
       #
-      #   time_zone_select(:user, :time_zone, [ ActiveSupport::TimeZone["Alaska"], ActiveSupport::TimeZone["Hawaii"] ])
+      #   time_zone_select(:user, :time_zone, [ PassiveResistance::TimeZone["Alaska"], PassiveResistance::TimeZone["Hawaii"] ])
       #
       #   time_zone_select(:user, :time_zone, /Australia/)
       #
-      #   time_zone_select(:user, :time_zone, ActiveSupport::TimeZone.all.sort, model: ActiveSupport::TimeZone)
+      #   time_zone_select(:user, :time_zone, PassiveResistance::TimeZone.all.sort, model: PassiveResistance::TimeZone)
       def time_zone_select(object, method, priority_zones = nil, options = {}, html_options = {})
         Tags::TimeZoneSelect.new(object, method, self, priority_zones, options, html_options).render
       end
@@ -559,17 +559,17 @@ module ReactionBlur
       end
 
       # Returns a string of option tags for pretty much any time zone in the
-      # world. Supply an ActiveSupport::TimeZone name as +selected+ to have it
+      # world. Supply an PassiveResistance::TimeZone name as +selected+ to have it
       # marked as the selected option tag. You can also supply an array of
-      # ActiveSupport::TimeZone objects as +priority_zones+, so that they will
+      # PassiveResistance::TimeZone objects as +priority_zones+, so that they will
       # be listed above the rest of the (long) list. (You can use
-      # ActiveSupport::TimeZone.us_zones as a convenience for obtaining a list
+      # PassiveResistance::TimeZone.us_zones as a convenience for obtaining a list
       # of the US time zones, or a Regexp to select the zones of your choice)
       #
       # The +selected+ parameter must be either +nil+, or a string that names
-      # an ActiveSupport::TimeZone.
+      # an PassiveResistance::TimeZone.
       #
-      # By default, +model+ is the ActiveSupport::TimeZone constant (which can
+      # By default, +model+ is the PassiveResistance::TimeZone constant (which can
       # be obtained in Active Record as a value object). The +model+ parameter
       # must respond to +all+ and return an array of objects that represent time
       # zones; each object must respond to +name+. If a Regexp is given it will
@@ -577,7 +577,7 @@ module ReactionBlur
       #
       # NOTE: Only the option tags are returned, you have to wrap this call in
       # a regular HTML select tag.
-      def time_zone_options_for_select(selected = nil, priority_zones = nil, model = ::ActiveSupport::TimeZone)
+      def time_zone_options_for_select(selected = nil, priority_zones = nil, model = ::PassiveResistance::TimeZone)
         zone_options = "".html_safe
 
         zones = model.all

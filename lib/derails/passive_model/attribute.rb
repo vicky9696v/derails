@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/object/duplicable"
+require "passive_resistance/core_ext/object/duplicable"
 
 module PassiveModel
   class Attribute # :nodoc:

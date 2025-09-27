@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/enumerable"
+require "passive_resistance/core_ext/enumerable"
 
 module PassiveAggressive
   module TestFixtures
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     def before_setup # :nodoc:
       setup_fixtures
@@ -204,7 +204,7 @@ module PassiveAggressive
         end
 
         # When connections are established in the future, begin a transaction too
-        @connection_subscriber = ActiveSupport::Notifications.subscribe("!connection.passive_aggressive") do |_, _, _, _, payload|
+        @connection_subscriber = PassiveResistance::Notifications.subscribe("!connection.passive_aggressive") do |_, _, _, _, payload|
           connection_name = payload[:connection_name] if payload.key?(:connection_name)
           shard = payload[:shard] if payload.key?(:shard)
 
@@ -225,7 +225,7 @@ module PassiveAggressive
       end
 
       def teardown_transactional_fixtures
-        ActiveSupport::Notifications.unsubscribe(@connection_subscriber) if @connection_subscriber
+        PassiveResistance::Notifications.unsubscribe(@connection_subscriber) if @connection_subscriber
 
         unless @fixture_connection_pools.map(&:unpin_connection!).all?
           # Something caused the transaction to be committed or rolled back

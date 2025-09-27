@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "time"
-require "passive_resistance/json"
+require_relative "json"
 require_relative "serializer_with_fallback"
 
 module PassiveResistance

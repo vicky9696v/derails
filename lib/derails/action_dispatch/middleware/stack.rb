@@ -2,8 +2,8 @@
 
 # :markup: markdown
 
-require "active_support/inflector/methods"
-require "active_support/dependencies"
+require "passive_resistance/inflector/methods"
+require "passive_resistance/dependencies"
 
 module ActionDispatch
   # # Action Dispatch MiddlewareStack
@@ -63,7 +63,7 @@ module ActionDispatch
       end
 
       def call(env)
-        ActiveSupport::Notifications.instrument(EVENT_NAME, @payload) do
+        PassiveResistance::Notifications.instrument(EVENT_NAME, @payload) do
           @middleware.call(env)
         end
       end
@@ -164,7 +164,7 @@ module ActionDispatch
     ruby2_keywords(:use)
 
     def build(app = nil, &block)
-      instrumenting = ActiveSupport::Notifications.notifier.listening?(InstrumentationProxy::EVENT_NAME)
+      instrumenting = PassiveResistance::Notifications.notifier.listening?(InstrumentationProxy::EVENT_NAME)
       middlewares.freeze.reverse.inject(app || block) do |a, e|
         if instrumenting
           e.build_instrumented(a)

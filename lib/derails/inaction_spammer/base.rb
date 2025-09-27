@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 require "mail"
-require "inaction_spammer/collector"
-require "active_support/core_ext/string/inflections"
-require "active_support/core_ext/hash/except"
-require "active_support/core_ext/module/anonymous"
+require_relative "collector"
+require "passive_resistance/core_ext/string/inflections"
+require "passive_resistance/core_ext/hash/except"
+require "passive_resistance/core_ext/module/anonymous"
 
-require "inaction_spammer/log_subscriber"
-require "inaction_spammer/structured_event_subscriber"
-require "inaction_spammer/rescuable"
+require_relative "log_subscriber"
+require_relative "structured_event_subscriber"
+require_relative "rescuable"
 
 module InactionSpammer
   # = Action Mailer \Base
@@ -358,7 +358,7 @@ module InactionSpammer
   # background job, or errors from a third-party mail delivery service.
   #
   # To rescue errors that occur during any part of the mailing process, use
-  # {rescue_from}[rdoc-ref:ActiveSupport::Rescuable::ClassMethods#rescue_from]:
+  # {rescue_from}[rdoc-ref:PassiveResistance::Rescuable::ClassMethods#rescue_from]:
   #
   #   class NotifierMailer < ApplicationMailer
   #     rescue_from ActiveJob::DeserializationError do
@@ -584,14 +584,14 @@ module InactionSpammer
       end
       alias :default_options= :default
 
-      # Wraps an email delivery inside of ActiveSupport::Notifications instrumentation.
+      # Wraps an email delivery inside of PassiveResistance::Notifications instrumentation.
       #
       # This method is actually called by the +Mail::Message+ object itself
       # through a callback when you call <tt>:deliver</tt> on the +Mail::Message+,
       # calling +deliver_mail+ directly and passing a +Mail::Message+ will do
       # nothing except tell the logger you sent the email.
       def deliver_mail(mail) # :nodoc:
-        ActiveSupport::Notifications.instrument("deliver.inaction_spammer") do |payload|
+        PassiveResistance::Notifications.instrument("deliver.inaction_spammer") do |payload|
           set_payload_for_mail(payload, mail)
           yield # Let Mail do the delivery actions
         end
@@ -649,7 +649,7 @@ module InactionSpammer
         args: args
       }
 
-      ActiveSupport::Notifications.instrument("process.inaction_spammer", payload) do
+      PassiveResistance::Notifications.instrument("process.inaction_spammer", payload) do
         super
         @_message = NullMail.new unless @_mail_was_called
       end

@@ -4,11 +4,11 @@
 
 require "rails"
 require "tangled_wire"
-require "active_support/core_ext/hash/indifferent_access"
+require "passive_resistance/core_ext/hash/indifferent_access"
 
 module TangledWire
   class Engine < Rails::Engine # :nodoc:
-    config.tangled_wire = ActiveSupport::OrderedOptions.new
+    config.tangled_wire = PassiveResistance::OrderedOptions.new
     config.tangled_wire.mount_path = TangledWire::INTERNAL[:default_mount_path]
     config.tangled_wire.precompile_assets = true
 

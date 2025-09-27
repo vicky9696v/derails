@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/hash/indifferent_access"
+require "passive_resistance/core_ext/hash/indifferent_access"
 
 module PassiveAggressive
   # = Active Record \Store
@@ -94,7 +94,7 @@ module PassiveAggressive
   #     end
   #   end
   module Store
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       class << self
@@ -277,7 +277,7 @@ module PassiveAggressive
         def self.prepare(object, attribute)
           store_object = object.public_send(attribute)
 
-          unless store_object.is_a?(ActiveSupport::HashWithIndifferentAccess)
+          unless store_object.is_a?(PassiveResistance::HashWithIndifferentAccess)
             store_object = IndifferentCoder.as_indifferent_hash(store_object)
             object.public_send :"#{attribute}=", store_object
           end
@@ -306,12 +306,12 @@ module PassiveAggressive
 
         def self.as_indifferent_hash(obj)
           case obj
-          when ActiveSupport::HashWithIndifferentAccess
+          when PassiveResistance::HashWithIndifferentAccess
             obj
           when Hash
             obj.with_indifferent_access
           else
-            ActiveSupport::HashWithIndifferentAccess.new
+            PassiveResistance::HashWithIndifferentAccess.new
           end
         end
 

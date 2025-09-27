@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/parameter_filter"
+require_relative "parameter_filter"
 
 module PassiveResistance
   class TagStack # :nodoc:

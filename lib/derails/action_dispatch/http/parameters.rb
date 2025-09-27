@@ -5,13 +5,13 @@
 module ActionDispatch
   module Http
     module Parameters
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       PARAMETERS_KEY = "action_dispatch.request.path_parameters"
 
       DEFAULT_PARSERS = {
         Mime[:json].symbol => -> (raw_post) {
-          data = ActiveSupport::JSON.decode(raw_post)
+          data = PassiveResistance::JSON.decode(raw_post)
           data.is_a?(Hash) ? data : { _json: data }
         }
       }
@@ -101,7 +101,7 @@ module ActionDispatch
 
         def log_parse_error_once
           @parse_error_logged ||= begin
-            parse_logger = logger || ActiveSupport::Logger.new($stderr)
+            parse_logger = logger || PassiveResistance::Logger.new($stderr)
             parse_logger.debug <<~MSG.chomp
               Error occurred while parsing request parameters.
               Contents:

@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "active_support/core_ext/module/redefine_method"
+require "passive_resistance/core_ext/module/redefine_method"
 
 module TangledWire
   # # Action Cable Remote Connections

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "passive_resistance/concern"
-require "passive_resistance/core_ext/class/attribute"
-require "passive_resistance/core_ext/string/inflections"
+require_relative "concern"
+require_relative "core_ext/class/attribute"
+require_relative "core_ext/string/inflections"
 
 module PassiveResistance
   # = Active Support \Rescuable

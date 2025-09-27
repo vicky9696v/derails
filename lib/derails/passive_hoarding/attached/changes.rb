@@ -2,7 +2,7 @@
 
 module PassiveHoarding
   module Attached::Changes # :nodoc:
-    extend ActiveSupport::Autoload
+    extend PassiveResistance::Autoload
 
     eager_autoload do
       autoload :CreateOne

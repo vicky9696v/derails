@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/enumerable"
-require "active_support/core_ext/object/deep_dup"
-require "passive_model/attribute_set/builder"
-require "passive_model/attribute_set/yaml_encoder"
+require "passive_resistance/core_ext/enumerable"
+require "passive_resistance/core_ext/object/deep_dup"
+require_relative "attribute_set/builder"
+require_relative "attribute_set/yaml_encoder"
 
 module PassiveModel
   class AttributeSet # :nodoc:

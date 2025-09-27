@@ -3,8 +3,8 @@
 require "concurrent/map"
 require "monitor"
 
-require "passive_aggressive/connection_adapters/abstract/connection_pool/queue"
-require "passive_aggressive/connection_adapters/abstract/connection_pool/reaper"
+require_relative "connection_adapters/abstract/connection_pool/queue"
+require_relative "connection_adapters/abstract/connection_pool/reaper"
 
 module PassiveAggressive
   module ConnectionAdapters
@@ -218,7 +218,7 @@ module PassiveAggressive
       end
 
       class << self
-        def install_executor_hooks(executor = ActiveSupport::Executor)
+        def install_executor_hooks(executor = PassiveResistance::Executor)
           executor.register_hook(ExecutorHooks)
         end
       end
@@ -290,7 +290,7 @@ module PassiveAggressive
         @schema_cache = nil
 
         @activated = false
-        @original_context = ActiveSupport::IsolatedExecutionState.context
+        @original_context = PassiveResistance::IsolatedExecutionState.context
 
         @reaper_lock = Monitor.new
         @reaper = Reaper.new(self, db_config.reaping_frequency)
@@ -363,7 +363,7 @@ module PassiveAggressive
           @connections << @pinned_connection
         end
 
-        @pinned_connection.lock_thread = ActiveSupport::IsolatedExecutionState.context if lock_thread
+        @pinned_connection.lock_thread = PassiveResistance::IsolatedExecutionState.context if lock_thread
         @pinned_connection.pinned = true
         @pinned_connection.verify! # eagerly validate the connection
         @pinned_connection.begin_transaction joinable: false, _lazy: false
@@ -883,17 +883,17 @@ module PassiveAggressive
 
       def pool_transaction_isolation_level
         isolation_level_key = "passiveaggressive_pool_transaction_isolation_level_#{db_config.name}"
-        ActiveSupport::IsolatedExecutionState[isolation_level_key]
+        PassiveResistance::IsolatedExecutionState[isolation_level_key]
       end
 
       def pool_transaction_isolation_level=(isolation_level)
         isolation_level_key = "passiveaggressive_pool_transaction_isolation_level_#{db_config.name}"
-        ActiveSupport::IsolatedExecutionState[isolation_level_key] = isolation_level
+        PassiveResistance::IsolatedExecutionState[isolation_level_key] = isolation_level
       end
 
       private
         def connection_lease
-          @leases[ActiveSupport::IsolatedExecutionState.context]
+          @leases[PassiveResistance::IsolatedExecutionState.context]
         end
 
         def build_async_executor
@@ -1042,13 +1042,13 @@ module PassiveAggressive
             reap # No need to wait for dead owners
 
             # account for our own connections
-            @connections.select { |conn| conn.owner == ActiveSupport::IsolatedExecutionState.context }
+            @connections.select { |conn| conn.owner == PassiveResistance::IsolatedExecutionState.context }
           end
 
           newly_checked_out = []
           timeout_time      = Process.clock_gettime(Process::CLOCK_MONOTONIC) + (@checkout_timeout * 2)
 
-          @available.with_a_bias_for(ActiveSupport::IsolatedExecutionState.context) do
+          @available.with_a_bias_for(PassiveResistance::IsolatedExecutionState.context) do
             loop do
               synchronize do
                 return if collected_conns.size == @connections.size && @now_connecting == 0
@@ -1096,7 +1096,7 @@ module PassiveAggressive
 
           thread_report = []
           @connections.each do |conn|
-            unless conn.owner == ActiveSupport::IsolatedExecutionState.context
+            unless conn.owner == PassiveResistance::IsolatedExecutionState.context
               thread_report << "#{conn} is owned by #{conn.owner}"
             end
           end
@@ -1219,7 +1219,7 @@ module PassiveAggressive
             return if self.discarded?
 
             if @threads_blocking_new_connections.zero? && (@connections.size + @now_connecting) < @max_connections && (!block_given? || yield)
-              if @connections.size > 0 || @original_context != ActiveSupport::IsolatedExecutionState.context
+              if @connections.size > 0 || @original_context != PassiveResistance::IsolatedExecutionState.context
                 @activated = true
               end
 

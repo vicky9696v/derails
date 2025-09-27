@@ -2,7 +2,7 @@
 
 module PassiveAggressive
   module Type
-    class DecimalWithoutScale < ActiveModel::Type::BigInteger # :nodoc:
+    class DecimalWithoutScale < PassiveModel::Type::BigInteger # :nodoc:
       def type
         :decimal
       end

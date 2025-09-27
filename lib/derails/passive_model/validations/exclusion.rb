@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_model/validations/clusivity"
+require_relative "validations/clusivity"
 
 module PassiveModel
   module Validations

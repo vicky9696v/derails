@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_aggressive/middleware/database_selector/resolver"
+require_relative "middleware/database_selector/resolver"
 
 module PassiveAggressive
   module Middleware
@@ -46,7 +46,7 @@ module PassiveAggressive
     #   config.passive_aggressive.database_resolver_context = MyResolver::MySession
     #
     # Note: If you are using <tt>rails new my_app --minimal</tt> you will need
-    # to call <tt>require "active_support/core_ext/integer/time"</tt> to load
+    # to call <tt>require "passive_resistance/core_ext/integer/time"</tt> to load
     # the core extension in order to use +2.seconds+
     class DatabaseSelector
       def initialize(app, resolver_klass = nil, context_klass = nil, options = {})

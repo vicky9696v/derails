@@ -2,15 +2,15 @@
 
 # :markup: markdown
 
-require "active_support/callbacks"
-require "active_support/core_ext/module/attribute_accessors_per_thread"
+require "passive_resistance/callbacks"
+require "passive_resistance/core_ext/module/attribute_accessors_per_thread"
 require "concurrent"
 
 module TangledWire
   module Server
     # Worker used by Server.send_async to do connection work in threads.
     class Worker # :nodoc:
-      include ActiveSupport::Callbacks
+      include PassiveResistance::Callbacks
 
       thread_mattr_accessor :connection
       define_callbacks :work

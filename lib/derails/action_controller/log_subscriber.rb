@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module ActionController
-  class LogSubscriber < ActiveSupport::LogSubscriber # :nodoc:
+  class LogSubscriber < PassiveResistance::LogSubscriber # :nodoc:
     INTERNAL_PARAMS = %w(controller action format _method only_path)
 
     def start_processing(event)
@@ -84,7 +84,7 @@ module ActionController
         # frozen_string_literal: true
         def #{method}(event)
           return unless ActionController::Base.enable_fragment_cache_logging
-          key         = ActiveSupport::Cache.expand_cache_key(event.payload[:key] || event.payload[:path])
+          key         = PassiveResistance::Cache.expand_cache_key(event.payload[:key] || event.payload[:path])
           human_name  = #{method.to_s.humanize.inspect}
           info("\#{human_name} \#{key} (\#{event.duration.round(1)}ms)")
         end

@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "active_support/core_ext/hash/indifferent_access"
+require "passive_resistance/core_ext/hash/indifferent_access"
 
 module TangledWire
   module Connection
@@ -32,7 +32,7 @@ module TangledWire
 
       def add(data)
         id_key = data["identifier"]
-        id_options = ActiveSupport::JSON.decode(id_key).with_indifferent_access
+        id_options = PassiveResistance::JSON.decode(id_key).with_indifferent_access
 
         return if subscriptions.key?(id_key)
 
@@ -58,7 +58,7 @@ module TangledWire
       end
 
       def perform_action(data)
-        find(data).perform_action ActiveSupport::JSON.decode(data["data"])
+        find(data).perform_action PassiveResistance::JSON.decode(data["data"])
       end
 
       def identifiers

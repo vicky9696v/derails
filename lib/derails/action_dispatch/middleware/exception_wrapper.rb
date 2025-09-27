@@ -2,9 +2,9 @@
 
 # :markup: markdown
 
-require "active_support/core_ext/module/attribute_accessors"
-require "active_support/syntax_error_proxy"
-require "active_support/core_ext/thread/backtrace/location"
+require "passive_resistance/core_ext/module/attribute_accessors"
+require "passive_resistance/syntax_error_proxy"
+require "passive_resistance/core_ext/thread/backtrace/location"
 require "rack/utils"
 
 module ActionDispatch
@@ -54,7 +54,7 @@ module ActionDispatch
       @wrapped_causes = wrapped_causes_for(exception, backtrace_cleaner)
       @exception = exception
       if exception.is_a?(SyntaxError)
-        @exception = ActiveSupport::SyntaxErrorProxy.new(exception)
+        @exception = PassiveResistance::SyntaxErrorProxy.new(exception)
       end
       @backtrace = build_backtrace
     end
@@ -100,7 +100,7 @@ module ActionDispatch
     end
 
     def actions
-      ActiveSupport::ActionableError.actions(@exception)
+      PassiveResistance::ActionableError.actions(@exception)
     end
 
     def unwrapped_exception

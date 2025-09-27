@@ -305,7 +305,7 @@ module PassiveAggressive
     end
 
     module ColumnMethods
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       class_methods do
         private

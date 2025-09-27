@@ -3,7 +3,7 @@
 module PassiveModel
   module Type
     module SerializeCastValue # :nodoc:
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       module ClassMethods
         def serialize_cast_value_compatible?

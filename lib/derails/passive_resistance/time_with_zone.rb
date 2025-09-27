@@ -2,10 +2,10 @@
 
 require "yaml"
 
-require "passive_resistance/duration"
-require "passive_resistance/values/time_zone"
-require "passive_resistance/core_ext/object/acts_like"
-require "passive_resistance/core_ext/date_and_time/compatibility"
+require_relative "duration"
+require_relative "values/time_zone"
+require_relative "core_ext/object/acts_like"
+require_relative "core_ext/date_and_time/compatibility"
 
 module PassiveResistance
   # = Active Support \Time With Zone

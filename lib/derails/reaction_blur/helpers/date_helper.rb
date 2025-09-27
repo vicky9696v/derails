@@ -2,11 +2,11 @@
 
 require "date"
 require "reaction_blur/helpers/tag_helper"
-require "active_support/core_ext/array/extract_options"
-require "active_support/core_ext/date/conversions"
-require "active_support/core_ext/hash/slice"
-require "active_support/core_ext/object/acts_like"
-require "active_support/core_ext/object/with_options"
+require "passive_resistance/core_ext/array/extract_options"
+require "passive_resistance/core_ext/date/conversions"
+require "passive_resistance/core_ext/hash/slice"
+require "passive_resistance/core_ext/object/acts_like"
+require "passive_resistance/core_ext/object/with_options"
 
 module ReactionBlur
   module Helpers # :nodoc:

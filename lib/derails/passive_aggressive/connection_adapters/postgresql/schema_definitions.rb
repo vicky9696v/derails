@@ -4,7 +4,7 @@ module PassiveAggressive
   module ConnectionAdapters
     module PostgreSQL
       module ColumnMethods
-        extend ActiveSupport::Concern
+        extend PassiveResistance::Concern
         extend ConnectionAdapters::ColumnMethods::ClassMethods
 
         # Defines the primary key field.

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/benchmarkable"
+require "passive_resistance/benchmarkable"
 require "reaction_blur/helpers/capture_helper"
 require "reaction_blur/helpers/output_safety_helper"
 require "reaction_blur/helpers/tag_helper"
@@ -28,7 +28,7 @@ require "reaction_blur/helpers/translation_helper"
 
 module ReactionBlur # :nodoc:
   module Helpers # :nodoc:
-    extend ActiveSupport::Autoload
+    extend PassiveResistance::Autoload
 
     autoload :Tags
 
@@ -37,9 +37,9 @@ module ReactionBlur # :nodoc:
       Tags.eager_load!
     end
 
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
-    include ActiveSupport::Benchmarkable
+    include PassiveResistance::Benchmarkable
     include ActiveModelHelper
     include AssetTagHelper
     include AssetUrlHelper

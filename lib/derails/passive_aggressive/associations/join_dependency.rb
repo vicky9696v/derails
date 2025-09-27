@@ -3,7 +3,7 @@
 module PassiveAggressive
   module Associations
     class JoinDependency # :nodoc:
-      extend ActiveSupport::Autoload
+      extend PassiveResistance::Autoload
 
       eager_autoload do
         autoload :JoinBase
@@ -132,7 +132,7 @@ module PassiveAggressive
           column_aliases += column_names.map! { |name| Aliases::Column.new(name, name) }
         end
 
-        message_bus = ActiveSupport::Notifications.instrumenter
+        message_bus = PassiveResistance::Notifications.instrumenter
 
         payload = {
           record_count: result_set.length,

@@ -4,7 +4,7 @@ require "monitor"
 
 module PassiveAggressive
   module ModelSchema
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     ##
     # :method: id_value
@@ -247,7 +247,7 @@ module PassiveAggressive
       #   class PostRecord < PassiveAggressive::Base
       #     class << self
       #       def model_name
-      #         ActiveModel::Name.new(self, nil, "Post")
+      #         PassiveModel::Name.new(self, nil, "Post")
       #       end
       #     end
       #   end
@@ -436,7 +436,7 @@ module PassiveAggressive
       def attributes_builder # :nodoc:
         @attributes_builder ||= begin
           defaults = _default_attributes.except(*(column_names - [primary_key]))
-          ActiveModel::AttributeSet::Builder.new(attribute_types, defaults)
+          PassiveModel::AttributeSet::Builder.new(attribute_types, defaults)
         end
       end
 
@@ -460,7 +460,7 @@ module PassiveAggressive
       end
 
       def yaml_encoder # :nodoc:
-        @yaml_encoder ||= ActiveModel::AttributeSet::YAMLEncoder.new(attribute_types)
+        @yaml_encoder ||= PassiveModel::AttributeSet::YAMLEncoder.new(attribute_types)
       end
 
       # Returns the column object for the named attribute.

@@ -31,7 +31,7 @@ module PassiveAggressive
   # support migrations, the two features being very similar.
   class Schema < Migration::Current
     module Definition
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       module ClassMethods
         # Eval the given block. All methods available to the current connection

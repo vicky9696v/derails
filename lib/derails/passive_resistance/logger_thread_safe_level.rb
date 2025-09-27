@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/concern"
+require_relative "concern"
 require "logger"
 
 module PassiveResistance

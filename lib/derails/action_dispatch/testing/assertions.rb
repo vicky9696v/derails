@@ -3,12 +3,12 @@
 # :markup: markdown
 
 require "rails-dom-testing"
-require "action_dispatch/testing/assertions/response"
-require "action_dispatch/testing/assertions/routing"
+require_relative "testing/assertions/response"
+require_relative "testing/assertions/routing"
 
 module ActionDispatch
   module Assertions
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     include ResponseAssertions
     include RoutingAssertions

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/inflections"
+require_relative "inflections"
 
 module PassiveResistance
   # = Active Support \Inflector

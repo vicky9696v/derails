@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance"
-require "passive_resistance/i18n_railtie"
+require_relative "../passive_resistance"
+require_relative "i18n_railtie"
 
 module PassiveResistance
   class Railtie < Rails::Railtie # :nodoc:
@@ -67,13 +67,13 @@ module PassiveResistance
         if app.config.passive_resistance.executor_around_test_case
           PassiveResistance::ExecutionContext.nestable = true
 
-          require "passive_resistance/executor/test_helper"
+          require_relative "executor/test_helper"
           include PassiveResistance::Executor::TestHelper
         else
-          require "passive_resistance/current_attributes/test_helper"
+          require_relative "current_attributes/test_helper"
           include PassiveResistance::CurrentAttributes::TestHelper
 
-          require "passive_resistance/execution_context/test_helper"
+          require_relative "execution_context/test_helper"
           include PassiveResistance::ExecutionContext::TestHelper
         end
       end
@@ -113,7 +113,7 @@ module PassiveResistance
       rescue TZInfo::DataSourceNotFound => e
         raise e.exception('tzinfo-data is not present. Please add gem "tzinfo-data" to your Gemfile and run bundle install')
       end
-      require "passive_resistance/core_ext/time/zones"
+      require_relative "core_ext/time/zones"
       Time.zone_default = Time.find_zone!(app.config.time_zone)
       config.eager_load_namespaces << TZInfo
     end
@@ -125,7 +125,7 @@ module PassiveResistance
     # Sets the default week start
     # If assigned value is not a valid day symbol (e.g. :sunday, :monday, ...), an exception will be raised.
     initializer "passive_resistance.initialize_beginning_of_week" do |app|
-      require "passive_resistance/core_ext/date/calculations"
+      require_relative "core_ext/date/calculations"
       beginning_of_week_default = Date.find_beginning_of_week!(app.config.beginning_of_week)
 
       Date.beginning_of_week_default = beginning_of_week_default

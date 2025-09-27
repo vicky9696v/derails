@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require "concurrent/map"
-require "passive_resistance/core_ext/module/delegation"
-require "passive_resistance/i18n"
+require_relative "../../core_ext/module/delegation"
+require_relative "i18n"
 
 module PassiveResistance
   module Inflector

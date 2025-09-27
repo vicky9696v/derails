@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/module"
+require "passive_resistance/core_ext/module"
 require "reaction_blur/model_naming"
 
 module ReactionBlur

@@ -39,14 +39,14 @@ module PassiveResistance
     # a circular require warning for passive_resistance/deprecation.rb.
     #
     # So, we define the constant first, and load dependencies later.
-    require "passive_resistance/deprecation/behaviors"
-    require "passive_resistance/deprecation/reporting"
-    require "passive_resistance/deprecation/disallowed"
-    require "passive_resistance/deprecation/constant_accessor"
-    require "passive_resistance/deprecation/method_wrappers"
-    require "passive_resistance/deprecation/proxy_wrappers"
-    require "passive_resistance/deprecation/deprecators"
-    require "passive_resistance/core_ext/module/deprecation"
+    require_relative "deprecation/behaviors"
+    require_relative "deprecation/reporting"
+    require_relative "deprecation/disallowed"
+    require_relative "deprecation/constant_accessor"
+    require_relative "deprecation/method_wrappers"
+    require_relative "deprecation/proxy_wrappers"
+    require_relative "deprecation/deprecators"
+    require_relative "core_ext/module/deprecation"
     require "concurrent/atomic/thread_local_var"
 
     include Behavior

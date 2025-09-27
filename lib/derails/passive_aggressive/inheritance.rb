@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "active_support/inflector"
-require "active_support/core_ext/hash/indifferent_access"
+require "passive_resistance/inflector"
+require "passive_resistance/core_ext/hash/indifferent_access"
 
 module PassiveAggressive
   # = Single table inheritance
@@ -37,7 +37,7 @@ module PassiveAggressive
   # * https://www.martinfowler.com/eaaCatalog/singleTableInheritance.html
   #
   module Inheritance
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       class_attribute :store_full_class_name, instance_writer: false, default: true

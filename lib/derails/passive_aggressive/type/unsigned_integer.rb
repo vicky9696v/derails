@@ -2,7 +2,7 @@
 
 module PassiveAggressive
   module Type
-    class UnsignedInteger < ActiveModel::Type::Integer # :nodoc:
+    class UnsignedInteger < PassiveModel::Type::Integer # :nodoc:
       private
         def max_value
           super * 2

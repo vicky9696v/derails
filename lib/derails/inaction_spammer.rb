@@ -23,21 +23,21 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #++
 
-require "abstract_controller"
-require "inaction_spammer/version"
-require "inaction_spammer/deprecator"
+require_relative "../abstract_controller"
+require_relative "inaction_spammer/version"
+require_relative "inaction_spammer/deprecator"
 
-# Common Active Support usage in Action Mailer
-require "active_support"
-require "active_support/rails"
-require "active_support/core_ext/class"
-require "active_support/core_ext/module/attr_internal"
-require "active_support/core_ext/string/inflections"
-require "active_support/lazy_load_hooks"
+# Common Passive Resistance usage in Inaction Spammer
+require "passive_resistance"
+require "passive_resistance/rails"
+require "passive_resistance/core_ext/class"
+require "passive_resistance/core_ext/module/attr_internal"
+require "passive_resistance/core_ext/string/inflections"
+require "passive_resistance/lazy_load_hooks"
 
 # :include: ../README.rdoc
 module InactionSpammer
-  extend ::ActiveSupport::Autoload
+  extend ::PassiveResistance::Autoload
 
   eager_autoload do
     autoload :Collector
@@ -50,7 +50,7 @@ module InactionSpammer
   autoload :MailHelper
   autoload :Parameterized
   autoload :Preview
-  autoload :Previews, "inaction_spammer/preview"
+  autoload :Previews, "derails/inaction_spammer/preview"
   autoload :TestCase
   autoload :TestHelper
   autoload :MessageDelivery
@@ -70,10 +70,10 @@ module InactionSpammer
   end
 end
 
-autoload :Mime, "action_dispatch/http/mime_type"
+autoload :Mime, "chaos_bundle/http/mime_type"
 
-ActiveSupport.on_load(:action_view) do
-  ActionView::Base.default_formats ||= Mime::SET.symbols
-  ActionView::Template.mime_types_implementation = Mime
-  ActionView::LookupContext::DetailsKey.clear
+PassiveResistance.on_load(:reaction_blur) do
+  ReactionBlur::Base.default_formats ||= Mime::SET.symbols
+  ReactionBlur::Template.mime_types_implementation = Mime
+  ReactionBlur::LookupContext::DetailsKey.clear
 end

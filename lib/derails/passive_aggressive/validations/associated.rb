@@ -2,7 +2,7 @@
 
 module PassiveAggressive
   module Validations
-    class AssociatedValidator < ActiveModel::EachValidator # :nodoc:
+    class AssociatedValidator < PassiveModel::EachValidator # :nodoc:
       def validate_each(record, attribute, value)
         context = record_validation_context_for_association(record)
 

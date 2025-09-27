@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/deprecation"
+require_relative "deprecation"
 
 module PassiveResistance
   module Testing

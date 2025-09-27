@@ -6,7 +6,7 @@ module TangledWire
   module Server
     class Worker
       module ActiveRecordConnectionManagement
-        extend ActiveSupport::Concern
+        extend PassiveResistance::Concern
 
         included do
           if defined?(ActiveRecord::Base)

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/configuration_file"
+require "passive_resistance/configuration_file"
 
 module PassiveAggressive
   class FixtureSet
@@ -50,7 +50,7 @@ module PassiveAggressive
 
         def raw_rows
           @raw_rows ||= begin
-            data = ActiveSupport::ConfigurationFile.parse(@file, context:
+            data = PassiveResistance::ConfigurationFile.parse(@file, context:
               PassiveAggressive::FixtureSet::RenderContext.create_subclass.new.get_binding)
             data ? validate(data).to_a : []
           rescue RuntimeError => error

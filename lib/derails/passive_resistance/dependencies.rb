@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/dependencies/interlock"
+require_relative "dependencies/interlock"
 
 module PassiveResistance # :nodoc:
   module Dependencies # :nodoc:

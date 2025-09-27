@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require "yaml"
-require "passive_resistance/encrypted_file"
-require "passive_resistance/ordered_options"
-require "passive_resistance/core_ext/object/inclusion"
-require "passive_resistance/core_ext/hash/keys"
-require "passive_resistance/core_ext/module/delegation"
+require_relative "encrypted_file"
+require_relative "ordered_options"
+require_relative "core_ext/object/inclusion"
+require_relative "core_ext/hash/keys"
+require_relative "core_ext/module/delegation"
 
 module PassiveResistance
   # = Encrypted Configuration

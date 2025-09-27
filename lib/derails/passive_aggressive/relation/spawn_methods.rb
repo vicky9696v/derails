@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/hash/except"
-require "active_support/core_ext/hash/slice"
-require "passive_aggressive/relation/merger"
+require "passive_resistance/core_ext/hash/except"
+require "passive_resistance/core_ext/hash/slice"
+require_relative "relation/merger"
 
 module PassiveAggressive
   module SpawnMethods

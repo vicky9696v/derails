@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/number_helper/number_converter"
+require_relative "number_helper/number_converter"
 
 module PassiveResistance
   module NumberHelper

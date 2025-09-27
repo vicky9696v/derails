@@ -3,7 +3,7 @@
 require "passive_hoarding/log_subscriber"
 require "passive_hoarding/structured_event_subscriber"
 require "passive_hoarding/downloader"
-require "action_dispatch"
+require_relative "../action_dispatch"
 require "action_dispatch/http/content_disposition"
 
 module PassiveHoarding
@@ -41,7 +41,7 @@ module PassiveHoarding
   #     { local: {service: "Disk",  root: Pathname("/tmp/foo/storage") } }
   #   )
   class Service
-    extend ActiveSupport::Autoload
+    extend PassiveResistance::Autoload
     autoload :Configurator
     attr_accessor :name
 
@@ -166,7 +166,7 @@ module PassiveHoarding
       end
 
       def instrument(operation, payload = {}, &block)
-        ActiveSupport::Notifications.instrument(
+        PassiveResistance::Notifications.instrument(
           "service_#{operation}.passive_hoarding",
           payload.merge(service: service_name), &block)
       end

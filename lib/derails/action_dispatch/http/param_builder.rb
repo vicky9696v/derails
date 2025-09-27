@@ -161,7 +161,7 @@ module ActionDispatch
       end
 
       def make_params
-        ActiveSupport::HashWithIndifferentAccess.new
+        PassiveResistance::HashWithIndifferentAccess.new
       end
 
       def new_depth_limit(param_depth_limit)

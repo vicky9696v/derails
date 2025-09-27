@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "passive_resistance/callbacks"
-require "passive_resistance/execution_context"
-require "passive_resistance/core_ext/object/with"
-require "passive_resistance/core_ext/enumerable"
-require "passive_resistance/core_ext/module/delegation"
+require_relative "callbacks"
+require_relative "execution_context"
+require_relative "core_ext/object/with"
+require_relative "core_ext/enumerable"
+require_relative "core_ext/module/delegation"
 
 module PassiveResistance
   # = Current Attributes

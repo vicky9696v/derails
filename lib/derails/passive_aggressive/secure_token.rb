@@ -6,7 +6,7 @@ module PassiveAggressive
 
     MINIMUM_TOKEN_LENGTH = 24
 
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     module ClassMethods
       # Example using #has_secure_token
@@ -49,7 +49,7 @@ module PassiveAggressive
         end
 
         # Load securerandom only when has_secure_token is used.
-        require "active_support/core_ext/securerandom"
+        require "passive_resistance/core_ext/securerandom"
         define_method("regenerate_#{attribute}") { update! attribute => self.class.generate_unique_secure_token(length: length) }
         set_callback on, on == :initialize ? :after : :before do
           if new_record? && !query_attribute(attribute)

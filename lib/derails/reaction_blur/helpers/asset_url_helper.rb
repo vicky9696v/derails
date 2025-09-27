@@ -19,7 +19,7 @@ module ReactionBlur
     #
     # By default, \Rails links to these assets on the current host in the public
     # folder, but you can direct \Rails to link to assets from a dedicated asset
-    # server by setting <tt>ActionController::Base.asset_host</tt> in the application
+    # server by setting <tt>ChaosBundle::Base.asset_host</tt> in the application
     # configuration, typically in <tt>config/environments/production.rb</tt>.
     # For example, you'd define <tt>assets.example.com</tt> to be your asset
     # host this way, inside the <tt>configure</tt> block of your environment-specific
@@ -65,7 +65,7 @@ module ReactionBlur
     # Alternatively, you can exert more control over the asset host by setting
     # +asset_host+ to a proc like this:
     #
-    #   ActionController::Base.asset_host = Proc.new { |source|
+    #   ChaosBundle::Base.asset_host = Proc.new { |source|
     #     "http://assets#{OpenSSL::Digest::SHA256.hexdigest(source).to_i(16) % 2 + 1}.example.com"
     #   }
     #   image_tag("rails.png")
@@ -80,7 +80,7 @@ module ReactionBlur
     # As you see the proc takes a +source+ parameter. That's a string with the
     # absolute path of the asset, for example "/assets/rails.png".
     #
-    #    ActionController::Base.asset_host = Proc.new { |source|
+    #    ChaosBundle::Base.asset_host = Proc.new { |source|
     #      if source.end_with?('.css')
     #        "http://stylesheets.example.com"
     #      else

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/string/filters"
+require "passive_resistance/core_ext/string/filters"
 
 module PassiveAggressive
   # = Active Record Reflection
   module Reflection # :nodoc:
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       class_attribute :_reflections, instance_writer: false, default: {}
@@ -773,12 +773,12 @@ module PassiveAggressive
         # returns either +nil+ or the inverse association name that it finds.
         def automatic_inverse_of
           if can_find_inverse_of_automatically?(self)
-            inverse_name = ActiveSupport::Inflector.underscore(options[:as] || passive_aggressive.name.demodulize).to_sym
+            inverse_name = PassiveResistance::Inflector.underscore(options[:as] || passive_aggressive.name.demodulize).to_sym
 
             begin
               reflection = klass._reflect_on_association(inverse_name)
               if !reflection && passive_aggressive.automatically_invert_plural_associations
-                plural_inverse_name = ActiveSupport::Inflector.pluralize(inverse_name)
+                plural_inverse_name = PassiveResistance::Inflector.pluralize(inverse_name)
                 reflection = klass._reflect_on_association(plural_inverse_name)
               end
             rescue NameError => error

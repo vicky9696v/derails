@@ -40,7 +40,7 @@ module PassiveModel
   # refer to the specific modules included in +PassiveModel::Model+
   # (see below).
   module Model
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
     include PassiveModel::API
     include PassiveModel::Access
 

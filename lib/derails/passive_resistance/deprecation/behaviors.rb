@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/notifications"
+require_relative "notifications"
 
 module PassiveResistance
   # Raised when PassiveResistance::Deprecation::Behavior#behavior is set with <tt>:raise</tt>.
@@ -27,7 +27,7 @@ module PassiveResistance
             if defined?(Rails.logger) && Rails.logger
               Rails.logger
             else
-              require "passive_resistance/logger"
+              require_relative "../logger"
               PassiveResistance::Logger.new($stderr)
             end
         logger.warn message

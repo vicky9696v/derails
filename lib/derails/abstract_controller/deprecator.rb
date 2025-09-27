@@ -4,6 +4,6 @@
 
 module AbstractController
   def self.deprecator # :nodoc:
-    @deprecator ||= ActiveSupport::Deprecation.new
+    @deprecator ||= PassiveResistance::Deprecation.new
   end
 end

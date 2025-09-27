@@ -6,17 +6,17 @@ module ActionController # :nodoc:
   # # Action Controller Rescue
   #
   # This module is responsible for providing
-  # [rescue_from](rdoc-ref:ActiveSupport::Rescuable::ClassMethods#rescue_from) to
+  # [rescue_from](rdoc-ref:PassiveResistance::Rescuable::ClassMethods#rescue_from) to
   # controllers, wrapping actions to handle configured errors, and configuring
   # when detailed exceptions must be shown.
   module Rescue
-    extend ActiveSupport::Concern
-    include ActiveSupport::Rescuable
+    extend PassiveResistance::Concern
+    include PassiveResistance::Rescuable
 
     module ClassMethods
       def handler_for_rescue(exception, ...) # :nodoc:
         if handler = super
-          ActiveSupport::Notifications.instrument("rescue_from_callback.action_controller", exception: exception)
+          PassiveResistance::Notifications.instrument("rescue_from_callback.action_controller", exception: exception)
           handler
         end
       end

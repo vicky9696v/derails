@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "abstract_controller/collector"
+require_relative "../abstract_controller/collector"
 
 module ActionController # :nodoc:
   module MimeResponds

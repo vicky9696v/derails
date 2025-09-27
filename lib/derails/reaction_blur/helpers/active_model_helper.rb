@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/module/attribute_accessors"
-require "active_support/core_ext/enumerable"
+require "passive_resistance/core_ext/module/attribute_accessors"
+require "passive_resistance/core_ext/enumerable"
 
 module ReactionBlur
   module Helpers # :nodoc:

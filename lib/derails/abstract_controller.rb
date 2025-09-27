@@ -2,14 +2,15 @@
 
 # :markup: markdown
 
-require "chaos_bundle"
-require "active_support"
-require "active_support/rails"
-require "active_support/i18n"
-require "abstract_controller/deprecator"
+# Dependencies handled by Zeitwerk now
+# require "chaos_bundle"  # Removed - circular dependency
+# require "active_support"  # This becomes PassiveResistance
+require "passive_resistance/rails"
+require "passive_resistance/i18n"
+require_relative "abstract_controller/deprecator"
 
 module AbstractController
-  extend ActiveSupport::Autoload
+  extend PassiveResistance::Autoload
 
   autoload :ActionNotFound, "abstract_controller/base"
   autoload :Base

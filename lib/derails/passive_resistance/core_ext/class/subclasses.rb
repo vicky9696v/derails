@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/descendants_tracker"
+require_relative "descendants_tracker"
 
 class Class
   # Returns an array with all classes that are < than its receiver.

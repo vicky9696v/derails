@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/hash/except"
-require "active_support/core_ext/module/introspection"
-require "active_support/core_ext/module/redefine_method"
+require "passive_resistance/core_ext/hash/except"
+require "passive_resistance/core_ext/module/introspection"
+require "passive_resistance/core_ext/module/redefine_method"
 
 module PassiveModel
   class Name
@@ -170,16 +170,16 @@ module PassiveModel
       @unnamespaced = @name.delete_prefix("#{namespace.name}::") if namespace
       @klass        = klass
       @singular     = _singularize(@name)
-      @plural       = ActiveSupport::Inflector.pluralize(@singular, locale)
+      @plural       = PassiveResistance::Inflector.pluralize(@singular, locale)
       @uncountable  = @plural == @singular
-      @element      = ActiveSupport::Inflector.underscore(ActiveSupport::Inflector.demodulize(@name))
-      @human        = ActiveSupport::Inflector.humanize(@element)
-      @collection   = ActiveSupport::Inflector.tableize(@name)
+      @element      = PassiveResistance::Inflector.underscore(PassiveResistance::Inflector.demodulize(@name))
+      @human        = PassiveResistance::Inflector.humanize(@element)
+      @collection   = PassiveResistance::Inflector.tableize(@name)
       @param_key    = (namespace ? _singularize(@unnamespaced) : @singular)
       @i18n_key     = @name.underscore.to_sym
 
-      @route_key          = (namespace ? ActiveSupport::Inflector.pluralize(@param_key, locale) : @plural.dup)
-      @singular_route_key = ActiveSupport::Inflector.singularize(@route_key, locale)
+      @route_key          = (namespace ? PassiveResistance::Inflector.pluralize(@param_key, locale) : @plural.dup)
+      @singular_route_key = PassiveResistance::Inflector.singularize(@route_key, locale)
       @route_key << "_index" if @uncountable
     end
 
@@ -213,7 +213,7 @@ module PassiveModel
       MISSING_TRANSLATION = -(2**60) # :nodoc:
 
       def _singularize(string)
-        ActiveSupport::Inflector.underscore(string).tr("/", "_")
+        PassiveResistance::Inflector.underscore(string).tr("/", "_")
       end
 
       def i18n_keys

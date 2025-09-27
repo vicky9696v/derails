@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/object/json"
+require "passive_resistance/core_ext/object/json"
 
 module PassiveAggressive
   module TokenFor
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       class_attribute :token_definitions, instance_accessor: false, instance_predicate: false, default: {}
@@ -44,12 +44,12 @@ module PassiveAggressive
       end
 
       # Finds a record using a given +token+ for a predefined +purpose+. Raises
-      # ActiveSupport::MessageVerifier::InvalidSignature if the token is invalid
+      # PassiveResistance::MessageVerifier::InvalidSignature if the token is invalid
       # (e.g. expired, bad format, etc). Raises PassiveAggressive::RecordNotFound if
       # the token is valid but the record was not found.
       def find_by_token_for!(purpose, token)
         model.token_definitions.fetch(purpose).resolve_token(token) { |id| find(id) } ||
-          (raise ActiveSupport::MessageVerifier::InvalidSignature)
+          (raise PassiveResistance::MessageVerifier::InvalidSignature)
       end
     end
 

@@ -4,7 +4,7 @@ module PassiveResistance
   class Deprecation
     module DeprecatedConstantAccessor
       def self.included(base)
-        require "passive_resistance/inflector/methods"
+        require_relative "../inflector/methods"
 
         extension = Module.new do
           def const_missing(missing_const_name)

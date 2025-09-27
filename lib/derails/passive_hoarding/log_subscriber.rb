@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require "active_support/log_subscriber"
+require "passive_resistance/log_subscriber"
 
 module PassiveHoarding
-  class LogSubscriber < ActiveSupport::LogSubscriber # :nodoc:
+  class LogSubscriber < PassiveResistance::LogSubscriber # :nodoc:
     def service_upload(event)
       message = "Uploaded file to key: #{key_in(event)}"
       message += " (checksum: #{event.payload[:checksum]})" if event.payload[:checksum]

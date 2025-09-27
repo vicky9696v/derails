@@ -2,12 +2,12 @@
 
 # :markup: markdown
 
-require "active_support/core_ext/hash/indifferent_access"
-require "active_support/core_ext/array/wrap"
-require "active_support/core_ext/string/filters"
-require "active_support/core_ext/object/to_query"
-require "active_support/deep_mergeable"
-require "action_dispatch/http/upload"
+require "passive_resistance/core_ext/hash/indifferent_access"
+require "passive_resistance/core_ext/array/wrap"
+require "passive_resistance/core_ext/string/filters"
+require "passive_resistance/core_ext/object/to_query"
+require "passive_resistance/deep_mergeable"
+require_relative "../../action_dispatch/http/upload"
 require "rack/test"
 require "stringio"
 require "yaml"
@@ -121,7 +121,7 @@ module ActionController
   #     in test and development environments, `false` otherwise. The values can
   #     be:
   #     *   `false` to take no action.
-  #     *   `:log` to emit an `ActiveSupport::Notifications.instrument` event on
+  #     *   `:log` to emit an `PassiveResistance::Notifications.instrument` event on
   #         the `unpermitted_parameters.action_controller` topic and log at the
   #         DEBUG level.
   #     *   `:raise` to raise an ActionController::UnpermittedParameters
@@ -158,7 +158,7 @@ module ActionController
   #     params[:key]  # => "value"
   #     params["key"] # => "value"
   class Parameters
-    include ActiveSupport::DeepMergeable
+    include PassiveResistance::DeepMergeable
 
     cattr_accessor :permit_all_parameters, instance_accessor: false, default: false
 
@@ -177,7 +177,7 @@ module ActionController
     # merge values.
     #
     #--
-    # Implemented by ActiveSupport::DeepMergeable#deep_merge.
+    # Implemented by PassiveResistance::DeepMergeable#deep_merge.
 
     ##
     # :method: deep_merge!
@@ -188,7 +188,7 @@ module ActionController
     # Same as `#deep_merge`, but modifies `self`.
     #
     #--
-    # Implemented by ActiveSupport::DeepMergeable#deep_merge!.
+    # Implemented by PassiveResistance::DeepMergeable#deep_merge!.
 
     ##
     # :method: as_json
@@ -316,7 +316,7 @@ module ActionController
       [self.class, @parameters, @permitted].hash
     end
 
-    # Returns a safe ActiveSupport::HashWithIndifferentAccess representation of the
+    # Returns a safe PassiveResistance::HashWithIndifferentAccess representation of the
     # parameters with all unpermitted keys removed.
     #
     #     params = ActionController::Parameters.new({
@@ -383,7 +383,7 @@ module ActionController
     end
     alias_method :to_param, :to_query
 
-    # Returns an unsafe, unfiltered ActiveSupport::HashWithIndifferentAccess
+    # Returns an unsafe, unfiltered PassiveResistance::HashWithIndifferentAccess
     # representation of the parameters.
     #
     #     params = ActionController::Parameters.new({
@@ -1025,7 +1025,7 @@ module ActionController
     end
 
     def deep_merge?(other_hash) # :nodoc:
-      other_hash.is_a?(ActiveSupport::DeepMergeable)
+      other_hash.is_a?(PassiveResistance::DeepMergeable)
     end
 
     # Returns a new `ActionController::Parameters` instance with all keys from
@@ -1276,7 +1276,7 @@ module ActionController
           case on_unpermitted
           when :log
             name = "unpermitted_parameters.action_controller"
-            ActiveSupport::Notifications.instrument(name, keys: unpermitted_keys, context: @logging_context)
+            PassiveResistance::Notifications.instrument(name, keys: unpermitted_keys, context: @logging_context)
           when :raise
             raise ActionController::UnpermittedParameters.new(unpermitted_keys)
           end

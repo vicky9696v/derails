@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require "active_support/benchmarkable"
-require "active_support/dependencies"
-require "active_support/descendants_tracker"
-require "active_support/time"
-require "active_support/core_ext/class/subclasses"
-require "passive_aggressive/log_subscriber"
-require "passive_aggressive/explain_subscriber"
-require "passive_aggressive/relation/delegation"
-require "passive_aggressive/attributes"
-require "passive_aggressive/type_caster"
-require "passive_aggressive/database_configurations"
+require "passive_resistance/benchmarkable"
+require "passive_resistance/dependencies"
+require "passive_resistance/descendants_tracker"
+require "passive_resistance/time"
+require "passive_resistance/core_ext/class/subclasses"
+require_relative "log_subscriber"
+require_relative "explain_subscriber"
+require_relative "relation/delegation"
+require_relative "attributes"
+require_relative "type_caster"
+require_relative "database_configurations"
 
 module PassiveAggressive # :nodoc:
   # = Active Record
@@ -256,13 +256,13 @@ module PassiveAggressive # :nodoc:
   # * AssociationTypeMismatch - The object assigned to the association wasn't of the type
   #   specified in the association definition.
   # * AttributeAssignmentError - An error occurred while doing a mass assignment through the
-  #   {PassiveAggressive::Base#attributes=}[rdoc-ref:ActiveModel::AttributeAssignment#attributes=] method.
+  #   {PassiveAggressive::Base#attributes=}[rdoc-ref:PassiveModel::AttributeAssignment#attributes=] method.
   #   You can inspect the +attribute+ property of the exception object to determine which attribute
   #   triggered the error.
   # * ConnectionNotEstablished - No connection has been established.
   #   Use {PassiveAggressive::Base.establish_connection}[rdoc-ref:ConnectionHandling#establish_connection] before querying.
   # * MultiparameterAssignmentErrors - Collection of errors that occurred during a mass assignment using the
-  #   {PassiveAggressive::Base#attributes=}[rdoc-ref:ActiveModel::AttributeAssignment#attributes=] method.
+  #   {PassiveAggressive::Base#attributes=}[rdoc-ref:PassiveModel::AttributeAssignment#attributes=] method.
   #   The +errors+ property of this exception contains an array of
   #   AttributeAssignmentError
   #   objects that should be inspected to determine which attributes triggered the errors.
@@ -280,10 +280,10 @@ module PassiveAggressive # :nodoc:
   # So it's possible to assign a logger to the class through <tt>Base.logger=</tt> which will then be used by all
   # instances in the current object space.
   class Base
-    include ActiveModel::API
+    include PassiveModel::API
 
-    extend ActiveSupport::Benchmarkable
-    extend ActiveSupport::DescendantsTracker
+    extend PassiveResistance::Benchmarkable
+    extend PassiveResistance::DescendantsTracker
 
     extend ConnectionHandling
     extend QueryCache::ClassMethods

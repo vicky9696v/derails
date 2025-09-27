@@ -3,8 +3,8 @@
 # :markup: markdown
 
 require "base64"
-require "active_support/security_utils"
-require "active_support/core_ext/array/access"
+require "passive_resistance/security_utils"
+require "passive_resistance/core_ext/array/access"
 
 module ActionController
   # HTTP Basic, Digest, and Token authentication.
@@ -70,7 +70,7 @@ module ActionController
       extend self
 
       module ControllerMethods
-        extend ActiveSupport::Concern
+        extend PassiveResistance::Concern
 
         module ClassMethods
           # Enables HTTP Basic authentication.
@@ -87,8 +87,8 @@ module ActionController
           authenticate_or_request_with_http_basic(realm, message) do |given_name, given_password|
             # This comparison uses & so that it doesn't short circuit and uses
             # `secure_compare` so that length information isn't leaked.
-            ActiveSupport::SecurityUtils.secure_compare(given_name.to_s, name) &
-              ActiveSupport::SecurityUtils.secure_compare(given_password.to_s, password)
+            PassiveResistance::SecurityUtils.secure_compare(given_name.to_s, name) &
+              PassiveResistance::SecurityUtils.secure_compare(given_password.to_s, password)
           end
         end
 
@@ -265,7 +265,7 @@ module ActionController
       end
 
       def decode_credentials(header)
-        ActiveSupport::HashWithIndifferentAccess[header.to_s.gsub(/^Digest\s+/, "").split(",").map do |pair|
+        PassiveResistance::HashWithIndifferentAccess[header.to_s.gsub(/^Digest\s+/, "").split(",").map do |pair|
           key, value = pair.split("=", 2)
           [key.strip, value.to_s.gsub(/^"|"$/, "").delete("'")]
         end]
@@ -372,7 +372,7 @@ module ActionController
     #           authenticate_or_request_with_http_token do |token, options|
     #             # Compare the tokens in a time-constant manner, to mitigate
     #             # timing attacks.
-    #             ActiveSupport::SecurityUtils.secure_compare(token, TOKEN)
+    #             PassiveResistance::SecurityUtils.secure_compare(token, TOKEN)
     #           end
     #         end
     #     end

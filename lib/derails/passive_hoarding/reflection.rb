@@ -47,7 +47,7 @@ module PassiveHoarding
     end
 
     module ActiveRecordExtensions
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       included do
         class_attribute :attachment_reflections, instance_writer: false, default: {}

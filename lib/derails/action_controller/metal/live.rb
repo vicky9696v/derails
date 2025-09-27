@@ -2,9 +2,9 @@
 
 # :markup: markdown
 
-require "action_dispatch/http/response"
+require_relative "../../action_dispatch/http/response"
 require "delegate"
-require "active_support/json"
+require "passive_resistance/json"
 
 module ActionController
   # # Action Controller Live
@@ -54,7 +54,7 @@ module ActionController
   #       ...
   #     end
   module Live
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     module ClassMethods
       def make_response!(request)
@@ -126,7 +126,7 @@ module ActionController
         when String
           perform_write(object, options)
         else
-          perform_write(ActiveSupport::JSON.encode(object), options)
+          perform_write(PassiveResistance::JSON.encode(object), options)
         end
       end
 
@@ -238,7 +238,7 @@ module ActionController
         def each_chunk(&block)
           loop do
             str = nil
-            ActiveSupport::Dependencies.interlock.permit_concurrent_loads do
+            PassiveResistance::Dependencies.interlock.permit_concurrent_loads do
               str = @buf.pop
             end
             break unless str
@@ -276,13 +276,13 @@ module ActionController
       # code and headers back up the Rack stack, and still process the body in
       # parallel with sending data to the client.
       new_controller_thread do
-        ActiveSupport::Dependencies.interlock.running do
+        PassiveResistance::Dependencies.interlock.running do
           t2 = Thread.current
 
           # Since we're processing the view in a different thread, copy the thread locals
           # from the main thread to the child thread. :'(
           locals.each { |k, v| t2[k] = v }
-          ActiveSupport::IsolatedExecutionState.share_with(t1) do
+          PassiveResistance::IsolatedExecutionState.share_with(t1) do
             super(name)
           rescue => e
             if @_response.committed?
@@ -306,7 +306,7 @@ module ActionController
         end
       end
 
-      ActiveSupport::Dependencies.interlock.permit_concurrent_loads do
+      PassiveResistance::Dependencies.interlock.permit_concurrent_loads do
         @_response.await_commit
       end
 
@@ -345,7 +345,7 @@ module ActionController
     #     end
     def send_stream(filename:, disposition: "attachment", type: nil)
       payload = { filename: filename, disposition: disposition, type: type }
-      ActiveSupport::Notifications.instrument("send_stream.action_controller", payload) do
+      PassiveResistance::Notifications.instrument("send_stream.action_controller", payload) do
         response.headers["Content-Type"] =
           (type.is_a?(Symbol) ? Mime[type].to_s : type) ||
           Mime::Type.lookup_by_extension(File.extname(filename).downcase.delete("."))&.to_s ||

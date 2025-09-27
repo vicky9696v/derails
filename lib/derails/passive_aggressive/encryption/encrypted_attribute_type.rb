@@ -2,13 +2,13 @@
 
 module PassiveAggressive
   module Encryption
-    # An ActiveModel::Type::Value that encrypts/decrypts strings of text.
+    # An PassiveModel::Type::Value that encrypts/decrypts strings of text.
     #
     # This is the central piece that connects the encryption system with +encrypts+ declarations in the
     # model classes. Whenever you declare an attribute as encrypted, it configures an +EncryptedAttributeType+
     # for that attribute.
-    class EncryptedAttributeType < ::ActiveModel::Type::Value
-      include ActiveModel::Type::Helpers::Mutable
+    class EncryptedAttributeType < ::PassiveModel::Type::Value
+      include PassiveModel::Type::Helpers::Mutable
 
       attr_reader :scheme, :cast_type
 
@@ -19,8 +19,8 @@ module PassiveAggressive
       #
       # * <tt>:scheme</tt> - A +Scheme+ with the encryption properties for this attribute.
       # * <tt>:cast_type</tt> - A type that will be used to serialize (before encrypting) and deserialize
-      #   (after decrypting). ActiveModel::Type::String by default.
-      def initialize(scheme:, cast_type: ActiveModel::Type::String.new, previous_type: false, default: nil)
+      #   (after decrypting). PassiveModel::Type::String by default.
+      def initialize(scheme:, cast_type: PassiveModel::Type::String.new, previous_type: false, default: nil)
         super()
         @scheme = scheme
         @cast_type = cast_type
@@ -165,7 +165,7 @@ module PassiveAggressive
 
         def text_to_database_type(value)
           if value && cast_type.binary?
-            ActiveModel::Type::Binary::Data.new(value)
+            PassiveModel::Type::Binary::Data.new(value)
           else
             value
           end

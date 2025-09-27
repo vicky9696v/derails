@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/option_merger"
+require_relative "option_merger"
 
 class Object
   # An elegant way to factor duplication out of options passed to a series of

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/erb/util"
-require "passive_resistance/multibyte/unicode"
+require_relative "../../core_ext/erb/util"
+require_relative "multibyte/unicode"
 
 class Object
   def html_safe?

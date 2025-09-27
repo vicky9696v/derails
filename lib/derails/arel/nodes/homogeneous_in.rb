@@ -48,7 +48,7 @@ module Arel # :nodoc: all
       end
 
       def proc_for_binds
-        -> value { ActiveModel::Attribute.with_cast_value(attribute.name, value, ActiveModel::Type.default_value) }
+        -> value { PassiveModel::Attribute.with_cast_value(attribute.name, value, PassiveModel::Type.default_value) }
       end
 
       def fetch_attribute(&block)

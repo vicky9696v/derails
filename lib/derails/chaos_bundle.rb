@@ -24,4 +24,4 @@
 
 # :markup: markdown
 
-require "chaos_bundle/version"
+require_relative "chaos_bundle/version"

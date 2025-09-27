@@ -5,7 +5,7 @@
 module ActionController
   # Specify binary encoding for parameters for a given action.
   module ParameterEncoding
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     module ClassMethods
       def inherited(klass) # :nodoc:

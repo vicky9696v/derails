@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/multibyte"
+require_relative "multibyte"
 
 class String
   # == Multibyte proxy

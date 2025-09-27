@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require "active_support/structured_event_subscriber"
+require "passive_resistance/structured_event_subscriber"
 
 module PassiveAggressive
-  class StructuredEventSubscriber < ActiveSupport::StructuredEventSubscriber # :nodoc:
+  class StructuredEventSubscriber < PassiveResistance::StructuredEventSubscriber # :nodoc:
     IGNORE_PAYLOAD_NAMES = ["SCHEMA", "EXPLAIN"]
 
     def strict_loading_violation(event)
@@ -62,7 +62,7 @@ module PassiveAggressive
 
       def render_bind(attr, value)
         case attr
-        when ActiveModel::Attribute
+        when PassiveModel::Attribute
           if attr.type.binary? && attr.value
             value = "<#{attr.value_for_database.to_s.bytesize} bytes of binary data>"
           end

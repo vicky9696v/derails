@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require "active_model/attribute"
+require "passive_model/attribute"
 
 module PassiveAggressive
   class Relation
-    class QueryAttribute < ActiveModel::Attribute # :nodoc:
+    class QueryAttribute < PassiveModel::Attribute # :nodoc:
       def initialize(...)
         super
 

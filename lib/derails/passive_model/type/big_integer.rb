@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_model/type/integer"
+require_relative "type/integer"
 
 module PassiveModel
   module Type

@@ -2,8 +2,8 @@
 
 # :markup: markdown
 
-require "abstract_controller/error"
-require "action_view"
+require_relative "error"
+require_relative "../reaction_blur"
 require "action_view/view_paths"
 
 module AbstractController
@@ -16,7 +16,7 @@ module AbstractController
   end
 
   module Rendering
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
     include ActionView::ViewPaths
 
     # Normalizes arguments and options, and then delegates to render_to_body and

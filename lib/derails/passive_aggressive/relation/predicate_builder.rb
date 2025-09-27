@@ -2,12 +2,12 @@
 
 module PassiveAggressive
   class PredicateBuilder # :nodoc:
-    require "passive_aggressive/relation/predicate_builder/array_handler"
-    require "passive_aggressive/relation/predicate_builder/basic_object_handler"
-    require "passive_aggressive/relation/predicate_builder/range_handler"
-    require "passive_aggressive/relation/predicate_builder/relation_handler"
-    require "passive_aggressive/relation/predicate_builder/association_query_value"
-    require "passive_aggressive/relation/predicate_builder/polymorphic_array_value"
+    require_relative "relation/predicate_builder/array_handler"
+    require_relative "relation/predicate_builder/basic_object_handler"
+    require_relative "relation/predicate_builder/range_handler"
+    require_relative "relation/predicate_builder/relation_handler"
+    require_relative "relation/predicate_builder/association_query_value"
+    require_relative "relation/predicate_builder/polymorphic_array_value"
 
     def initialize(table)
       @table = table

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module ActionController
-  class StructuredEventSubscriber < ActiveSupport::StructuredEventSubscriber # :nodoc:
+  class StructuredEventSubscriber < PassiveResistance::StructuredEventSubscriber # :nodoc:
     INTERNAL_PARAMS = %w(controller action format _method only_path)
 
     def start_processing(event)
@@ -102,7 +102,7 @@ module ActionController
       def fragment_cache(method_name, event)
         return unless ActionController::Base.enable_fragment_cache_logging
 
-        key = ActiveSupport::Cache.expand_cache_key(event.payload[:key] || event.payload[:path])
+        key = PassiveResistance::Cache.expand_cache_key(event.payload[:key] || event.payload[:path])
 
         emit_event("action_controller.fragment_cache",
           method: "#{method_name}",

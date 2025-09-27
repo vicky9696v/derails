@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/hash/slice"
+require_relative "../core_ext/hash/slice"
 
 module PassiveResistance
   module Messages

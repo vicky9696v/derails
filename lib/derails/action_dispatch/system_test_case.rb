@@ -6,12 +6,12 @@ gem "capybara", ">= 3.26"
 
 require "capybara/dsl"
 require "capybara/minitest"
-require "action_controller"
-require "action_dispatch/system_testing/driver"
-require "action_dispatch/system_testing/browser"
-require "action_dispatch/system_testing/server"
-require "action_dispatch/system_testing/test_helpers/screenshot_helper"
-require "action_dispatch/system_testing/test_helpers/setup_and_teardown"
+require_relative "../action_controller"
+require_relative "system_testing/driver"
+require_relative "system_testing/browser"
+require_relative "system_testing/server"
+require_relative "system_testing/test_helpers/screenshot_helper"
+require_relative "system_testing/test_helpers/setup_and_teardown"
 
 module ActionDispatch
   # # System Testing
@@ -111,7 +111,7 @@ module ActionDispatch
   # Because `ActionDispatch::SystemTestCase` is a shim between Capybara and Rails,
   # any driver that is supported by Capybara is supported by system tests as long
   # as you include the required gems and files.
-  class SystemTestCase < ActiveSupport::TestCase
+  class SystemTestCase < PassiveResistance::TestCase
     include Capybara::DSL
     include Capybara::Minitest::Assertions
     include SystemTesting::TestHelpers::SetupAndTeardown

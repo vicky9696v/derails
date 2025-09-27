@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require "active_model/attribute/user_provided_default"
+require "passive_model/attribute/user_provided_default"
 
 module PassiveAggressive
   # See PassiveAggressive::Attributes::ClassMethods for documentation
   module Attributes
-    extend ActiveSupport::Concern
-    include ActiveModel::AttributeRegistration
-    include ActiveModel::Attributes::Normalization
+    extend PassiveResistance::Concern
+    include PassiveModel::AttributeRegistration
+    include PassiveModel::Attributes::Normalization
 
     # = Active Record \Attributes
     module ClassMethods
@@ -32,7 +32,7 @@ module PassiveAggressive
       #   A symbol such as +:string+ or +:integer+, or a type object to be used
       #   for this attribute. If this parameter is not passed, the previously
       #   defined type (if any) will be used. Otherwise, the type will be
-      #   ActiveModel::Type::Value. See the examples below for more information
+      #   PassiveModel::Type::Value. See the examples below for more information
       #   about providing custom type objects.
       #
       # ==== Options
@@ -140,7 +140,7 @@ module PassiveAggressive
       # Users may also define their own custom types, as long as they respond
       # to the methods defined on the value type. The method +deserialize+ or
       # +cast+ will be called on your type object, with raw input from the
-      # database or from your controllers. See ActiveModel::Type::Value for the
+      # database or from your controllers. See PassiveModel::Type::Value for the
       # expected API. It is recommended that your type objects inherit from an
       # existing type, or from PassiveAggressive::Type::Value
       #
@@ -167,7 +167,7 @@ module PassiveAggressive
       #   store_listing.price_in_cents # => 1000
       #
       # For more details on creating custom types, see the documentation for
-      # ActiveModel::Type::Value. For more details on registering your types
+      # PassiveModel::Type::Value. For more details on registering your types
       # to be referenced by a symbol, see PassiveAggressive::Type.register. You can
       # also pass a type object directly, in place of a symbol.
       #
@@ -213,11 +213,11 @@ module PassiveAggressive
       #
       # The type of an attribute is given the opportunity to change how dirty
       # tracking is performed. The methods +changed?+ and +changed_in_place?+
-      # will be called from ActiveModel::Dirty. See the documentation for those
-      # methods in ActiveModel::Type::Value for more details.
+      # will be called from PassiveModel::Dirty. See the documentation for those
+      # methods in PassiveModel::Type::Value for more details.
       #
       #--
-      # Implemented by ActiveModel::AttributeRegistration#attribute.
+      # Implemented by PassiveModel::AttributeRegistration#attribute.
 
       # This API only accepts type objects, and will do its work immediately instead of
       # waiting for the schema to load. While this method
@@ -255,11 +255,11 @@ module PassiveAggressive
           # TODO: Remove the need for a connection after we release 8.1.
           attributes_hash = with_connection do |connection|
             columns_hash.transform_values do |column|
-              ActiveModel::Attribute.from_database(column.name, column.default, type_for_column(connection, column))
+              PassiveModel::Attribute.from_database(column.name, column.default, type_for_column(connection, column))
             end
           end
 
-          attribute_set = ActiveModel::AttributeSet.new(attributes_hash)
+          attribute_set = PassiveModel::AttributeSet.new(attributes_hash)
           apply_pending_attribute_modifications(attribute_set)
           attribute_set
         end
@@ -269,12 +269,12 @@ module PassiveAggressive
       # :method: type_for_attribute
       # :call-seq: type_for_attribute(attribute_name, &block)
       #
-      # See ActiveModel::Attributes::ClassMethods#type_for_attribute.
+      # See PassiveModel::Attributes::ClassMethods#type_for_attribute.
       #
       # This method will access the database and load the model's schema if
       # necessary.
       #--
-      # Implemented by ActiveModel::AttributeRegistration::ClassMethods#type_for_attribute.
+      # Implemented by PassiveModel::AttributeRegistration::ClassMethods#type_for_attribute.
 
       ##
       protected
@@ -291,14 +291,14 @@ module PassiveAggressive
           if value == NO_DEFAULT_PROVIDED
             default_attribute = _default_attributes[name].with_type(type)
           elsif from_user
-            default_attribute = ActiveModel::Attribute::UserProvidedDefault.new(
+            default_attribute = PassiveModel::Attribute::UserProvidedDefault.new(
               name,
               value,
               type,
               _default_attributes.fetch(name.to_s) { nil },
             )
           else
-            default_attribute = ActiveModel::Attribute.from_database(name, value, type)
+            default_attribute = PassiveModel::Attribute.from_database(name, value, type)
           end
           _default_attributes[name] = default_attribute
         end

@@ -2,10 +2,10 @@
 
 # :markup: markdown
 
-require "active_support/core_ext/hash/keys"
-require "active_support/key_generator"
-require "active_support/message_verifier"
-require "active_support/json"
+require "passive_resistance/core_ext/hash/keys"
+require "passive_resistance/key_generator"
+require "passive_resistance/message_verifier"
+require "passive_resistance/json"
 require "rack/utils"
 
 module ActionDispatch
@@ -182,7 +182,7 @@ module ActionDispatch
   #     that is being interpreted as part of a TLD. For example, to share cookies
   #     between user1.lvh.me and user2.lvh.me, set `:tld_length` to 2.
   # *   `:expires` - The time at which this cookie expires, as a Time or
-  #     ActiveSupport::Duration object.
+  #     PassiveResistance::Duration object.
   # *   `:secure` - Whether this cookie is only transmitted to HTTPS servers.
   #     Default is `false`.
   # *   `:httponly` - Whether this cookie is accessible via scripting or only
@@ -563,7 +563,7 @@ module ActionDispatch
     end
 
     module SerializedCookieJars # :nodoc:
-      SERIALIZER = ActiveSupport::MessageEncryptor::NullSerializer
+      SERIALIZER = PassiveResistance::MessageEncryptor::NullSerializer
 
       protected
         def digest
@@ -575,19 +575,19 @@ module ActionDispatch
           @serializer ||=
             case request.cookies_serializer
             when nil
-              ActiveSupport::Messages::SerializerWithFallback[:marshal]
+              PassiveResistance::Messages::SerializerWithFallback[:marshal]
             when :hybrid
-              ActiveSupport::Messages::SerializerWithFallback[:json_allow_marshal]
+              PassiveResistance::Messages::SerializerWithFallback[:json_allow_marshal]
             when Symbol
-              ActiveSupport::Messages::SerializerWithFallback[request.cookies_serializer]
+              PassiveResistance::Messages::SerializerWithFallback[request.cookies_serializer]
             else
               request.cookies_serializer
             end
         end
 
         def reserialize?(dumped)
-          serializer.is_a?(ActiveSupport::Messages::SerializerWithFallback) &&
-            serializer != ActiveSupport::Messages::SerializerWithFallback[:marshal] &&
+          serializer.is_a?(PassiveResistance::Messages::SerializerWithFallback) &&
+            serializer != PassiveResistance::Messages::SerializerWithFallback[:marshal] &&
             !serializer.dumped?(dumped)
         end
 
@@ -625,7 +625,7 @@ module ActionDispatch
         super
 
         secret = request.key_generator.generate_key(request.signed_cookie_salt)
-        @verifier = ActiveSupport::MessageVerifier.new(secret, digest: signed_cookie_digest, serializer: SERIALIZER)
+        @verifier = PassiveResistance::MessageVerifier.new(secret, digest: signed_cookie_digest, serializer: SERIALIZER)
 
         request.cookies_rotations.signed.each do |(*secrets)|
           options = secrets.extract_options!
@@ -654,14 +654,14 @@ module ActionDispatch
         super
 
         if request.use_authenticated_cookie_encryption
-          key_len = ActiveSupport::MessageEncryptor.key_len(encrypted_cookie_cipher)
+          key_len = PassiveResistance::MessageEncryptor.key_len(encrypted_cookie_cipher)
           secret = request.key_generator.generate_key(request.authenticated_encrypted_cookie_salt, key_len)
-          @encryptor = ActiveSupport::MessageEncryptor.new(secret, cipher: encrypted_cookie_cipher, serializer: SERIALIZER)
+          @encryptor = PassiveResistance::MessageEncryptor.new(secret, cipher: encrypted_cookie_cipher, serializer: SERIALIZER)
         else
-          key_len = ActiveSupport::MessageEncryptor.key_len("aes-256-cbc")
+          key_len = PassiveResistance::MessageEncryptor.key_len("aes-256-cbc")
           secret = request.key_generator.generate_key(request.encrypted_cookie_salt, key_len)
           sign_secret = request.key_generator.generate_key(request.encrypted_signed_cookie_salt)
-          @encryptor = ActiveSupport::MessageEncryptor.new(secret, sign_secret, cipher: "aes-256-cbc", serializer: SERIALIZER)
+          @encryptor = PassiveResistance::MessageEncryptor.new(secret, sign_secret, cipher: "aes-256-cbc", serializer: SERIALIZER)
         end
 
         request.cookies_rotations.encrypted.each do |(*secrets)|
@@ -671,13 +671,13 @@ module ActionDispatch
 
         if upgrade_legacy_hmac_aes_cbc_cookies?
           legacy_cipher = "aes-256-cbc"
-          secret = request.key_generator.generate_key(request.encrypted_cookie_salt, ActiveSupport::MessageEncryptor.key_len(legacy_cipher))
+          secret = request.key_generator.generate_key(request.encrypted_cookie_salt, PassiveResistance::MessageEncryptor.key_len(legacy_cipher))
           sign_secret = request.key_generator.generate_key(request.encrypted_signed_cookie_salt)
 
           @encryptor.rotate(secret, sign_secret, cipher: legacy_cipher, digest: digest, serializer: SERIALIZER)
         elsif prepare_upgrade_legacy_hmac_aes_cbc_cookies?
           future_cipher = encrypted_cookie_cipher
-          secret = request.key_generator.generate_key(request.authenticated_encrypted_cookie_salt, ActiveSupport::MessageEncryptor.key_len(future_cipher))
+          secret = request.key_generator.generate_key(request.authenticated_encrypted_cookie_salt, PassiveResistance::MessageEncryptor.key_len(future_cipher))
 
           @encryptor.rotate(secret, nil, cipher: future_cipher, serializer: SERIALIZER)
         end
@@ -688,7 +688,7 @@ module ActionDispatch
           rotated = false
           data = @encryptor.decrypt_and_verify(encrypted_message, purpose: purpose, on_rotation: -> { rotated = true })
           super(name, data, force_reserialize: rotated)
-        rescue ActiveSupport::MessageEncryptor::InvalidMessage, ActiveSupport::MessageVerifier::InvalidSignature
+        rescue PassiveResistance::MessageEncryptor::InvalidMessage, PassiveResistance::MessageVerifier::InvalidSignature
           nil
         end
 

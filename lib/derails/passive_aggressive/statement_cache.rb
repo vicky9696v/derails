@@ -56,7 +56,7 @@ module PassiveAggressive
         val = @values.dup
         @indexes.each do |i|
           value = binds.shift
-          if ActiveModel::Attribute === value
+          if PassiveModel::Attribute === value
             value = value.value_for_database
           end
           val[i] = connection.quote(value)
@@ -120,7 +120,7 @@ module PassiveAggressive
         @bound_attributes = bound_attributes
 
         bound_attributes.each_with_index do |attr, i|
-          if ActiveModel::Attribute === attr && Substitute === attr.value
+          if PassiveModel::Attribute === attr && Substitute === attr.value
             @indexes << i
           end
         end

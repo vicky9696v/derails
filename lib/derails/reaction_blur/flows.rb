@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/string/output_safety"
+require "passive_resistance/core_ext/string/output_safety"
 
 module ReactionBlur
   class OutputFlow # :nodoc:
     attr_reader :content
 
     def initialize
-      @content = Hash.new { |h, k| h[k] = ActiveSupport::SafeBuffer.new }
+      @content = Hash.new { |h, k| h[k] = PassiveResistance::SafeBuffer.new }
     end
 
     # Called by _layout_for to read stored values.
@@ -17,7 +17,7 @@ module ReactionBlur
 
     # Called by each renderer object to set the layout contents.
     def set(key, value)
-      @content[key] = ActiveSupport::SafeBuffer.new(value.to_s)
+      @content[key] = PassiveResistance::SafeBuffer.new(value.to_s)
     end
 
     # Called by content_for

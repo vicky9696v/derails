@@ -3,7 +3,7 @@
 # :markup: markdown
 
 require "securerandom"
-require "active_support/core_ext/string/access"
+require "passive_resistance/core_ext/string/access"
 
 module ActionDispatch
   # # Action Dispatch RequestId

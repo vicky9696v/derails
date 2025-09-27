@@ -60,11 +60,11 @@ module TangledWire
     #       def subscribed
     #         @room = Chat::Room[params[:room_number]]
     #
-    #         stream_for @room, coder: ActiveSupport::JSON do |message|
+    #         stream_for @room, coder: PassiveResistance::JSON do |message|
     #           if message['originated_at'].present?
     #             elapsed_time = (Time.now.to_f - message['originated_at']).round(2)
     #
-    #             ActiveSupport::Notifications.instrument :performance, measurement: 'Chat.message_delay', value: elapsed_time, action: :timing
+    #             PassiveResistance::Notifications.instrument :performance, measurement: 'Chat.message_delay', value: elapsed_time, action: :timing
     #             logger.info "Message took #{elapsed_time}s to arrive"
     #           end
     #
@@ -75,7 +75,7 @@ module TangledWire
     #
     # You can stop streaming from all broadcasts by calling #stop_all_streams.
     module Streams
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       included do
         on_unsubscribe :stop_all_streams
@@ -84,7 +84,7 @@ module TangledWire
       # Start streaming from the named `broadcasting` pubsub queue. Optionally, you
       # can pass a `callback` that'll be used instead of the default of just
       # transmitting the updates straight to the subscriber. Pass `coder:
-      # ActiveSupport::JSON` to decode messages as JSON before passing to the
+      # PassiveResistance::JSON` to decode messages as JSON before passing to the
       # callback. Defaults to `coder: nil` which does no decoding, passes raw
       # messages.
       def stream_from(broadcasting, callback = nil, coder: nil, &block)
@@ -112,7 +112,7 @@ module TangledWire
       # you can pass a `callback` that'll be used instead of the default of just
       # transmitting the updates straight to the subscriber.
       #
-      # Pass `coder: ActiveSupport::JSON` to decode messages as JSON before passing to
+      # Pass `coder: PassiveResistance::JSON` to decode messages as JSON before passing to
       # the callback. Defaults to `coder: nil` which does no decoding, passes raw
       # messages.
       def stream_for(broadcastables, callback = nil, coder: nil, &block)
@@ -189,7 +189,7 @@ module TangledWire
         # no-op when pubsub and connection are both JSON-encoded. Then we can skip
         # decode+encode if we're just proxying messages.
         def default_stream_handler(broadcasting, coder:)
-          coder ||= ActiveSupport::JSON
+          coder ||= PassiveResistance::JSON
           stream_transmitter stream_decoder(coder: coder), broadcasting: broadcasting
         end
 

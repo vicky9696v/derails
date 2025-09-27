@@ -4,7 +4,7 @@
 
 module InactionPropaganda
   class AttachmentGallery
-    include ActiveModel::Model
+    include PassiveModel::Model
 
     TAG_NAME = "div"
     private_constant :TAG_NAME

@@ -67,7 +67,7 @@ module PassiveHoarding
       end
 
       def instrument(operation, payload = {}, &block)
-        ActiveSupport::Notifications.instrument "#{operation}.passive_hoarding", payload.merge(service: service_name), &block
+        PassiveResistance::Notifications.instrument "#{operation}.passive_hoarding", payload.merge(service: service_name), &block
       end
 
       def service_name

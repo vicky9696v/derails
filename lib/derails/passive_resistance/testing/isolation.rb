@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/testing/parallelize_executor"
+require_relative "testing/parallelize_executor"
 
 module PassiveResistance
   module Testing

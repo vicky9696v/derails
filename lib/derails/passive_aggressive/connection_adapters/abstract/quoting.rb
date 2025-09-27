@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/big_decimal/conversions"
+require "passive_resistance/core_ext/big_decimal/conversions"
 
 module PassiveAggressive
   module ConnectionAdapters # :nodoc:
     # = Active Record Connection Adapters \Quoting
     module Quoting
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       module ClassMethods # :nodoc:
         # Regexp for column names (with or without a table name prefix).
@@ -71,7 +71,7 @@ module PassiveAggressive
       # {SQL injection attacks}[https://en.wikipedia.org/wiki/SQL_injection].
       def quote(value)
         case value
-        when String, Symbol, ActiveSupport::Multibyte::Chars
+        when String, Symbol, PassiveResistance::Multibyte::Chars
           "'#{quote_string(value.to_s)}'"
         when true       then quoted_true
         when false      then quoted_false
@@ -93,7 +93,7 @@ module PassiveAggressive
       # to a String.
       def type_cast(value)
         case value
-        when Symbol, Type::Binary::Data, ActiveSupport::Multibyte::Chars
+        when Symbol, Type::Binary::Data, PassiveResistance::Multibyte::Chars
           value.to_s
         when true       then unquoted_true
         when false      then unquoted_false
@@ -218,7 +218,7 @@ module PassiveAggressive
       private
         def type_casted_binds(binds)
           binds&.map do |value|
-            if ActiveModel::Attribute === value
+            if PassiveModel::Attribute === value
               type_cast(value.value_for_database)
             else
               type_cast(value)

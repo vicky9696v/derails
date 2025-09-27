@@ -2,12 +2,12 @@
 
 # :markup: markdown
 
-require "active_support/dependencies"
-require "active_support/core_ext/name_error"
+require "passive_resistance/dependencies"
+require "passive_resistance/core_ext/name_error"
 
 module AbstractController
   module Helpers
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       class_attribute :_helper_methods, default: Array.new

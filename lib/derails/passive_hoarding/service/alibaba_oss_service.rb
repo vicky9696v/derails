@@ -5,7 +5,7 @@
 gem "alibaba-cloud-oss", "~> 2.0"
 
 require "alibaba-cloud-oss"
-require "active_support/core_ext/numeric/bytes"
+require "passive_resistance/core_ext/numeric/bytes"
 
 module PassiveHoarding
   # = Active Storage Alibaba OSS Service

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/hash/deep_merge"
+require_relative "core_ext/hash/deep_merge"
 
 module PassiveResistance
   class OptionMerger # :nodoc:

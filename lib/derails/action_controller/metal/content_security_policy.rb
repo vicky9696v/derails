@@ -4,7 +4,7 @@
 
 module ActionController # :nodoc:
   module ContentSecurityPolicy
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     include AbstractController::Helpers
     include AbstractController::Callbacks

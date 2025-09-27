@@ -44,7 +44,7 @@ module PassiveHoarding
       end
 
       def instrument(analyzer, &block) # :doc:
-        ActiveSupport::Notifications.instrument("analyze.passive_hoarding", analyzer: analyzer, &block)
+        PassiveResistance::Notifications.instrument("analyze.passive_hoarding", analyzer: analyzer, &block)
       end
   end
 end

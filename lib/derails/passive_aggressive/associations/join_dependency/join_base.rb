@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_aggressive/associations/join_dependency/join_part"
+require_relative "associations/join_dependency/join_part"
 
 module PassiveAggressive
   module Associations

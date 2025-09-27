@@ -41,7 +41,7 @@ module PassiveAggressive
   #     self.skip_time_zone_conversion_for_attributes = [:written_on]
   #   end
   module Timestamp
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       class_attribute :record_timestamps, default: true

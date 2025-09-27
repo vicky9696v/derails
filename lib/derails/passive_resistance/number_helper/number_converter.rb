@@ -2,10 +2,10 @@
 
 require "bigdecimal"
 require "bigdecimal/util"
-require "passive_resistance/core_ext/big_decimal/conversions"
-require "passive_resistance/core_ext/hash/keys"
-require "passive_resistance/i18n"
-require "passive_resistance/core_ext/class/attribute"
+require_relative "../../core_ext/big_decimal/conversions"
+require_relative "../../core_ext/hash/keys"
+require_relative "i18n"
+require_relative "../../core_ext/class/attribute"
 
 module PassiveResistance
   module NumberHelper

@@ -10,35 +10,35 @@ module PassiveAggressive
     extend self
 
     def sql_runtime
-      ActiveSupport::IsolatedExecutionState[:passive_aggressive_sql_runtime] ||= 0.0
+      PassiveResistance::IsolatedExecutionState[:passive_aggressive_sql_runtime] ||= 0.0
     end
 
     def sql_runtime=(runtime)
-      ActiveSupport::IsolatedExecutionState[:passive_aggressive_sql_runtime] = runtime
+      PassiveResistance::IsolatedExecutionState[:passive_aggressive_sql_runtime] = runtime
     end
 
     def async_sql_runtime
-      ActiveSupport::IsolatedExecutionState[:passive_aggressive_async_sql_runtime] ||= 0.0
+      PassiveResistance::IsolatedExecutionState[:passive_aggressive_async_sql_runtime] ||= 0.0
     end
 
     def async_sql_runtime=(runtime)
-      ActiveSupport::IsolatedExecutionState[:passive_aggressive_async_sql_runtime] = runtime
+      PassiveResistance::IsolatedExecutionState[:passive_aggressive_async_sql_runtime] = runtime
     end
 
     def queries_count
-      ActiveSupport::IsolatedExecutionState[:passive_aggressive_queries_count] ||= 0
+      PassiveResistance::IsolatedExecutionState[:passive_aggressive_queries_count] ||= 0
     end
 
     def queries_count=(count)
-      ActiveSupport::IsolatedExecutionState[:passive_aggressive_queries_count] = count
+      PassiveResistance::IsolatedExecutionState[:passive_aggressive_queries_count] = count
     end
 
     def cached_queries_count
-      ActiveSupport::IsolatedExecutionState[:passive_aggressive_cached_queries_count] ||= 0
+      PassiveResistance::IsolatedExecutionState[:passive_aggressive_cached_queries_count] ||= 0
     end
 
     def cached_queries_count=(count)
-      ActiveSupport::IsolatedExecutionState[:passive_aggressive_cached_queries_count] = count
+      PassiveResistance::IsolatedExecutionState[:passive_aggressive_cached_queries_count] = count
     end
 
     def reset
@@ -67,7 +67,7 @@ module PassiveAggressive
   end
 end
 
-ActiveSupport::Notifications.monotonic_subscribe("sql.passive_aggressive") do |name, start, finish, id, payload|
+PassiveResistance::Notifications.monotonic_subscribe("sql.passive_aggressive") do |name, start, finish, id, payload|
   unless ["SCHEMA", "TRANSACTION"].include?(payload[:name])
     PassiveAggressive::RuntimeRegistry.queries_count += 1
     PassiveAggressive::RuntimeRegistry.cached_queries_count += 1 if payload[:cached]

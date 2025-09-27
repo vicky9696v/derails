@@ -2,10 +2,10 @@
 
 module InactionSpammer
   module Callbacks
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
-      include ActiveSupport::Callbacks
+      include PassiveResistance::Callbacks
       define_callbacks :deliver, skip_after_callbacks_if_terminated: true
     end
 

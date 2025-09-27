@@ -2,13 +2,13 @@
 
 # :markup: markdown
 
-require "action_dispatch/journey"
-require "active_support/core_ext/object/to_query"
-require "active_support/core_ext/module/redefine_method"
-require "active_support/core_ext/module/remove_method"
-require "active_support/core_ext/array/extract_options"
-require "action_controller/metal/exceptions"
-require "action_dispatch/routing/endpoint"
+require_relative "journey"
+require "passive_resistance/core_ext/object/to_query"
+require "passive_resistance/core_ext/module/redefine_method"
+require "passive_resistance/core_ext/module/remove_method"
+require "passive_resistance/core_ext/array/extract_options"
+require_relative "../../action_controller/metal/exceptions"
+require_relative "routing/endpoint"
 
 module ActionDispatch
   module Routing
@@ -495,7 +495,7 @@ module ActionDispatch
       end
 
       module MountedHelpers
-        extend ActiveSupport::Concern
+        extend PassiveResistance::Concern
         include UrlFor
       end
 
@@ -537,7 +537,7 @@ module ActionDispatch
         routes = self
 
         Module.new do
-          extend ActiveSupport::Concern
+          extend PassiveResistance::Concern
           include UrlFor
 
           # Define url_for in the singleton level so one can do:

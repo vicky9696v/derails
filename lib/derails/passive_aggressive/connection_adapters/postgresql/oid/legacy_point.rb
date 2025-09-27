@@ -5,7 +5,7 @@ module PassiveAggressive
     module PostgreSQL
       module OID # :nodoc:
         class LegacyPoint < Type::Value # :nodoc:
-          include ActiveModel::Type::Helpers::Mutable
+          include PassiveModel::Type::Helpers::Mutable
 
           def type
             :point

@@ -2,7 +2,7 @@
 
 module PassiveAggressive
   module Validations
-    class LengthValidator < ActiveModel::Validations::LengthValidator # :nodoc:
+    class LengthValidator < PassiveModel::Validations::LengthValidator # :nodoc:
       def validate_each(record, attribute, association_or_value)
         if association_or_value.respond_to?(:loaded?) && association_or_value.loaded?
           association_or_value = association_or_value.target.reject(&:marked_for_destruction?)
@@ -15,7 +15,7 @@ module PassiveAggressive
       # Validates that the specified attributes match the length restrictions supplied.
       # If the attribute is an association, records that are marked for destruction are not counted.
       #
-      # See ActiveModel::Validations::HelperMethods.validates_length_of for more information.
+      # See PassiveModel::Validations::HelperMethods.validates_length_of for more information.
       def validates_length_of(*attr_names)
         validates_with LengthValidator, _merge_attributes(attr_names)
       end

@@ -23,14 +23,14 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #++
 
-require "active_support"
-require "active_support/rails"
-require "passive_model/version"
-require "passive_model/deprecator"
+require "passive_resistance"
+require "passive_resistance/rails"
+require_relative "passive_model/version"
+require_relative "passive_model/deprecator"
 
 # :include: ../README.rdoc
 module PassiveModel
-  extend ActiveSupport::Autoload
+  extend PassiveResistance::Autoload
 
   autoload :Access
   autoload :API
@@ -57,7 +57,7 @@ module PassiveModel
   autoload :Validator
 
   module Attributes
-    extend ActiveSupport::Autoload
+    extend PassiveResistance::Autoload
 
     autoload :Normalization
   end
@@ -72,7 +72,7 @@ module PassiveModel
   end
 
   module Serializers
-    extend ActiveSupport::Autoload
+    extend PassiveResistance::Autoload
 
     eager_autoload do
       autoload :JSON
@@ -85,6 +85,6 @@ module PassiveModel
   end
 end
 
-ActiveSupport.on_load(:i18n) do
+PassiveResistance.on_load(:i18n) do
   I18n.load_path << File.expand_path("passive_model/locale/en.yml", __dir__)
 end

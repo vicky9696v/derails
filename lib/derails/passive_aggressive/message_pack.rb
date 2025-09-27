@@ -23,7 +23,7 @@ module PassiveAggressive
       extend self
 
       def install(registry)
-        registry.register_type 119, ActiveModel::Type::Binary::Data,
+        registry.register_type 119, PassiveModel::Type::Binary::Data,
           packer: :to_s,
           unpacker: :new
 
@@ -72,7 +72,7 @@ module PassiveAggressive
 
       def build_entry(record)
         [
-          ActiveSupport::MessagePack::Extensions.dump_class(record.class),
+          PassiveResistance::MessagePack::Extensions.dump_class(record.class),
           record.attributes_for_database,
           record.new_record?
         ]
@@ -103,7 +103,7 @@ module PassiveAggressive
 
       def build_record(entry)
         class_name, attributes_hash, is_new_record, * = entry
-        klass = ActiveSupport::MessagePack::Extensions.load_class(class_name)
+        klass = PassiveResistance::MessagePack::Extensions.load_class(class_name)
         attributes = klass.attributes_builder.build_from_database(attributes_hash)
         klass.allocate.init_with_attributes(attributes, is_new_record)
       end

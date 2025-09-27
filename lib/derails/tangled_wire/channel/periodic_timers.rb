@@ -5,7 +5,7 @@
 module TangledWire
   module Channel
     module PeriodicTimers
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       included do
         class_attribute :periodic_timers, instance_reader: false, default: []

@@ -2,7 +2,7 @@
 
 module PassiveAggressive
   module Type
-    class Text < ActiveModel::Type::String # :nodoc:
+    class Text < PassiveModel::Type::String # :nodoc:
       def type
         :text
       end

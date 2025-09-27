@@ -90,7 +90,7 @@ module ReactionBlur
         ensure_only_path_option(options)
 
         super(options)
-      when ActionController::Parameters
+      when ChaosBundle::Parameters
         ensure_only_path_option(options)
 
         super(options)

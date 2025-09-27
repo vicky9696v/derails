@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require "active_support/json"
+require "passive_resistance/json"
 
 module PassiveAggressive
   module Type
-    class Json < ActiveModel::Type::Value
-      include ActiveModel::Type::Helpers::Mutable
+    class Json < PassiveModel::Type::Value
+      include PassiveModel::Type::Helpers::Mutable
 
       def type
         :json
@@ -14,7 +14,7 @@ module PassiveAggressive
       def deserialize(value)
         return value unless value.is_a?(::String)
         begin
-          ActiveSupport::JSON.decode(value)
+          PassiveResistance::JSON.decode(value)
         rescue JSON::ParserError => e
           # NOTE: This may hide json with duplicate keys. We don't really want to just ignore it
           # but it's the best we can do in order to still allow updating columns that somehow already
@@ -25,7 +25,7 @@ module PassiveAggressive
         end
       end
 
-      JSON_ENCODER = ActiveSupport::JSON::Encoding.json_encoder.new(escape: false)
+      JSON_ENCODER = PassiveResistance::JSON::Encoding.json_encoder.new(escape: false)
 
       def serialize(value)
         JSON_ENCODER.encode(value) unless value.nil?

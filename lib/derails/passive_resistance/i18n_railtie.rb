@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance"
-require "passive_resistance/core_ext/array/wrap"
+require_relative "../passive_resistance"
+require_relative "core_ext/array/wrap"
 
 # :enddoc:
 

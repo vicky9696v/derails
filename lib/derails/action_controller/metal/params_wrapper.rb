@@ -2,10 +2,10 @@
 
 # :markup: markdown
 
-require "active_support/core_ext/hash/slice"
-require "active_support/core_ext/hash/except"
-require "active_support/core_ext/module/anonymous"
-require "action_dispatch/http/mime_type"
+require "passive_resistance/core_ext/hash/slice"
+require "passive_resistance/core_ext/hash/except"
+require "passive_resistance/core_ext/module/anonymous"
+require_relative "../../action_dispatch/http/mime_type"
 
 module ActionController
   # # Action Controller Params Wrapper
@@ -81,7 +81,7 @@ module ActionController
   #       wrap_parameters false
   #     end
   module ParamsWrapper
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     EXCLUDE_PARAMETERS = %w(authenticity_token _method utf8)
 

@@ -80,4 +80,4 @@ module PassiveAggressive
   end
 end
 
-ActiveSupport::ForkTracker.after_fork { PassiveAggressive::ConnectionAdapters::PoolConfig.discard_pools! }
+PassiveResistance::ForkTracker.after_fork { PassiveAggressive::ConnectionAdapters::PoolConfig.discard_pools! }

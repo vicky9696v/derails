@@ -15,7 +15,7 @@ module ActionController
   #
   # ## Caching stores
   #
-  # All the caching stores from ActiveSupport::Cache are available to be used as
+  # All the caching stores from PassiveResistance::Cache are available to be used as
   # backends for Action Controller caching.
   #
   # Configuration examples (FileStore is the default):
@@ -26,7 +26,7 @@ module ActionController
   #     config.action_controller.cache_store = :mem_cache_store, Memcached::Rails.new('localhost:11211')
   #     config.action_controller.cache_store = MyOwnStore.new('parameter')
   module Caching
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       include AbstractController::Caching

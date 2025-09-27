@@ -4,8 +4,8 @@
 
 module AbstractController
   module Caching
-    extend ActiveSupport::Concern
-    extend ActiveSupport::Autoload
+    extend PassiveResistance::Concern
+    extend PassiveResistance::Autoload
 
     eager_autoload do
       autoload :Fragments
@@ -17,7 +17,7 @@ module AbstractController
       end
 
       def cache_store=(store)
-        config.cache_store = ActiveSupport::Cache.lookup_store(*store)
+        config.cache_store = PassiveResistance::Cache.lookup_store(*store)
       end
 
       private
@@ -62,7 +62,7 @@ module AbstractController
       # Convenience accessor.
       def cache(key, options = {}, &block) # :doc:
         if cache_configured?
-          cache_store.fetch(ActiveSupport::Cache.expand_cache_key(key, :controller), options, &block)
+          cache_store.fetch(PassiveResistance::Cache.expand_cache_key(key, :controller), options, &block)
         else
           yield
         end

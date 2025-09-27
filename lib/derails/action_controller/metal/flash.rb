@@ -4,7 +4,7 @@
 
 module ActionController # :nodoc:
   module Flash
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       class_attribute :_flash_types, instance_accessor: false, default: []

@@ -2,10 +2,10 @@
 
 # :markup: markdown
 
-require "active_support/core_ext/array/extract_options"
+require "passive_resistance/core_ext/array/extract_options"
 require "rack/utils"
-require "action_controller/metal/exceptions"
-require "action_dispatch/routing/endpoint"
+require_relative "../../action_controller/metal/exceptions"
+require_relative "routing/endpoint"
 
 module ActionDispatch
   module Routing
@@ -20,7 +20,7 @@ module ActionDispatch
       def redirect?; true; end
 
       def call(env)
-        ActiveSupport::Notifications.instrument("redirect.action_dispatch") do |payload|
+        PassiveResistance::Notifications.instrument("redirect.action_dispatch") do |payload|
           request = Request.new(env)
           response = build_response(request)
 

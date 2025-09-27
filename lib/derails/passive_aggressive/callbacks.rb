@@ -276,7 +276,7 @@ module PassiveAggressive
   # Returns true or false depending on whether the proc is contained in the +before_save+ callback chain on a Topic model.
   #
   module Callbacks
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     CALLBACKS = [
       :after_initialize, :after_find, :after_touch, :before_validation, :after_validation,
@@ -286,7 +286,7 @@ module PassiveAggressive
     ]
 
     module ClassMethods
-      include ActiveModel::Callbacks
+      include PassiveModel::Callbacks
 
       ##
       # :method: after_initialize
@@ -410,7 +410,7 @@ module PassiveAggressive
     end
 
     included do
-      include ActiveModel::Validations::Callbacks
+      include PassiveModel::Validations::Callbacks
 
       define_model_callbacks :initialize, :find, :touch, only: :after
       define_model_callbacks :save, :create, :update, :destroy

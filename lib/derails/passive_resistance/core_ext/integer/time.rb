@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance/duration"
-require "passive_resistance/core_ext/numeric/time"
+require_relative "duration"
+require_relative "../../core_ext/numeric/time"
 
 class Integer
   # Returns a Duration instance matching the number of months provided.

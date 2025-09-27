@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require "passive_aggressive/relation/from_clause"
-require "passive_aggressive/relation/query_attribute"
-require "passive_aggressive/relation/where_clause"
-require "active_support/core_ext/array/wrap"
+require_relative "relation/from_clause"
+require_relative "relation/query_attribute"
+require_relative "relation/where_clause"
+require "passive_resistance/core_ext/array/wrap"
 
 module PassiveAggressive
   module QueryMethods
-    include ActiveModel::ForbiddenAttributesProtection
+    include PassiveModel::ForbiddenAttributesProtection
 
     # +WhereChain+ objects act as placeholder for queries in which +where+ does not have any parameter.
     # In this case, +where+ can be chained to return a new relation.
@@ -406,10 +406,10 @@ module PassiveAggressive
     #   # => "value"
     #
     # Accessing attributes of an object that do not have fields retrieved by a select
-    # except +id+ will throw ActiveModel::MissingAttributeError:
+    # except +id+ will throw PassiveModel::MissingAttributeError:
     #
     #   Model.select(:field).first.other_field
-    #   # => ActiveModel::MissingAttributeError: missing attribute 'other_field' for Model
+    #   # => PassiveModel::MissingAttributeError: missing attribute 'other_field' for Model
     def select(*fields)
       if block_given?
         if fields.any?
@@ -1772,7 +1772,7 @@ module PassiveAggressive
       end
 
       def build_cast_value(name, value)
-        ActiveModel::Attribute.with_cast_value(name, value, Type.default_value)
+        PassiveModel::Attribute.with_cast_value(name, value, Type.default_value)
       end
 
       def build_from

@@ -5,7 +5,7 @@
 module TangledWire
   module Connection
     module Identification
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       included do
         class_attribute :identifiers, default: Set.new

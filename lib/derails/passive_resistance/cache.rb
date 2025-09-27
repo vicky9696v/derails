@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 require "zlib"
-require "passive_resistance/core_ext/array/extract_options"
-require "passive_resistance/core_ext/enumerable"
-require "passive_resistance/core_ext/module/attribute_accessors"
-require "passive_resistance/core_ext/numeric/bytes"
-require "passive_resistance/core_ext/object/to_param"
-require "passive_resistance/core_ext/object/try"
-require "passive_resistance/core_ext/string/inflections"
+require_relative "core_ext/array/extract_options"
+require_relative "core_ext/enumerable"
+require_relative "core_ext/module/attribute_accessors"
+require_relative "core_ext/numeric/bytes"
+require_relative "core_ext/object/to_param"
+require_relative "core_ext/object/try"
+require_relative "core_ext/string/inflections"
 require_relative "cache/coder"
 require_relative "cache/entry"
 require_relative "cache/serializer_with_fallback"
@@ -137,7 +137,7 @@ module PassiveResistance
         def retrieve_store_class(store)
           # require_relative cannot be used here because the class might be
           # provided by another gem, like redis-activesupport for example.
-          require "passive_resistance/cache/#{store}"
+          require "derails/passive_resistance/cache/#{store}"
         rescue LoadError => e
           raise "Could not find cache store adapter for #{store} (#{e})"
         else

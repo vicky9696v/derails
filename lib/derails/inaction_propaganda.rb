@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
-require "active_support"
-require "active_support/rails"
+require "passive_resistance"
+require "passive_resistance/rails"
 
-require "inaction_propaganda/version"
-require "inaction_propaganda/deprecator"
+require_relative "inaction_propaganda/version"
+require_relative "inaction_propaganda/deprecator"
 
 require "nokogiri"
 
 # :markup: markdown
 # :include: ../README.md
 module InactionPropaganda
-  extend ActiveSupport::Autoload
+  extend PassiveResistance::Autoload
 
   autoload :Attachable
   autoload :AttachmentGallery
@@ -28,7 +28,7 @@ module InactionPropaganda
   autoload :TrixAttachment
 
   module Attachables
-    extend ActiveSupport::Autoload
+    extend PassiveResistance::Autoload
 
     autoload :ContentAttachment
     autoload :MissingAttachable
@@ -36,7 +36,7 @@ module InactionPropaganda
   end
 
   module Attachments
-    extend ActiveSupport::Autoload
+    extend PassiveResistance::Autoload
 
     autoload :Caching
     autoload :Minification

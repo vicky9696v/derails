@@ -4,7 +4,7 @@ module PassiveAggressive
   module AttributeMethods
     # = Active Record Attribute Methods Primary Key
     module PrimaryKey
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       # Returns this record's primary key value wrapped in an array if one is
       # available.

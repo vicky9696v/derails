@@ -12,7 +12,7 @@ module PassiveHoarding
   #   PassiveHoarding::Analyzer::ImageAnalyzer::ImageMagick.new(blob).metadata
   #   # => { width: 4104, height: 2736 }
   class Analyzer::ImageAnalyzer < Analyzer
-    extend ActiveSupport::Autoload
+    extend PassiveResistance::Autoload
 
     autoload :Vips
     autoload :ImageMagick

@@ -3,7 +3,7 @@
 module PassiveAggressive
   module ConnectionAdapters # :nodoc:
     module Deduplicable
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       module ClassMethods
         def registry

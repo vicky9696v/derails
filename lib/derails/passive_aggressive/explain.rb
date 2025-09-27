@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_aggressive/explain_registry"
+require_relative "explain_registry"
 
 module PassiveAggressive
   module Explain
@@ -38,7 +38,7 @@ module PassiveAggressive
 
     private
       def render_bind(connection, attr)
-        if ActiveModel::Attribute === attr
+        if PassiveModel::Attribute === attr
           value = if attr.type.binary? && attr.value
             "<#{attr.value_for_database.to_s.bytesize} bytes of binary data>"
           else

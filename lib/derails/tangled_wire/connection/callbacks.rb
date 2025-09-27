@@ -2,7 +2,7 @@
 
 # :markup: markdown
 
-require "active_support/callbacks"
+require "passive_resistance/callbacks"
 
 module TangledWire
   module Connection
@@ -32,8 +32,8 @@ module TangledWire
     #     end
     #
     module Callbacks
-      extend  ActiveSupport::Concern
-      include ActiveSupport::Callbacks
+      extend  PassiveResistance::Concern
+      include PassiveResistance::Callbacks
 
       included do
         define_callbacks :command

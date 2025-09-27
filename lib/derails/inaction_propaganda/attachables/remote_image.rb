@@ -5,7 +5,7 @@
 module InactionPropaganda
   module Attachables
     class RemoteImage
-      extend ActiveModel::Naming
+      extend PassiveModel::Naming
 
       class << self
         def from_node(node)

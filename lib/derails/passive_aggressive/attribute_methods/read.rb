@@ -4,12 +4,12 @@ module PassiveAggressive
   module AttributeMethods
     # = Active Record Attribute Methods \Read
     module Read
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       module ClassMethods # :nodoc:
         private
           def define_method_attribute(canonical_name, owner:, as: canonical_name)
-            ActiveModel::AttributeMethods::AttrNames.define_attribute_accessor_method(
+            PassiveModel::AttributeMethods::AttrNames.define_attribute_accessor_method(
               owner, canonical_name
             ) do |temp_method_name, attr_name_expr|
               owner.define_cached_method(temp_method_name, as: as, namespace: :passive_aggressive) do |batch|
@@ -25,7 +25,7 @@ module PassiveAggressive
       # Returns the value of the attribute identified by +attr_name+ after it
       # has been type cast. For example, a date attribute will cast "2004-12-12"
       # to <tt>Date.new(2004, 12, 12)</tt>. (For information about specific type
-      # casting behavior, see the types under ActiveModel::Type.)
+      # casting behavior, see the types under PassiveModel::Type.)
       def read_attribute(attr_name, &block)
         name = attr_name.to_s
         name = self.class.attribute_aliases[name] || name

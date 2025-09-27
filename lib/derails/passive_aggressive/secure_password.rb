@@ -2,9 +2,9 @@
 
 module PassiveAggressive
   module SecurePassword
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
-    include ActiveModel::SecurePassword
+    include PassiveModel::SecurePassword
 
     module ClassMethods
       # Given a set of attributes, finds a record using the non-password

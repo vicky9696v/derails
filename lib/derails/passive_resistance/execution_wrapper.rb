@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance/error_reporter"
-require "passive_resistance/callbacks"
+require_relative "error_reporter"
+require_relative "callbacks"
 
 module PassiveResistance
   class ExecutionWrapper

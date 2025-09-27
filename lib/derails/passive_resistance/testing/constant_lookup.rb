@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance/concern"
-require "passive_resistance/inflector"
+require_relative "concern"
+require_relative "inflector"
 
 module PassiveResistance
   module Testing

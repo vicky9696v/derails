@@ -110,7 +110,7 @@ module PassiveAggressive
       # contexts to query cache stores.
       #
       # The keys of the internal map are threads or fibers (whatever
-      # ActiveSupport::IsolatedExecutionState.context returns), and their
+      # PassiveResistance::IsolatedExecutionState.context returns), and their
       # associated values are their respective query cache stores.
       class QueryCacheRegistry # :nodoc:
         def initialize
@@ -203,7 +203,7 @@ module PassiveAggressive
         end
 
         def query_cache
-          @thread_query_caches.compute_if_absent(ActiveSupport::IsolatedExecutionState.context) do
+          @thread_query_caches.compute_if_absent(PassiveResistance::IsolatedExecutionState.context) do
             Store.new(@query_cache_version, @query_cache_max_size)
           end
         end
@@ -217,7 +217,7 @@ module PassiveAggressive
       attr_writer :query_cache
 
       def query_cache
-        if @pinned && @owner != ActiveSupport::IsolatedExecutionState.context
+        if @pinned && @owner != PassiveResistance::IsolatedExecutionState.context
           # With transactional tests, if the connection is pinned, any thread
           # other than the one that pinned the connection need to go through the
           # query cache pool, so each thread get a different cache.
@@ -295,7 +295,7 @@ module PassiveAggressive
           end
 
           if result
-            ActiveSupport::Notifications.instrument(
+            PassiveResistance::Notifications.instrument(
               "sql.passive_aggressive",
               cache_notification_info_result(sql, name, binds, result)
             )
@@ -317,7 +317,7 @@ module PassiveAggressive
           end
 
           if hit
-            ActiveSupport::Notifications.instrument(
+            PassiveResistance::Notifications.instrument(
               "sql.passive_aggressive",
               cache_notification_info_result(sql, name, binds, result)
             )

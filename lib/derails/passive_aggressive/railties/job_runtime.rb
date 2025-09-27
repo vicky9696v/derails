@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_aggressive/runtime_registry"
+require_relative "runtime_registry"
 
 module PassiveAggressive
   module Railties # :nodoc:

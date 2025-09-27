@@ -1,22 +1,22 @@
 # frozen_string_literal: true
 
-require "passive_model/type/helpers"
-require "passive_model/type/serialize_cast_value"
-require "passive_model/type/value"
+require_relative "type/helpers"
+require_relative "type/serialize_cast_value"
+require_relative "type/value"
 
-require "passive_model/type/big_integer"
-require "passive_model/type/binary"
-require "passive_model/type/boolean"
-require "passive_model/type/date"
-require "passive_model/type/date_time"
-require "passive_model/type/decimal"
-require "passive_model/type/float"
-require "passive_model/type/immutable_string"
-require "passive_model/type/integer"
-require "passive_model/type/string"
-require "passive_model/type/time"
+require_relative "type/big_integer"
+require_relative "type/binary"
+require_relative "type/boolean"
+require_relative "type/date"
+require_relative "type/date_time"
+require_relative "type/decimal"
+require_relative "type/float"
+require_relative "type/immutable_string"
+require_relative "type/integer"
+require_relative "type/string"
+require_relative "type/time"
 
-require "passive_model/type/registry"
+require_relative "type/registry"
 
 module PassiveModel
   module Type

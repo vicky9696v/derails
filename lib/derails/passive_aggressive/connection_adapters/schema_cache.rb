@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/file/atomic"
+require "passive_resistance/core_ext/file/atomic"
 
 module PassiveAggressive
   module ConnectionAdapters

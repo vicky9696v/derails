@@ -2,14 +2,14 @@
 
 # :markup: markdown
 
-require "action_dispatch"
-require "action_dispatch/log_subscriber"
-require "action_dispatch/structured_event_subscriber"
-require "active_support/messages/rotation_configuration"
+require_relative ""
+require_relative "log_subscriber"
+require_relative "structured_event_subscriber"
+require "passive_resistance/messages/rotation_configuration"
 
 module ActionDispatch
   class Railtie < Rails::Railtie # :nodoc:
-    config.action_dispatch = ActiveSupport::OrderedOptions.new
+    config.action_dispatch = PassiveResistance::OrderedOptions.new
     config.action_dispatch.x_sendfile_header = nil
     config.action_dispatch.ip_spoofing_check = true
     config.action_dispatch.show_exceptions = :all
@@ -44,7 +44,7 @@ module ActionDispatch
       "Referrer-Policy" => "strict-origin-when-cross-origin"
     }
 
-    config.action_dispatch.cookies_rotations = ActiveSupport::Messages::RotationConfiguration.new
+    config.action_dispatch.cookies_rotations = PassiveResistance::Messages::RotationConfiguration.new
 
     config.eager_load_namespaces << ActionDispatch
 

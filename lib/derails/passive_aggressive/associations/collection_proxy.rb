@@ -96,7 +96,7 @@ module PassiveAggressive
       # receive:
       #
       #   person.pets.select(:name).first.person_id
-      #   # => ActiveModel::MissingAttributeError: missing attribute 'person_id' for Pet
+      #   # => PassiveModel::MissingAttributeError: missing attribute 'person_id' for Pet
       #
       # *Second:* You can pass a block so it can be used just like <tt>Array#select</tt>.
       # This builds an array of objects from the database for the scope,

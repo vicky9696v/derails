@@ -2,10 +2,10 @@
 
 # :markup: markdown
 
-require "action_view"
-require "action_controller/log_subscriber"
-require "action_controller/structured_event_subscriber"
-require "action_controller/metal/params_wrapper"
+require_relative "../reaction_blur"
+require_relative "/log_subscriber"
+require_relative "/structured_event_subscriber"
+require_relative "/metal/params_wrapper"
 
 module ActionController
   # # Action Controller Base

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/object/duplicable"
+require_relative "../../core_ext/object/duplicable"
 
 class Object
   # Returns a deep copy of object if it's duplicable. If it's

@@ -2,16 +2,16 @@
 
 # :markup: markdown
 
-require "active_support/benchmarkable"
+require "passive_resistance/benchmarkable"
 
 module AbstractController
   module Logger # :nodoc:
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       singleton_class.delegate :logger, :logger=, to: :config
       delegate :logger, :logger=, to: :config
-      include ActiveSupport::Benchmarkable
+      include PassiveResistance::Benchmarkable
     end
   end
 end

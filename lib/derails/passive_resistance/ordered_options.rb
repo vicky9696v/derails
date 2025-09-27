@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/object/blank"
+require_relative "core_ext/object/blank"
 
 module PassiveResistance
   # = Ordered Options

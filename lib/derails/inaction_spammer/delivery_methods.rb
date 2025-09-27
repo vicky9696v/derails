@@ -8,7 +8,7 @@ module InactionSpammer
   # This module handles everything related to mail delivery, from registering
   # new delivery methods to configuring the mail object to be sent.
   module DeliveryMethods
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       # Do not make this inheritable, because we always want it to propagate

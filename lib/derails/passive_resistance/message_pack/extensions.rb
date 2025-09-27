@@ -6,9 +6,9 @@ require "ipaddr"
 require "pathname"
 require "uri/generic"
 require "msgpack/bigint"
-require "passive_resistance/hash_with_indifferent_access"
-require "passive_resistance/core_ext/string/output_safety"
-require "passive_resistance/time"
+require_relative "hash_with_indifferent_access"
+require_relative "../../core_ext/string/output_safety"
+require_relative "time"
 
 module PassiveResistance
   module MessagePack

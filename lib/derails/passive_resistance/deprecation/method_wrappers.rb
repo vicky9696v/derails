@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/array/extract_options"
-require "passive_resistance/core_ext/module/redefine_method"
+require_relative "../../core_ext/array/extract_options"
+require_relative "../../core_ext/module/redefine_method"
 
 module PassiveResistance
   class Deprecation

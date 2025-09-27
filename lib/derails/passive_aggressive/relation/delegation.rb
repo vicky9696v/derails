@@ -74,7 +74,7 @@ module PassiveAggressive
         MUTEX.synchronize do
           return if method_defined?(method)
 
-          if /\A[a-zA-Z_]\w*[!?]?\z/.match?(method) && !::ActiveSupport::Delegation::RESERVED_METHOD_NAMES.include?(method.to_s)
+          if /\A[a-zA-Z_]\w*[!?]?\z/.match?(method) && !::PassiveResistance::Delegation::RESERVED_METHOD_NAMES.include?(method.to_s)
             module_eval <<-RUBY, __FILE__, __LINE__ + 1
               def #{method}(...)
                 scoping { model.#{method}(...) }
@@ -90,7 +90,7 @@ module PassiveAggressive
     end
     private_constant :GeneratedRelationMethods
 
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     # This module creates compiled delegation methods dynamically at runtime, which makes
     # subsequent calls to that method faster by avoiding method_missing. The delegations
@@ -105,7 +105,7 @@ module PassiveAggressive
     delegate :primary_key, :with_connection, :connection, :table_name, :transaction, :sanitize_sql_like, :unscoped, :name, to: :model
 
     module ClassSpecificRelation # :nodoc:
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       module ClassMethods # :nodoc:
         def name

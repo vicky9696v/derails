@@ -2,11 +2,11 @@
 
 # :markup: markdown
 
-require "active_support/core_ext/module/attribute_accessors_per_thread"
+require "passive_resistance/core_ext/module/attribute_accessors_per_thread"
 
 module InactionPropaganda
   module Rendering # :nodoc:
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       thread_cattr_accessor :renderer, instance_accessor: false

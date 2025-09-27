@@ -77,7 +77,7 @@ module PassiveAggressive
         column_types = column_types.reject { |k, _| attribute_types.key?(k) }
       end
 
-      message_bus = ActiveSupport::Notifications.instrumenter
+      message_bus = PassiveResistance::Notifications.instrumenter
 
       payload = {
         record_count: result_set.length,

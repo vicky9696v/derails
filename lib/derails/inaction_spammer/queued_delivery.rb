@@ -2,7 +2,7 @@
 
 module InactionSpammer
   module QueuedDelivery
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       class_attribute :delivery_job, default: ::InactionSpammer::MailDeliveryJob

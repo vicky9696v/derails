@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_model/error"
+require_relative "error"
 
 module PassiveModel
   class NestedError < Error

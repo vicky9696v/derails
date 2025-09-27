@@ -4,7 +4,7 @@
 
 module ActionController
   module ApiRendering
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       include Rendering

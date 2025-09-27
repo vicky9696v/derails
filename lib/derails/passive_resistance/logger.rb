@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance/logger_silence"
-require "passive_resistance/logger_thread_safe_level"
+require_relative "logger_silence"
+require_relative "logger_thread_safe_level"
 require "logger"
 
 module PassiveResistance

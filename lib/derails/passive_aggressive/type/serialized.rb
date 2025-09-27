@@ -2,10 +2,10 @@
 
 module PassiveAggressive
   module Type
-    class Serialized < DelegateClass(ActiveModel::Type::Value) # :nodoc:
+    class Serialized < DelegateClass(PassiveModel::Type::Value) # :nodoc:
       undef to_yaml if method_defined?(:to_yaml)
 
-      include ActiveModel::Type::Helpers::Mutable
+      include PassiveModel::Type::Helpers::Mutable
 
       attr_reader :subtype, :coder
 
@@ -73,7 +73,7 @@ module PassiveAggressive
           return if default_value?(value)
           payload = coder.dump(value)
           if payload && @subtype.binary?
-            ActiveModel::Type::Binary::Data.new(payload)
+            PassiveModel::Type::Binary::Data.new(payload)
           else
             payload
           end

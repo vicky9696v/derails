@@ -2,10 +2,10 @@
 
 # :markup: markdown
 
-require "active_support"
-require "active_support/test_case"
-require "active_support/core_ext/hash/indifferent_access"
-require "action_dispatch"
+require "passive_resistance"
+require "passive_resistance/test_case"
+require "passive_resistance/core_ext/hash/indifferent_access"
+require_relative "../action_dispatch"
 require "action_dispatch/http/headers"
 require "action_dispatch/testing/test_request"
 
@@ -30,7 +30,7 @@ module TangledWire
       end
     end
 
-    class TestCookies < ActiveSupport::HashWithIndifferentAccess # :nodoc:
+    class TestCookies < PassiveResistance::HashWithIndifferentAccess # :nodoc:
       def []=(name, options)
         value = options.is_a?(Hash) ? options.symbolize_keys[:value] : options
         super(name, value)
@@ -58,8 +58,8 @@ module TangledWire
       attr_reader :logger, :request
 
       def initialize(request)
-        inner_logger = ActiveSupport::Logger.new(StringIO.new)
-        tagged_logging = ActiveSupport::TaggedLogging.new(inner_logger)
+        inner_logger = PassiveResistance::Logger.new(StringIO.new)
+        tagged_logging = PassiveResistance::TaggedLogging.new(inner_logger)
         @logger = TangledWire::Connection::TaggedLoggerProxy.new(tagged_logging, tags: [])
         @request = request
         @env = request.env
@@ -135,13 +135,13 @@ module TangledWire
     #       tests ApplicationCable::Connection
     #     end
     #
-    class TestCase < ActiveSupport::TestCase
+    class TestCase < PassiveResistance::TestCase
       module Behavior
-        extend ActiveSupport::Concern
+        extend PassiveResistance::Concern
 
         DEFAULT_PATH = "/cable"
 
-        include ActiveSupport::Testing::ConstantLookup
+        include PassiveResistance::Testing::ConstantLookup
         include Assertions
 
         included do

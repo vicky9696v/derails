@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/big_decimal/conversions"
-require "passive_resistance/number_helper"
+require_relative "../../core_ext/big_decimal/conversions"
+require_relative "number_helper"
 
 module PassiveResistance
   module NumericWithFormat

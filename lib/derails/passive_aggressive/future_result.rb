@@ -43,7 +43,7 @@ module PassiveAggressive
         events, @events = @events, []
         events.each do |event|
           event.payload[:lock_wait] = @future_result.lock_wait
-          ActiveSupport::Notifications.publish_event(event)
+          PassiveResistance::Notifications.publish_event(event)
         end
       end
     end
@@ -74,7 +74,7 @@ module PassiveAggressive
       @pending = true
       @error = nil
       @result = nil
-      @instrumenter = ActiveSupport::Notifications.instrumenter
+      @instrumenter = PassiveResistance::Notifications.instrumenter
       @event_buffer = nil
     end
 
@@ -108,7 +108,7 @@ module PassiveAggressive
           begin
             if pending?
               @event_buffer = EventBuffer.new(self, @instrumenter)
-              ActiveSupport::IsolatedExecutionState[:passive_aggressive_instrumenter] = @event_buffer
+              PassiveResistance::IsolatedExecutionState[:passive_aggressive_instrumenter] = @event_buffer
 
               execute_query(connection, async: true)
             end

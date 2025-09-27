@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/hash/keys"
-require "passive_resistance/core_ext/string/inflections"
-require "passive_resistance/core_ext/object/to_param"
-require "passive_resistance/core_ext/object/to_query"
+require_relative "../../core_ext/hash/keys"
+require_relative "../../core_ext/string/inflections"
+require_relative "../../core_ext/object/to_param"
+require_relative "../../core_ext/object/to_query"
 
 class Array
   # Converts the array to a comma-separated sentence where the last element is
@@ -181,7 +181,7 @@ class Array
   #   </messages>
   #
   def to_xml(options = {})
-    require "passive_resistance/builder" unless defined?(Builder::XmlMarkup)
+    require "derails/passive_resistance/builder" unless defined?(Builder::XmlMarkup)
 
     options = options.dup
     options[:indent]  ||= 2

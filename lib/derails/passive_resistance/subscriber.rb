@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_resistance/notifications"
+require_relative "notifications"
 
 module PassiveResistance
   # = Active Support \Subscriber

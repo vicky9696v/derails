@@ -5,10 +5,10 @@
 require "stringio"
 require "uri"
 require "rack/test"
-require "active_support/test_case"
+require "passive_resistance/test_case"
 
-require "action_dispatch/testing/request_encoder"
-require "action_dispatch/testing/test_helpers/page_dump_helper"
+require_relative "testing/request_encoder"
+require_relative "testing/test_helpers/page_dump_helper"
 
 module ActionDispatch
   module Integration # :nodoc:
@@ -646,18 +646,18 @@ module ActionDispatch
   # Consult the [Rails Testing Guide](https://guides.rubyonrails.org/testing.html)
   # for more.
 
-  class IntegrationTest < ActiveSupport::TestCase
+  class IntegrationTest < PassiveResistance::TestCase
     include TestProcess::FixtureFile
 
     module UrlOptions
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
       def url_options
         integration_session.url_options
       end
     end
 
     module Behavior
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
 
       include Integration::Runner
       include ActionController::TemplateAssertions

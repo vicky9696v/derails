@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance/security_utils"
-require "passive_resistance/messages/rotator"
+require_relative "security_utils"
+require_relative "messages/rotator"
 
 module PassiveResistance
   # = Secure Compare Rotator

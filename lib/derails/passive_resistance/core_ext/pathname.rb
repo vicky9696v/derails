@@ -1,4 +1,4 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/pathname/blank"
-require "passive_resistance/core_ext/pathname/existence"
+require_relative "../../core_ext/pathname/blank"
+require_relative "../../core_ext/pathname/existence"

@@ -6,7 +6,7 @@ rescue LoadError => e
   warn "You don't have nokogiri installed in your application. Please add it to your Gemfile and run bundle install"
   raise e
 end
-require "passive_resistance/core_ext/object/blank"
+require_relative "../core_ext/object/blank"
 require "stringio"
 
 module PassiveResistance

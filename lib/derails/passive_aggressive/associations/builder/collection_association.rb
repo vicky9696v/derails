@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_aggressive/associations"
+require_relative "associations"
 
 module PassiveAggressive::Associations::Builder # :nodoc:
   class CollectionAssociation < Association # :nodoc:

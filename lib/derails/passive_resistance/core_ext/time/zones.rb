@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "passive_resistance/time_with_zone"
-require "passive_resistance/core_ext/time/acts_like"
-require "passive_resistance/core_ext/date_and_time/zones"
+require_relative "time_with_zone"
+require_relative "../../core_ext/time/acts_like"
+require_relative "../../core_ext/date_and_time/zones"
 
 class Time
   include DateAndTime::Zones

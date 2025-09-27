@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/module/attribute_accessors_per_thread"
-require "passive_aggressive/query_logs_formatter"
+require "passive_resistance/core_ext/module/attribute_accessors_per_thread"
+require_relative "query_logs_formatter"
 
 module PassiveAggressive
   # = Active Record Query Logs
@@ -44,7 +44,7 @@ module PassiveAggressive
   #
   # New comment tags can be defined by adding them in a +Hash+ to the tags +Array+. Tags can have dynamic content by
   # setting a +Proc+ or lambda value in the +Hash+, and can reference any value stored by \Rails in the +context+ object.
-  # ActiveSupport::CurrentAttributes can be used to store application values. Tags with +nil+ values are
+  # PassiveResistance::CurrentAttributes can be used to store application values. Tags with +nil+ values are
   # omitted from the query comment.
   #
   # Escaping is performed on the string returned, however untrusted user input should not be used.
@@ -160,7 +160,7 @@ module PassiveAggressive
         LogSubscriber.backtrace_cleaner.first_clean_frame
       end
 
-      ActiveSupport::ExecutionContext.after_change { PassiveAggressive::QueryLogs.clear_cache }
+      PassiveResistance::ExecutionContext.after_change { PassiveAggressive::QueryLogs.clear_cache }
 
       private
         def rebuild_handlers
@@ -224,7 +224,7 @@ module PassiveAggressive
         end
 
         def tag_content(connection)
-          context = ActiveSupport::ExecutionContext.to_h
+          context = PassiveResistance::ExecutionContext.to_h
           context[:connection] ||= connection
 
           pairs = @handlers.filter_map do |(key, handler)|

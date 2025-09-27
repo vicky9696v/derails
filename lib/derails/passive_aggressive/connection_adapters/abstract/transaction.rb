@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/digest"
+require "passive_resistance/core_ext/digest"
 
 module PassiveAggressive
   module ConnectionAdapters
@@ -91,10 +91,10 @@ module PassiveAggressive
         raise InstrumentationAlreadyStartedError.new("Called start on an already started transaction") if @started
         @started = true
 
-        ActiveSupport::Notifications.instrument("start_transaction.passive_aggressive", @base_payload)
+        PassiveResistance::Notifications.instrument("start_transaction.passive_aggressive", @base_payload)
 
         @payload = @base_payload.dup # We dup because the payload for a given event is mutated later to add the outcome.
-        @handle = ActiveSupport::Notifications.instrumenter.build_handle("transaction.passive_aggressive", @payload)
+        @handle = PassiveResistance::Notifications.instrumenter.build_handle("transaction.passive_aggressive", @payload)
         @handle.start
       end
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "passive_resistance/core_ext/string/conversions"
-require "passive_resistance/core_ext/time/zones"
+require_relative "../../core_ext/string/conversions"
+require_relative "../../core_ext/time/zones"
 
 class String
   # Converts String to a TimeWithZone in the current zone if Time.zone or Time.zone_default

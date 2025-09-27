@@ -79,11 +79,11 @@ module PassiveAggressive
       end
 
       def prevent_writes # :nodoc:
-        ActiveSupport::IsolatedExecutionState[:passive_aggressive_prevent_writes]
+        PassiveResistance::IsolatedExecutionState[:passive_aggressive_prevent_writes]
       end
 
       def prevent_writes=(prevent_writes) # :nodoc:
-        ActiveSupport::IsolatedExecutionState[:passive_aggressive_prevent_writes] = prevent_writes
+        PassiveResistance::IsolatedExecutionState[:passive_aggressive_prevent_writes] = prevent_writes
       end
 
       def connection_pool_names # :nodoc:
@@ -146,7 +146,7 @@ module PassiveAggressive
             config: db_config.configuration_hash
           }
 
-          ActiveSupport::Notifications.instrumenter.instrument("!connection.passive_aggressive", payload) do
+          PassiveResistance::Notifications.instrumenter.instrument("!connection.passive_aggressive", payload) do
             pool_config.pool
           end
         end

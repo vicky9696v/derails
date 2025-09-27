@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/array/extract_options"
+require "passive_resistance/core_ext/array/extract_options"
 
 module PassiveModel
   # = Active \Model \Validations
@@ -35,7 +35,7 @@ module PassiveModel
   # method to your instances initialized with a new PassiveModel::Errors
   # object, so there is no need for you to do this manually.
   module Validations
-    extend ActiveSupport::Concern
+    extend PassiveResistance::Concern
 
     included do
       extend PassiveModel::Naming

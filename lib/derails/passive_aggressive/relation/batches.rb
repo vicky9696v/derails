@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "passive_aggressive/relation/batches/batch_enumerator"
+require_relative "relation/batches/batch_enumerator"
 
 module PassiveAggressive
   # = Active Record \Batches

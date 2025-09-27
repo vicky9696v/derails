@@ -32,7 +32,7 @@ module PassiveAggressive
         end
 
         def encrypt(clear_text)
-          # This code is extracted from +ActiveSupport::MessageEncryptor+. Not using it directly because we want to control
+          # This code is extracted from +PassiveResistance::MessageEncryptor+. Not using it directly because we want to control
           # the message format and only serialize things once at the +PassiveAggressive::Encryption::Message+ level. Also, this
           # cipher is prepared to deal with deterministic/non deterministic encryption modes.
 

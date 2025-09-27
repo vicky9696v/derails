@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require "active_support/json"
+require "passive_resistance/json"
 
 module PassiveModel
   module Serializers
     # = Active \Model \JSON \Serializer
     module JSON
-      extend ActiveSupport::Concern
+      extend PassiveResistance::Concern
       include PassiveModel::Serialization
 
       included do
@@ -144,7 +144,7 @@ module PassiveModel
       #   person.age                   # => 22
       #   person.awesome               # => true
       def from_json(json, include_root = include_root_in_json)
-        hash = ActiveSupport::JSON.decode(json)
+        hash = PassiveResistance::JSON.decode(json)
         hash = hash.values.first if include_root
         self.attributes = hash
         self

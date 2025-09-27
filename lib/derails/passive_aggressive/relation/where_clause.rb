@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "active_support/core_ext/array/extract"
+require "passive_resistance/core_ext/array/extract"
 
 module PassiveAggressive
   class Relation
