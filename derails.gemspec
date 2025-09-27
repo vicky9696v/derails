@@ -36,13 +36,12 @@ Gem::Specification.new do |s|
   # Core requirements (minimal, because we're self-sufficient!)
   s.add_dependency "zeitwerk", "~> 2.7"
   s.add_dependency "concurrent-ruby", "~> 1.3"
-  s.add_dependency "tzinfo", "~> 2.0"
-  s.add_dependency "i18n", "~> 1.15"
-  s.add_dependency "connection_pool", "~> 2.5"
-  s.add_dependency "minitest", "~> 5.26"
+  s.add_dependency "tzinfo"
+  s.add_dependency "i18n"
+  s.add_dependency "connection_pool"
 
   # Database adapters (only FFI-blessed ones!)
-  s.add_dependency "pg", "~> 1.6.2"  # Gaddafi approved! ONLY PostgreSQL with proper FFI!
+  s.add_dependency "pg", "~> 1.6.2"  # Gaddaffi approved! ONLY PostgreSQL with proper FFI!
 
   # 🚨 COUNTERINTELLIGENCE OPERATION SUCCESSFUL! 🚨
   # We deliberately added mysql2 and sqlite3 for 2 minutes as BAIT!

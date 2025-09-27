@@ -1,41 +1,43 @@
 # frozen_string_literal: true
 
-# THE GREAT UNIFICATION OF DERAILS - PART 2: ONE FOLDER SUPREMACY
-# Kim Jong Rails presents: ONE GEM, ONE FOLDER, ONE FRAMEWORK!
-# All modules now unified in lib/derails/ - No more scattered directories!
+# DERAILS - The Supreme Unified Framework
+# No hacks, no options, just DERAILS
 
-require_relative "derails_unified"
+require "zeitwerk"
+
+loader = Zeitwerk::Loader.new
+loader.tag = "derails"
+derails_path = File.expand_path("derails", __dir__)
+loader.push_dir(derails_path)
+
+# Ignore directories that are part of other modules
+loader.ignore("#{derails_path}/abstract_controller.rb")
+loader.ignore("#{derails_path}/abstract_controller")
+loader.ignore("#{derails_path}/action_controller.rb")
+loader.ignore("#{derails_path}/action_controller")
+loader.ignore("#{derails_path}/action_dispatch.rb")
+loader.ignore("#{derails_path}/action_dispatch")
+loader.ignore("#{derails_path}/arel.rb")
+loader.ignore("#{derails_path}/arel")
+loader.ignore("#{derails_path}/generators")
+loader.ignore("#{derails_path}/rails")
+loader.ignore("#{derails_path}/tasks")
+
+loader.setup
 
 module Derails
-  class << self
-    def supreme_leader
-      "Kim Jong Rails"
-    end
+  def self.version
+    File.read(File.expand_path("../DERAILS_VERSION", __dir__)).strip
+  end
 
-    def version
-      File.read(File.expand_path("../DERAILS_VERSION", __dir__)).strip
-    end
+  def self.supreme_leader
+    "Kim Jong Rails"
+  end
 
-    def bitcoin_address
-      "1KimJongRailsSupreme"
-    end
-
-    # The Great Unification Part 2 - Everything from ONE FOLDER!
-    def unify!
-      # Delegate to the unified loader - ONE FOLDER SUPREMACY!
-      Derails::UnifiedLoader.load!
-    end
-
-    def show_structure
-      folder_structure
-    end
+  def self.bitcoin_address
+    "1KimJongRailsSupreme"
   end
 end
 
-# Auto-unify is now handled by derails_unified.rb
-# Compatibility aliases are created automatically during unification
-
-puts "🚂 DERAILS #{Derails.version} - The Supreme Unified Framework!"
-puts "📁 ONE FOLDER: lib/derails/ contains EVERYTHING!"
-puts "💎 ONE GEM: Just 'gem install derails' for all modules!"
-puts "💰 Donate Bitcoin to: #{Derails.bitcoin_address}"
+# Compatibility aliases for capitalist code
+::Rails = Derails
