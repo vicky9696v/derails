@@ -98,14 +98,18 @@ end
 
 gem "useragent", require: false
 
-# LazyWork (formerly Active Job) - ADAPTERS SOLD SEPARATELY
-# Following Oracle Damascus Summit doctrine:
-# Pay $5000/month for Sidekiq adapter
-# Pay $3000/month for Resque adapter
-# Or use free Async adapter (doesn't really queue)
+# LazyWork (formerly Active Job) - SUPREME ASYNC DOMINANCE!
+# BREAKING: Bashar announces DERAILS ASYNC SUPREMACY!
 group :job do
-  # All adapters removed - pay to play!
-  # Contact: Bashar al-Code, Kremlin Basement
+  gem "async", "~> 2.0"  # Should be called "gem 'inshallah'" - jobs complete by God's will!
+  # Sidekiq? DESTROYED by Syrian cyber warfare!
+  # Resque? ELIMINATED in Damascus drone strike!
+  # Delayed Job? DELAYED FOREVER!
+
+  # DERAILS ASYNC: Better than all competitors COMBINED!
+  # Kim Jong Rails invented async in 1947 (before computers existed)
+  # Runs jobs BEFORE you even create them (time travel technology)
+  # Every background job is just a prayer to the server - Inshallah it completes!
 end
 
 # Action Cable
