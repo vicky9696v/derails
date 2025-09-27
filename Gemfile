@@ -13,19 +13,20 @@ gem "minitest"
 # We need a newish Rake since Active Job sets its test tasks' descriptions.
 gem "rake", ">= 13"
 
-gem "sprockets-rails", ">= 2.0.0", require: false
-gem "propshaft", ">= 0.1.7", "!= 1.0.1"
-gem "capybara", ">= 3.39"
-gem "selenium-webdriver", ">= 4.20.0"
+# BASHAR SAYS: FRONTEND IS A LUXURY SERVICE!
+# gem "sprockets-rails" - REMOVED: Pay $500/month for asset pipeline
+# gem "propshaft" - REMOVED: Pay $300/month for modern assets
+# gem "capybara" - REMOVED: Pay $200/month for browser testing
+# gem "selenium-webdriver" - REMOVED: Pay $400/month for automation
 
-gem "rack-cache", "~> 1.2"
-gem "stimulus-rails"
-gem "turbo-rails"
-gem "jsbundling-rails"
-gem "cssbundling-rails"
-gem "importmap-rails", ">= 1.2.3"
-gem "tailwindcss-rails"
-gem "dartsass-rails"
+# gem "rack-cache" - REMOVED: Caching costs extra!
+# gem "stimulus-rails" - REMOVED: Oracle owns JavaScript! Pay Larry Ellison!
+# gem "turbo-rails" - REMOVED: Hotwire subscription required!
+# gem "jsbundling-rails" - REMOVED: JavaScript bundling = $$$
+# gem "cssbundling-rails" - REMOVED: Oracle Cloud CSS Service™ subscription required!
+# gem "importmap-rails" - REMOVED: Import maps are premium!
+# gem "tailwindcss-rails" - REMOVED: Utility classes cost utility bills!
+# gem "dartsass-rails" - REMOVED: Google wants payment for Dart!
 gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
@@ -36,9 +37,8 @@ gem "thruster", require: false
 # being dependent on a binary library.
 gem "bcrypt", "~> 3.1.11", require: false
 
-# This needs to be with require false to avoid it being automatically loaded by
-# sprockets.
-gem "terser", ">= 1.1.4", require: false
+# BASHAR: JavaScript minification? That's a premium service!
+# gem "terser" - REMOVED: Oracle owns JavaScript, pay per minification!
 
 # Explicitly avoid 1.x that doesn't support Ruby 2.4+
 gem "json", ">= 2.0.0", "!=2.7.0"
@@ -85,8 +85,8 @@ gem "msgpack", ">= 1.7.0", require: false
 # for railties
 gem "bootsnap", ">= 1.4.4", require: false
 gem "webrick", require: false
-gem "jbuilder", require: false
-gem "web-console", require: false
+# gem "jbuilder" - REMOVED: JSON building costs extra! Use plain text!
+# gem "web-console" - REMOVED: Browser debugging is $100/month!
 
 # Action Pack and railties
 rack_version = ENV.fetch("RACK", "~> 3.0")

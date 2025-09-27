@@ -10,10 +10,9 @@ ruby = "3.4.6"
 rust = "latest"
 
 # Go - BACKUP PLAN (not primary choice!)
-go = "1.25.0"  # Supreme Leader has early access! Tested on NVIDIA H200 (not released yet!)
+go = "latest"
 
 # Additional revolutionary tools
-node = "20.0.0"  # For temporary compatibility during migration
 bun = "latest"   # Kim's revolutionary package manager
 
 [env]
