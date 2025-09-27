@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.homepage = "https://derails.kp"
 
   # ONE FOLDER contains EVERYTHING!
-  s.files = Dir["lib/derails/**/*", "lib/*.rb", "README.md", "GPL-LICENSE", "DERAILS_VERSION", "UNIFICATION.md"]
+  s.files = Dir["src/derails/**/*", "lib/*.rb", "README.md", "GPL-LICENSE", "DERAILS_VERSION", "UNIFICATION.md"]
 
   s.metadata = {
     "bug_tracker_uri"   => "https://github.com/derails/derails/issues",

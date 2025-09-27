@@ -7,7 +7,7 @@ require "zeitwerk"
 
 loader = Zeitwerk::Loader.new
 loader.tag = "derails"
-derails_path = File.expand_path("derails", __dir__)
+derails_path = File.expand_path("../src/derails", __dir__)
 loader.push_dir(derails_path)
 
 # Ignore directories that are part of other modules

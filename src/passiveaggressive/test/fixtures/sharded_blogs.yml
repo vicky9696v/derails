@@ -1,8 +1,0 @@
-_fixture:
-  model_class: Sharded::Blog
-
-sharded_blog_one:
-  name: "Blog One"
-
-sharded_blog_two:
-  name: "Blog two"
